@@ -1,0 +1,10 @@
+C:\Users\KevinM\Documents\Moviles\BackEnd\obj\Debug\BackEnd.csproj.AssemblyReference.cache
+C:\Users\KevinM\Documents\Moviles\BackEnd\obj\Debug\BackEnd.csproj.CoreCompileInputs.cache
+C:\Users\KevinM\Documents\Moviles\BackEnd\bin\Debug\BackEnd.dll
+C:\Users\KevinM\Documents\Moviles\BackEnd\bin\Debug\BackEnd.pdb
+C:\Users\KevinM\Documents\Moviles\BackEnd\bin\Debug\AccesoDatos.dll
+C:\Users\KevinM\Documents\Moviles\BackEnd\bin\Debug\AccesoDatos.pdb
+C:\Users\KevinM\Documents\Moviles\BackEnd\bin\Debug\AccesoDatos.dll.config
+C:\Users\KevinM\Documents\Moviles\BackEnd\obj\Debug\BackEnd.csproj.Up2Date
+C:\Users\KevinM\Documents\Moviles\BackEnd\obj\Debug\BackEnd.dll
+C:\Users\KevinM\Documents\Moviles\BackEnd\obj\Debug\BackEnd.pdb

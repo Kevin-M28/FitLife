@@ -1,0 +1,571 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\entidades\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\entidades\\gimnasio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\entidades\\sesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\entidades\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\entidades\\error.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\enum\\enumerrores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\logica\\logusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA62751B-80F2-4316-BCC4-C2921696A65C}|..\\AccesoDatos\\AccesoDatos.csproj|c:\\users\\kevinm\\documents\\moviles\\accesodatos\\fitlife.dbml||{B465B5AD-8799-4507-B90A-EE29ACF36AF9}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Fitlife||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA62751B-80F2-4316-BCC4-C2921696A65C}|..\\AccesoDatos\\AccesoDatos.csproj|c:\\users\\kevinm\\documents\\moviles\\accesodatos\\fitlife.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\enum\\enumestadosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\enum\\enumtiporoles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\enum\\estadomembresia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\response\\resmembresia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\response\\resbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\response\\resinsertarusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\response\\reslogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\request\\reqasignarmembresia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\request\\reqbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\request\\reqinsertarmemebresia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\request\\reqlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\backend\\request\\reqinsertarusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KevinM\\AppData\\Local\\Temp\\bjhzgjqj..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KevinM\\AppData\\Local\\Temp\\diakfrrn..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|solutionrelative:packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|solutionrelative:global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\web.release.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|solutionrelative:web.release.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\web.debug.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|solutionrelative:web.debug.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|solutionrelative:web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|solutionrelative:app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA62751B-80F2-4316-BCC4-C2921696A65C}|..\\AccesoDatos\\AccesoDatos.csproj|c:\\users\\kevinm\\documents\\moviles\\accesodatos\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\controllers\\valuescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00B8B604-F2A7-45F0-9235-604A0B33FF1E}|Fitlife.csproj|solutionrelative:controllers\\valuescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA62751B-80F2-4316-BCC4-C2921696A65C}|..\\AccesoDatos\\AccesoDatos.csproj|c:\\users\\kevinm\\documents\\moviles\\accesodatos\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LogUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Logica\\LogUsuario.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Logica\\LogUsuario.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Logica\\LogUsuario.cs",
+              "RelativeToolTip": "..\\BackEnd\\Logica\\LogUsuario.cs",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAwwMoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:57:13.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ReqLogin.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Request\\ReqLogin.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqLogin.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Request\\ReqLogin.cs",
+              "RelativeToolTip": "..\\BackEnd\\Request\\ReqLogin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T22:11:34.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ResBase.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Response\\ResBase.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Response\\ResBase.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Response\\ResBase.cs",
+              "RelativeToolTip": "..\\BackEnd\\Response\\ResBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:58:41.314Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ResInsertarUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Response\\ResInsertarUsuario.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Response\\ResInsertarUsuario.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Response\\ResInsertarUsuario.cs",
+              "RelativeToolTip": "..\\BackEnd\\Response\\ResInsertarUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:59:07.46Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ResMembresia.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Response\\ResMembresia.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Response\\ResMembresia.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Response\\ResMembresia.cs",
+              "RelativeToolTip": "..\\BackEnd\\Response\\ResMembresia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T22:12:45.091Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "enumErrores.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Enum\\enumErrores.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Enum\\enumErrores.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Enum\\enumErrores.cs",
+              "RelativeToolTip": "..\\BackEnd\\Enum\\enumErrores.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:55:43.147Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Class1.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Class1.cs",
+              "RelativeToolTip": "..\\BackEnd\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T20:52:11.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Error.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Entidades\\Error.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Error.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Entidades\\Error.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Error.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:54:49.955Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Rol.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Entidades\\Rol.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Rol.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Entidades\\Rol.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Rol.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAYwAYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:53:15.42Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Entidades\\Usuario.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Usuario.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Entidades\\Usuario.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:49:31.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Sesion.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Entidades\\Sesion.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Sesion.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Entidades\\Sesion.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Sesion.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:54:03.437Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Gimnasio.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Entidades\\Gimnasio.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Gimnasio.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Entidades\\Gimnasio.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Gimnasio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:41:26.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ReqInsertarMemebresia.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Request\\ReqInsertarMemebresia.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqInsertarMemebresia.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Request\\ReqInsertarMemebresia.cs",
+              "RelativeToolTip": "..\\BackEnd\\Request\\ReqInsertarMemebresia.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAwwAYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:02:49.805Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ReqBase.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Request\\ReqBase.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqBase.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Request\\ReqBase.cs",
+              "RelativeToolTip": "..\\BackEnd\\Request\\ReqBase.cs",
+              "ViewState": "AgIAAAAAAACASI5p7GcawAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:56:34.46Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ReqAsignarMembresia.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Request\\ReqAsignarMembresia.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqAsignarMembresia.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Request\\ReqAsignarMembresia.cs",
+              "RelativeToolTip": "..\\BackEnd\\Request\\ReqAsignarMembresia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:57:17.114Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T20:59:03.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Fitlife.designer.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\AccesoDatos\\Fitlife.designer.cs",
+              "RelativeDocumentMoniker": "..\\AccesoDatos\\Fitlife.designer.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\AccesoDatos\\Fitlife.designer.cs",
+              "RelativeToolTip": "..\\AccesoDatos\\Fitlife.designer.cs",
+              "ViewState": "AgIAABwBAAAAAAAAAAAcwM0BAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T20:54:57.16Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Fitlife",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Fitlife.csproj",
+              "RelativeDocumentMoniker": "Fitlife.csproj",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Fitlife.csproj",
+              "RelativeToolTip": "Fitlife.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-19T22:25:49.38Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Fitlife.dbml",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\AccesoDatos\\Fitlife.dbml",
+              "RelativeDocumentMoniker": "..\\AccesoDatos\\Fitlife.dbml",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\AccesoDatos\\Fitlife.dbml",
+              "RelativeToolTip": "..\\AccesoDatos\\Fitlife.dbml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001722|",
+              "WhenOpened": "2025-04-19T20:54:39.89Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "EstadoMembresia.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Enum\\EstadoMembresia.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Enum\\EstadoMembresia.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Enum\\EstadoMembresia.cs",
+              "RelativeToolTip": "..\\BackEnd\\Enum\\EstadoMembresia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:55:12.354Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "enumTipoRoles.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Enum\\enumTipoRoles.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Enum\\enumTipoRoles.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Enum\\enumTipoRoles.cs",
+              "RelativeToolTip": "..\\BackEnd\\Enum\\enumTipoRoles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:55:11.59Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "enumEstadoSesion.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Enum\\enumEstadoSesion.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Enum\\enumEstadoSesion.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Enum\\enumEstadoSesion.cs",
+              "RelativeToolTip": "..\\BackEnd\\Enum\\enumEstadoSesion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:55:10.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ReqInsertarUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Request\\ReqInsertarUsuario.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqInsertarUsuario.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Request\\ReqInsertarUsuario.cs",
+              "RelativeToolTip": "..\\BackEnd\\Request\\ReqInsertarUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:05:05.859Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ResLogin.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Response\\ResLogin.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Response\\ResLogin.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\BackEnd\\Response\\ResLogin.cs",
+              "RelativeToolTip": "..\\BackEnd\\Response\\ResLogin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAkwAYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T22:15:02.469Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "bjhzgjqj..sql",
+              "DocumentMoniker": "C:\\Users\\KevinM\\AppData\\Local\\Temp\\bjhzgjqj..sql",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\bjhzgjqj..sql",
+              "ToolTip": "C:\\Users\\KevinM\\AppData\\Local\\Temp\\bjhzgjqj..sql",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\bjhzgjqj..sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-19T23:18:12.76Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Web.Debug.config",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Web.Debug.config",
+              "RelativeDocumentMoniker": "Web.Debug.config",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Web.Debug.config",
+              "RelativeToolTip": "Web.Debug.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-04-19T22:26:44.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Web.Release.config",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Web.Release.config",
+              "RelativeDocumentMoniker": "Web.Release.config",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Web.Release.config",
+              "RelativeToolTip": "Web.Release.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-04-19T22:26:45.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Global.asax.cs",
+              "RelativeDocumentMoniker": "Global.asax.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Global.asax.cs",
+              "RelativeToolTip": "Global.asax.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T22:25:40.918Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "packages.config",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\packages.config",
+              "RelativeDocumentMoniker": "packages.config",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\packages.config",
+              "RelativeToolTip": "packages.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-04-19T22:25:43.096Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "diakfrrn..sql",
+              "DocumentMoniker": "C:\\Users\\KevinM\\AppData\\Local\\Temp\\diakfrrn..sql",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\diakfrrn..sql",
+              "ToolTip": "C:\\Users\\KevinM\\AppData\\Local\\Temp\\diakfrrn..sql",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\diakfrrn..sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-19T23:02:40.488Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Web.config",
+              "RelativeDocumentMoniker": "Web.config",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Web.config",
+              "RelativeToolTip": "Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-04-19T22:25:44.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "WebApiConfig.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\App_Start\\WebApiConfig.cs",
+              "RelativeDocumentMoniker": "App_Start\\WebApiConfig.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\App_Start\\WebApiConfig.cs",
+              "RelativeToolTip": "App_Start\\WebApiConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T22:25:59.925Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "app.config",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\AccesoDatos\\app.config",
+              "RelativeDocumentMoniker": "..\\AccesoDatos\\app.config",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\AccesoDatos\\app.config",
+              "RelativeToolTip": "..\\AccesoDatos\\app.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-04-19T22:08:36.064Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ValuesController.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Controllers\\ValuesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ValuesController.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Controllers\\ValuesController.cs",
+              "RelativeToolTip": "Controllers\\ValuesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T20:59:55.148Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\Fitlife\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T20:59:53.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\AccesoDatos\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\AccesoDatos\\Class1.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\AccesoDatos\\Class1.cs",
+              "RelativeToolTip": "..\\AccesoDatos\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T20:53:18.617Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

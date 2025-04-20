@@ -1,0 +1,7 @@
+C:\Users\KevinM\Documents\Moviles\AccesoDatos\bin\Debug\AccesoDatos.dll.config
+C:\Users\KevinM\Documents\Moviles\AccesoDatos\bin\Debug\AccesoDatos.dll
+C:\Users\KevinM\Documents\Moviles\AccesoDatos\bin\Debug\AccesoDatos.pdb
+C:\Users\KevinM\Documents\Moviles\AccesoDatos\obj\Debug\AccesoDatos.csproj.AssemblyReference.cache
+C:\Users\KevinM\Documents\Moviles\AccesoDatos\obj\Debug\AccesoDatos.csproj.CoreCompileInputs.cache
+C:\Users\KevinM\Documents\Moviles\AccesoDatos\obj\Debug\AccesoDatos.dll
+C:\Users\KevinM\Documents\Moviles\AccesoDatos\obj\Debug\AccesoDatos.pdb

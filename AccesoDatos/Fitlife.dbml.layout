@@ -1,0 +1,697 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 20.25, 94.25" name="Fitlife">
+  <DataContextMoniker Name="/FitlifeDataContext" />
+  <nestedChildShapes>
+    <classShape Id="76ce1eb4-d894-4acd-9f29-f0250da2b607" absoluteBounds="3.5, 37.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/FitlifeDataContext/achievement" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3b7651d3-be21-4c91-a041-f399eac460a3" absoluteBounds="3.515, 37.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="38e14830-5948-4cdc-a02f-06faa5fa1a3f" absoluteBounds="15, 45.25, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/FitlifeDataContext/activity_log" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4c9440e5-1df2-4389-8f21-b00957437d39" absoluteBounds="15.015, 45.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9fcccd58-204c-4d98-a038-cc9ab9689c94" absoluteBounds="12, 42.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/FitlifeDataContext/billing" />
+      <nestedChildShapes>
+        <elementListCompartment Id="54b24742-b259-46eb-a0f9-8118ebc50b50" absoluteBounds="12.015, 42.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cc67781c-97c5-41f2-a22f-633179a0668f" absoluteBounds="15, 36.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/FitlifeDataContext/bmi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c7940218-c1da-42e2-890d-e00559bf591b" absoluteBounds="15.015, 36.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f71328b4-51e0-4b94-9a89-f2c452599b1d" absoluteBounds="12, 36.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/FitlifeDataContext/class_booking" />
+      <nestedChildShapes>
+        <elementListCompartment Id="643768c6-4ee4-4d95-a934-2f65cd419fcd" absoluteBounds="12.015, 36.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fb583a8b-94dc-4a2b-9159-0e0e506d0b4c" absoluteBounds="17.75, 40.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/FitlifeDataContext/class_schedule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a928eaa0-49de-46a6-9bd6-7d078473792e" absoluteBounds="17.765, 40.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4bb238a9-cecb-4724-8ef4-d91afb8c741f" absoluteBounds="15, 39.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/FitlifeDataContext/class" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0775cde0-7b5f-4edc-88d7-00d7893ddfbd" absoluteBounds="15.015, 39.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="03371857-5baa-48e6-9ee0-0b5babcc33b1" absoluteBounds="3.5, 47.5, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/FitlifeDataContext/equipment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="59a51272-29d0-473d-b9ad-253f373c1ee2" absoluteBounds="3.515, 47.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7039805f-3758-4b69-b681-37cd36fcf003" absoluteBounds="3.5, 60.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/FitlifeDataContext/event" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ae7e5f5c-e0f9-4cde-bf18-aa1a2839e13f" absoluteBounds="3.515, 60.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="40cd48e0-c2c8-48f7-9e32-56f82f1c1bdf" absoluteBounds="3.5, 88.5, 2, 2.3478011067708451">
+      <DataClassMoniker Name="/FitlifeDataContext/exercise" />
+      <nestedChildShapes>
+        <elementListCompartment Id="86613c2a-5800-4edb-9615-1b294726fb7c" absoluteBounds="3.515, 88.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a9d2c3b5-98aa-445f-98a6-9252f480c284" absoluteBounds="15, 33.25, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/FitlifeDataContext/goal" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dcbb326f-2ec9-4bb2-8111-5e264fe03713" absoluteBounds="15.015, 33.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="da81cd7b-95b8-4862-8057-56ff145a3c43" absoluteBounds="0.75, 41.25, 2, 2.1554996744791737">
+      <DataClassMoniker Name="/FitlifeDataContext/gym" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fc50a44b-8c4a-4352-aeb9-663271b5159f" absoluteBounds="0.765, 41.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ad6db1f1-d096-4b01-a550-bbb2790aa734" absoluteBounds="3.5, 30.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/FitlifeDataContext/ingredient" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4812bbad-5ae5-499b-a826-e6a7ae467e37" absoluteBounds="3.515, 30.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dcda1d04-c48e-440f-a48e-bea9da586751" absoluteBounds="6.25, 44.25, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/FitlifeDataContext/maintenance" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b83284b5-a76d-4894-8b4c-1d27b92c3b8c" absoluteBounds="6.265, 44.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a7fe9efc-7826-4d9e-b5ef-051b99fea367" absoluteBounds="3.5, 63.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/FitlifeDataContext/membership" />
+      <nestedChildShapes>
+        <elementListCompartment Id="888b11bb-9516-4f9e-a3fe-44b4e5d43aa1" absoluteBounds="3.515, 63.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f30dffb9-650f-4160-ba35-8cc28c30823b" absoluteBounds="12, 45.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/FitlifeDataContext/notification" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f2acd0bb-8d91-44ee-ba7e-ca92afb439ed" absoluteBounds="12.015, 45.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1edcf0f3-509c-4c1e-90e1-5b7f0db04bbb" absoluteBounds="9.25, 34, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/FitlifeDataContext/nutritional_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="77fdaf7d-0080-4d7a-9527-98b1e860a635" absoluteBounds="9.265, 34.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1754cfd2-5a13-4ef6-a07d-83cd9f19431f" absoluteBounds="15, 42.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/FitlifeDataContext/payment_method" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c3a14039-9fc4-48af-bd39-b2302df24eca" absoluteBounds="15.015, 42.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7a2f6a53-4579-458c-97d1-3aeb1c86ee6e" absoluteBounds="3.5, 40.375, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/FitlifeDataContext/permission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="47fe7fdb-eb23-4d64-badc-66dc0324b589" absoluteBounds="3.515, 40.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c24a9d96-8b06-459c-bdfa-3f7ccdf5eceb" absoluteBounds="18, 37.25, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/FitlifeDataContext/progress" />
+      <nestedChildShapes>
+        <elementListCompartment Id="14b3bb16-6467-44d6-9174-2aef1dc7f08c" absoluteBounds="18.015, 37.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bc027336-ded7-4b53-8377-bb78fb134604" absoluteBounds="6.25, 36, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/FitlifeDataContext/recipe_ingredient" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e5b0d9e4-07e5-426f-bc02-afeeb81420c0" absoluteBounds="6.265, 36.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a3df134a-8cef-4f9e-a91d-17dff1223845" absoluteBounds="3.5, 32.75, 2, 1.5785953776041737">
+      <DataClassMoniker Name="/FitlifeDataContext/recipe" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8153d41b-da98-4e50-bc3c-898963b08217" absoluteBounds="3.515, 33.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e7b32a95-e33b-4790-8f5e-b7b32e717564" absoluteBounds="12, 62.875, 2, 2.347801106770838">
+      <DataClassMoniker Name="/FitlifeDataContext/record" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ff4c506d-cb5e-45ca-9c94-b636cbf86d28" absoluteBounds="12.015, 63.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c18e0b03-8669-4362-8afa-0bb080478617" absoluteBounds="18, 43.25, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/FitlifeDataContext/recovery_token" />
+      <nestedChildShapes>
+        <elementListCompartment Id="74872804-cf18-41ff-a294-ab0448c3fcc1" absoluteBounds="18.015, 43.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f5ca7007-84ea-42f0-9a53-2654497ccab7" absoluteBounds="12, 33.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/FitlifeDataContext/report" />
+      <nestedChildShapes>
+        <elementListCompartment Id="217189bf-578b-4880-ad8b-c16c7ae98214" absoluteBounds="12.015, 33.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="67d9f8e3-3f5e-4ed2-b7a8-9c27fbaf3e66" absoluteBounds="6.25, 38.5, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/FitlifeDataContext/role_permission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1de94e91-74d9-4795-8427-26610aff74d9" absoluteBounds="6.265, 38.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="063d4443-e5d9-4104-84ba-892a3cc6a8f5" absoluteBounds="3.5, 35, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/FitlifeDataContext/role" />
+      <nestedChildShapes>
+        <elementListCompartment Id="280aad84-ef36-4e8a-9257-4059f7f25b21" absoluteBounds="3.515, 35.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1436cb30-62d0-4121-8b5a-e0b4e0a7c1bd" absoluteBounds="6.25, 65.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/FitlifeDataContext/routine_exercise" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1dd6a232-6492-4f11-a7cf-4166cf96fef7" absoluteBounds="6.265, 65.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="236a71c8-9e6a-4d2e-867f-d2e67d882db3" absoluteBounds="18, 34.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/FitlifeDataContext/routine" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d871114d-2a1c-4f02-bdf8-ee6e2d62eee8" absoluteBounds="18.015, 34.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="68aec26c-26c6-45e2-b8d4-81719fcbaef3" absoluteBounds="3.5, 91.625, 2, 2.3478011067708451">
+      <DataClassMoniker Name="/FitlifeDataContext/security_log" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9741b8db-24c4-46e3-b43a-996a35e1d93d" absoluteBounds="3.515, 92.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7bb32434-6d80-4eb8-aeab-cb89fa9237ca" absoluteBounds="3.5, 52.5, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/FitlifeDataContext/statistic" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e757dbf6-d508-4885-9018-784ce9c83cc6" absoluteBounds="3.515, 52.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="709a0e7b-fdcc-44cb-8c52-7df40e43d8c0" absoluteBounds="12, 54.125, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/FitlifeDataContext/survey_response" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eb4cac3d-ebe2-45ab-ac3c-1423ab3ccfbb" absoluteBounds="12.015, 54.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7a48583c-d21f-492b-88be-47489b87f116" absoluteBounds="3.5, 71.25, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/FitlifeDataContext/survey" />
+      <nestedChildShapes>
+        <elementListCompartment Id="56a0a4e3-d37f-4bf1-9e39-e4a6993897ac" absoluteBounds="3.515, 71.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ceb2647a-5847-4723-85f8-33597c4913e0" absoluteBounds="12, 39.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/FitlifeDataContext/user_achievement" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4cd25fe8-9bde-48ad-944e-ffee92b2bdf3" absoluteBounds="12.015, 39.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="414e09a9-0391-42b8-a87b-d71412f0bc9a" absoluteBounds="12, 50.125, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/FitlifeDataContext/user_membership" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e1628a79-3813-479d-8926-a90086cf93a2" absoluteBounds="12.015, 50.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="548d830f-fdaf-4c3f-bc4e-1e15a3cb0629" absoluteBounds="18, 47, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/FitlifeDataContext/user_session" />
+      <nestedChildShapes>
+        <elementListCompartment Id="67bb7023-3f3e-4309-bb59-1bd839e7eb53" absoluteBounds="18.015, 47.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3e194592-e0be-4938-af99-a5b90cddd253" absoluteBounds="9.25, 37.25, 2, 3.8862125651041737">
+      <DataClassMoniker Name="/FitlifeDataContext/user" />
+      <nestedChildShapes>
+        <elementListCompartment Id="23c19ca6-ba0c-4d39-8b7e-52c3b99065ec" absoluteBounds="9.265, 37.71, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(17.75 : 41.3565991210938); (17.7083333333333 : 41.3565991210938 : JumpStart); (17.4166666666667 : 41.3565991210938 : JumpEnd); (17.25 : 41.3565991210938); (17.25 : 39.125); (13 : 39.125); (13 : 38.1458968098958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/class_schedule/class_schedule_class_booking" />
+      <nodes>
+        <classShapeMoniker Id="fb583a8b-94dc-4a2b-9159-0e0e506d0b4c" />
+        <classShapeMoniker Id="f71328b4-51e0-4b94-9a89-f2c452599b1d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(17 : 40.7604484049479); (17.1666666666667 : 40.7604484049479 : JumpStart); (17.3333333333333 : 40.7604484049479 : JumpEnd); (17.4166666666667 : 40.7604484049479 : JumpStart); (17.7083333333333 : 40.7604484049479 : JumpEnd); (17.75 : 40.7604484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/class/class_class_schedule" />
+      <nodes>
+        <classShapeMoniker Id="4bb238a9-cecb-4724-8ef4-d91afb8c741f" />
+        <classShapeMoniker Id="fb583a8b-94dc-4a2b-9159-0e0e506d0b4c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 41.25); (1.75 : 38.2604484049479); (1.93229291666667 : 38.2604484049479 : JumpStart); (2.09895958333333 : 38.2604484049479 : JumpEnd); (2.19791916666667 : 38.2604484049479 : JumpStart); (2.36458583333333 : 38.2604484049479 : JumpEnd); (2.46354541666667 : 38.2604484049479 : JumpStart); (2.63021208333333 : 38.2604484049479 : JumpEnd); (3.5 : 38.2604484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_achievement" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="76ce1eb4-d894-4acd-9f29-f0250da2b607" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 42.7107970260417); (9.36978791666666 : 42.7107970260417 : JumpStart); (9.53645458333333 : 42.7107970260417 : JumpEnd); (9.63541416666667 : 42.7107970260417 : JumpStart); (9.80208083333333 : 42.7107970260417 : JumpEnd); (9.90104041666667 : 42.7107970260417 : JumpStart); (10.0677070833333 : 42.7107970260417 : JumpEnd); (10.1666666666667 : 42.7107970260417 : JumpStart); (10.3333333333333 : 42.7107970260417 : JumpEnd); (10.4322929166667 : 42.7107970260417 : JumpStart); (10.8645858333333 : 42.7107970260417 : JumpEnd); (10.9161390705128 : 42.7107970260417 : JumpStart); (11.0828057371795 : 42.7107970260417 : JumpEnd); (11.4166666666667 : 42.7107970260417 : JumpStart); (11.7083333333333 : 42.7107970260417 : JumpEnd); (11.75 : 42.7107970260417); (11.75 : 44.3958968098958); (16 : 44.3958968098958); (16 : 45.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_activity_log" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="38e14830-5948-4cdc-a02f-06faa5fa1a3f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 43.1206483502604); (9.36978791666666 : 43.1206483502604 : JumpStart); (9.53645458333333 : 43.1206483502604 : JumpEnd); (9.63541416666667 : 43.1206483502604 : JumpStart); (9.80208083333333 : 43.1206483502604 : JumpEnd); (9.90104041666667 : 43.1206483502604 : JumpStart); (10.0677070833333 : 43.1206483502604 : JumpEnd); (10.1666666666667 : 43.1206483502604 : JumpStart); (10.3333333333333 : 43.1206483502604 : JumpEnd); (10.4322929166667 : 43.1206483502604 : JumpStart); (10.8645858333333 : 43.1206483502604 : JumpEnd); (10.9161390705128 : 43.1206483502604 : JumpStart); (11.0828057371795 : 43.1206483502604 : JumpEnd); (11.4791666666667 : 43.1206483502604 : JumpStart); (11.8333333333333 : 43.1206483502604 : JumpEnd); (12 : 43.1206483502604)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_billing" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="9fcccd58-204c-4d98-a038-cc9ab9689c94" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 42.3321937018229); (9.23697479166667 : 42.3321937018229 : JumpStart); (9.53645458333333 : 42.3321937018229 : JumpEnd); (9.63541416666667 : 42.3321937018229 : JumpStart); (9.80208083333333 : 42.3321937018229 : JumpEnd); (9.90104041666667 : 42.3321937018229 : JumpStart); (10.0677070833333 : 42.3321937018229 : JumpEnd); (10.1666666666667 : 42.3321937018229 : JumpStart); (10.3333333333333 : 42.3321937018229 : JumpEnd); (10.4322929166667 : 42.3321937018229 : JumpStart); (10.8645858333333 : 42.3321937018229 : JumpEnd); (10.9161390705128 : 42.3321937018229 : JumpStart); (11.0828057371795 : 42.3321937018229 : JumpEnd); (11.4166666666667 : 42.3321937018229 : JumpStart); (11.7083333333333 : 42.3321937018229 : JumpEnd); (11.75 : 42.3321937018229); (11.75 : 38.7131982421875); (12.9166666666667 : 38.7131982421875 : JumpStart); (13.0833333333333 : 38.7131982421875 : JumpEnd); (16 : 38.7131982421875); (16 : 38.3381982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_bmi" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="cc67781c-97c5-41f2-a22f-633179a0668f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 42.915722688151); (9.36978791666666 : 42.915722688151 : JumpStart); (9.53645458333333 : 42.915722688151 : JumpEnd); (9.63541416666667 : 42.915722688151 : JumpStart); (9.80208083333333 : 42.915722688151 : JumpEnd); (9.90104041666667 : 42.915722688151 : JumpStart); (10.0677070833333 : 42.915722688151 : JumpEnd); (10.1666666666667 : 42.915722688151 : JumpStart); (10.3333333333333 : 42.915722688151 : JumpEnd); (10.4322929166667 : 42.915722688151 : JumpStart); (10.8645858333333 : 42.915722688151 : JumpEnd); (10.9161390705128 : 42.915722688151 : JumpStart); (11.0828057371795 : 42.915722688151 : JumpEnd); (11.5 : 42.915722688151); (11.5 : 38.5208968098958); (11.5416666666667 : 38.5208968098958 : JumpStart); (11.7083333333333 : 38.5208968098958 : JumpEnd); (11.7291666666667 : 38.5208968098958 : JumpStart); (11.8958333333333 : 38.5208968098958 : JumpEnd); (12.468748 : 38.5208968098958); (12.468748 : 38.1458968098958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_class_booking" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="f71328b4-51e0-4b94-9a89-f2c452599b1d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 42.1116445397135); (9.23697479166667 : 42.1116445397135 : JumpStart); (9.53645458333333 : 42.1116445397135 : JumpEnd); (9.63541416666667 : 42.1116445397135 : JumpStart); (9.80208083333333 : 42.1116445397135 : JumpEnd); (9.90104041666667 : 42.1116445397135 : JumpStart); (10.0677070833333 : 42.1116445397135 : JumpEnd); (10.1666666666667 : 42.1116445397135 : JumpStart); (10.3333333333333 : 42.1116445397135 : JumpEnd); (10.4322929166667 : 42.1116445397135 : JumpStart); (10.8645858333333 : 42.1116445397135 : JumpEnd); (10.9161390705128 : 42.1116445397135 : JumpStart); (11.0828057371795 : 42.1116445397135 : JumpEnd); (11.2916666666667 : 42.1116445397135 : JumpStart); (11.9583333333333 : 42.1116445397135 : JumpEnd); (12.9166666666667 : 42.1116445397135 : JumpStart); (13.0833333333333 : 42.1116445397135 : JumpEnd); (16.4166661666667 : 42.1116445397135 : JumpStart); (16.5833328333333 : 42.1116445397135 : JumpEnd); (17.75 : 42.1116445397135)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_class_schedule" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="fb583a8b-94dc-4a2b-9159-0e0e506d0b4c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 42.5214953639323); (9.23697479166667 : 42.5214953639323 : JumpStart); (9.53645458333333 : 42.5214953639323 : JumpEnd); (9.63541416666667 : 42.5214953639323 : JumpStart); (9.80208083333333 : 42.5214953639323 : JumpEnd); (9.90104041666667 : 42.5214953639323 : JumpStart); (10.0677070833333 : 42.5214953639323 : JumpEnd); (10.1666666666667 : 42.5214953639323 : JumpStart); (10.3333333333333 : 42.5214953639323 : JumpEnd); (10.4322929166667 : 42.5214953639323 : JumpStart); (10.8645858333333 : 42.5214953639323 : JumpEnd); (10.9161390705128 : 42.5214953639323 : JumpStart); (11.0828057371795 : 42.5214953639323 : JumpEnd); (11.4166666666667 : 42.5214953639323 : JumpStart); (11.7708333333333 : 42.5214953639323 : JumpEnd); (11.875 : 42.5214953639323); (11.875 : 41.875); (11.9408397169471 : 41.875 : JumpStart); (12.2708333333333 : 41.875 : JumpEnd); (12.9166666666667 : 41.875 : JumpStart); (13.0833333333333 : 41.875 : JumpEnd); (16 : 41.875); (16 : 41.1458968098958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_class" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="4bb238a9-cecb-4724-8ef4-d91afb8c741f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 43.4054996744792); (1.75 : 48.3854484049479); (1.79947979166667 : 48.3854484049479 : JumpStart); (2.36458583333333 : 48.3854484049479 : JumpEnd); (2.59635854166667 : 48.3854484049479 : JumpStart); (2.76302520833333 : 48.3854484049479 : JumpEnd); (3.5 : 48.3854484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_equipment" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="03371857-5baa-48e6-9ee0-0b5babcc33b1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.2812525 : 43.4054996744792); (2.2812525 : 61.3565991210938); (2.59635854166667 : 61.3565991210938 : JumpStart); (2.76302520833333 : 61.3565991210938 : JumpEnd); (3.5 : 61.3565991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_event" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="7039805f-3758-4b69-b681-37cd36fcf003" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.2187475 : 43.4054996744792); (1.2187475 : 89.6739005533854); (2.06510604166667 : 89.6739005533854 : JumpStart); (2.23177270833333 : 89.6739005533854 : JumpEnd); (3.5 : 89.6739005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_exercise" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="40cd48e0-c2c8-48f7-9e32-56f82f1c1bdf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 43.2943260123698); (9.36978791666666 : 43.2943260123698 : JumpStart); (9.53645458333333 : 43.2943260123698 : JumpEnd); (9.63541416666667 : 43.2943260123698 : JumpStart); (9.80208083333333 : 43.2943260123698 : JumpEnd); (9.90104041666667 : 43.2943260123698 : JumpStart); (10.0677070833333 : 43.2943260123698 : JumpEnd); (10.1666666666667 : 43.2943260123698 : JumpStart); (10.3333333333333 : 43.2943260123698 : JumpEnd); (10.4322929166667 : 43.2943260123698 : JumpStart); (10.8645858333333 : 43.2943260123698 : JumpEnd); (10.9161390705128 : 43.2943260123698 : JumpStart); (11.0828057371795 : 43.2943260123698 : JumpEnd); (11.625 : 43.2943260123698); (11.625 : 35.7804996744792); (11.7291666666667 : 35.7804996744792 : JumpStart); (11.8958333333333 : 35.7804996744792 : JumpEnd); (14.5416666666667 : 35.7804996744792 : JumpStart); (14.7083333333333 : 35.7804996744792 : JumpEnd); (16 : 35.7804996744792); (16 : 35.4054996744792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_goal" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="a9d2c3b5-98aa-445f-98a6-9252f480c284" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.2812525 : 41.25); (2.2812525 : 31.1642976888021); (3.5 : 31.1642976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_ingredient" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="ad6db1f1-d096-4b01-a550-bbb2790aa734" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 47.5); (4.5 : 45.2315991210938); (6.25 : 45.2315991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/equipment/equipment_maintenance" />
+      <nodes>
+        <classShapeMoniker Id="03371857-5baa-48e6-9ee0-0b5babcc33b1" />
+        <classShapeMoniker Id="dcda1d04-c48e-440f-a48e-bea9da586751" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.54687875 : 43.4054996744792); (2.54687875 : 44.7095470605469); (2.59635854166667 : 44.7095470605469 : JumpStart); (2.76302520833333 : 44.7095470605469 : JumpEnd); (6.25 : 44.7095470605469)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_maintenance" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="dcda1d04-c48e-440f-a48e-bea9da586751" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.01562625 : 43.4054996744792); (2.01562625 : 64.1065991210938); (2.06510604166667 : 64.1065991210938 : JumpStart); (2.23177270833333 : 64.1065991210938 : JumpEnd); (2.59635854166667 : 64.1065991210938 : JumpStart); (2.76302520833333 : 64.1065991210938 : JumpEnd); (3.5 : 64.1065991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_membership" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="a7fe9efc-7826-4d9e-b5ef-051b99fea367" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.48437375 : 43.4054996744792); (1.48437375 : 46.8069482421875); (1.53385354166667 : 46.8069482421875 : JumpStart); (2.36458583333333 : 46.8069482421875 : JumpEnd); (2.59635854166667 : 46.8069482421875 : JumpStart); (2.76302520833333 : 46.8069482421875 : JumpEnd); (4.41666666666667 : 46.8069482421875 : JumpStart); (4.58333333333333 : 46.8069482421875 : JumpEnd); (9.36978791666666 : 46.8069482421875 : JumpStart); (9.53645458333333 : 46.8069482421875 : JumpEnd); (10.4322929166667 : 46.8069482421875 : JumpStart); (10.7317727083333 : 46.8069482421875 : JumpEnd); (10.9161390705128 : 46.8069482421875 : JumpStart); (11.0828057371795 : 46.8069482421875 : JumpEnd); (11.4791666666667 : 46.8069482421875 : JumpStart); (11.6458333333333 : 46.8069482421875 : JumpEnd); (12 : 46.8069482421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_notification" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="f30dffb9-650f-4160-ba35-8cc28c30823b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.2187475 : 41.25); (1.2187475 : 34.6642976888021); (1.93229291666667 : 34.6642976888021 : JumpStart); (2.09895958333333 : 34.6642976888021 : JumpEnd); (2.19791916666667 : 34.6642976888021 : JumpStart); (2.36458583333333 : 34.6642976888021 : JumpEnd); (6.63541416666667 : 34.6642976888021 : JumpStart); (6.80208083333333 : 34.6642976888021 : JumpEnd); (7.16666666666667 : 34.6642976888021 : JumpStart); (7.33333333333333 : 34.6642976888021 : JumpEnd); (9.25 : 34.6642976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_nutritional_info" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="1edcf0f3-509c-4c1e-90e1-5b7f0db04bbb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 42.0803920397135); (9.23697479166667 : 42.0803920397135 : JumpStart); (9.53645458333333 : 42.0803920397135 : JumpEnd); (9.63541416666667 : 42.0803920397135 : JumpStart); (9.80208083333333 : 42.0803920397135 : JumpEnd); (9.90104041666667 : 42.0803920397135 : JumpStart); (10.0677070833333 : 42.0803920397135 : JumpEnd); (10.1666666666667 : 42.0803920397135 : JumpStart); (10.3333333333333 : 42.0803920397135 : JumpEnd); (10.4322929166667 : 42.0803920397135 : JumpStart); (10.8645858333333 : 42.0803920397135 : JumpEnd); (10.9161390705128 : 42.0803920397135 : JumpStart); (11.0828057371795 : 42.0803920397135 : JumpEnd); (11.2916666666667 : 42.0803920397135 : JumpStart); (11.9583333333333 : 42.0803920397135 : JumpEnd); (12.9166666666667 : 42.0803920397135 : JumpStart); (13.0833333333333 : 42.0803920397135 : JumpEnd); (15.5 : 42.0803920397135); (15.5 : 42.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_payment_method" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="1754cfd2-5a13-4ef6-a07d-83cd9f19431f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 42.2219191207682); (9.23697479166667 : 42.2219191207682 : JumpStart); (9.53645458333333 : 42.2219191207682 : JumpEnd); (9.63541416666667 : 42.2219191207682 : JumpStart); (9.80208083333333 : 42.2219191207682 : JumpEnd); (9.90104041666667 : 42.2219191207682 : JumpStart); (10.0677070833333 : 42.2219191207682 : JumpEnd); (10.1666666666667 : 42.2219191207682 : JumpStart); (10.3333333333333 : 42.2219191207682 : JumpEnd); (10.4322929166667 : 42.2219191207682 : JumpStart); (10.8645858333333 : 42.2219191207682 : JumpEnd); (10.9161390705128 : 42.2219191207682 : JumpStart); (11.0828057371795 : 42.2219191207682 : JumpEnd); (11.375 : 42.2219191207682); (11.375 : 41.75); (11.4166666666667 : 41.75 : JumpStart); (11.9825063836138 : 41.75 : JumpEnd); (12.1041666666667 : 41.75 : JumpStart); (12.2708333333333 : 41.75 : JumpEnd); (12.9166666666667 : 41.75 : JumpStart); (13.0833333333333 : 41.75 : JumpEnd); (15.9166666666667 : 41.75 : JumpStart); (16.0833333333333 : 41.75 : JumpEnd); (16.4166661666667 : 41.75 : JumpStart); (16.5833328333333 : 41.75 : JumpEnd); (17.5 : 41.75); (17.5 : 40.125); (17.5416666666667 : 40.125 : JumpStart); (17.7083333333333 : 40.125 : JumpEnd); (19 : 40.125); (19 : 39.4054996744792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_progress" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="c24a9d96-8b06-459c-bdfa-3f7ccdf5eceb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.54687875 : 41.25); (2.54687875 : 36.9767976888021); (6.25 : 36.9767976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_recipe_ingredient" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="bc027336-ded7-4b53-8377-bb78fb134604" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 31.1642976888021); (7.25 : 31.1642976888021); (7.25 : 36)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/ingredient/ingredient_recipe_ingredient" />
+      <nodes>
+        <classShapeMoniker Id="ad6db1f1-d096-4b01-a550-bbb2790aa734" />
+        <classShapeMoniker Id="bc027336-ded7-4b53-8377-bb78fb134604" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 33.3749995); (7.16666666666667 : 33.3749995 : JumpStart); (7.33333333333333 : 33.3749995 : JumpEnd); (10.25 : 33.3749995); (10.25 : 34)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/recipe/recipe_nutritional_info" />
+      <nodes>
+        <classShapeMoniker Id="a3df134a-8cef-4f9e-a91d-17dff1223845" />
+        <classShapeMoniker Id="1edcf0f3-509c-4c1e-90e1-5b7f0db04bbb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 33.8830499388021); (6.7187475 : 33.8830499388021); (6.7187475 : 36)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/recipe/recipe_recipe_ingredient" />
+      <nodes>
+        <classShapeMoniker Id="a3df134a-8cef-4f9e-a91d-17dff1223845" />
+        <classShapeMoniker Id="bc027336-ded7-4b53-8377-bb78fb134604" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.01562625 : 41.25); (2.01562625 : 33.5392976888021); (2.19791916666667 : 33.5392976888021 : JumpStart); (2.36458583333333 : 33.5392976888021 : JumpEnd); (3.5 : 33.5392976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_recipe" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="a3df134a-8cef-4f9e-a91d-17dff1223845" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 89.6739005533854); (13 : 89.6739005533854); (13 : 65.2228011067708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/exercise/exercise_record" />
+      <nodes>
+        <classShapeMoniker Id="40cd48e0-c2c8-48f7-9e32-56f82f1c1bdf" />
+        <classShapeMoniker Id="e7b32a95-e33b-4790-8f5e-b7b32e717564" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.95312125 : 43.4054996744792); (0.95312125 : 62.96875); (1.13541416666667 : 62.96875 : JumpStart); (1.43489395833333 : 62.96875 : JumpEnd); (1.93229291666667 : 62.96875 : JumpStart); (2.23177270833333 : 62.96875 : JumpEnd); (2.59635854166667 : 62.96875 : JumpStart); (2.76302520833333 : 62.96875 : JumpEnd); (5.63634207141427 : 62.96875 : JumpStart); (5.95833333333333 : 62.96875 : JumpEnd); (10.4322929166667 : 62.96875 : JumpStart); (10.5989595833333 : 62.96875 : JumpEnd); (11.4791666666667 : 62.96875 : JumpStart); (11.6458333333333 : 62.96875 : JumpEnd); (12 : 62.96875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_record" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="e7b32a95-e33b-4790-8f5e-b7b32e717564" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.414065625 : 43.4054996744792); (2.414065625 : 44); (2.46354541666667 : 44 : JumpStart); (2.76302520833333 : 44 : JumpEnd); (9.36978791666666 : 44 : JumpStart); (9.53645458333333 : 44 : JumpEnd); (9.63541416666667 : 44 : JumpStart); (9.80208083333333 : 44 : JumpEnd); (9.90104041666667 : 44 : JumpStart); (10.0677070833333 : 44 : JumpEnd); (10.1666666666667 : 44 : JumpStart); (10.3333333333333 : 44 : JumpEnd); (10.4322929166667 : 44 : JumpStart); (10.7317727083333 : 44 : JumpEnd); (10.9161390705128 : 44 : JumpStart); (11.0828057371795 : 44 : JumpEnd); (11.5 : 44); (11.5 : 44.7916984049479); (15.9166666666667 : 44.7916984049479 : JumpStart); (16.0833333333333 : 44.7916984049479 : JumpEnd); (18 : 44.7916984049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_recovery_token" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="c18e0b03-8669-4362-8afa-0bb080478617" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 42.8132598570964); (9.36978791666666 : 42.8132598570964 : JumpStart); (9.53645458333333 : 42.8132598570964 : JumpEnd); (9.63541416666667 : 42.8132598570964 : JumpStart); (9.80208083333333 : 42.8132598570964 : JumpEnd); (9.90104041666667 : 42.8132598570964 : JumpStart); (10.0677070833333 : 42.8132598570964 : JumpEnd); (10.1666666666667 : 42.8132598570964 : JumpStart); (10.3333333333333 : 42.8132598570964 : JumpEnd); (10.4322929166667 : 42.8132598570964 : JumpStart); (10.8645858333333 : 42.8132598570964 : JumpEnd); (10.9161390705128 : 42.8132598570964 : JumpStart); (11.0828057371795 : 42.8132598570964 : JumpEnd); (11.4166666666667 : 42.8132598570964 : JumpStart); (11.7708333333333 : 42.8132598570964 : JumpEnd); (11.8125 : 42.8132598570964); (11.8125 : 35.5881982421875); (13 : 35.5881982421875); (13 : 35.3381982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_report" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="f5ca7007-84ea-42f0-9a53-2654497ccab7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.48437375 : 41.25); (1.48437375 : 39.5473453776042); (1.66666666666667 : 39.5473453776042 : JumpStart); (1.83333333333333 : 39.5473453776042 : JumpEnd); (1.93229291666667 : 39.5473453776042 : JumpStart); (2.09895958333333 : 39.5473453776042 : JumpEnd); (2.19791916666667 : 39.5473453776042 : JumpStart); (2.36458583333333 : 39.5473453776042 : JumpEnd); (2.46354541666667 : 39.5473453776042 : JumpStart); (2.63021208333333 : 39.5473453776042 : JumpEnd); (4.41666666666667 : 39.5473453776042 : JumpStart); (4.58333333333333 : 39.5473453776042 : JumpEnd); (6.25 : 39.5473453776042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_role_permission" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="67d9f8e3-3f5e-4ed2-b7a8-9c27fbaf3e66" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 41.1642976888021); (7.25 : 41.1642976888021); (7.25 : 39.8862939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/permission/permission_role_permission" />
+      <nodes>
+        <classShapeMoniker Id="7a2f6a53-4579-458c-97d1-3aeb1c86ee6e" />
+        <classShapeMoniker Id="67d9f8e3-3f5e-4ed2-b7a8-9c27fbaf3e66" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 36.5785953776042); (5.875 : 36.9535953776042); (5.875 : 38.9924206888021); (6.25 : 38.9924206888021)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/role/role_role_permission" />
+      <nodes>
+        <classShapeMoniker Id="063d4443-e5d9-4104-84ba-892a3cc6a8f5" />
+        <classShapeMoniker Id="67d9f8e3-3f5e-4ed2-b7a8-9c27fbaf3e66" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.95312125 : 41.25); (0.95312125 : 35.7892976888021); (1.13541416666667 : 35.7892976888021 : JumpStart); (1.30208083333333 : 35.7892976888021 : JumpEnd); (1.93229291666667 : 35.7892976888021 : JumpStart); (2.09895958333333 : 35.7892976888021 : JumpEnd); (2.19791916666667 : 35.7892976888021 : JumpStart); (2.36458583333333 : 35.7892976888021 : JumpEnd); (3.5 : 35.7892976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_role" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="063d4443-e5d9-4104-84ba-892a3cc6a8f5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 89.0556977766927); (7.25 : 89.0556977766927); (7.25 : 67.0881982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/exercise/exercise_routine_exercise" />
+      <nodes>
+        <classShapeMoniker Id="40cd48e0-c2c8-48f7-9e32-56f82f1c1bdf" />
+        <classShapeMoniker Id="1436cb30-62d0-4121-8b5a-e0b4e0a7c1bd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.679691875 : 43.4054996744792); (2.679691875 : 66.1065991210938); (5.79166666666667 : 66.1065991210938 : JumpStart); (5.95833333333333 : 66.1065991210938 : JumpEnd); (6.25 : 66.1065991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_routine_exercise" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="1436cb30-62d0-4121-8b5a-e0b4e0a7c1bd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(18 : 35.2604484049479); (17.25 : 35.2604484049479); (17.25 : 35.9631982421875); (14.525634765625 : 35.9631982421875 : JumpStart); (14.3589680989583 : 35.9631982421875 : JumpEnd); (11.8958333333333 : 35.9631982421875 : JumpStart); (11.6041666666667 : 35.9631982421875 : JumpEnd); (11.5625 : 35.9631982421875); (11.5625 : 64.75); (7.25 : 64.75); (7.25 : 65.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/routine/routine_routine_exercise" />
+      <nodes>
+        <classShapeMoniker Id="236a71c8-9e6a-4d2e-867f-d2e67d882db3" />
+        <classShapeMoniker Id="1436cb30-62d0-4121-8b5a-e0b4e0a7c1bd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 43.0181855192057); (9.36978791666666 : 43.0181855192057 : JumpStart); (9.53645458333333 : 43.0181855192057 : JumpEnd); (9.63541416666667 : 43.0181855192057 : JumpStart); (9.80208083333333 : 43.0181855192057 : JumpEnd); (9.90104041666667 : 43.0181855192057 : JumpStart); (10.0677070833333 : 43.0181855192057 : JumpEnd); (10.1666666666667 : 43.0181855192057 : JumpStart); (10.3333333333333 : 43.0181855192057 : JumpEnd); (10.4322929166667 : 43.0181855192057 : JumpStart); (10.8645858333333 : 43.0181855192057 : JumpEnd); (10.9161390705128 : 43.0181855192057 : JumpStart); (11.0828057371795 : 43.0181855192057 : JumpEnd); (11.4791666666667 : 43.0181855192057 : JumpStart); (11.6458333333333 : 43.0181855192057 : JumpEnd); (11.6875 : 43.0181855192057); (11.6875 : 42.1875); (11.7291666666667 : 42.1875 : JumpStart); (11.9583333333333 : 42.1875 : JumpEnd); (15.4166666666667 : 42.1875 : JumpStart); (15.5833333333333 : 42.1875 : JumpEnd); (16.4166661666667 : 42.1875 : JumpStart); (16.5833328333333 : 42.1875 : JumpEnd); (17.625 : 42.1875); (17.625 : 36.5208968098958); (18.3854146666667 : 36.5208968098958 : JumpStart); (18.5520813333333 : 36.5208968098958 : JumpEnd); (19 : 36.5208968098958); (19 : 36.1458968098958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_routine" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="236a71c8-9e6a-4d2e-867f-d2e67d882db3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.148439375 : 43.4054996744792); (2.148439375 : 92.7989005533854); (3.5 : 92.7989005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_security_log" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="68aec26c-26c6-45e2-b8d4-81719fcbaef3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.882813125 : 43.4054996744792); (1.882813125 : 53.3854484049479); (1.93229291666667 : 53.3854484049479 : JumpStart); (2.36458583333333 : 53.3854484049479 : JumpEnd); (2.59635854166667 : 53.3854484049479 : JumpStart); (2.76302520833333 : 53.3854484049479 : JumpEnd); (3.5 : 53.3854484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_statistic" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="7bb32434-6d80-4eb8-aeab-cb89fa9237ca" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.617186875 : 43.4054996744792); (1.617186875 : 55.3069482421875); (1.93229291666667 : 55.3069482421875 : JumpStart); (2.36458583333333 : 55.3069482421875 : JumpEnd); (2.59635854166667 : 55.3069482421875 : JumpStart); (2.76302520833333 : 55.3069482421875 : JumpEnd); (5.79166666666667 : 55.3069482421875 : JumpStart); (5.95833333333333 : 55.3069482421875 : JumpEnd); (6.10416666666667 : 55.3069482421875 : JumpStart); (6.27083333333333 : 55.3069482421875 : JumpEnd); (9.36978791666666 : 55.3069482421875 : JumpStart); (9.53645458333333 : 55.3069482421875 : JumpEnd); (10.4322929166667 : 55.3069482421875 : JumpStart); (10.5989595833333 : 55.3069482421875 : JumpEnd); (11.4791666666667 : 55.3069482421875 : JumpStart); (11.6458333333333 : 55.3069482421875 : JumpEnd); (12 : 55.3069482421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_survey_response" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="709a0e7b-fdcc-44cb-8c52-7df40e43d8c0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 71.25); (5.875 : 70.875); (5.875 : 54.6847221210937); (6.10416666666667 : 54.6847221210937 : JumpStart); (6.27083333333333 : 54.6847221210937 : JumpEnd); (9.36978791666666 : 54.6847221210937 : JumpStart); (9.53645458333333 : 54.6847221210937 : JumpEnd); (10.4322929166667 : 54.6847221210937 : JumpStart); (10.5989595833333 : 54.6847221210937 : JumpEnd); (11.4791666666667 : 54.6847221210937 : JumpStart); (11.6458333333333 : 54.6847221210937 : JumpEnd); (12 : 54.6847221210937)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/survey/survey_survey_response" />
+      <nodes>
+        <classShapeMoniker Id="7a48583c-d21f-492b-88be-47489b87f116" />
+        <classShapeMoniker Id="709a0e7b-fdcc-44cb-8c52-7df40e43d8c0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.351560625 : 43.4054996744792); (1.351560625 : 72.2315991210938); (2.06510604166667 : 72.2315991210938 : JumpStart); (2.23177270833333 : 72.2315991210938 : JumpEnd); (3.5 : 72.2315991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_survey" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="7a48583c-d21f-492b-88be-47489b87f116" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 39.1458968098958); (4.5 : 40.125); (7.16666666666667 : 40.125 : JumpStart); (7.33333333333333 : 40.125 : JumpEnd); (9 : 40.125); (9 : 41.3862125651042); (9.23697479166667 : 41.3862125651042 : JumpStart); (9.53645458333333 : 41.3862125651042 : JumpEnd); (9.63541416666667 : 41.3862125651042 : JumpStart); (9.80208083333333 : 41.3862125651042 : JumpEnd); (9.90104041666667 : 41.3862125651042 : JumpStart); (10.0677070833333 : 41.3862125651042 : JumpEnd); (10.1666666666667 : 41.3862125651042 : JumpStart); (10.3333333333333 : 41.3862125651042 : JumpEnd); (10.4322929166667 : 41.3862125651042 : JumpStart); (10.8645858333333 : 41.3862125651042 : JumpEnd); (10.9161390705128 : 41.3862125651042 : JumpStart); (11.0828057371795 : 41.3862125651042 : JumpEnd); (11.375 : 41.3862125651042); (11.375 : 40.2604484049479); (11.4166666666667 : 40.2604484049479 : JumpStart); (11.8958333333333 : 40.2604484049479 : JumpEnd); (12 : 40.2604484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/achievement/achievement_user_achievement" />
+      <nodes>
+        <classShapeMoniker Id="76ce1eb4-d894-4acd-9f29-f0250da2b607" />
+        <classShapeMoniker Id="ceb2647a-5847-4723-85f8-33597c4913e0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 42.4268445328776); (9.23697479166667 : 42.4268445328776 : JumpStart); (9.53645458333333 : 42.4268445328776 : JumpEnd); (9.63541416666667 : 42.4268445328776 : JumpStart); (9.80208083333333 : 42.4268445328776 : JumpEnd); (9.90104041666667 : 42.4268445328776 : JumpStart); (10.0677070833333 : 42.4268445328776 : JumpEnd); (10.1666666666667 : 42.4268445328776 : JumpStart); (10.3333333333333 : 42.4268445328776 : JumpEnd); (10.4322929166667 : 42.4268445328776 : JumpStart); (10.8645858333333 : 42.4268445328776 : JumpEnd); (10.9161390705128 : 42.4268445328776 : JumpStart); (11.0828057371795 : 42.4268445328776 : JumpEnd); (11.4166666666667 : 42.4268445328776 : JumpStart); (11.8958333333333 : 42.4268445328776 : JumpEnd); (11.9375 : 42.4268445328776); (11.9375 : 42.25); (13 : 42.25); (13 : 41.1458968098958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_user_achievement" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="ceb2647a-5847-4723-85f8-33597c4913e0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.085934375 : 43.4054996744792); (1.085934375 : 51.2027498372396); (1.13541416666667 : 51.2027498372396 : JumpStart); (1.43489395833333 : 51.2027498372396 : JumpEnd); (1.53385354166667 : 51.2027498372396 : JumpStart); (1.70052020833333 : 51.2027498372396 : JumpEnd); (1.79947979166667 : 51.2027498372396 : JumpStart); (2.36458583333333 : 51.2027498372396 : JumpEnd); (2.59635854166667 : 51.2027498372396 : JumpStart); (2.76302520833333 : 51.2027498372396 : JumpEnd); (9.36978791666666 : 51.2027498372396 : JumpStart); (9.53645458333333 : 51.2027498372396 : JumpEnd); (10.4322929166667 : 51.2027498372396 : JumpStart); (10.5989595833333 : 51.2027498372396 : JumpEnd); (11.4791666666667 : 51.2027498372396 : JumpStart); (11.6458333333333 : 51.2027498372396 : JumpEnd); (12 : 51.2027498372396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_user_membership" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="414e09a9-0391-42b8-a87b-d71412f0bc9a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 63.1884254047476); (5.81607443490112 : 62.8723509698465 : JumpStart); (5.93392556509888 : 62.7544998396487 : JumpEnd); (6.1875 : 62.5009254047476); (6.1875 : 51.7728767558594); (9.36978791666666 : 51.7728767558594 : JumpStart); (9.53645458333333 : 51.7728767558594 : JumpEnd); (10.4322929166667 : 51.7728767558594 : JumpStart); (10.5989595833333 : 51.7728767558594 : JumpEnd); (11.4791666666667 : 51.7728767558594 : JumpStart); (11.6458333333333 : 51.7728767558594 : JumpEnd); (12 : 51.7728767558594)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/membership/membership_user_membership" />
+      <nodes>
+        <classShapeMoniker Id="a7fe9efc-7826-4d9e-b5ef-051b99fea367" />
+        <classShapeMoniker Id="414e09a9-0391-42b8-a87b-d71412f0bc9a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.820308125 : 43.4054996744792); (0.820308125 : 49.4367496744792); (0.869787916666667 : 49.4367496744792 : JumpStart); (1.43489395833333 : 49.4367496744792 : JumpEnd); (1.53385354166667 : 49.4367496744792 : JumpStart); (1.70052020833333 : 49.4367496744792 : JumpEnd); (1.79947979166667 : 49.4367496744792 : JumpStart); (2.36458583333333 : 49.4367496744792 : JumpEnd); (2.59635854166667 : 49.4367496744792 : JumpStart); (2.76302520833333 : 49.4367496744792 : JumpEnd); (9.36978791666666 : 49.4367496744792 : JumpStart); (9.53645458333333 : 49.4367496744792 : JumpEnd); (10.4322929166667 : 49.4367496744792 : JumpStart); (10.5989595833333 : 49.4367496744792 : JumpEnd); (10.9161390705128 : 49.4367496744792 : JumpStart); (11.0828057371795 : 49.4367496744792 : JumpEnd); (11.4791666666667 : 49.4367496744792 : JumpStart); (11.6458333333333 : 49.4367496744792 : JumpEnd); (18 : 49.4367496744792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_user_session" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="548d830f-fdaf-4c3f-bc4e-1e15a3cb0629" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.25 : 41.1362125651042); (10.25 : 45.28125); (10.4322929166667 : 45.28125 : JumpStart); (10.7317727083333 : 45.28125 : JumpEnd); (10.9161390705128 : 45.28125 : JumpStart); (11.0828057371795 : 45.28125 : JumpEnd); (11.4791666666667 : 45.28125 : JumpStart); (11.6458333333333 : 45.28125 : JumpEnd); (15 : 45.28125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_activity_log" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="38e14830-5948-4cdc-a02f-06faa5fa1a3f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.7812525 : 41.1362125651042); (10.7812525 : 43.6471630061849); (10.9161390705128 : 43.6471630061849 : JumpStart); (11.0828057371795 : 43.6471630061849 : JumpEnd); (11.4791666666667 : 43.6471630061849 : JumpStart); (11.6458333333333 : 43.6471630061849 : JumpEnd); (11.6666666666667 : 43.6471630061849 : JumpStart); (11.8333333333333 : 43.6471630061849 : JumpEnd); (12 : 43.6471630061849)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_billing" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="9fcccd58-204c-4d98-a038-cc9ab9689c94" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 38.2732975260417); (11.4791666666667 : 38.2732975260417 : JumpStart); (11.7083333333333 : 38.2732975260417 : JumpEnd); (11.7291666666667 : 38.2732975260417 : JumpStart); (11.8958333333333 : 38.2732975260417 : JumpEnd); (12.3854146666667 : 38.2732975260417 : JumpStart); (12.5520813333333 : 38.2732975260417 : JumpEnd); (12.9166666666667 : 38.2732975260417 : JumpStart); (13.0833333333333 : 38.2732975260417 : JumpEnd); (15 : 38.2732975260417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_bmi" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="cc67781c-97c5-41f2-a22f-633179a0668f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 37.6979484049479); (11.4791666666667 : 37.6979484049479 : JumpStart); (11.7083333333333 : 37.6979484049479 : JumpEnd); (11.7291666666667 : 37.6979484049479 : JumpStart); (11.8958333333333 : 37.6979484049479 : JumpEnd); (12 : 37.6979484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_class_booking" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="f71328b4-51e0-4b94-9a89-f2c452599b1d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 41.1008269497196); (11.3160744349011 : 41.1669013846207 : JumpStart); (11.4339255650989 : 41.2847525148184 : JumpEnd); (11.4410744349011 : 41.2919013846207 : JumpStart); (11.6839255650989 : 41.5347525148184 : JumpEnd); (11.6910744349011 : 41.5419013846207 : JumpStart); (11.8714255650989 : 41.7222525148184 : JumpEnd); (12.1875 : 42.0383269497196); (12.1875 : 41.2708968098958); (12.9166666666667 : 41.2708968098958 : JumpStart); (13.0833333333333 : 41.2708968098958 : JumpEnd); (14.875 : 41.2708968098958); (15 : 41.1458968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_class" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="4bb238a9-cecb-4724-8ef4-d91afb8c741f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 37.3453836153846); (11.5035744349011 : 37.0918091804835 : JumpStart); (11.6839255650989 : 36.9114580502857 : JumpEnd); (11.75 : 36.8453836153846); (11.75 : 36.1554996744792); (14.25 : 36.1554996744792); (15 : 35.4054996744792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_goal" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="a9d2c3b5-98aa-445f-98a6-9252f480c284" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.7187475 : 41.1362125651042); (9.7187475 : 46.0597216210938); (10.4322929166667 : 46.0597216210938 : JumpStart); (10.7317727083333 : 46.0597216210938 : JumpEnd); (10.9161390705128 : 46.0597216210938 : JumpStart); (11.0828057371795 : 46.0597216210938 : JumpEnd); (11.4791666666667 : 46.0597216210938 : JumpStart); (11.6458333333333 : 46.0597216210938 : JumpEnd); (12 : 46.0597216210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_notification" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="f30dffb9-650f-4160-ba35-8cc28c30823b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.2176923076923 : 41.1362125651042); (11.3160744349011 : 41.234594692313 : JumpStart); (11.4339255650989 : 41.3524458225107 : JumpEnd); (11.4410744349011 : 41.359594692313 : JumpStart); (11.5589255650989 : 41.4774458225107 : JumpEnd); (11.5926923076923 : 41.5112125651042); (11.6666666666667 : 41.5112125651042 : JumpStart); (11.8958333333333 : 41.5112125651042 : JumpEnd); (12.1041666666667 : 41.5112125651042 : JumpStart); (12.2708333333333 : 41.5112125651042 : JumpEnd); (12.9166666666667 : 41.5112125651042 : JumpStart); (13.0833333333333 : 41.5112125651042 : JumpEnd); (15.9166666666667 : 41.5112125651042 : JumpStart); (16.0833333333333 : 41.5112125651042 : JumpEnd); (16.4999995 : 41.5112125651042); (16.4999995 : 42.375)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_payment_method" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="1754cfd2-5a13-4ef6-a07d-83cd9f19431f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 38.9190991210938); (11.4166666666667 : 38.9190991210938 : JumpStart); (11.8958333333333 : 38.9190991210938 : JumpEnd); (12.9166666666667 : 38.9190991210938 : JumpStart); (13.0833333333333 : 38.9190991210938 : JumpEnd); (17.5416666666667 : 38.9190991210938 : JumpStart); (17.7083333333333 : 38.9190991210938 : JumpEnd); (18 : 38.9190991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_progress" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="c24a9d96-8b06-459c-bdfa-3f7ccdf5eceb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.51562625 : 41.1362125651042); (10.51562625 : 63.8906275); (11.4791666666667 : 63.8906275 : JumpStart); (11.6458333333333 : 63.8906275 : JumpEnd); (12 : 63.8906275)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_record" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="e7b32a95-e33b-4790-8f5e-b7b32e717564" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.98437375 : 41.1362125651042); (9.98437375 : 44.5625451074219); (10.1666666666667 : 44.5625451074219 : JumpStart); (10.3333333333333 : 44.5625451074219 : JumpEnd); (10.4322929166667 : 44.5625451074219 : JumpStart); (10.7317727083333 : 44.5625451074219 : JumpEnd); (10.9161390705128 : 44.5625451074219 : JumpStart); (11.0828057371795 : 44.5625451074219 : JumpEnd); (11.4166666666667 : 44.5625451074219 : JumpStart); (11.6458333333333 : 44.5625451074219 : JumpEnd); (15.9166666666667 : 44.5625451074219 : JumpStart); (16.0833333333333 : 44.5625451074219 : JumpEnd); (18 : 44.5625451074219)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_recovery_token" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="c18e0b03-8669-4362-8afa-0bb080478617" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 37.2792297692308); (11.5035744349011 : 37.0256553343297 : JumpStart); (11.6839255650989 : 36.8453042041319 : JumpEnd); (11.6875 : 36.8417297692308); (11.6875 : 34.3565991210938); (12 : 34.3565991210938)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_report" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="f5ca7007-84ea-42f0-9a53-2654497ccab7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 38.6170475260417); (11.4166666666667 : 38.6170475260417 : JumpStart); (11.7083333333333 : 38.6170475260417 : JumpEnd); (11.7291666666667 : 38.6170475260417 : JumpStart); (11.8958333333333 : 38.6170475260417 : JumpEnd); (12.9166666666667 : 38.6170475260417 : JumpStart); (13.0833333333333 : 38.6170475260417 : JumpEnd); (15.9166666666667 : 38.6170475260417 : JumpStart); (16.0833333333333 : 38.6170475260417 : JumpEnd); (17.5416666666667 : 38.6170475260417 : JumpStart); (17.7083333333333 : 38.6170475260417 : JumpEnd); (17.75 : 38.6170475260417); (17.75 : 37); (18.468748 : 37); (18.468748 : 36.1458968098958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_routine" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="236a71c8-9e6a-4d2e-867f-d2e67d882db3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.45312125 : 41.1362125651042); (9.45312125 : 55.8249764583333); (10.4322929166667 : 55.8249764583333 : JumpStart); (10.5989595833333 : 55.8249764583333 : JumpEnd); (11.4791666666667 : 55.8249764583333 : JumpStart); (11.6458333333333 : 55.8249764583333 : JumpEnd); (12 : 55.8249764583333)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_survey_response" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="709a0e7b-fdcc-44cb-8c52-7df40e43d8c0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 39.755224202474); (11.4166666666667 : 39.755224202474 : JumpStart); (11.8958333333333 : 39.755224202474 : JumpEnd); (12 : 39.755224202474)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_user_achievement" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="ceb2647a-5847-4723-85f8-33597c4913e0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.9994724038462 : 41.1362125651042); (10.9994724038462 : 50.6326224186198); (11.4791666666667 : 50.6326224186198 : JumpStart); (11.6458333333333 : 50.6326224186198 : JumpEnd); (12 : 50.6326224186198)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_user_membership" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="414e09a9-0391-42b8-a87b-d71412f0bc9a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.648439375 : 41.1362125651042); (10.648439375 : 48.4211221744792); (10.9161390705128 : 48.4211221744792 : JumpStart); (11.0828057371795 : 48.4211221744792 : JumpEnd); (11.4791666666667 : 48.4211221744792 : JumpStart); (11.6458333333333 : 48.4211221744792 : JumpEnd); (18 : 48.4211221744792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/user/user_user_session" />
+      <nodes>
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+        <classShapeMoniker Id="548d830f-fdaf-4c3f-bc4e-1e15a3cb0629" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 42.616146194987); (9.320308125 : 42.616146194987); (9.320308125 : 41.1362125651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/gym/gym_user" />
+      <nodes>
+        <classShapeMoniker Id="da81cd7b-95b8-4862-8057-56ff145a3c43" />
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 35.4687505); (6.63541416666667 : 35.4687505 : JumpStart); (6.80208083333333 : 35.4687505 : JumpEnd); (7.16666666666667 : 35.4687505 : JumpStart); (7.33333333333333 : 35.4687505 : JumpEnd); (9 : 35.4687505); (9 : 36.4054996744792); (10.25 : 36.4054996744792); (10.25 : 37.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FitlifeDataContext/role/role_user" />
+      <nodes>
+        <classShapeMoniker Id="063d4443-e5d9-4104-84ba-892a3cc6a8f5" />
+        <classShapeMoniker Id="3e194592-e0be-4938-af99-a5b90cddd253" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

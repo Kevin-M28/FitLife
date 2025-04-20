@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fitlife", "Fitlife.csproj", "{00B8B604-F2A7-45F0-9235-604A0B33FF1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEnd", "..\BackEnd\BackEnd.csproj", "{BF14E787-356B-4E6B-8946-04AEB56D5171}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "..\AccesoDatos\AccesoDatos.csproj", "{EA62751B-80F2-4316-BCC4-C2921696A65C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00B8B604-F2A7-45F0-9235-604A0B33FF1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00B8B604-F2A7-45F0-9235-604A0B33FF1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00B8B604-F2A7-45F0-9235-604A0B33FF1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00B8B604-F2A7-45F0-9235-604A0B33FF1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF14E787-356B-4E6B-8946-04AEB56D5171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF14E787-356B-4E6B-8946-04AEB56D5171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF14E787-356B-4E6B-8946-04AEB56D5171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF14E787-356B-4E6B-8946-04AEB56D5171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA62751B-80F2-4316-BCC4-C2921696A65C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA62751B-80F2-4316-BCC4-C2921696A65C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA62751B-80F2-4316-BCC4-C2921696A65C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA62751B-80F2-4316-BCC4-C2921696A65C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E56590FB-1CF8-42CA-8ACA-C460E7701E9E}
+	EndGlobalSection
+EndGlobal
