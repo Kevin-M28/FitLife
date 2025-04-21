@@ -1,478 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FitLife" Class="FitlifeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FitLife;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False" SettingsObjectName="AccesoDatos.Properties.Settings" SettingsPropertyName="FitLifeConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=FitLife;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="AccesoDatos.Properties.Settings" SettingsPropertyName="FitLifeConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="fitlife.achievements" Member="achievements">
-    <Type Name="achievement">
+    <Type Name="achievements">
       <Column Name="id_achievement" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="criteria" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Association Name="achievement_user_achievement" Member="user_achievements" ThisKey="id_achievement" OtherKey="id_achievement" Type="user_achievement" />
-      <Association Name="gym_achievement" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
+      <Association Name="achievements_user_achievements" Member="user_achievements" ThisKey="id_achievement" OtherKey="id_achievement" Type="user_achievements" />
+      <Association Name="gyms_achievements" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="fitlife.activity_log" Member="activity_logs">
-    <Type Name="activity_log">
-      <Column Name="id_activity" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ip_address" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
-      <Column Name="device" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
-      <Association Name="gym_activity_log" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_activity_log" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.billing" Member="billings">
+  <Table Name="fitlife.billing" Member="billing">
     <Type Name="billing">
       <Column Name="id_billing" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="price" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
       <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Association Name="gym_billing" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_billing" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.bmi" Member="bmis">
-    <Type Name="bmi">
-      <Column Name="id_bmi" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="height" Type="System.Decimal" DbType="Decimal(3,2)" CanBeNull="true" />
-      <Column Name="weight" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="gym_bmi" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_bmi" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.class_bookings" Member="class_bookings">
-    <Type Name="class_booking">
-      <Column Name="id_booking" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="id_schedule" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="booking_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="class_schedule_class_booking" Member="class_schedule" ThisKey="id_schedule" OtherKey="id_schedule" Type="class_schedule" IsForeignKey="true" />
-      <Association Name="gym_class_booking" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_class_booking" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.class_schedule" Member="class_schedules">
-    <Type Name="class_schedule">
-      <Column Name="id_schedule" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_class" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="start_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="end_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="capacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="class_schedule_class_booking" Member="class_bookings" ThisKey="id_schedule" OtherKey="id_schedule" Type="class_booking" />
-      <Association Name="class_class_schedule" Member="class" ThisKey="id_class" OtherKey="id_class" Type="class" IsForeignKey="true" />
-      <Association Name="gym_class_schedule" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.classes" Member="classes">
-    <Type Name="class">
-      <Column Name="id_class" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="id_trainer" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Association Name="class_class_schedule" Member="class_schedules" ThisKey="id_class" OtherKey="id_class" Type="class_schedule" />
-      <Association Name="gym_class" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_class" Member="user" ThisKey="id_trainer" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.equipment" Member="equipments">
-    <Type Name="equipment">
-      <Column Name="id_equipment" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Association Name="equipment_maintenance" Member="maintenances" ThisKey="id_equipment" OtherKey="id_equipment" Type="maintenance" />
-      <Association Name="gym_equipment" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.events" Member="events">
-    <Type Name="event">
-      <Column Name="id_event" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="location" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Association Name="gym_event" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.exercises" Member="exercises">
-    <Type Name="exercise">
-      <Column Name="id_exercise" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="muscle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="equipment" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="difficulty" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="instructions" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Association Name="exercise_record" Member="records" ThisKey="id_exercise" OtherKey="id_exercise" Type="record" />
-      <Association Name="exercise_routine_exercise" Member="routine_exercises" ThisKey="id_exercise" OtherKey="id_exercise" Type="routine_exercise" />
-      <Association Name="gym_exercise" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.goals" Member="goals">
-    <Type Name="goal">
-      <Column Name="id_goal" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="target_weight" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="target_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Association Name="gym_goal" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_goal" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.gyms" Member="gyms">
-    <Type Name="gym">
-      <Column Name="id_gym" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="address" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="registration_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="gym_achievement" Member="achievements" ThisKey="id_gym" OtherKey="id_gym" Type="achievement" />
-      <Association Name="gym_activity_log" Member="activity_logs" ThisKey="id_gym" OtherKey="id_gym" Type="activity_log" />
-      <Association Name="gym_billing" Member="billings" ThisKey="id_gym" OtherKey="id_gym" Type="billing" />
-      <Association Name="gym_bmi" Member="bmis" ThisKey="id_gym" OtherKey="id_gym" Type="bmi" />
-      <Association Name="gym_class_booking" Member="class_bookings" ThisKey="id_gym" OtherKey="id_gym" Type="class_booking" />
-      <Association Name="gym_class_schedule" Member="class_schedules" ThisKey="id_gym" OtherKey="id_gym" Type="class_schedule" />
-      <Association Name="gym_class" Member="classes" ThisKey="id_gym" OtherKey="id_gym" Type="class" />
-      <Association Name="gym_equipment" Member="equipments" ThisKey="id_gym" OtherKey="id_gym" Type="equipment" />
-      <Association Name="gym_event" Member="events" ThisKey="id_gym" OtherKey="id_gym" Type="event" />
-      <Association Name="gym_exercise" Member="exercises" ThisKey="id_gym" OtherKey="id_gym" Type="exercise" />
-      <Association Name="gym_goal" Member="goals" ThisKey="id_gym" OtherKey="id_gym" Type="goal" />
-      <Association Name="gym_ingredient" Member="ingredients" ThisKey="id_gym" OtherKey="id_gym" Type="ingredient" />
-      <Association Name="gym_maintenance" Member="maintenances" ThisKey="id_gym" OtherKey="id_gym" Type="maintenance" />
-      <Association Name="gym_membership" Member="memberships" ThisKey="id_gym" OtherKey="id_gym" Type="membership" />
-      <Association Name="gym_notification" Member="notifications" ThisKey="id_gym" OtherKey="id_gym" Type="notification" />
-      <Association Name="gym_nutritional_info" Member="nutritional_infos" ThisKey="id_gym" OtherKey="id_gym" Type="nutritional_info" />
-      <Association Name="gym_payment_method" Member="payment_methods" ThisKey="id_gym" OtherKey="id_gym" Type="payment_method" />
-      <Association Name="gym_progress" Member="progresses" ThisKey="id_gym" OtherKey="id_gym" Type="progress" />
-      <Association Name="gym_recipe_ingredient" Member="recipe_ingredients" ThisKey="id_gym" OtherKey="id_gym" Type="recipe_ingredient" />
-      <Association Name="gym_recipe" Member="recipes" ThisKey="id_gym" OtherKey="id_gym" Type="recipe" />
-      <Association Name="gym_record" Member="records" ThisKey="id_gym" OtherKey="id_gym" Type="record" />
-      <Association Name="gym_recovery_token" Member="recovery_tokens" ThisKey="id_gym" OtherKey="id_gym" Type="recovery_token" />
-      <Association Name="gym_report" Member="reports" ThisKey="id_gym" OtherKey="id_gym" Type="report" />
-      <Association Name="gym_role_permission" Member="role_permissions" ThisKey="id_gym" OtherKey="id_gym" Type="role_permission" />
-      <Association Name="gym_role" Member="roles" ThisKey="id_gym" OtherKey="id_gym" Type="role" />
-      <Association Name="gym_routine_exercise" Member="routine_exercises" ThisKey="id_gym" OtherKey="id_gym" Type="routine_exercise" />
-      <Association Name="gym_routine" Member="routines" ThisKey="id_gym" OtherKey="id_gym" Type="routine" />
-      <Association Name="gym_security_log" Member="security_logs" ThisKey="id_gym" OtherKey="id_gym" Type="security_log" />
-      <Association Name="gym_statistic" Member="statistics" ThisKey="id_gym" OtherKey="id_gym" Type="statistic" />
-      <Association Name="gym_survey_response" Member="survey_responses" ThisKey="id_gym" OtherKey="id_gym" Type="survey_response" />
-      <Association Name="gym_survey" Member="surveys" ThisKey="id_gym" OtherKey="id_gym" Type="survey" />
-      <Association Name="gym_user_achievement" Member="user_achievements" ThisKey="id_gym" OtherKey="id_gym" Type="user_achievement" />
-      <Association Name="gym_user_membership" Member="user_memberships" ThisKey="id_gym" OtherKey="id_gym" Type="user_membership" />
-      <Association Name="gym_user_session" Member="user_sessions" ThisKey="id_gym" OtherKey="id_gym" Type="user_session" />
-      <Association Name="gym_user" Member="users" ThisKey="id_gym" OtherKey="id_gym" Type="user" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.ingredients" Member="ingredients">
-    <Type Name="ingredient">
-      <Column Name="id_ingredient" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Association Name="ingredient_recipe_ingredient" Member="recipe_ingredients" ThisKey="id_ingredient" OtherKey="id_ingredient" Type="recipe_ingredient" />
-      <Association Name="gym_ingredient" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.maintenance" Member="maintenances">
-    <Type Name="maintenance">
-      <Column Name="id_maintenance" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_equipment" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="start_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="end_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Association Name="equipment_maintenance" Member="equipment" ThisKey="id_equipment" OtherKey="id_equipment" Type="equipment" IsForeignKey="true" />
-      <Association Name="gym_maintenance" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.memberships" Member="memberships">
-    <Type Name="membership">
-      <Column Name="id_membership" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="price" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="duration_days" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="membership_user_membership" Member="user_memberships" ThisKey="id_membership" OtherKey="id_membership" Type="user_membership" />
-      <Association Name="gym_membership" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.notifications" Member="notifications">
-    <Type Name="notification">
-      <Column Name="id_notification" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="message" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Association Name="gym_notification" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_notification" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.nutritional_info" Member="nutritional_infos">
-    <Type Name="nutritional_info">
-      <Column Name="id_nutritional_info" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_recipe" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="calories" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="protein" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="carbs" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="fats" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Association Name="gym_nutritional_info" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="recipe_nutritional_info" Member="recipe" ThisKey="id_recipe" OtherKey="id_recipe" Type="recipe" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.payment_methods" Member="payment_methods">
-    <Type Name="payment_method">
-      <Column Name="id_payment_method" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="type" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="details" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Association Name="gym_payment_method" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_payment_method" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.permissions" Member="permissions">
-    <Type Name="permission">
-      <Column Name="id_permission" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="permission_role_permission" Member="role_permissions" ThisKey="id_permission" OtherKey="id_permission" Type="role_permission" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.progress" Member="progresses">
-    <Type Name="progress">
-      <Column Name="id_progress" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="weight" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="body_fat_percentage" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="muscle_mass" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Association Name="gym_progress" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_progress" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.recipe_ingredients" Member="recipe_ingredients">
-    <Type Name="recipe_ingredient">
-      <Column Name="id_recipe" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_ingredient" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="quantity" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="unit" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Association Name="gym_recipe_ingredient" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="ingredient_recipe_ingredient" Member="ingredient" ThisKey="id_ingredient" OtherKey="id_ingredient" Type="ingredient" IsForeignKey="true" />
-      <Association Name="recipe_recipe_ingredient" Member="recipe" ThisKey="id_recipe" OtherKey="id_recipe" Type="recipe" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.recipes" Member="recipes">
-    <Type Name="recipe">
-      <Column Name="id_recipe" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Association Name="recipe_nutritional_info" Member="nutritional_infos" ThisKey="id_recipe" OtherKey="id_recipe" Type="nutritional_info" />
-      <Association Name="recipe_recipe_ingredient" Member="recipe_ingredients" ThisKey="id_recipe" OtherKey="id_recipe" Type="recipe_ingredient" />
-      <Association Name="gym_recipe" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.records" Member="records">
-    <Type Name="record">
-      <Column Name="id_record" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="id_exercise" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="weight" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="reps" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="sets" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="exercise_record" Member="exercise" ThisKey="id_exercise" OtherKey="id_exercise" Type="exercise" IsForeignKey="true" />
-      <Association Name="gym_record" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_record" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.recovery_tokens" Member="recovery_tokens">
-    <Type Name="recovery_token">
-      <Column Name="id_token" Type="System.String" DbType="VarChar(36) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="token" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="creation_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="expiration_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="used" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="gym_recovery_token" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_recovery_token" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.reports" Member="reports">
-    <Type Name="report">
-      <Column Name="id_report" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="generated_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="details" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Association Name="gym_report" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_report" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.role_permissions" Member="role_permissions">
-    <Type Name="role_permission">
-      <Column Name="id_role" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_permission" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="gym_role_permission" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="permission_role_permission" Member="permission" ThisKey="id_permission" OtherKey="id_permission" Type="permission" IsForeignKey="true" />
-      <Association Name="role_role_permission" Member="role" ThisKey="id_role" OtherKey="id_role" Type="role" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.roles" Member="roles">
-    <Type Name="role">
-      <Column Name="id_role" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="type" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Association Name="role_role_permission" Member="role_permissions" ThisKey="id_role" OtherKey="id_role" Type="role_permission" />
-      <Association Name="role_user" Member="users" ThisKey="id_role" OtherKey="id_role" Type="user" />
-      <Association Name="gym_role" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.routine_exercises" Member="routine_exercises">
-    <Type Name="routine_exercise">
-      <Column Name="id_routine" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_exercise" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="sets" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="reps" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="rest_time" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="exercise_routine_exercise" Member="exercise" ThisKey="id_exercise" OtherKey="id_exercise" Type="exercise" IsForeignKey="true" />
-      <Association Name="gym_routine_exercise" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="routine_routine_exercise" Member="routine" ThisKey="id_routine" OtherKey="id_routine" Type="routine" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.routines" Member="routines">
-    <Type Name="routine">
-      <Column Name="id_routine" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Association Name="routine_routine_exercise" Member="routine_exercises" ThisKey="id_routine" OtherKey="id_routine" Type="routine_exercise" />
-      <Association Name="gym_routine" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_routine" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.security_logs" Member="security_logs">
-    <Type Name="security_log">
-      <Column Name="id_log" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="event_type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="date_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ip_address" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
-      <Column Name="result" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Association Name="gym_security_log" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.[statistics]" Member="statistics">
-    <Type Name="statistic">
-      <Column Name="id_statistic" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="metric" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="value" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="gym_statistic" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.survey_responses" Member="survey_responses">
-    <Type Name="survey_response">
-      <Column Name="id_response" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_survey" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="response" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="anonymized" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="gym_survey_response" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="survey_survey_response" Member="survey" ThisKey="id_survey" OtherKey="id_survey" Type="survey" IsForeignKey="true" />
-      <Association Name="user_survey_response" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.surveys" Member="surveys">
-    <Type Name="survey">
-      <Column Name="id_survey" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="start_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="end_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="survey_survey_response" Member="survey_responses" ThisKey="id_survey" OtherKey="id_survey" Type="survey_response" />
-      <Association Name="gym_survey" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.user_achievements" Member="user_achievements">
-    <Type Name="user_achievement">
-      <Column Name="id_user_achievement" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="id_achievement" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="date_achieved" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="achievement_user_achievement" Member="achievement" ThisKey="id_achievement" OtherKey="id_achievement" Type="achievement" IsForeignKey="true" />
-      <Association Name="gym_user_achievement" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_user_achievement" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.user_memberships" Member="user_memberships">
-    <Type Name="user_membership">
-      <Column Name="id_user_membership" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="id_membership" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="start_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="end_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="gym_user_membership" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="membership_user_membership" Member="membership" ThisKey="id_membership" OtherKey="id_membership" Type="membership" IsForeignKey="true" />
-      <Association Name="user_user_membership" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="fitlife.user_sessions" Member="user_sessions">
-    <Type Name="user_session">
-      <Column Name="id_session" Type="System.String" DbType="VarChar(36) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="token" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="creation_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="expiration_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ip_address" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
-      <Column Name="active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="last_access" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="gym_user_session" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="user_user_session" Member="user" ThisKey="id_user" OtherKey="id_user" Type="user" IsForeignKey="true" />
+      <Association Name="users_billing" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="gyms_billing" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users1_billing" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="fitlife.users" Member="users">
-    <Type Name="user">
+    <Type Name="users">
       <Column Name="id_user" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="first_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -489,41 +41,479 @@
       <Column Name="last_login" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="email_verified" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="user_activity_log" Member="activity_logs" ThisKey="id_user" OtherKey="id_user" Type="activity_log" />
-      <Association Name="user_billing" Member="billings" ThisKey="id_user" OtherKey="id_user" Type="billing" />
-      <Association Name="user_bmi" Member="bmis" ThisKey="id_user" OtherKey="id_user" Type="bmi" />
-      <Association Name="user_class_booking" Member="class_bookings" ThisKey="id_user" OtherKey="id_user" Type="class_booking" />
-      <Association Name="user_class" Member="classes" ThisKey="id_user" OtherKey="id_trainer" Type="class" />
-      <Association Name="user_goal" Member="goals" ThisKey="id_user" OtherKey="id_user" Type="goal" />
-      <Association Name="user_notification" Member="notifications" ThisKey="id_user" OtherKey="id_user" Type="notification" />
-      <Association Name="user_payment_method" Member="payment_methods" ThisKey="id_user" OtherKey="id_user" Type="payment_method" />
-      <Association Name="user_progress" Member="progresses" ThisKey="id_user" OtherKey="id_user" Type="progress" />
-      <Association Name="user_record" Member="records" ThisKey="id_user" OtherKey="id_user" Type="record" />
-      <Association Name="user_recovery_token" Member="recovery_tokens" ThisKey="id_user" OtherKey="id_user" Type="recovery_token" />
-      <Association Name="user_report" Member="reports" ThisKey="id_user" OtherKey="id_user" Type="report" />
-      <Association Name="user_routine" Member="routines" ThisKey="id_user" OtherKey="id_user" Type="routine" />
-      <Association Name="user_survey_response" Member="survey_responses" ThisKey="id_user" OtherKey="id_user" Type="survey_response" />
-      <Association Name="user_user_achievement" Member="user_achievements" ThisKey="id_user" OtherKey="id_user" Type="user_achievement" />
-      <Association Name="user_user_membership" Member="user_memberships" ThisKey="id_user" OtherKey="id_user" Type="user_membership" />
-      <Association Name="user_user_session" Member="user_sessions" ThisKey="id_user" OtherKey="id_user" Type="user_session" />
-      <Association Name="gym_user" Member="gym" ThisKey="id_gym" OtherKey="id_gym" Type="gym" IsForeignKey="true" />
-      <Association Name="role_user" Member="role" ThisKey="id_role" OtherKey="id_role" Type="role" IsForeignKey="true" />
+      <Association Name="users_billing" Member="billing" ThisKey="id_user" OtherKey="id_user" Type="billing" />
+      <Association Name="users_bmi" Member="bmi" ThisKey="id_user" OtherKey="id_user" Type="bmi" />
+      <Association Name="users_class_bookings" Member="class_bookings" ThisKey="id_user" OtherKey="id_user" Type="class_bookings" />
+      <Association Name="users_classes" Member="classes" ThisKey="id_user" OtherKey="id_trainer" Type="classes" />
+      <Association Name="users_goals" Member="goals" ThisKey="id_user" OtherKey="id_user" Type="goals" />
+      <Association Name="users_notifications" Member="notifications" ThisKey="id_user" OtherKey="id_user" Type="notifications" />
+      <Association Name="users_payment_methods" Member="payment_methods" ThisKey="id_user" OtherKey="id_user" Type="payment_methods" />
+      <Association Name="users_progress" Member="progress" ThisKey="id_user" OtherKey="id_user" Type="progress" />
+      <Association Name="users_records" Member="records" ThisKey="id_user" OtherKey="id_user" Type="records" />
+      <Association Name="users_recovery_tokens" Member="recovery_tokens" ThisKey="id_user" OtherKey="id_user" Type="recovery_tokens" />
+      <Association Name="users_reports" Member="reports" ThisKey="id_user" OtherKey="id_user" Type="reports" />
+      <Association Name="users_routines" Member="routines" ThisKey="id_user" OtherKey="id_user" Type="routines" />
+      <Association Name="users_survey_responses" Member="survey_responses" ThisKey="id_user" OtherKey="id_user" Type="survey_responses" />
+      <Association Name="users_user_achievements" Member="user_achievements" ThisKey="id_user" OtherKey="id_user" Type="user_achievements" />
+      <Association Name="users_user_memberships" Member="user_memberships" ThisKey="id_user" OtherKey="id_user" Type="user_memberships" />
+      <Association Name="users_user_sessions" Member="user_sessions" ThisKey="id_user" OtherKey="id_user" Type="user_sessions" />
+      <Association Name="gyms_users" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="roles_users" Member="roles" ThisKey="id_role" OtherKey="id_role" Type="roles" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="fitlife.bmi" Member="bmi">
+    <Type Name="bmi">
+      <Column Name="id_bmi" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="height" Type="System.Decimal" DbType="Decimal(3,2)" CanBeNull="true" />
+      <Column Name="weight" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="users_bmi" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="gyms_bmi" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users1_bmi" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.class_bookings" Member="class_bookings">
+    <Type Name="class_bookings">
+      <Column Name="id_booking" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="id_schedule" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="booking_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="users_class_bookings" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="class_schedule_class_bookings" Member="class_schedule" ThisKey="id_schedule" OtherKey="id_schedule" Type="class_schedule" IsForeignKey="true" />
+      <Association Name="gyms_class_bookings" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users1_class_bookings" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.class_schedule" Member="class_schedule">
+    <Type Name="class_schedule">
+      <Column Name="id_schedule" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_class" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="start_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="end_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="capacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="class_schedule_class_bookings" Member="class_bookings" ThisKey="id_schedule" OtherKey="id_schedule" Type="class_bookings" />
+      <Association Name="classes_class_schedule" Member="classes" ThisKey="id_class" OtherKey="id_class" Type="classes" IsForeignKey="true" />
+      <Association Name="gyms_class_schedule" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.classes" Member="classes">
+    <Type Name="classes">
+      <Column Name="id_class" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="id_trainer" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Association Name="classes_class_schedule" Member="class_schedule" ThisKey="id_class" OtherKey="id_class" Type="class_schedule" />
+      <Association Name="users_classes" Member="users" ThisKey="id_trainer" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="gyms_classes" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users1_classes" Member="users1" ThisKey="id_trainer" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.equipment" Member="equipment">
+    <Type Name="equipment">
+      <Column Name="id_equipment" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="equipment_maintenance" Member="maintenance" ThisKey="id_equipment" OtherKey="id_equipment" Type="maintenance" />
+      <Association Name="gyms_equipment" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.events" Member="events">
+    <Type Name="events">
+      <Column Name="id_event" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="location" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="gyms_events" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.exercises" Member="exercises">
+    <Type Name="exercises">
+      <Column Name="id_exercise" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="muscle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="equipment" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="difficulty" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="instructions" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="exercises_records" Member="records" ThisKey="id_exercise" OtherKey="id_exercise" Type="records" />
+      <Association Name="exercises_routine_exercises" Member="routine_exercises" ThisKey="id_exercise" OtherKey="id_exercise" Type="routine_exercises" />
+      <Association Name="gyms_exercises" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.goals" Member="goals">
+    <Type Name="goals">
+      <Column Name="id_goal" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="target_weight" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="target_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="users_goals" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="gyms_goals" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users1_goals" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.gyms" Member="gyms">
+    <Type Name="gyms">
+      <Column Name="id_gym" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="registration_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="gyms_achievements" Member="achievements" ThisKey="id_gym" OtherKey="id_gym" Type="achievements" />
+      <Association Name="gyms_billing" Member="billing" ThisKey="id_gym" OtherKey="id_gym" Type="billing" />
+      <Association Name="gyms_users" Member="users" ThisKey="id_gym" OtherKey="id_gym" Type="users" />
+      <Association Name="gyms_bmi" Member="bmi" ThisKey="id_gym" OtherKey="id_gym" Type="bmi" />
+      <Association Name="gyms_class_bookings" Member="class_bookings" ThisKey="id_gym" OtherKey="id_gym" Type="class_bookings" />
+      <Association Name="gyms_class_schedule" Member="class_schedule" ThisKey="id_gym" OtherKey="id_gym" Type="class_schedule" />
+      <Association Name="gyms_classes" Member="classes" ThisKey="id_gym" OtherKey="id_gym" Type="classes" />
+      <Association Name="gyms_equipment" Member="equipment" ThisKey="id_gym" OtherKey="id_gym" Type="equipment" />
+      <Association Name="gyms_events" Member="events" ThisKey="id_gym" OtherKey="id_gym" Type="events" />
+      <Association Name="gyms_exercises" Member="exercises" ThisKey="id_gym" OtherKey="id_gym" Type="exercises" />
+      <Association Name="gyms_goals" Member="goals" ThisKey="id_gym" OtherKey="id_gym" Type="goals" />
+      <Association Name="gyms_maintenance" Member="maintenance" ThisKey="id_gym" OtherKey="id_gym" Type="maintenance" />
+      <Association Name="gyms_memberships" Member="memberships" ThisKey="id_gym" OtherKey="id_gym" Type="memberships" />
+      <Association Name="gyms_notifications" Member="notifications" ThisKey="id_gym" OtherKey="id_gym" Type="notifications" />
+      <Association Name="gyms_payment_methods" Member="payment_methods" ThisKey="id_gym" OtherKey="id_gym" Type="payment_methods" />
+      <Association Name="gyms_progress" Member="progress" ThisKey="id_gym" OtherKey="id_gym" Type="progress" />
+      <Association Name="gyms_records" Member="records" ThisKey="id_gym" OtherKey="id_gym" Type="records" />
+      <Association Name="gyms_recovery_tokens" Member="recovery_tokens" ThisKey="id_gym" OtherKey="id_gym" Type="recovery_tokens" />
+      <Association Name="gyms_reports" Member="reports" ThisKey="id_gym" OtherKey="id_gym" Type="reports" />
+      <Association Name="gyms_roles" Member="roles" ThisKey="id_gym" OtherKey="id_gym" Type="roles" />
+      <Association Name="gyms_routine_exercises" Member="routine_exercises" ThisKey="id_gym" OtherKey="id_gym" Type="routine_exercises" />
+      <Association Name="gyms_routines" Member="routines" ThisKey="id_gym" OtherKey="id_gym" Type="routines" />
+      <Association Name="gyms_security_logs" Member="security_logs" ThisKey="id_gym" OtherKey="id_gym" Type="security_logs" />
+      <Association Name="gyms_statistics" Member="statistics" ThisKey="id_gym" OtherKey="id_gym" Type="statistics" />
+      <Association Name="gyms_surveys" Member="surveys" ThisKey="id_gym" OtherKey="id_gym" Type="surveys" />
+      <Association Name="gyms_survey_responses" Member="survey_responses" ThisKey="id_gym" OtherKey="id_gym" Type="survey_responses" />
+      <Association Name="gyms_user_achievements" Member="user_achievements" ThisKey="id_gym" OtherKey="id_gym" Type="user_achievements" />
+      <Association Name="gyms_user_memberships" Member="user_memberships" ThisKey="id_gym" OtherKey="id_gym" Type="user_memberships" />
+      <Association Name="gyms_user_sessions" Member="user_sessions" ThisKey="id_gym" OtherKey="id_gym" Type="user_sessions" />
+      <Association Name="gyms_users1" Member="users1" ThisKey="id_gym" OtherKey="id_gym" Type="users1" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.maintenance" Member="maintenance">
+    <Type Name="maintenance">
+      <Column Name="id_maintenance" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_equipment" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="start_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="end_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="equipment_maintenance" Member="equipment" ThisKey="id_equipment" OtherKey="id_equipment" Type="equipment" IsForeignKey="true" />
+      <Association Name="gyms_maintenance" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.memberships" Member="memberships">
+    <Type Name="memberships">
+      <Column Name="id_membership" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="duration_days" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="memberships_user_memberships" Member="user_memberships" ThisKey="id_membership" OtherKey="id_membership" Type="user_memberships" />
+      <Association Name="gyms_memberships" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.notifications" Member="notifications">
+    <Type Name="notifications">
+      <Column Name="id_notification" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="message" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="gyms_notifications" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users_notifications" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="users1_notifications" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.payment_methods" Member="payment_methods">
+    <Type Name="payment_methods">
+      <Column Name="id_payment_method" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="type" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="details" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="gyms_payment_methods" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users_payment_methods" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="users1_payment_methods" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.progress" Member="progress">
+    <Type Name="progress">
+      <Column Name="id_progress" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="weight" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="body_fat_percentage" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="muscle_mass" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Association Name="gyms_progress" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users_progress" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="users1_progress" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.records" Member="records">
+    <Type Name="records">
+      <Column Name="id_record" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="id_exercise" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="weight" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="reps" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sets" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="exercises_records" Member="exercises" ThisKey="id_exercise" OtherKey="id_exercise" Type="exercises" IsForeignKey="true" />
+      <Association Name="gyms_records" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users_records" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="users1_records" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.recovery_tokens" Member="recovery_tokens">
+    <Type Name="recovery_tokens">
+      <Column Name="id_token" Type="System.String" DbType="VarChar(36) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="token" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="creation_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="expiration_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="used" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="gyms_recovery_tokens" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users_recovery_tokens" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="users1_recovery_tokens" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.reports" Member="reports">
+    <Type Name="reports">
+      <Column Name="id_report" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="generated_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="details" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Association Name="gyms_reports" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users_reports" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="users1_reports" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.roles" Member="roles">
+    <Type Name="roles">
+      <Column Name="id_role" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="can_manage_users" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="can_manage_memberships" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="can_manage_classes" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="can_view_reports" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="can_edit_profile" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="roles_users" Member="users" ThisKey="id_role" OtherKey="id_role" Type="users" />
+      <Association Name="roles_users1" Member="users1" ThisKey="id_role" OtherKey="id_role" Type="users1" />
+      <Association Name="gyms_roles" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.routine_exercises" Member="routine_exercises">
+    <Type Name="routine_exercises">
+      <Column Name="id_routine" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_exercise" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sets" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="reps" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="rest_time" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="exercises_routine_exercises" Member="exercises" ThisKey="id_exercise" OtherKey="id_exercise" Type="exercises" IsForeignKey="true" />
+      <Association Name="gyms_routine_exercises" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="routines_routine_exercises" Member="routines" ThisKey="id_routine" OtherKey="id_routine" Type="routines" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.routines" Member="routines">
+    <Type Name="routines">
+      <Column Name="id_routine" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Association Name="routines_routine_exercises" Member="routine_exercises" ThisKey="id_routine" OtherKey="id_routine" Type="routine_exercises" />
+      <Association Name="gyms_routines" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users_routines" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="users1_routines" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.security_logs" Member="security_logs">
+    <Type Name="security_logs">
+      <Column Name="id_log" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="event_type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="date_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ip_address" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="result" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="device" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Association Name="gyms_security_logs" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.[statistics]" Member="statistics">
+    <Type Name="statistics">
+      <Column Name="id_statistic" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="metric" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="value" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="gyms_statistics" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.surveys" Member="surveys">
+    <Type Name="surveys">
+      <Column Name="id_survey" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="start_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="end_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="surveys_survey_responses" Member="survey_responses" ThisKey="id_survey" OtherKey="id_survey" Type="survey_responses" />
+      <Association Name="gyms_surveys" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.survey_responses" Member="survey_responses">
+    <Type Name="survey_responses">
+      <Column Name="id_response" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_survey" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="response" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="anonymized" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="gyms_survey_responses" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="surveys_survey_responses" Member="surveys" ThisKey="id_survey" OtherKey="id_survey" Type="surveys" IsForeignKey="true" />
+      <Association Name="users_survey_responses" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="users1_survey_responses" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.user_achievements" Member="user_achievements">
+    <Type Name="user_achievements">
+      <Column Name="id_user_achievement" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="id_achievement" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="date_achieved" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="achievements_user_achievements" Member="achievements" ThisKey="id_achievement" OtherKey="id_achievement" Type="achievements" IsForeignKey="true" />
+      <Association Name="gyms_user_achievements" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users_user_achievements" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="users1_user_achievements" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.user_memberships" Member="user_memberships">
+    <Type Name="user_memberships">
+      <Column Name="id_user_membership" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="id_membership" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="start_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="end_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="gyms_user_memberships" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="memberships_user_memberships" Member="memberships" ThisKey="id_membership" OtherKey="id_membership" Type="memberships" IsForeignKey="true" />
+      <Association Name="users_user_memberships" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="users1_user_memberships" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.user_sessions" Member="user_sessions">
+    <Type Name="user_sessions">
+      <Column Name="id_session" Type="System.String" DbType="VarChar(36) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="token" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="creation_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="expiration_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ip_address" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="last_access" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="gyms_user_sessions" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="users_user_sessions" Member="users" ThisKey="id_user" OtherKey="id_user" Type="users" IsForeignKey="true" />
+      <Association Name="users1_user_sessions" Member="users1" ThisKey="id_user" OtherKey="id_user" Type="users1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="fitlife.users" Member="users1">
+    <Type Name="users1">
+      <Column Name="id_user" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_gym" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="first_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="last_name1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="last_name2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_role" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(125)" CanBeNull="true" />
+      <Column Name="salt" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="failed_attempts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="blocked_until" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="last_password_change_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="requires_password_change" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="last_login" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="email_verified" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="users1_billing" Member="billing" ThisKey="id_user" OtherKey="id_user" Type="billing" />
+      <Association Name="users1_bmi" Member="bmi" ThisKey="id_user" OtherKey="id_user" Type="bmi" />
+      <Association Name="users1_class_bookings" Member="class_bookings" ThisKey="id_user" OtherKey="id_user" Type="class_bookings" />
+      <Association Name="users1_classes" Member="classes" ThisKey="id_user" OtherKey="id_trainer" Type="classes" />
+      <Association Name="users1_goals" Member="goals" ThisKey="id_user" OtherKey="id_user" Type="goals" />
+      <Association Name="users1_notifications" Member="notifications" ThisKey="id_user" OtherKey="id_user" Type="notifications" />
+      <Association Name="users1_payment_methods" Member="payment_methods" ThisKey="id_user" OtherKey="id_user" Type="payment_methods" />
+      <Association Name="users1_progress" Member="progress" ThisKey="id_user" OtherKey="id_user" Type="progress" />
+      <Association Name="users1_records" Member="records" ThisKey="id_user" OtherKey="id_user" Type="records" />
+      <Association Name="users1_recovery_tokens" Member="recovery_tokens" ThisKey="id_user" OtherKey="id_user" Type="recovery_tokens" />
+      <Association Name="users1_reports" Member="reports" ThisKey="id_user" OtherKey="id_user" Type="reports" />
+      <Association Name="users1_routines" Member="routines" ThisKey="id_user" OtherKey="id_user" Type="routines" />
+      <Association Name="users1_survey_responses" Member="survey_responses" ThisKey="id_user" OtherKey="id_user" Type="survey_responses" />
+      <Association Name="users1_user_achievements" Member="user_achievements" ThisKey="id_user" OtherKey="id_user" Type="user_achievements" />
+      <Association Name="users1_user_memberships" Member="user_memberships" ThisKey="id_user" OtherKey="id_user" Type="user_memberships" />
+      <Association Name="users1_user_sessions" Member="user_sessions" ThisKey="id_user" OtherKey="id_user" Type="user_sessions" />
+      <Association Name="gyms_users1" Member="gyms" ThisKey="id_gym" OtherKey="id_gym" Type="gyms" IsForeignKey="true" />
+      <Association Name="roles_users1" Member="roles" ThisKey="id_role" OtherKey="id_role" Type="roles" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="fitlife.sp_AddExerciseToRoutine" Method="sp_AddExerciseToRoutine">
+    <Parameter Name="id_routine" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="id_exercise" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="id_gym" Type="System.Int32" DbType="Int" />
+    <Parameter Name="sets" Type="System.Int32" DbType="Int" />
+    <Parameter Name="reps" Type="System.Int32" DbType="Int" />
+    <Parameter Name="rest_time" Type="System.Int32" DbType="Int" />
+    <Parameter Name="created_by" Type="System.String" DbType="VarChar(25)" />
+    <ElementType Name="sp_AddExerciseToRoutineResult">
+      <Column Name="Result" Type="System.String" DbType="VarChar(17) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
   <Function Name="fitlife.sp_AssignMembershipToUser" Method="sp_AssignMembershipToUser">
     <Parameter Name="id_user_membership" Type="System.String" DbType="VarChar(25)" />
     <Parameter Name="id_gym" Type="System.Int32" DbType="Int" />
     <Parameter Name="id_user" Type="System.String" DbType="VarChar(25)" />
     <Parameter Name="id_membership" Type="System.String" DbType="VarChar(25)" />
     <Parameter Name="start_date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="admin_user" Type="System.String" DbType="VarChar(25)" />
     <ElementType Name="sp_AssignMembershipToUserResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="Result" Type="System.String" DbType="VarChar(76) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="fitlife.sp_AuthenticateUser" Method="sp_AuthenticateUser">
     <Parameter Name="id_user" Type="System.String" DbType="VarChar(25)" />
     <Parameter Name="password" Type="System.String" DbType="VarChar(125)" />
     <Parameter Name="ip_address" Type="System.String" DbType="VarChar(45)" />
+    <Parameter Name="device" Type="System.String" DbType="VarChar(40)" />
     <ElementType Name="sp_AuthenticateUserResult">
       <Column Name="Result" Type="System.String" DbType="VarChar(28) NOT NULL" CanBeNull="false" />
     </ElementType>
@@ -533,6 +523,8 @@
     <Parameter Name="id_gym" Type="System.Int32" DbType="Int" />
     <Parameter Name="id_user" Type="System.String" DbType="VarChar(25)" />
     <Parameter Name="id_schedule" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="ip_address" Type="System.String" DbType="VarChar(45)" />
+    <Parameter Name="device" Type="System.String" DbType="VarChar(40)" />
     <ElementType Name="sp_BookClassResult">
       <Column Name="Result" Type="System.String" DbType="VarChar(39) NOT NULL" CanBeNull="false" />
     </ElementType>
@@ -542,6 +534,7 @@
     <Parameter Name="current_password" Type="System.String" DbType="VarChar(125)" />
     <Parameter Name="new_password" Type="System.String" DbType="VarChar(125)" />
     <Parameter Name="ip_address" Type="System.String" DbType="VarChar(45)" />
+    <Parameter Name="device" Type="System.String" DbType="VarChar(40)" />
     <ElementType Name="sp_ChangePasswordResult">
       <Column Name="Result" Type="System.String" DbType="VarChar(14) NOT NULL" CanBeNull="false" />
     </ElementType>
@@ -559,14 +552,60 @@
       <Column Name="days_remaining" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="fitlife.sp_CheckUserAccess" Method="sp_CheckUserAccess">
+    <Parameter Name="id_user" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="action" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="sp_CheckUserAccessResult">
+      <Column Name="HasAccess" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="VarChar(14) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
   <Function Name="fitlife.sp_CreateClass" Method="sp_CreateClass">
     <Parameter Name="id_class" Type="System.String" DbType="VarChar(25)" />
     <Parameter Name="id_gym" Type="System.Int32" DbType="Int" />
     <Parameter Name="name" Type="System.String" DbType="VarChar(100)" />
     <Parameter Name="description" Type="System.String" DbType="VarChar(255)" />
     <Parameter Name="id_trainer" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="admin_user" Type="System.String" DbType="VarChar(25)" />
     <ElementType Name="sp_CreateClassResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(26) NOT NULL" CanBeNull="false" />
+      <Column Name="Result" Type="System.String" DbType="VarChar(72) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="fitlife.sp_CreateExercise" Method="sp_CreateExercise">
+    <Parameter Name="id_exercise" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="id_gym" Type="System.Int32" DbType="Int" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="type" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="muscle" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="equipment" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="difficulty" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="instructions" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="admin_user" Type="System.String" DbType="VarChar(25)" />
+    <ElementType Name="sp_CreateExerciseResult">
+      <Column Name="Result" Type="System.String" DbType="VarChar(86) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="fitlife.sp_CreateGoal" Method="sp_CreateGoal">
+    <Parameter Name="id_goal" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="id_gym" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_user" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="description" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="target_weight" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Parameter Name="target_date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="created_by" Type="System.String" DbType="VarChar(25)" />
+    <ElementType Name="sp_CreateGoalResult">
+      <Column Name="Result" Type="System.String" DbType="VarChar(55) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="fitlife.sp_CreateRoutine" Method="sp_CreateRoutine">
+    <Parameter Name="id_routine" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="id_gym" Type="System.Int32" DbType="Int" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="description" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="id_user" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="created_by" Type="System.String" DbType="VarChar(25)" />
+    <ElementType Name="sp_CreateRoutineResult">
+      <Column Name="Result" Type="System.String" DbType="VarChar(58) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="fitlife.sp_CreateMembership" Method="sp_CreateMembership">
@@ -576,8 +615,9 @@
     <Parameter Name="description" Type="System.String" DbType="VarChar(255)" />
     <Parameter Name="price" Type="System.Decimal" DbType="Decimal(10,2)" />
     <Parameter Name="duration_days" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_user" Type="System.String" DbType="VarChar(25)" />
     <ElementType Name="sp_CreateMembershipResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(31) NOT NULL" CanBeNull="false" />
+      <Column Name="Result" Type="System.String" DbType="VarChar(67) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="fitlife.sp_CreateUser" Method="sp_CreateUser">
@@ -593,6 +633,39 @@
       <Column Name="Result" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="fitlife.sp_GenerateReport" Method="sp_GenerateReport">
+    <Parameter Name="id_report" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="id_gym" Type="System.Int32" DbType="Int" />
+    <Parameter Name="type" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="details" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="id_user" Type="System.String" DbType="VarChar(25)" />
+    <ElementType Name="sp_GenerateReportResult">
+      <Column Name="Result" Type="System.String" DbType="VarChar(65) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="fitlife.sp_RecordHeight" Method="sp_RecordHeight">
+    <Parameter Name="id_bmi" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="id_gym" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_user" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="height" Type="System.Decimal" DbType="Decimal(3,2)" />
+    <Parameter Name="weight" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Parameter Name="recorded_by" Type="System.String" DbType="VarChar(25)" />
+    <ElementType Name="sp_RecordHeightResult">
+      <Column Name="Result" Type="System.String" DbType="VarChar(56) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="fitlife.sp_RecordProgress" Method="sp_RecordProgress">
+    <Parameter Name="id_progress" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="id_gym" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_user" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="weight" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Parameter Name="body_fat_percentage" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Parameter Name="muscle_mass" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Parameter Name="recorded_by" Type="System.String" DbType="VarChar(25)" />
+    <ElementType Name="sp_RecordProgressResult">
+      <Column Name="Result" Type="System.String" DbType="VarChar(58) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
   <Function Name="fitlife.sp_ScheduleClass" Method="sp_ScheduleClass">
     <Parameter Name="id_schedule" Type="System.String" DbType="VarChar(25)" />
     <Parameter Name="id_gym" Type="System.Int32" DbType="Int" />
@@ -600,8 +673,9 @@
     <Parameter Name="start_time" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="end_time" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="capacity" Type="System.Int32" DbType="Int" />
+    <Parameter Name="admin_user" Type="System.String" DbType="VarChar(25)" />
     <ElementType Name="sp_ScheduleClassResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Result" Type="System.String" DbType="VarChar(72) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

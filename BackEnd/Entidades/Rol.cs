@@ -7,21 +7,15 @@ using System.Threading.Tasks;
 namespace BackEnd.Entidades
 {
     public class Rol
-    {/*
-        public int IdRol { get; set; }
-        public int IdGym { get; set; }
-        public string Tipo { get; set; }
-        public string Descripcion { get; set; }
-
-        // Navegación
-        public virtual Gimnasio Gimnasio { get; set; }
-        public virtual ICollection<Usuario> Usuarios { get; set; }
-        public virtual ICollection<RolPermiso> Permisos { get; set; }
-
-        public Rol()
-        {
-            Usuarios = new HashSet<Usuario>();
-            Permisos = new HashSet<RolPermiso>();
-        }*/
+    {
+        public int Id { get; set; }
+        public int idGym { get; set; }
+        public string tipo { get; set; }
+        public string descripcion { get; set; }
+        public bool puedeGestionarUsuarios { get; set; }
+        public bool puedeGestionarMembresias { get; set; }
+        public bool puedeGestionarClases { get; set; }
+        public bool puedeVerReportes { get; set; }
+        public bool puedeEditarPerfil { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace BackEnd.Entidades
         public string apellido2 { get; set; }
         public int idRol { get; set; }
         public string correoElectronico { get; set; }
-        public string password { get; set; }
+        public string password { get; set; }¡
         public bool activo { get; set; }
         public DateTime fechaRegistro { get; set; }
         public bool emailVerificado { get; set; }

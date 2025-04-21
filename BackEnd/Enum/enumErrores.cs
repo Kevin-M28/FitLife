@@ -8,27 +8,27 @@ namespace BackEnd.Enum
 {
     public enum enumErrores
     {
-        excepcionBaseDatos = -2,
-        excepcionLogica = -1,
-        requestNulo = 1,
-        nombreFaltante = 2,
-        apellidoFaltante = 3,
-        correoFaltante = 4,
+        requestNulo = -1,
+        excepcionLogica = -2,
+        excepcionBaseDatos = -3,
+        usuarioFaltante = 1,
+        idFaltante = 2,
+        correoFaltante = 3,
+        correoIncorrecto = 4,
         passwordFaltante = 5,
-        correoIncorrecto = 6,
-        passwordMuyDebil = 7,
-        idFaltante = 8,
-        sesionCerrada = 9,
-        verificacionFallida = 10,
-        verificacionExpirada = 11,
-        usuarioFaltante = 12,
-        idGymFaltante = 13,
-        rolFaltante = 14,
-        correoYaExiste = 15,
-        cuentaInactiva = 16,
-        cuentaBloqueada = 17,
-        credencialesInvalidas = 18,
-        tokenInvalido = 19,
-        permisosDenegados = 20
+        passwordMuyDebil = 6,
+        nombreFaltante = 7,
+        apellidoFaltante = 8,
+        rolFaltante = 9,
+        sesionCerrada = 10,
+        verificacionFallida = 11,
+        rolNoExistente = 12,
+        gimnasioNoExistente = 13,
+        permisosDenegados = 14, // Nuevo error para acceso denegado
+        membresiaNoActiva = 15, // Nuevo error para membresía no activa
+        idRecursoFaltante = 16, // ID genérico faltante
+        claseLlena = 17, // Clase llena
+        reservaExistente = 18, // Ya existe una reserva
+        recursoNoExistente = 19 // Recurso no encontrado genérico
     }
 }
