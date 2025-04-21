@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Entidades
 {
-    public class Ejercicio
+   public class Ejercicio
     {
         public string Id { get; set; }
         public int idGym { get; set; }
