@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackEnd.Enum
+namespace BackEnd.Request.Modulo_Usuario
 {
-    public enum EnumTipoMeta
+    public class ReqObtenerUsuario: ReqBase
     {
-        peso = 1,
-        IMC = 2,
-        visitas = 3,
-        musculo = 4
+        public int usuarioID { get; set; }
     }
 }

@@ -43,53 +43,52 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Entidades\Clase.cs" />
-    <Compile Include="Entidades\Ejercicio.cs" />
-    <Compile Include="Entidades\Encuesta.cs" />
     <Compile Include="Entidades\Equipamiento.cs" />
     <Compile Include="Entidades\Error.cs" />
-    <Compile Include="Entidades\Estadistica.cs" />
-    <Compile Include="Entidades\Evento.cs" />
-    <Compile Include="Entidades\Facturacion.cs" />
-    <Compile Include="Entidades\HorarioClase.cs" />
-    <Compile Include="Entidades\IMC.cs" />
-    <Compile Include="Entidades\Logro.cs" />
-    <Compile Include="Entidades\LogroUsuario.cs" />
-    <Compile Include="Entidades\Mantenimiento.cs" />
-    <Compile Include="Entidades\Membresia.cs" />
-    <Compile Include="Entidades\MembresiaUsuario.cs" />
-    <Compile Include="Entidades\Meta.cs" />
-    <Compile Include="Entidades\MetodoPago.cs" />
-    <Compile Include="Entidades\Notificacion.cs" />
-    <Compile Include="Entidades\Progreso.cs" />
-    <Compile Include="Entidades\Registro.cs" />
-    <Compile Include="Entidades\RegistroSeguridad.cs" />
-    <Compile Include="Entidades\Reporte.cs" />
-    <Compile Include="Entidades\ReservaClase.cs" />
-    <Compile Include="Entidades\RespuestaEncuesta.cs" />
-    <Compile Include="Entidades\Rutina.cs" />
-    <Compile Include="Entidades\RutinaEjercicio.cs" />
-    <Compile Include="Entidades\Sesion.cs" />
     <Compile Include="Entidades\Gimnasio.cs" />
-    <Compile Include="Entidades\Rol.cs" />
-    <Compile Include="Entidades\SesionUsuario.cs" />
-    <Compile Include="Entidades\TokenDeRecuperacion.cs" />
+    <Compile Include="Entidades\Membresia.cs" />
+    <Compile Include="Entidades\Pago.cs" />
+    <Compile Include="Entidades\Sesion.cs" />
     <Compile Include="Entidades\Usuario.cs" />
-    <Compile Include="Enum\enumErrores.cs" />
-    <Compile Include="Enum\enumEstadoSesion.cs" />
-    <Compile Include="Enum\enumTipoRoles.cs" />
-    <Compile Include="Enum\EstadoMembresia.cs" />
-    <Compile Include="Logica\LogUsuario.cs" />
+    <Compile Include="Entidades\UsuarioMembresia.cs" />
+    <Compile Include="Enum\EnumErrores.cs" />
+    <Compile Include="Enum\EnumEstadoMembresia.cs" />
+    <Compile Include="Enum\EnumEstadoMeta.cs" />
+    <Compile Include="Enum\EnumEstadoPago.cs" />
+    <Compile Include="Enum\EnumEstadoSesion.cs" />
+    <Compile Include="Enum\EnumEstadoUsuario.cs" />
+    <Compile Include="Enum\EnumMetodoPago.cs" />
+    <Compile Include="Enum\EnumModoRegistro.cs" />
+    <Compile Include="Enum\EnumRolUsuario.cs" />
+    <Compile Include="Enum\EnumTipoLogro.cs" />
+    <Compile Include="Enum\EnumTipoMeta.cs" />
+    <Compile Include="Enum\EnumTipoNotificacion.cs" />
+    <Compile Include="Logica\Modulo Usuario\LogicaUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Request\ReqAsignarMembresia.cs" />
+    <Compile Include="Request\Modulo Usuario\ReqActualizarUsuario.cs" />
+    <Compile Include="Request\Modulo Usuario\ReqAgregarUsuario.cs" />
+    <Compile Include="Request\Modulo Usuario\ReqAsignarRolUsuario.cs" />
+    <Compile Include="Request\Modulo Usuario\ReqCambiarContrasenna.cs" />
+    <Compile Include="Request\Modulo Usuario\ReqEliminarUsuario.cs" />
+    <Compile Include="Request\Modulo Usuario\ReqLoginUsuario.cs" />
+    <Compile Include="Request\Modulo Usuario\ReqObtenerUsuario.cs" />
+    <Compile Include="Request\Modulo Usuario\ReqResetContrasennaConfirmar.cs" />
+    <Compile Include="Request\Modulo Usuario\ReqSolicitarCambioContrasenna.cs" />
+    <Compile Include="Request\Modulo Usuario\ReqSuspenderUsuario.cs" />
+    <Compile Include="Request\Modulo Usuario\ReqVerificarUsuario.cs" />
     <Compile Include="Request\ReqBase.cs" />
-    <Compile Include="Request\ReqLogin.cs" />
-    <Compile Include="Request\ReqInsertarMemebresia.cs" />
-    <Compile Include="Request\ReqInsertarUsuario.cs" />
+    <Compile Include="Response\Modulo Usuario\ResActualizarUsuario.cs" />
+    <Compile Include="Response\Modulo Usuario\ResAsignarRolUsuario.cs" />
+    <Compile Include="Response\Modulo Usuario\ResCambiarContrasenna.cs" />
+    <Compile Include="Response\Modulo Usuario\ResEliminarUsuario.cs" />
+    <Compile Include="Response\Modulo Usuario\ResObtenerUsuario.cs" />
+    <Compile Include="Response\Modulo Usuario\ResAgregarUsuario.cs" />
+    <Compile Include="Response\Modulo Usuario\ResLoginUsuario.cs" />
+    <Compile Include="Response\Modulo Usuario\ResResetContrasennaConfirmar.cs" />
+    <Compile Include="Response\Modulo Usuario\ResResetContrasennaSolicitar.cs" />
+    <Compile Include="Response\Modulo Usuario\ResSuspenderUsuario.cs" />
+    <Compile Include="Response\Modulo Usuario\ResVerificarUsuario.cs" />
     <Compile Include="Response\ResBase.cs" />
-    <Compile Include="Response\ResInsertarUsuario.cs" />
-    <Compile Include="Response\ResLogin.cs" />
-    <Compile Include="Response\ResMembresia.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
@@ -97,5 +96,6 @@
       <Name>AccesoDatos</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

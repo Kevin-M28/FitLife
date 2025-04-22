@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AccesoDatos;
+using BackEnd.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +14,8 @@ namespace BackEnd.Entidades
         public DateTime inicio { get; set; }
         public Usuario usuario { get; set; }
         public string origen { get; set; }
-        public enumRolUsuario rol { get; set; }
-        public enumEstadoSesion estado { get; set; }
+        public EnumRolUsuario rol { get; set; }
+        public EnumEstadoSesion estado { get; set; }
         public DateTime ultimaActividad { get; set; }
     }
 }

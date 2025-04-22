@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackEnd.Enum
+namespace BackEnd.Response.Modulo_Usuario
 {
-    public enum EnumTipoMeta
+    public class ResAsignarRolUsuario : ResBase
     {
-        peso = 1,
-        IMC = 2,
-        visitas = 3,
-        musculo = 4
     }
 }

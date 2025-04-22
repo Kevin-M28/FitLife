@@ -17,8 +17,8 @@ namespace BackEnd.Entidades
         public string correoElectronico { get; set; }
         public string telefono { get; set; }
         public string password { get; set; }
-        public enumRolUsuario rol { get; set; }
-        public enumEstadoUsuario estado { get; set; }
+        public EnumRolUsuario rol { get; set; }
+        public EnumEstadoUsuario estado { get; set; }
         public DateTime fechaRegistro { get; set; }
         public string nombreGimnasio { get; set; }
         public UsuarioMembresia membresiaActiva { get; set; }
