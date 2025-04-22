@@ -3,7 +3,103 @@
   "WorkspaceRootPath": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\Fitlife\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA62751B-80F2-4316-BCC4-C2921696A65C}|..\\AccesoDatos\\AccesoDatos.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\accesodatos\\fitlife.dbml||{B465B5AD-8799-4507-B90A-EE29ACF36AF9}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\enum\\enumerrores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\sesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\error.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\respuestaencuesta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\encuesta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\estadistica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\reporte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\logrousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\logro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\mantenimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\equipamiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\notificacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\reservaclase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\horarioclase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\clase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\progreso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\meta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\metodopago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\membresiausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\membresia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\registro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\evento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\rutinaejercicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\rutina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\ejercicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\facturacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\imc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\tokenderecuperacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\registroseguridad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\sesionusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\request\\reqinsertarmemebresia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -12,37 +108,34 @@
       "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\gimnasio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\entidades\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqEliminarRol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\request\\reqeliminarrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqActualizarRol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\request\\reqactualizarrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqListarRoles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\request\\reqlistarroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqObtenerRol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\request\\reqobtenerrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqInsertarRol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\request\\reqinsertarrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqEliminarGimnasio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\request\\reqeliminargimnasio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqActualizarGimnasio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\request\\reqactualizargimnasio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqListarGimnasios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\request\\reqlistargimnasios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqObtenerGimnasio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\request\\reqobtenergimnasio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\monic\\videos\\moviles\\fitlife\\backend\\request\\reqinsertargimnasio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqInsertarGimnasio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -52,11 +145,426 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Usuario.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Usuario.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Usuario.cs*",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Usuario.cs*",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAwwBEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T15:06:52.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Fitlife.dbml",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\AccesoDatos\\Fitlife.dbml",
+              "RelativeDocumentMoniker": "..\\AccesoDatos\\Fitlife.dbml",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\AccesoDatos\\Fitlife.dbml",
+              "RelativeToolTip": "..\\AccesoDatos\\Fitlife.dbml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001722|",
+              "WhenOpened": "2025-04-21T15:06:38.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "enumErrores.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Enum\\enumErrores.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Enum\\enumErrores.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Enum\\enumErrores.cs",
+              "RelativeToolTip": "..\\BackEnd\\Enum\\enumErrores.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAAB8AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T15:04:52.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Error.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Error.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Error.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Error.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Error.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T15:04:03.359Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RespuestaEncuesta.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\RespuestaEncuesta.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\RespuestaEncuesta.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\RespuestaEncuesta.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\RespuestaEncuesta.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T15:03:45.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Encuesta.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Encuesta.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Encuesta.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Encuesta.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Encuesta.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T15:03:20.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Estadistica.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Estadistica.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Estadistica.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Estadistica.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Estadistica.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T15:02:48.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Reporte.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Reporte.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Reporte.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Reporte.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Reporte.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T15:01:52.937Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LogroUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\LogroUsuario.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\LogroUsuario.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\LogroUsuario.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\LogroUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T15:01:14.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "Sesion.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Sesion.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Sesion.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Sesion.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Sesion.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T01:13:33.002Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Logro.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Logro.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Logro.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Logro.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Logro.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T15:00:50.634Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Mantenimiento.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Mantenimiento.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Mantenimiento.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Mantenimiento.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Mantenimiento.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T15:00:24.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Equipamiento.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Equipamiento.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Equipamiento.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Equipamiento.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Equipamiento.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:59:59.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Notificacion.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Notificacion.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Notificacion.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Notificacion.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Notificacion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:59:38.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ReservaClase.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\ReservaClase.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\ReservaClase.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\ReservaClase.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\ReservaClase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:58:23.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "HorarioClase.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\HorarioClase.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\HorarioClase.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\HorarioClase.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\HorarioClase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:57:39.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Clase.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Clase.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Clase.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Clase.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Clase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:57:06.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Progreso.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Progreso.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Progreso.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Progreso.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Progreso.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:56:39.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Meta.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Meta.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Meta.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Meta.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Meta.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:56:06.212Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "MetodoPago.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\MetodoPago.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\MetodoPago.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\MetodoPago.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\MetodoPago.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:55:27.403Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "MembresiaUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\MembresiaUsuario.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\MembresiaUsuario.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\MembresiaUsuario.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\MembresiaUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:55:03.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Membresia.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Membresia.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Membresia.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Membresia.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Membresia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:54:38.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Registro.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Registro.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Registro.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Registro.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Registro.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:54:13.631Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Evento.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Evento.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Evento.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Evento.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Evento.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:53:47.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "RutinaEjercicio.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\RutinaEjercicio.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\RutinaEjercicio.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\RutinaEjercicio.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\RutinaEjercicio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:53:19.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Rutina.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Rutina.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Rutina.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Rutina.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Rutina.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:52:51.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Ejercicio.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Ejercicio.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Ejercicio.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Ejercicio.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Ejercicio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:50:32.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Facturacion.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Facturacion.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Facturacion.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Facturacion.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Facturacion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:50:07.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "IMC.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\IMC.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\IMC.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\IMC.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\IMC.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:49:43.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "TokenDeRecuperacion.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\TokenDeRecuperacion.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\TokenDeRecuperacion.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\TokenDeRecuperacion.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\TokenDeRecuperacion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:49:09.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "RegistroSeguridad.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\RegistroSeguridad.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\RegistroSeguridad.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\RegistroSeguridad.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\RegistroSeguridad.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:47:03.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "SesionUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\SesionUsuario.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\SesionUsuario.cs",
+              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\SesionUsuario.cs",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\SesionUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T14:45:40.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
               "Title": "Rol.cs",
               "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Rol.cs",
               "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Rol.cs",
@@ -69,7 +577,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 33,
               "Title": "ReqInsertarMemebresia.cs",
               "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqInsertarMemebresia.cs",
               "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqInsertarMemebresia.cs",
@@ -77,25 +585,11 @@
               "RelativeToolTip": "..\\BackEnd\\Request\\ReqInsertarMemebresia.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T01:14:21.515Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T01:14:21.515Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Sesion.cs",
-              "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Sesion.cs",
-              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Sesion.cs",
-              "ToolTip": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Sesion.cs*",
-              "RelativeToolTip": "..\\BackEnd\\Entidades\\Sesion.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T01:13:33.002Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 35,
               "Title": "ReqEliminarRol.cs",
               "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqEliminarRol.cs",
               "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqEliminarRol.cs",
@@ -103,12 +597,11 @@
               "RelativeToolTip": "..\\BackEnd\\Request\\ReqEliminarRol.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T01:13:06.526Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T01:13:06.526Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 34,
               "Title": "Gimnasio.cs",
               "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Entidades\\Gimnasio.cs",
               "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Gimnasio.cs",
@@ -116,12 +609,11 @@
               "RelativeToolTip": "..\\BackEnd\\Entidades\\Gimnasio.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T01:03:45.06Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T01:03:45.06Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 36,
               "Title": "ReqActualizarRol.cs",
               "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqActualizarRol.cs",
               "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqActualizarRol.cs",
@@ -129,12 +621,11 @@
               "RelativeToolTip": "..\\BackEnd\\Request\\ReqActualizarRol.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T01:12:22.539Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T01:12:22.539Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 37,
               "Title": "ReqListarRoles.cs",
               "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqListarRoles.cs",
               "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqListarRoles.cs",
@@ -142,12 +633,11 @@
               "RelativeToolTip": "..\\BackEnd\\Request\\ReqListarRoles.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T01:11:59.023Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T01:11:59.023Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 38,
               "Title": "ReqObtenerRol.cs",
               "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqObtenerRol.cs",
               "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqObtenerRol.cs",
@@ -155,12 +645,11 @@
               "RelativeToolTip": "..\\BackEnd\\Request\\ReqObtenerRol.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T01:11:03.203Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T01:11:03.203Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 39,
               "Title": "ReqInsertarRol.cs",
               "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqInsertarRol.cs",
               "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqInsertarRol.cs",
@@ -168,12 +657,11 @@
               "RelativeToolTip": "..\\BackEnd\\Request\\ReqInsertarRol.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T01:10:30.975Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T01:10:30.975Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 40,
               "Title": "ReqEliminarGimnasio.cs",
               "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqEliminarGimnasio.cs",
               "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqEliminarGimnasio.cs",
@@ -181,12 +669,11 @@
               "RelativeToolTip": "..\\BackEnd\\Request\\ReqEliminarGimnasio.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T01:09:18.435Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T01:09:18.435Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 41,
               "Title": "ReqActualizarGimnasio.cs",
               "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqActualizarGimnasio.cs",
               "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqActualizarGimnasio.cs",
@@ -194,12 +681,11 @@
               "RelativeToolTip": "..\\BackEnd\\Request\\ReqActualizarGimnasio.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T01:08:17.17Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T01:08:17.17Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 42,
               "Title": "ReqListarGimnasios.cs",
               "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqListarGimnasios.cs",
               "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqListarGimnasios.cs",
@@ -207,12 +693,11 @@
               "RelativeToolTip": "..\\BackEnd\\Request\\ReqListarGimnasios.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T01:07:32.88Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T01:07:32.88Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 43,
               "Title": "ReqObtenerGimnasio.cs",
               "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqObtenerGimnasio.cs",
               "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqObtenerGimnasio.cs",
@@ -220,12 +705,11 @@
               "RelativeToolTip": "..\\BackEnd\\Request\\ReqObtenerGimnasio.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T01:07:02.871Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T01:07:02.871Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 44,
               "Title": "ReqInsertarGimnasio.cs",
               "DocumentMoniker": "C:\\Users\\monic\\Videos\\Moviles\\FitLife\\BackEnd\\Request\\ReqInsertarGimnasio.cs",
               "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqInsertarGimnasio.cs",
@@ -233,8 +717,7 @@
               "RelativeToolTip": "..\\BackEnd\\Request\\ReqInsertarGimnasio.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T01:06:09.806Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T01:06:09.806Z"
             }
           ]
         }

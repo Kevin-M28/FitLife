@@ -8,11 +8,10 @@ namespace BackEnd.Entidades
 {
     public class Membresia
     {
-        public string Id { get; set; }
-        public int idGym { get; set; }
-        public string nombre { get; set; }
-        public string descripcion { get; set; }
-        public decimal precio { get; set; }
-        public int duracionDias { get; set; }
+        public int MembresiaID { get; set; }
+        public string Tipo { get; set; }
+        public decimal Precio { get; set; }
+        public int DuracionDias { get; set; }
+        public string Descripcion { get; set; }
     }
 }

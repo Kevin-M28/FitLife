@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BackEnd.Entidades;
 
-namespace BackEnd.Request
+namespace BackEnd.Enum
 {
-    public class ReqInsertarUsuario
+    internal class EnumTipoMeta
     {
-        public Usuario usuario { get; set; }
     }
 }

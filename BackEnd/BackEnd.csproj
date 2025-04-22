@@ -43,10 +43,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Entidades\Clase.cs" />
+    <Compile Include="Entidades\Ejercicio.cs" />
+    <Compile Include="Entidades\Encuesta.cs" />
+    <Compile Include="Entidades\Equipamiento.cs" />
     <Compile Include="Entidades\Error.cs" />
+    <Compile Include="Entidades\Estadistica.cs" />
+    <Compile Include="Entidades\Evento.cs" />
+    <Compile Include="Entidades\Facturacion.cs" />
+    <Compile Include="Entidades\HorarioClase.cs" />
+    <Compile Include="Entidades\IMC.cs" />
+    <Compile Include="Entidades\Logro.cs" />
+    <Compile Include="Entidades\LogroUsuario.cs" />
+    <Compile Include="Entidades\Mantenimiento.cs" />
+    <Compile Include="Entidades\Membresia.cs" />
+    <Compile Include="Entidades\MembresiaUsuario.cs" />
+    <Compile Include="Entidades\Meta.cs" />
+    <Compile Include="Entidades\MetodoPago.cs" />
+    <Compile Include="Entidades\Notificacion.cs" />
+    <Compile Include="Entidades\Progreso.cs" />
+    <Compile Include="Entidades\Registro.cs" />
+    <Compile Include="Entidades\RegistroSeguridad.cs" />
+    <Compile Include="Entidades\Reporte.cs" />
+    <Compile Include="Entidades\ReservaClase.cs" />
+    <Compile Include="Entidades\RespuestaEncuesta.cs" />
+    <Compile Include="Entidades\Rutina.cs" />
+    <Compile Include="Entidades\RutinaEjercicio.cs" />
     <Compile Include="Entidades\Sesion.cs" />
     <Compile Include="Entidades\Gimnasio.cs" />
     <Compile Include="Entidades\Rol.cs" />
+    <Compile Include="Entidades\SesionUsuario.cs" />
+    <Compile Include="Entidades\TokenDeRecuperacion.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Enum\enumErrores.cs" />
     <Compile Include="Enum\enumEstadoSesion.cs" />

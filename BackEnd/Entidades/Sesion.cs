@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BackEnd.Entidades;
 
 namespace BackEnd.Entidades
 {
     public class Sesion
     {
-        public string Id { get; set; }
-        public int idGym { get; set; }
-        public string idUsuario { get; set; }
-        public string token { get; set; }
-        public DateTime fechaCreacion { get; set; }
-        public DateTime fechaExpiracion { get; set; }
-        public string direccionIP { get; set; }
-        public bool activo { get; set; }
-        public DateTime ultimoAcceso { get; set; }
+        public int Id { get; set; }
+        public DateTime inicio { get; set; }
+        public Usuario usuario { get; set; }
+        public string origen { get; set; }
+        public enumRolUsuario rol { get; set; }
+        public enumEstadoSesion estado { get; set; }
+        public DateTime ultimaActividad { get; set; }
     }
 }

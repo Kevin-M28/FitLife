@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Enum
 {
-    public enum EnumEstadoSesion
+    public enum EnumTipoLogro
     {
-        activa = 1,
-        cerrada = 2,
-        expirada = 3
+
+        asistencia = 1,
+        peso = 2,
+        ejercicio = 3,
+        personalizado = 4
+
     }
 }

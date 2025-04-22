@@ -6,29 +6,56 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Enum
 {
-    public enum enumErrores
+    public enum EnumErrores
     {
-        requestNulo = -1,
-        excepcionLogica = -2,
-        excepcionBaseDatos = -3,
-        usuarioFaltante = 1,
-        idFaltante = 2,
-        correoFaltante = 3,
-        correoIncorrecto = 4,
+        excepcionBaseDatos = -2,
+        excepcionLogica = -1,
+        requestNulo = 1,
+        nombreFaltante = 2,
+        apellidoFaltante = 3,
+        correoFaltante = 4,
         passwordFaltante = 5,
-        passwordMuyDebil = 6,
-        nombreFaltante = 7,
-        apellidoFaltante = 8,
-        rolFaltante = 9,
-        sesionCerrada = 10,
-        verificacionFallida = 11,
-        rolNoExistente = 12,
-        gimnasioNoExistente = 13,
-        permisosDenegados = 14, // Nuevo error para acceso denegado
-        membresiaNoActiva = 15, // Nuevo error para membresía no activa
-        idRecursoFaltante = 16, // ID genérico faltante
-        claseLlena = 17, // Clase llena
-        reservaExistente = 18, // Ya existe una reserva
-        recursoNoExistente = 19 // Recurso no encontrado genérico
+        correoIncorrecto = 6,
+        passwordMuyDebil = 7,
+        idFaltante = 8,
+        sesionCerrada = 9,
+        verificacionFallida = 10,
+        verificacionExpirada = 11,
+        usuarioFaltante = 12,
+        gimnasioFaltante = 13,
+        rolFaltante = 14,
+        telefonoFaltante = 15,
+        fechaFaltante = 16,
+        membresiaFaltante = 17,
+        pagoFaltante = 18,
+        montoInvalido = 19,
+        metodoPagoInvalido = 20,
+        membresiaVencida = 21,
+        membresiaInexistente = 22,
+        usuarioInactivo = 23,
+        rutinaDuplicada = 24,
+        ejercicioFaltante = 25,
+        datosIncompletos = 26,
+        entidadNoEncontrada = 27,
+        tipoRutinaInvalido = 28,
+        estadoPagoInvalido = 29,
+        asistenciaNoRegistrada = 30,
+        usuarioSuspendido = 31,
+        credencialesInvalidas = 32,
+        sesionExpirada = 33,
+        permisoInsuficiente = 34,
+        operacionNoPermitida = 35,
+        logroNoEncontrado = 36,
+        metaInvalida = 37,
+        desafioDuplicado = 38,
+        desafioNoActivo = 39,
+        yaParticipando = 40,
+        valorFueraDeRango = 41,
+        fechaInvalida = 42,
+        datosDuplicados = 43,
+        direccionFaltante = 44,
+        horarioInvalido = 45,
+        duracionInvalida = 46
+
     }
 }

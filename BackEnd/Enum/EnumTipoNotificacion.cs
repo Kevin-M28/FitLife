@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackEnd.Entidades
+namespace BackEnd.Enum
 {
-    internal class Evento
+    public enum EnumTipoNotificacion
     {
+        pago = 1,
+        logro = 2,
+        anuncio = 3
     }
 }

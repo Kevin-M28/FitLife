@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Enum
 {
-    public enum TipoRol
+    public enum EnumEstadoMeta
     {
-        ADMIN,
-        TRAINER,
-        MEMBER
+        activa = 1,
+        cumplida = 2,
+        fallida = 3
     }
 }

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Enum
 {
-    public enum EnumEstadoSesion
+    public enum EnumMetodoPago
     {
-        activa = 1,
-        cerrada = 2,
-        expirada = 3
+        efectivo = 1,
+        tarjeta = 2,
+        transferencia = 3,
+        pendiente = 4
     }
 }

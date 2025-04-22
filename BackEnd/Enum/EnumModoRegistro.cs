@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Enum
 {
-    public enum EstadoMembresia
+    public enum EnumModoRegistro
     {
-        ACTIVA,
-        EXPIRADA,
-        CANCELADA
+        QR = 1,
+        NFC = 2,
+        manual = 3
     }
 }

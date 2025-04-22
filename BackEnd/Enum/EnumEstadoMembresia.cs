@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackEnd.Entidades
+namespace BackEnd.Enum
 {
-    internal class Logro
+    public enum EnumEstadoMembresia
     {
+        activa = 1,
+        vencida = 2,
+        cancelada = 3
     }
 }

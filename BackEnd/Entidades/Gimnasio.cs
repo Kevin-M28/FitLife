@@ -8,12 +8,12 @@ namespace BackEnd.Entidades
 {
     public class Gimnasio
     {
-        public int Id { get; set; }
-        public string nombre { get; set; }
-        public string direccion { get; set; }
-        public string telefono { get; set; }
-        public string email { get; set; }
-        public bool activo { get; set; }
-        public DateTime fechaRegistro { get; set; }
+        public int GimnasioID { get; set; }
+        public string Nombre { get; set; }
+        public string Direccion { get; set; }
+        public TimeSpan HorarioApertura { get; set; }
+        public TimeSpan HorarioCierre { get; set; }
+        public string Telefono { get; set; }
+        public DateTime FechaCreacion { get; set; }
     }
 }

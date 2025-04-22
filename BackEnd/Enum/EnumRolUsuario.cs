@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Enum
 {
-    public enum EnumEstadoSesion
+    public enum EnumRolUsuario
     {
-        activa = 1,
-        cerrada = 2,
-        expirada = 3
+        usuario = 1,
+        admin = 2
     }
 }

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BackEnd.Response;
 
-namespace BackEnd.Response
+namespace BackEnd.Enum
 {
-    public class ResInsertarUsuario : ResBase
+    public enum EnumEstadoUsuario
     {
-      
+        activo = 1,
+        suspendido = 2,
+        inactivo = 3
     }
 }
