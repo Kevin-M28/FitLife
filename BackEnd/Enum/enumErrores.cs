@@ -55,7 +55,10 @@ namespace BackEnd.Enum
         datosDuplicados = 43,
         direccionFaltante = 44,
         horarioInvalido = 45,
-        duracionInvalida = 46
+        duracionInvalida = 46,
+        usuarioNoEncontrado=45,
+        cedulaFaltante= 46,
+        errorDesconocido = 47,
 
     }
 }

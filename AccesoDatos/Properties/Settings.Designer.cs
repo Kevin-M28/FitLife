@@ -44,5 +44,16 @@ namespace AccesoDatos.Properties {
                 return ((string)(this["FitLifeConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MCCARTHYS\\SQLEXPRESS;Initial Catalog=FitLife;Integrated Security=True" +
+            ";TrustServerCertificate=True")]
+        public string FitLifeConnectionString2 {
+            get {
+                return ((string)(this["FitLifeConnectionString2"]));
+            }
+        }
     }
 }

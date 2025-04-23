@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AccesoDatos;
+using System.Security.Cryptography;
 using System.Text;
-using BackEnd.Request;
-using BackEnd.Response;
-using System.Threading.Tasks;
-using BackEnd.Request.Modulo_Usuario;
-using BackEnd.Response.Modulo_Usuario;
+using System.Text.RegularExpressions;
+using AccesoDatos;
 using BackEnd.Entidades;
 using BackEnd.Enum;
-using System.Security.Cryptography;
-using System.Text.RegularExpressions;
+using BackEnd.Request.Modulo_Usuario;
+using BackEnd.Response.Modulo_Usuario;
 
 namespace BackEnd.Logica.Modulo_Usuario
 {
@@ -36,7 +33,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                 }
                 else
                 {
-                    if (String.IsNullOrEmpty(req.usuario.nombre))
+                    if (string.IsNullOrEmpty(req.usuario.nombre))
                     {
                         res.error.Add(new Error
                         {
@@ -45,7 +42,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                     }
 
-                    if (String.IsNullOrEmpty(req.usuario.apellidos))
+                    if (string.IsNullOrEmpty(req.usuario.apellidos))
                     {
                         res.error.Add(new Error
                         {
@@ -54,7 +51,16 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                     }
 
-                    if (String.IsNullOrEmpty(req.usuario.correoElectronico))
+                    if (string.IsNullOrEmpty(req.usuario.cedula.ToString()))
+                    {
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.cedulaFaltante,
+                            Message = "Cédula vacía"
+                        });
+                    }
+
+                    if (string.IsNullOrEmpty(req.usuario.correoElectronico))
                     {
                         res.error.Add(new Error
                         {
@@ -71,7 +77,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                     }
 
-                    if (String.IsNullOrEmpty(req.usuario.password))
+                    if (string.IsNullOrEmpty(req.usuario.password))
                     {
                         res.error.Add(new Error
                         {
@@ -97,7 +103,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                     }
 
-                    if (String.IsNullOrEmpty(req.usuario.telefono))
+                    if (string.IsNullOrEmpty(req.usuario.telefono))
                     {
                         res.error.Add(new Error
                         {
@@ -110,47 +116,38 @@ namespace BackEnd.Logica.Modulo_Usuario
 
                 if (res.error.Any())
                 {
-                    res.resultado = false;
                     return res;
                 }
 
-                // Proceso de registro
-                int? idBD = 0;       
-                int? errorIdBD = 0;    
-                string errorMsgBD = "";
                 string llave = Guid.NewGuid().ToString("N");
                 string passHash = HashearPassword(req.usuario.password, llave);
-                string cVerificacion = GenerarPin(5);
 
                 using (FitlifeDataContext linq = new FitlifeDataContext())
                 {
-                    linq.SP_RegistrarUsuario(
+                    var resultado = linq.SP_RegistrarUsuario(
                         req.usuario.GimnasioID,
-                        req.usuario.nombre,
-                        req.usuario.apellidos,
+                        req.usuario.cedula.ToString(),
+                        req.usuario.nombre + " " + req.usuario.apellidos,
                         req.usuario.correoElectronico,
                         passHash,
                         req.usuario.telefono,
-                        "usuario",
-                        llave,
-                        cVerificacion,
-                        ref idBD,
-                        ref errorIdBD,
-                        ref errorMsgBD);
+                        "usuario",  // Rol por defecto
+                        "activo",   // Estado por defecto
+                        llave
+                    ).FirstOrDefault();
 
-                    if (errorIdBD > 0)
+                    if (resultado != null && resultado.UsuarioID > 0)
                     {
-                        res.error.Add(new Error
-                        {
-                            ErrorCode = errorIdBD.Value,
-                            Message = errorMsgBD
-                        });
-                        res.resultado = false;
+                        res.UsuarioID = resultado.UsuarioID;
+                        res.resultado = true;
                     }
                     else
                     {
-                        res.resultado = true;
-                        res.UsuarioID = idBD.Value;
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.errorDesconocido,
+                            Message = "No se pudo registrar el usuario"
+                        });
                     }
                 }
             }
@@ -161,11 +158,112 @@ namespace BackEnd.Logica.Modulo_Usuario
                     ErrorCode = (int)EnumErrores.excepcionLogica,
                     Message = ex.Message
                 });
-                res.resultado = false;
             }
 
             return res;
         }
+
+        public ResLoginUsuario LoginUsuario(ReqLoginUsuario req)
+        {
+            ResLoginUsuario res = new ResLoginUsuario();
+            res.error = new List<Error>();
+
+            try
+            {
+                if (string.IsNullOrWhiteSpace(req.Email) || string.IsNullOrWhiteSpace(req.Password))
+                {
+                    res.resultado = false;
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.datosIncompletos,
+                        Message = "Correo electrónico o contraseña vacíos"
+                    });
+                    return res;
+                }
+
+                using (FitlifeDataContext linq = new FitlifeDataContext())
+                {
+  
+                    var usuarioDB = linq.Usuario
+                                      .Where(u => u.Email == req.Email)
+                                      .Select(u => new { u.UsuarioID, u.Llave, u.ContrasennaHash, u.Estado })
+                                      .FirstOrDefault();
+
+                    if (usuarioDB == null)
+                    {
+                        res.resultado = false;
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.credencialesInvalidas,
+                            Message = "Correo electrónico o contraseña incorrectos"
+                        });
+                        return res;
+                    }
+
+
+                    string passHashIntent = HashearPassword(req.Password, usuarioDB.Llave);
+
+
+                    if (passHashIntent != usuarioDB.ContrasennaHash)
+                    {
+                        res.resultado = false;
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.credencialesInvalidas,
+                            Message = "Correo electrónico o contraseña incorrectos"
+                        });
+                        return res;
+                    }
+
+                    var resultado = linq.SP_ObtenerDatosUsuarioParaLogin(req.Email).FirstOrDefault();
+
+                    if (resultado == null)
+                    {
+                        res.resultado = false;
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.errorDesconocido,
+                            Message = "No se pudieron obtener los datos del usuario"
+                        });
+                        return res;
+                    }
+ 
+                    res.usuario = new Entidades.Usuario
+                    {
+  
+                        Id = resultado.UsuarioID, 
+
+                        nombre = resultado.Nombre,
+                        correoElectronico = resultado.Email,
+                        rol = System.Enum.TryParse(resultado.Rol?.ToString(), out EnumRolUsuario rolParsed) ? rolParsed : EnumRolUsuario.usuario,
+
+                        GimnasioID = resultado.GimnasioID,
+
+                        membresiaActiva = new Entidades.UsuarioMembresia
+                        {
+                            Estado = resultado.TieneMembresiaActiva == 1 ? EnumEstadoMembresia.activa : EnumEstadoMembresia.vencida
+                        },
+
+                        estado = resultado.EstaEnMorosidad == 1 ? EnumEstadoUsuario.suspendido : EnumEstadoUsuario.activo
+                    };
+
+
+                    res.resultado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                res.resultado = false;
+                res.error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionLogica,
+                    Message = ex.Message
+                });
+            }
+
+            return res;
+        }
+
 
         #region Helpers
         public bool EsCorreoValido(string correo)

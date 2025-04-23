@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Entidades\Equipamiento.cs" />
     <Compile Include="Entidades\Error.cs" />
     <Compile Include="Entidades\Gimnasio.cs" />
     <Compile Include="Entidades\Membresia.cs" />
@@ -63,31 +62,32 @@
     <Compile Include="Enum\EnumTipoLogro.cs" />
     <Compile Include="Enum\EnumTipoMeta.cs" />
     <Compile Include="Enum\EnumTipoNotificacion.cs" />
+    <Compile Include="Logica\Modulo Usuario\HelperMailcs.cs" />
     <Compile Include="Logica\Modulo Usuario\LogicaUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\Modulo Usuario\ReqActualizarUsuario.cs" />
-    <Compile Include="Request\Modulo Usuario\ReqAgregarUsuario.cs" />
+    <Compile Include="Request\Modulo Seguridad\ReqAgregarUsuario.cs" />
     <Compile Include="Request\Modulo Usuario\ReqAsignarRolUsuario.cs" />
-    <Compile Include="Request\Modulo Usuario\ReqCambiarContrasenna.cs" />
+    <Compile Include="Request\Modulo Seguridad\ReqCambiarContrasenna.cs" />
     <Compile Include="Request\Modulo Usuario\ReqEliminarUsuario.cs" />
-    <Compile Include="Request\Modulo Usuario\ReqLoginUsuario.cs" />
+    <Compile Include="Request\Modulo Seguridad\ReqLoginUsuario.cs" />
     <Compile Include="Request\Modulo Usuario\ReqObtenerUsuario.cs" />
-    <Compile Include="Request\Modulo Usuario\ReqResetContrasennaConfirmar.cs" />
-    <Compile Include="Request\Modulo Usuario\ReqSolicitarCambioContrasenna.cs" />
+    <Compile Include="Request\Modulo Seguridad\ReqResetContrasennaConfirmar.cs" />
+    <Compile Include="Request\Modulo Seguridad\ReqSolicitarCambioContrasenna.cs" />
     <Compile Include="Request\Modulo Usuario\ReqSuspenderUsuario.cs" />
-    <Compile Include="Request\Modulo Usuario\ReqVerificarUsuario.cs" />
+    <Compile Include="Request\Modulo Seguridad\ReqVerificarUsuario.cs" />
     <Compile Include="Request\ReqBase.cs" />
     <Compile Include="Response\Modulo Usuario\ResActualizarUsuario.cs" />
     <Compile Include="Response\Modulo Usuario\ResAsignarRolUsuario.cs" />
-    <Compile Include="Response\Modulo Usuario\ResCambiarContrasenna.cs" />
+    <Compile Include="Response\Modulo Seguridad\ResCambiarContrasenna.cs" />
     <Compile Include="Response\Modulo Usuario\ResEliminarUsuario.cs" />
     <Compile Include="Response\Modulo Usuario\ResObtenerUsuario.cs" />
-    <Compile Include="Response\Modulo Usuario\ResAgregarUsuario.cs" />
-    <Compile Include="Response\Modulo Usuario\ResLoginUsuario.cs" />
-    <Compile Include="Response\Modulo Usuario\ResResetContrasennaConfirmar.cs" />
-    <Compile Include="Response\Modulo Usuario\ResResetContrasennaSolicitar.cs" />
+    <Compile Include="Response\Modulo Seguridad\ResAgregarUsuario.cs" />
+    <Compile Include="Response\Modulo Seguridad\ResLoginUsuario.cs" />
+    <Compile Include="Response\Modulo Seguridad\ResResetContrasennaConfirmar.cs" />
+    <Compile Include="Response\Modulo Seguridad\ResResetContrasennaSolicitar.cs" />
     <Compile Include="Response\Modulo Usuario\ResSuspenderUsuario.cs" />
-    <Compile Include="Response\Modulo Usuario\ResVerificarUsuario.cs" />
+    <Compile Include="Response\Modulo Seguridad\ResVerificarUsuario.cs" />
     <Compile Include="Response\ResBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +96,8 @@
       <Name>AccesoDatos</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Logica\Modulo Seguridad\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

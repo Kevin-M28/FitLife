@@ -11,6 +11,7 @@ namespace BackEnd.Entidades
     public class Usuario
     {
         public long Id { get; set; }
+        public string cedula { get; set; }
         public int GimnasioID { get; set; }
         public string nombre { get; set; }
         public string apellidos { get; set; }
@@ -20,6 +21,7 @@ namespace BackEnd.Entidades
         public EnumRolUsuario rol { get; set; }
         public EnumEstadoUsuario estado { get; set; }
         public DateTime fechaRegistro { get; set; }
+        public string llave { get; set; }
         public string nombreGimnasio { get; set; }
         public UsuarioMembresia membresiaActiva { get; set; }
     }

@@ -12,6 +12,10 @@ using BackEnd.Logica;
 using BackEnd.Request.Modulo_Usuario;
 using BackEnd.Response.Modulo_Usuario;
 using BackEnd.Logica.Modulo_Usuario;
+using System.Security.Claims;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
 
 
 namespace Fitlife.Controllers
@@ -27,5 +31,15 @@ namespace Fitlife.Controllers
         {
             return new LogicaUsuario().Registrar(req);
         }
+
+        [HttpPost]
+        [Route("login")]
+
+        public ResLoginUsuario LoginUsuario(ReqLoginUsuario req)
+        {
+            return new LogicaUsuario().LoginUsuario(req);
+        }
+
+
     }
 }
