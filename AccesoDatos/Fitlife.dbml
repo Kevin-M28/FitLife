@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FitLife" Class="FitlifeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=MCCARTHYS\SQLEXPRESS;Initial Catalog=FitLife;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="AccesoDatos.Properties.Settings" SettingsPropertyName="FitLifeConnectionString2" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=FitLife;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="AccesoDatos.Properties.Settings" SettingsPropertyName="FitLifeConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.AdministradorGimnasio" Member="AdministradorGimnasio">
     <Type Name="AdministradorGimnasio">
       <Column Name="AdministradorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -8,18 +8,6 @@
       <Column Name="Permisos" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Gimnasio_AdministradorGimnasio" Member="Gimnasio" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="Gimnasio" IsForeignKey="true" />
       <Association Name="Usuario_AdministradorGimnasio" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.UsuarioRutina" Member="UsuarioRutina">
-    <Type Name="UsuarioRutina">
-      <Column Name="UsuarioRutinaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RutinaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="FechaAsignacion" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="AsignadoPorUsuarioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Rutina_UsuarioRutina" Member="Rutina" ThisKey="RutinaID" OtherKey="RutinaID" Type="Rutina" IsForeignKey="true" />
-      <Association Name="Usuario_UsuarioRutina" Member="Usuario" ThisKey="AsignadoPorUsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
-      <Association Name="Usuario_UsuarioRutina1" Member="Usuario1" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Asistencia" Member="Asistencia">
@@ -261,8 +249,8 @@
       <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="GimnasioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Rutina_UsuarioRutina" Member="UsuarioRutina" ThisKey="RutinaID" OtherKey="RutinaID" Type="UsuarioRutina" />
       <Association Name="Rutina_DiaRutina" Member="DiaRutina" ThisKey="RutinaID" OtherKey="RutinaID" Type="DiaRutina" />
+      <Association Name="Rutina_UsuarioRutina" Member="UsuarioRutina" ThisKey="RutinaID" OtherKey="RutinaID" Type="UsuarioRutina" />
       <Association Name="Gimnasio_Rutina" Member="Gimnasio" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="Gimnasio" IsForeignKey="true" />
     </Type>
   </Table>
@@ -280,8 +268,6 @@
       <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="Usuario_AdministradorGimnasio" Member="AdministradorGimnasio" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="AdministradorGimnasio" />
-      <Association Name="Usuario_UsuarioRutina" Member="UsuarioRutina" ThisKey="UsuarioID" OtherKey="AsignadoPorUsuarioID" Type="UsuarioRutina" />
-      <Association Name="Usuario_UsuarioRutina1" Member="UsuarioRutina1" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="UsuarioRutina" />
       <Association Name="Usuario_Asistencia" Member="Asistencia" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Asistencia" />
       <Association Name="Usuario_BitacoraAccionAdministrador" Member="BitacoraAccionAdministrador" ThisKey="UsuarioID" OtherKey="UsuarioAdminID" Type="BitacoraAccionAdministrador" />
       <Association Name="Usuario_CalificacionEntrenamiento" Member="CalificacionEntrenamiento" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="CalificacionEntrenamiento" />
@@ -295,6 +281,8 @@
       <Association Name="Usuario_ProgresoRutina" Member="ProgresoRutina" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="ProgresoRutina" />
       <Association Name="Usuario_UsuarioLogro" Member="UsuarioLogro" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="UsuarioLogro" />
       <Association Name="Usuario_UsuarioMembresia" Member="UsuarioMembresia" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="UsuarioMembresia" />
+      <Association Name="Usuario_UsuarioRutina" Member="UsuarioRutina" ThisKey="UsuarioID" OtherKey="AsignadoPorUsuarioID" Type="UsuarioRutina" />
+      <Association Name="Usuario_UsuarioRutina1" Member="UsuarioRutina1" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="UsuarioRutina" />
       <Association Name="Gimnasio_Usuario" Member="Gimnasio" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="Gimnasio" IsForeignKey="true" />
     </Type>
   </Table>
@@ -320,27 +308,18 @@
       <Association Name="Usuario_UsuarioMembresia" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Function Name="dbo.SP_RegistrarUsuario" Method="SP_RegistrarUsuario">
-    <Parameter Name="GimnasioID" Parameter="gimnasioID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="Contrasenna" Parameter="contrasenna" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="Rol" Parameter="rol" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="Llave" Parameter="llave" Type="System.String" DbType="NVarChar(100)" />
-    <ElementType Name="SP_RegistrarUsuarioResult">
+  <Table Name="dbo.UsuarioRutina" Member="UsuarioRutina">
+    <Type Name="UsuarioRutina">
+      <Column Name="UsuarioRutinaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Rol" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </ElementType>
-  </Function>
+      <Column Name="RutinaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FechaAsignacion" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AsignadoPorUsuarioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Usuario_UsuarioRutina" Member="Usuario" ThisKey="AsignadoPorUsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
+      <Association Name="Rutina_UsuarioRutina" Member="Rutina" ThisKey="RutinaID" OtherKey="RutinaID" Type="Rutina" IsForeignKey="true" />
+      <Association Name="Usuario_UsuarioRutina1" Member="Usuario1" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.SP_ActualizarEstadoUsuario" Method="SP_ActualizarEstadoUsuario">
     <Parameter Name="UsuarioID" Parameter="usuarioID" Type="System.Int32" DbType="Int" />
     <Parameter Name="NuevoEstado" Parameter="nuevoEstado" Type="System.String" DbType="NVarChar(20)" />
@@ -500,17 +479,37 @@
       <Column Name="Token" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SP_GetEstadisticasAsistencia" Method="SP_GetEstadisticasAsistencia1">
+  <Function Name="dbo.SP_RegistrarAsistencia" Method="SP_RegistrarAsistencia">
+    <Parameter Name="UsuarioID" Parameter="usuarioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MetodoRegistro" Parameter="metodoRegistro" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="AdminID" Parameter="adminID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaHoraEntrada" Parameter="fechaHoraEntrada" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="SP_RegistrarAsistenciaResult">
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(31) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaHoraEntrada" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FechaHoraSalida" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DuracionMinutos" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_RegistrarUsuario" Method="SP_RegistrarUsuario">
     <Parameter Name="GimnasioID" Parameter="gimnasioID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="FechaInicio" Parameter="fechaInicio" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="FechaFin" Parameter="fechaFin" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="TipoEstadistica" Parameter="tipoEstadistica" Type="System.String" DbType="NVarChar(20)" />
-    <ElementType Name="SP_GetEstadisticasAsistenciaResult1">
-      <Column Name="UsuariosUnicos" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TotalAsistencias" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DuracionPromedioMinutos" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="PromedioAsistenciasDiarias" Type="System.Decimal" DbType="Decimal(24,12)" CanBeNull="true" />
-      <Column Name="MaximoAsistenciasPorUsuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Contrasenna" Parameter="contrasenna" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Rol" Parameter="rol" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Llave" Parameter="llave" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="SP_RegistrarUsuarioResult">
+      <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Rol" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.SP_ResetPassword_Solicitar" Method="SP_ResetPassword_Solicitar">
