@@ -8,6 +8,7 @@ namespace BackEnd.Request.Modulo_Usuario
 {
     public class ReqCambiarContrasenna : ReqBase
     {
+        public int UsuarioID { get; set; }
         public string passwordActual { get; set; }
         public string nuevaPassword { get; set; }
     }

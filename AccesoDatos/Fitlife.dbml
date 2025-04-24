@@ -354,28 +354,6 @@
       <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SP_AsignarRolUsuario" Method="SP_AsignarRolUsuario">
-    <Parameter Name="UsuarioID" Parameter="usuarioID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="NuevoRol" Parameter="nuevoRol" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="AdminID" Parameter="adminID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Permisos" Parameter="permisos" Type="System.String" DbType="NVarChar(50)" />
-    <ElementType Name="SP_AsignarRolUsuarioResult">
-      <Column Name="Mensaje" Type="System.String" DbType="NVarChar(97)" CanBeNull="true" />
-      <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Rol" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_CambiarPassword" Method="SP_CambiarPassword">
-    <Parameter Name="UsuarioID" Parameter="usuarioID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ContrasennaActual" Parameter="contrasennaActual" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="ContrasennaNueva" Parameter="contrasennaNueva" Type="System.String" DbType="NVarChar(256)" />
-    <ElementType Name="SP_CambiarPasswordResult">
-      <Column Name="Mensaje" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.SP_GenerarReporteFinanciero" Method="SP_GenerarReporteFinanciero">
     <Parameter Name="GimnasioID" Parameter="gimnasioID" Type="System.Int32" DbType="Int" />
     <Parameter Name="Periodo" Parameter="periodo" Type="System.String" DbType="NVarChar(20)" />
@@ -560,6 +538,28 @@
       <Column Name="GimnasioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TieneMembresiaActiva" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="EstaEnMorosidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_CambiarPassword" Method="SP_CambiarPassword">
+    <Parameter Name="UsuarioID" Parameter="usuarioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Llave" Parameter="llave" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="ContrasennaNueva" Parameter="contrasennaNueva" Type="System.String" DbType="NVarChar(256)" />
+    <ElementType Name="SP_CambiarPasswordResult">
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_AsignarRolUsuario" Method="SP_AsignarRolUsuario">
+    <Parameter Name="UsuarioID" Parameter="usuarioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NuevoRol" Parameter="nuevoRol" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="AdminID" Parameter="adminID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Permisos" Parameter="permisos" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="SP_AsignarRolUsuarioResult">
+      <Column Name="Mensaje" Type="System.String" DbType="NVarChar(97)" CanBeNull="true" />
+      <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Rol" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

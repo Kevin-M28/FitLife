@@ -131,8 +131,8 @@ namespace BackEnd.Logica.Modulo_Usuario
                         req.usuario.correoElectronico,
                         passHash,
                         req.usuario.telefono,
-                        "usuario",  // Rol por defecto
-                        "activo",   // Estado por defecto
+                        "usuario",  
+                        "activo",   
                         llave
                     ).FirstOrDefault();
 
@@ -165,7 +165,7 @@ namespace BackEnd.Logica.Modulo_Usuario
 
         public ResLoginUsuario LoginUsuario(ReqLoginUsuario req)
         {
-            ResLoginUsuario res = new ResLoginUsuario();
+            var res = new ResLoginUsuario();
             res.error = new List<Error>();
 
             try
@@ -181,15 +181,15 @@ namespace BackEnd.Logica.Modulo_Usuario
                     return res;
                 }
 
-                using (FitlifeDataContext linq = new FitlifeDataContext())
+                using (var db = new FitlifeDataContext())
                 {
-  
-                    var usuarioDB = linq.Usuario
-                                      .Where(u => u.Email == req.Email)
-                                      .Select(u => new { u.UsuarioID, u.Llave, u.ContrasennaHash, u.Estado })
-                                      .FirstOrDefault();
 
-                    if (usuarioDB == null)
+                    var llaveUsuario = db.Usuario
+                        .Where(u => u.Email == req.Email)
+                        .Select(u => u.Llave)
+                        .FirstOrDefault();
+
+                    if (string.IsNullOrEmpty(llaveUsuario))
                     {
                         res.resultado = false;
                         res.error.Add(new Error
@@ -201,50 +201,35 @@ namespace BackEnd.Logica.Modulo_Usuario
                     }
 
 
-                    string passHashIntent = HashearPassword(req.Password, usuarioDB.Llave);
+                    string passwordHasheado = HashearPassword(req.Password, llaveUsuario);
 
-
-                    if (passHashIntent != usuarioDB.ContrasennaHash)
-                    {
-                        res.resultado = false;
-                        res.error.Add(new Error
-                        {
-                            ErrorCode = (int)EnumErrores.credencialesInvalidas,
-                            Message = "Correo electrónico o contraseña incorrectos"
-                        });
-                        return res;
-                    }
-
-                    var resultado = linq.SP_ObtenerDatosUsuarioParaLogin(req.Email).FirstOrDefault();
+                    var resultado = db.SP_LoginUsuario(req.Email, passwordHasheado).FirstOrDefault();
 
                     if (resultado == null)
                     {
                         res.resultado = false;
                         res.error.Add(new Error
                         {
-                            ErrorCode = (int)EnumErrores.errorDesconocido,
-                            Message = "No se pudieron obtener los datos del usuario"
+                            ErrorCode = (int)EnumErrores.credencialesInvalidas,
+                            Message = "Credenciales inválidas o usuario inactivo"
                         });
                         return res;
                     }
- 
-                    res.usuario = new Entidades.Usuario
-                    {
-  
-                        Id = resultado.UsuarioID, 
 
+                    res.usuario = new BackEnd.Entidades.Usuario
+                    {
+                        Id = (long)(resultado.UsuarioID ?? 0),
                         nombre = resultado.Nombre,
                         correoElectronico = resultado.Email,
-                        rol = System.Enum.TryParse(resultado.Rol?.ToString(), out EnumRolUsuario rolParsed) ? rolParsed : EnumRolUsuario.usuario,
+                        rol = System.Enum.TryParse(resultado.Rol, out EnumRolUsuario rolParsed) ? rolParsed : EnumRolUsuario.usuario,
+                        GimnasioID = resultado.GimnasioID ?? 0,
 
-                        GimnasioID = resultado.GimnasioID,
-
-                        membresiaActiva = new Entidades.UsuarioMembresia
+                        membresiaActiva = new BackEnd.Entidades.UsuarioMembresia
                         {
-                            Estado = resultado.TieneMembresiaActiva == 1 ? EnumEstadoMembresia.activa : EnumEstadoMembresia.vencida
+                            Estado = (resultado.TieneMembresiaActiva ?? false) ? EnumEstadoMembresia.activa : EnumEstadoMembresia.vencida
                         },
 
-                        estado = resultado.EstaEnMorosidad == 1 ? EnumEstadoUsuario.suspendido : EnumEstadoUsuario.activo
+                        estado = (resultado.EstaEnMorosidad ?? false) ? EnumEstadoUsuario.suspendido : EnumEstadoUsuario.activo
                     };
 
 
@@ -263,6 +248,302 @@ namespace BackEnd.Logica.Modulo_Usuario
 
             return res;
         }
+
+        public ResCambiarContrasenna CambiarContrasenna(ReqCambiarContrasenna req)
+        {
+            ResCambiarContrasenna res = new ResCambiarContrasenna();
+            res.error = new List<Error>();
+            res.resultado = false;
+
+            try
+            {
+                #region Validaciones
+                if (req == null)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.requestNulo,
+                        Message = "Request nulo"
+                    });
+                    return res;
+                }
+
+                if (req.UsuarioID <= 0)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.idFaltante,
+                        Message = "Usuario no válido"
+                    });
+                }
+
+                if (string.IsNullOrWhiteSpace(req.passwordActual))
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.passwordFaltante,
+                        Message = "Debe ingresar la contraseña actual"
+                    });
+                }
+
+                if (string.IsNullOrWhiteSpace(req.nuevaPassword))
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.passwordFaltante,
+                        Message = "Debe ingresar la nueva contraseña"
+                    });
+                }
+                else if (!EsPasswordSeguro(req.nuevaPassword))
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.passwordMuyDebil,
+                        Message = "La nueva contraseña no cumple con los requisitos de seguridad"
+                    });
+                }
+
+                if (res.error.Any())
+                    return res;
+                #endregion
+
+                using (FitlifeDataContext linq = new FitlifeDataContext())
+                {
+                   
+                    var usuario = linq.Usuario.FirstOrDefault(u => u.UsuarioID == req.UsuarioID);
+                    if (usuario == null)
+                    {
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.usuarioNoEncontrado,
+                            Message = "Usuario no encontrado"
+                        });
+                        return res;
+                    }
+
+                    string hashActual = HashearPassword(req.passwordActual, usuario.Llave);
+
+
+                    string nuevaLlave = Guid.NewGuid().ToString("N");
+                    string nuevoHash = HashearPassword(req.nuevaPassword, nuevaLlave);
+
+                    var resultado = linq.SP_CambiarPassword(
+                        req.UsuarioID,
+                        nuevaLlave, 
+                        nuevoHash    
+                    ).FirstOrDefault();
+
+                    if (resultado != null && resultado.Mensaje == "Contraseña actualizada exitosamente")
+                    {
+                        res.resultado = true;
+                    }
+                    else
+                    {
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.errorDesconocido,
+                            Message = "No se pudo cambiar la contraseña"
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                res.resultado=false;
+                res.error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionLogica,
+                    Message = ex.Message.Contains("La contraseña actual es incorrecta")
+                            ? "La contraseña actual es incorrecta"
+                            : "Error al cambiar la contraseña"
+                });
+            }
+
+            return res;
+        }
+
+        public ResAsignarRolUsuario AsignarRolUsuario(ReqAsignarRolUsuario req)
+        {
+            ResAsignarRolUsuario res = new ResAsignarRolUsuario();
+            res.error = new List<Error>();
+            res.resultado = false;
+            try
+            {
+                if (req == null)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.requestNulo,
+                        Message = "Request nulo"
+                    });
+                    return res;
+                }
+                if (req.usuarioID <= 0)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.idFaltante,
+                        Message = "UsuarioID vacío"
+                    });
+                    return res;
+                }
+                if (string.IsNullOrEmpty(req.nuevoRol))
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.rolFaltante,
+                        Message = "Rol vacío"
+                    });
+                    return res;
+                }
+
+                using (FitlifeDataContext linq = new FitlifeDataContext())
+                {
+                    var resultado = linq.SP_AsignarRolUsuario(req.usuarioID, req.nuevoRol, req.usuarioAdmin, "").FirstOrDefault();
+                    if (resultado == null || resultado.UsuarioID <= 0)
+                    {
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.usuarioNoEncontrado,
+                            Message = "Usuario no encontrado"
+                        });
+                        return res;
+                    }
+                    res.resultado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                res.error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionLogica,
+                    Message = ex.Message
+                });
+            }
+            return res;
+        }
+        public ResObtenerUsuario ObtenerUsuarioId(ReqObtenerUsuario req)
+        {
+            ResObtenerUsuario res = new ResObtenerUsuario();
+            res.error = new List<Error>();
+            res.resultado = false;
+
+            try
+            {
+                if (req == null)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.requestNulo,
+                        Message = "Request nulo"
+                    });
+                    return res;
+                }
+                if (req.usuarioID <= 0)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.idFaltante,
+                        Message = "UsuarioID vacío"
+                    });
+                    return res;
+                }
+                using (FitlifeDataContext linq = new FitlifeDataContext())
+                {
+                    // Ejecutamos el SP pero solo usamos el primer resultado (la información básica del usuario)
+                    var usuario = linq.SP_GetUsuarioPorID(req.usuarioID).FirstOrDefault();
+
+                    if (usuario == null)
+                    {
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.usuarioNoEncontrado,
+                            Message = "Usuario no encontrado"
+                        });
+                        return res;
+                    }
+
+                    // Solo devolvemos la información básica del usuario
+                    res.usuario = new Entidades.Usuario
+                    {
+                        Id = usuario.UsuarioID,
+                        cedula = usuario.Cedula,
+                        nombre = usuario.Nombre,
+                        correoElectronico = usuario.Email,
+                        telefono = usuario.Telefono,
+                        rol = System.Enum.TryParse(usuario.Rol?.ToString(), out EnumRolUsuario rolParsed) ? rolParsed : EnumRolUsuario.usuario,
+                        estado = System.Enum.TryParse(usuario.Estado?.ToString(), out EnumEstadoUsuario estadoParsed) ? estadoParsed : EnumEstadoUsuario.inactivo,
+                        GimnasioID = usuario.GimnasioID,
+                        nombreGimnasio = usuario.NombreGimnasio,
+
+                        // No incluimos el resto de los datos que vienen en los otros conjuntos de resultados
+                    };
+
+                    res.resultado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                res.error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionLogica,
+                    Message = ex.Message
+                });
+            }
+            return res;
+        }
+
+        public ResActualizarUsuario AtualizarUsuario(ReqActualizarUsuario req)
+        {
+            ResActualizarUsuario res = new ResActualizarUsuario();
+            res.error = new List<Error>();
+            res.resultado = false;
+            try
+            {
+                if (req == null)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.requestNulo,
+                        Message = "Request nulo"
+                    });
+                    return res;
+                }
+                if (req.usuarioID <= 0)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.idFaltante,
+                        Message = "UsuarioID vacío"
+                    });
+                    return res;
+                }
+                using (FitlifeDataContext linq = new FitlifeDataContext())
+                {
+                    var resultado = linq.SP_UpdateUsuario(req.usuarioID, req.nombre, req.email, req.telefono).FirstOrDefault();
+                    if (resultado == null || resultado.UsuarioID <= 0)
+                    {
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.usuarioNoEncontrado,
+                            Message = "Usuario no encontrado"
+                        });
+                        return res;
+                    }
+                    res.resultado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                res.error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionLogica,
+                    Message = ex.Message
+                });
+            }
+            return res;
+        }
+
 
 
         #region Helpers

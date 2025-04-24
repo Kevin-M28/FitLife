@@ -41,5 +41,33 @@ namespace Fitlife.Controllers
         }
 
 
+        [HttpPost]
+        [Route("change_password")]
+
+        public ResCambiarContrasenna CambiarContrasenna(ReqCambiarContrasenna req)
+        {
+            return new LogicaUsuario().CambiarContrasenna(req);
+        }
+
+        [HttpPost]
+        [Route("modify_rol")]
+        public ResAsignarRolUsuario modificarRolUsuario(ReqAsignarRolUsuario req)
+        {
+            return new LogicaUsuario().AsignarRolUsuario(req);
+        }
+        [HttpGet]
+        [Route("getById")]
+        public ResObtenerUsuario GetUsuarioById(ReqObtenerUsuario req)
+        {
+            return new LogicaUsuario().ObtenerUsuarioId(req);
+        }
+
+        [HttpPost]
+        [Route("modify_user")]
+        public ResActualizarUsuario modificarUsuario(ReqActualizarUsuario req)
+        {
+            return new LogicaUsuario().AtualizarUsuario(req);
+        }
+
     }
 }

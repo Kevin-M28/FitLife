@@ -373,20 +373,6 @@ namespace AccesoDatos
 			return ((ISingleResult<SP_ActualizarEstadoUsuarioResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_AsignarRolUsuario")]
-		public ISingleResult<SP_AsignarRolUsuarioResult> SP_AsignarRolUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NuevoRol", DbType="NVarChar(20)")] string nuevoRol, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdminID", DbType="Int")] System.Nullable<int> adminID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Permisos", DbType="NVarChar(50)")] string permisos)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID, nuevoRol, adminID, permisos);
-			return ((ISingleResult<SP_AsignarRolUsuarioResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CambiarPassword")]
-		public ISingleResult<SP_CambiarPasswordResult> SP_CambiarPassword([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ContrasennaActual", DbType="NVarChar(100)")] string contrasennaActual, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ContrasennaNueva", DbType="NVarChar(256)")] string contrasennaNueva)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID, contrasennaActual, contrasennaNueva);
-			return ((ISingleResult<SP_CambiarPasswordResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_GenerarReporteFinanciero")]
 		public ISingleResult<SP_GenerarReporteFinancieroResult> SP_GenerarReporteFinanciero([global::System.Data.Linq.Mapping.ParameterAttribute(Name="GimnasioID", DbType="Int")] System.Nullable<int> gimnasioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Periodo", DbType="NVarChar(20)")] string periodo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaInicio", DbType="Date")] System.Nullable<System.DateTime> fechaInicio, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaFin", DbType="Date")] System.Nullable<System.DateTime> fechaFin)
 		{
@@ -476,6 +462,20 @@ namespace AccesoDatos
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email);
 			return ((ISingleResult<SP_ObtenerDatosUsuarioParaLoginResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CambiarPassword")]
+		public ISingleResult<SP_CambiarPasswordResult> SP_CambiarPassword([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Llave", DbType="NVarChar(100)")] string llave, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ContrasennaNueva", DbType="NVarChar(256)")] string contrasennaNueva)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID, llave, contrasennaNueva);
+			return ((ISingleResult<SP_CambiarPasswordResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_AsignarRolUsuario")]
+		public ISingleResult<SP_AsignarRolUsuarioResult> SP_AsignarRolUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NuevoRol", DbType="NVarChar(20)")] string nuevoRol, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdminID", DbType="Int")] System.Nullable<int> adminID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Permisos", DbType="NVarChar(50)")] string permisos)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID, nuevoRol, adminID, permisos);
+			return ((ISingleResult<SP_AsignarRolUsuarioResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -7473,148 +7473,6 @@ namespace AccesoDatos
 		}
 	}
 	
-	public partial class SP_AsignarRolUsuarioResult
-	{
-		
-		private string _Mensaje;
-		
-		private int _UsuarioID;
-		
-		private string _Nombre;
-		
-		private string _Email;
-		
-		private string _Rol;
-		
-		private string _Estado;
-		
-		public SP_AsignarRolUsuarioResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mensaje", DbType="NVarChar(97)")]
-		public string Mensaje
-		{
-			get
-			{
-				return this._Mensaje;
-			}
-			set
-			{
-				if ((this._Mensaje != value))
-				{
-					this._Mensaje = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioID", DbType="Int NOT NULL")]
-		public int UsuarioID
-		{
-			get
-			{
-				return this._UsuarioID;
-			}
-			set
-			{
-				if ((this._UsuarioID != value))
-				{
-					this._UsuarioID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Nombre
-		{
-			get
-			{
-				return this._Nombre;
-			}
-			set
-			{
-				if ((this._Nombre != value))
-				{
-					this._Nombre = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this._Email = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rol", DbType="NVarChar(20)")]
-		public string Rol
-		{
-			get
-			{
-				return this._Rol;
-			}
-			set
-			{
-				if ((this._Rol != value))
-				{
-					this._Rol = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="NVarChar(20)")]
-		public string Estado
-		{
-			get
-			{
-				return this._Estado;
-			}
-			set
-			{
-				if ((this._Estado != value))
-				{
-					this._Estado = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_CambiarPasswordResult
-	{
-		
-		private string _Mensaje;
-		
-		public SP_CambiarPasswordResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mensaje", DbType="VarChar(35) NOT NULL", CanBeNull=false)]
-		public string Mensaje
-		{
-			get
-			{
-				return this._Mensaje;
-			}
-			set
-			{
-				if ((this._Mensaje != value))
-				{
-					this._Mensaje = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SP_GenerarReporteFinancieroResult
 	{
 		
@@ -9388,6 +9246,148 @@ namespace AccesoDatos
 				if ((this._EstaEnMorosidad != value))
 				{
 					this._EstaEnMorosidad = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_CambiarPasswordResult
+	{
+		
+		private string _Mensaje;
+		
+		public SP_CambiarPasswordResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mensaje", DbType="VarChar(35) NOT NULL", CanBeNull=false)]
+		public string Mensaje
+		{
+			get
+			{
+				return this._Mensaje;
+			}
+			set
+			{
+				if ((this._Mensaje != value))
+				{
+					this._Mensaje = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_AsignarRolUsuarioResult
+	{
+		
+		private string _Mensaje;
+		
+		private int _UsuarioID;
+		
+		private string _Nombre;
+		
+		private string _Email;
+		
+		private string _Rol;
+		
+		private string _Estado;
+		
+		public SP_AsignarRolUsuarioResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mensaje", DbType="NVarChar(97)")]
+		public string Mensaje
+		{
+			get
+			{
+				return this._Mensaje;
+			}
+			set
+			{
+				if ((this._Mensaje != value))
+				{
+					this._Mensaje = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioID", DbType="Int NOT NULL")]
+		public int UsuarioID
+		{
+			get
+			{
+				return this._UsuarioID;
+			}
+			set
+			{
+				if ((this._UsuarioID != value))
+				{
+					this._UsuarioID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Nombre
+		{
+			get
+			{
+				return this._Nombre;
+			}
+			set
+			{
+				if ((this._Nombre != value))
+				{
+					this._Nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rol", DbType="NVarChar(20)")]
+		public string Rol
+		{
+			get
+			{
+				return this._Rol;
+			}
+			set
+			{
+				if ((this._Rol != value))
+				{
+					this._Rol = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="NVarChar(20)")]
+		public string Estado
+		{
+			get
+			{
+				return this._Estado;
+			}
+			set
+			{
+				if ((this._Estado != value))
+				{
+					this._Estado = value;
 				}
 			}
 		}
