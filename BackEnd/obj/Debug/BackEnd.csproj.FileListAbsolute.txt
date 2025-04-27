@@ -28,3 +28,5 @@ C:\Users\YORKA\Source\Repos\FitLife\BackEnd\obj\Debug\BackEnd.csproj.CoreCompile
 C:\Users\YORKA\Source\Repos\FitLife\BackEnd\obj\Debug\BackEnd.csproj.Up2Date
 C:\Users\YORKA\Source\Repos\FitLife\BackEnd\obj\Debug\BackEnd.dll
 C:\Users\YORKA\Source\Repos\FitLife\BackEnd\obj\Debug\BackEnd.pdb
+C:\Users\Jose Garita\Source\Repos\FitLife\BackEnd\obj\Debug\BackEnd.csproj.AssemblyReference.cache
+C:\Users\Jose Garita\Source\Repos\FitLife\BackEnd\obj\Debug\BackEnd.csproj.CoreCompileInputs.cache

@@ -59,6 +59,11 @@ namespace BackEnd.Enum
         usuarioNoEncontrado=45,
         cedulaFaltante= 46,
         errorDesconocido = 47,
-
+        membresiaNoEncontrada = 48,
+        sinMembresiaActiva = 49,
+        sinRegistros = 50,
+        errorProcesamiento = 51,
+        parametroFaltante = 52,
+        accesoDenegado = 53,
     }
 }
