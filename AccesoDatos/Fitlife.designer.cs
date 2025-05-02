@@ -30,9 +30,6 @@ namespace AccesoDatos
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertUsuarioRutina(UsuarioRutina instance);
-    partial void UpdateUsuarioRutina(UsuarioRutina instance);
-    partial void DeleteUsuarioRutina(UsuarioRutina instance);
     partial void InsertAdministradorGimnasio(AdministradorGimnasio instance);
     partial void UpdateAdministradorGimnasio(AdministradorGimnasio instance);
     partial void DeleteAdministradorGimnasio(AdministradorGimnasio instance);
@@ -102,6 +99,9 @@ namespace AccesoDatos
     partial void InsertUsuarioMembresia(UsuarioMembresia instance);
     partial void UpdateUsuarioMembresia(UsuarioMembresia instance);
     partial void DeleteUsuarioMembresia(UsuarioMembresia instance);
+    partial void InsertUsuarioRutina(UsuarioRutina instance);
+    partial void UpdateUsuarioRutina(UsuarioRutina instance);
+    partial void DeleteUsuarioRutina(UsuarioRutina instance);
     #endregion
 		
 		public FitlifeDataContext() : 
@@ -132,14 +132,6 @@ namespace AccesoDatos
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<UsuarioRutina> UsuarioRutinas
-		{
-			get
-			{
-				return this.GetTable<UsuarioRutina>();
-			}
 		}
 		
 		public System.Data.Linq.Table<AdministradorGimnasio> AdministradorGimnasios
@@ -326,6 +318,21 @@ namespace AccesoDatos
 			}
 		}
 		
+		public System.Data.Linq.Table<UsuarioRutina> UsuarioRutinas
+		{
+			get
+			{
+				return this.GetTable<UsuarioRutina>();
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_UpdateUsuario")]
+		public ISingleResult<SP_UpdateUsuarioResult> SP_UpdateUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nombre", DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Apellido", DbType="NVarChar(100)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Telefono", DbType="NVarChar(20)")] string telefono)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID, nombre, apellido, email, telefono);
+			return ((ISingleResult<SP_UpdateUsuarioResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_ActualizarEstadoUsuario")]
 		public ISingleResult<SP_ActualizarEstadoUsuarioResult> SP_ActualizarEstadoUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NuevoEstado", DbType="NVarChar(20)")] string nuevoEstado, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdminID", DbType="Int")] System.Nullable<int> adminID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Motivo", DbType="NVarChar(200)")] string motivo)
 		{
@@ -345,13 +352,6 @@ namespace AccesoDatos
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID, llave, contrasennaNueva);
 			return ((ISingleResult<SP_CambiarPasswordResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_GenerarReporteAsistencia")]
-		public ISingleResult<SP_GenerarReporteAsistenciaResult> SP_GenerarReporteAsistencia([global::System.Data.Linq.Mapping.ParameterAttribute(Name="GimnasioID", DbType="Int")] System.Nullable<int> gimnasioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Periodo", DbType="NVarChar(20)")] string periodo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaInicio", DbType="Date")] System.Nullable<System.DateTime> fechaInicio, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaFin", DbType="Date")] System.Nullable<System.DateTime> fechaFin)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), gimnasioID, periodo, fechaInicio, fechaFin);
-			return ((ISingleResult<SP_GenerarReporteAsistenciaResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_GenerarReporteFinanciero")]
@@ -375,18 +375,18 @@ namespace AccesoDatos
 			return ((ISingleResult<SP_GetHistorialAsistenciaUsuarioResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_GetUsuarioPorID")]
-		public ISingleResult<SP_GetUsuarioPorIDResult> SP_GetUsuarioPorID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID);
-			return ((ISingleResult<SP_GetUsuarioPorIDResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_GetPagosPorUsuario")]
 		public ISingleResult<SP_GetPagosPorUsuarioResult> SP_GetPagosPorUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaInicio", DbType="Date")] System.Nullable<System.DateTime> fechaInicio, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaFin", DbType="Date")] System.Nullable<System.DateTime> fechaFin, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estado", DbType="NVarChar(20)")] string estado)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID, fechaInicio, fechaFin, estado);
 			return ((ISingleResult<SP_GetPagosPorUsuarioResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_GetUsuarioPorID")]
+		public ISingleResult<SP_GetUsuarioPorIDResult> SP_GetUsuarioPorID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID);
+			return ((ISingleResult<SP_GetUsuarioPorIDResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_InsertPago")]
@@ -403,18 +403,18 @@ namespace AccesoDatos
 			return ((ISingleResult<SP_InsertUsuarioMembresiaResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_RegistrarAsistencia")]
-		public ISingleResult<SP_RegistrarAsistenciaResult> SP_RegistrarAsistencia([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MetodoRegistro", DbType="NVarChar(10)")] string metodoRegistro, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdminID", DbType="Int")] System.Nullable<int> adminID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaHoraEntrada", DbType="DateTime")] System.Nullable<System.DateTime> fechaHoraEntrada)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID, metodoRegistro, adminID, fechaHoraEntrada);
-			return ((ISingleResult<SP_RegistrarAsistenciaResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_LoginUsuario")]
 		public ISingleResult<SP_LoginUsuarioResult> SP_LoginUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Contrasenna", DbType="NVarChar(100)")] string contrasenna)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, contrasenna);
 			return ((ISingleResult<SP_LoginUsuarioResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_RegistrarAsistencia")]
+		public ISingleResult<SP_RegistrarAsistenciaResult> SP_RegistrarAsistencia([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MetodoRegistro", DbType="NVarChar(10)")] string metodoRegistro, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdminID", DbType="Int")] System.Nullable<int> adminID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaHoraEntrada", DbType="DateTime")] System.Nullable<System.DateTime> fechaHoraEntrada)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID, metodoRegistro, adminID, fechaHoraEntrada);
+			return ((ISingleResult<SP_RegistrarAsistenciaResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_RegistrarUsuario")]
@@ -438,292 +438,11 @@ namespace AccesoDatos
 			return ((ISingleResult<SP_UpdateEstadoPagoResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_UpdateUsuario")]
-		public ISingleResult<SP_UpdateUsuarioResult> SP_UpdateUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nombre", DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Apellido", DbType="NVarChar(100)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Telefono", DbType="NVarChar(20)")] string telefono)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_GenerarReporteAsistencia")]
+		public ISingleResult<SP_GenerarReporteAsistenciaResult> SP_GenerarReporteAsistencia([global::System.Data.Linq.Mapping.ParameterAttribute(Name="GimnasioID", DbType="Int")] System.Nullable<int> gimnasioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Periodo", DbType="NVarChar(20)")] string periodo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaInicio", DbType="Date")] System.Nullable<System.DateTime> fechaInicio, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaFin", DbType="Date")] System.Nullable<System.DateTime> fechaFin)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID, nombre, apellido, email, telefono);
-			return ((ISingleResult<SP_UpdateUsuarioResult>)(result.ReturnValue));
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UsuarioRutina")]
-	public partial class UsuarioRutina : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _UsuarioRutinaID;
-		
-		private int _UsuarioID;
-		
-		private int _RutinaID;
-		
-		private System.Nullable<System.DateTime> _FechaAsignacion;
-		
-		private System.Nullable<int> _AsignadoPorUsuarioID;
-		
-		private EntityRef<Rutina> _Rutina;
-		
-		private EntityRef<Usuario> _Usuario;
-		
-		private EntityRef<Usuario> _Usuario1;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUsuarioRutinaIDChanging(int value);
-    partial void OnUsuarioRutinaIDChanged();
-    partial void OnUsuarioIDChanging(int value);
-    partial void OnUsuarioIDChanged();
-    partial void OnRutinaIDChanging(int value);
-    partial void OnRutinaIDChanged();
-    partial void OnFechaAsignacionChanging(System.Nullable<System.DateTime> value);
-    partial void OnFechaAsignacionChanged();
-    partial void OnAsignadoPorUsuarioIDChanging(System.Nullable<int> value);
-    partial void OnAsignadoPorUsuarioIDChanged();
-    #endregion
-		
-		public UsuarioRutina()
-		{
-			this._Rutina = default(EntityRef<Rutina>);
-			this._Usuario = default(EntityRef<Usuario>);
-			this._Usuario1 = default(EntityRef<Usuario>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioRutinaID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int UsuarioRutinaID
-		{
-			get
-			{
-				return this._UsuarioRutinaID;
-			}
-			set
-			{
-				if ((this._UsuarioRutinaID != value))
-				{
-					this.OnUsuarioRutinaIDChanging(value);
-					this.SendPropertyChanging();
-					this._UsuarioRutinaID = value;
-					this.SendPropertyChanged("UsuarioRutinaID");
-					this.OnUsuarioRutinaIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioID", DbType="Int NOT NULL")]
-		public int UsuarioID
-		{
-			get
-			{
-				return this._UsuarioID;
-			}
-			set
-			{
-				if ((this._UsuarioID != value))
-				{
-					if (this._Usuario1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUsuarioIDChanging(value);
-					this.SendPropertyChanging();
-					this._UsuarioID = value;
-					this.SendPropertyChanged("UsuarioID");
-					this.OnUsuarioIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RutinaID", DbType="Int NOT NULL")]
-		public int RutinaID
-		{
-			get
-			{
-				return this._RutinaID;
-			}
-			set
-			{
-				if ((this._RutinaID != value))
-				{
-					if (this._Rutina.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnRutinaIDChanging(value);
-					this.SendPropertyChanging();
-					this._RutinaID = value;
-					this.SendPropertyChanged("RutinaID");
-					this.OnRutinaIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaAsignacion", DbType="Date")]
-		public System.Nullable<System.DateTime> FechaAsignacion
-		{
-			get
-			{
-				return this._FechaAsignacion;
-			}
-			set
-			{
-				if ((this._FechaAsignacion != value))
-				{
-					this.OnFechaAsignacionChanging(value);
-					this.SendPropertyChanging();
-					this._FechaAsignacion = value;
-					this.SendPropertyChanged("FechaAsignacion");
-					this.OnFechaAsignacionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AsignadoPorUsuarioID", DbType="Int")]
-		public System.Nullable<int> AsignadoPorUsuarioID
-		{
-			get
-			{
-				return this._AsignadoPorUsuarioID;
-			}
-			set
-			{
-				if ((this._AsignadoPorUsuarioID != value))
-				{
-					if (this._Usuario.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnAsignadoPorUsuarioIDChanging(value);
-					this.SendPropertyChanging();
-					this._AsignadoPorUsuarioID = value;
-					this.SendPropertyChanged("AsignadoPorUsuarioID");
-					this.OnAsignadoPorUsuarioIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rutina_UsuarioRutina", Storage="_Rutina", ThisKey="RutinaID", OtherKey="RutinaID", IsForeignKey=true)]
-		public Rutina Rutina
-		{
-			get
-			{
-				return this._Rutina.Entity;
-			}
-			set
-			{
-				Rutina previousValue = this._Rutina.Entity;
-				if (((previousValue != value) 
-							|| (this._Rutina.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Rutina.Entity = null;
-						previousValue.UsuarioRutinas.Remove(this);
-					}
-					this._Rutina.Entity = value;
-					if ((value != null))
-					{
-						value.UsuarioRutinas.Add(this);
-						this._RutinaID = value.RutinaID;
-					}
-					else
-					{
-						this._RutinaID = default(int);
-					}
-					this.SendPropertyChanged("Rutina");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_UsuarioRutina", Storage="_Usuario", ThisKey="AsignadoPorUsuarioID", OtherKey="UsuarioID", IsForeignKey=true)]
-		public Usuario Usuario
-		{
-			get
-			{
-				return this._Usuario.Entity;
-			}
-			set
-			{
-				Usuario previousValue = this._Usuario.Entity;
-				if (((previousValue != value) 
-							|| (this._Usuario.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Usuario.Entity = null;
-						previousValue.UsuarioRutinas.Remove(this);
-					}
-					this._Usuario.Entity = value;
-					if ((value != null))
-					{
-						value.UsuarioRutinas.Add(this);
-						this._AsignadoPorUsuarioID = value.UsuarioID;
-					}
-					else
-					{
-						this._AsignadoPorUsuarioID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Usuario");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_UsuarioRutina1", Storage="_Usuario1", ThisKey="UsuarioID", OtherKey="UsuarioID", IsForeignKey=true)]
-		public Usuario Usuario1
-		{
-			get
-			{
-				return this._Usuario1.Entity;
-			}
-			set
-			{
-				Usuario previousValue = this._Usuario1.Entity;
-				if (((previousValue != value) 
-							|| (this._Usuario1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Usuario1.Entity = null;
-						previousValue.UsuarioRutinas1.Remove(this);
-					}
-					this._Usuario1.Entity = value;
-					if ((value != null))
-					{
-						value.UsuarioRutinas1.Add(this);
-						this._UsuarioID = value.UsuarioID;
-					}
-					else
-					{
-						this._UsuarioID = default(int);
-					}
-					this.SendPropertyChanged("Usuario1");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), gimnasioID, periodo, fechaInicio, fechaFin);
+			return ((ISingleResult<SP_GenerarReporteAsistenciaResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -5029,9 +4748,9 @@ namespace AccesoDatos
 		
 		private int _GimnasioID;
 		
-		private EntitySet<UsuarioRutina> _UsuarioRutinas;
-		
 		private EntitySet<DiaRutina> _DiaRutinas;
+		
+		private EntitySet<UsuarioRutina> _UsuarioRutinas;
 		
 		private EntityRef<Gimnasio> _Gimnasio;
 		
@@ -5051,8 +4770,8 @@ namespace AccesoDatos
 		
 		public Rutina()
 		{
-			this._UsuarioRutinas = new EntitySet<UsuarioRutina>(new Action<UsuarioRutina>(this.attach_UsuarioRutinas), new Action<UsuarioRutina>(this.detach_UsuarioRutinas));
 			this._DiaRutinas = new EntitySet<DiaRutina>(new Action<DiaRutina>(this.attach_DiaRutinas), new Action<DiaRutina>(this.detach_DiaRutinas));
+			this._UsuarioRutinas = new EntitySet<UsuarioRutina>(new Action<UsuarioRutina>(this.attach_UsuarioRutinas), new Action<UsuarioRutina>(this.detach_UsuarioRutinas));
 			this._Gimnasio = default(EntityRef<Gimnasio>);
 			OnCreated();
 		}
@@ -5141,19 +4860,6 @@ namespace AccesoDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rutina_UsuarioRutina", Storage="_UsuarioRutinas", ThisKey="RutinaID", OtherKey="RutinaID")]
-		public EntitySet<UsuarioRutina> UsuarioRutinas
-		{
-			get
-			{
-				return this._UsuarioRutinas;
-			}
-			set
-			{
-				this._UsuarioRutinas.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rutina_DiaRutina", Storage="_DiaRutinas", ThisKey="RutinaID", OtherKey="RutinaID")]
 		public EntitySet<DiaRutina> DiaRutinas
 		{
@@ -5164,6 +4870,19 @@ namespace AccesoDatos
 			set
 			{
 				this._DiaRutinas.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rutina_UsuarioRutina", Storage="_UsuarioRutinas", ThisKey="RutinaID", OtherKey="RutinaID")]
+		public EntitySet<UsuarioRutina> UsuarioRutinas
+		{
+			get
+			{
+				return this._UsuarioRutinas;
+			}
+			set
+			{
+				this._UsuarioRutinas.Assign(value);
 			}
 		}
 		
@@ -5221,18 +4940,6 @@ namespace AccesoDatos
 			}
 		}
 		
-		private void attach_UsuarioRutinas(UsuarioRutina entity)
-		{
-			this.SendPropertyChanging();
-			entity.Rutina = this;
-		}
-		
-		private void detach_UsuarioRutinas(UsuarioRutina entity)
-		{
-			this.SendPropertyChanging();
-			entity.Rutina = null;
-		}
-		
 		private void attach_DiaRutinas(DiaRutina entity)
 		{
 			this.SendPropertyChanging();
@@ -5240,6 +4947,18 @@ namespace AccesoDatos
 		}
 		
 		private void detach_DiaRutinas(DiaRutina entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rutina = null;
+		}
+		
+		private void attach_UsuarioRutinas(UsuarioRutina entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rutina = this;
+		}
+		
+		private void detach_UsuarioRutinas(UsuarioRutina entity)
 		{
 			this.SendPropertyChanging();
 			entity.Rutina = null;
@@ -5276,10 +4995,6 @@ namespace AccesoDatos
 		
 		private System.Nullable<System.DateTime> _FechaRegistro;
 		
-		private EntitySet<UsuarioRutina> _UsuarioRutinas;
-		
-		private EntitySet<UsuarioRutina> _UsuarioRutinas1;
-		
 		private EntitySet<AdministradorGimnasio> _AdministradorGimnasios;
 		
 		private EntitySet<Asistencia> _Asistencias;
@@ -5303,6 +5018,10 @@ namespace AccesoDatos
 		private EntitySet<UsuarioLogro> _UsuarioLogros;
 		
 		private EntitySet<UsuarioMembresia> _UsuarioMembresias;
+		
+		private EntitySet<UsuarioRutina> _UsuarioRutinas;
+		
+		private EntitySet<UsuarioRutina> _UsuarioRutinas1;
 		
 		private EntityRef<Gimnasio> _Gimnasio;
 		
@@ -5338,8 +5057,6 @@ namespace AccesoDatos
 		
 		public Usuario()
 		{
-			this._UsuarioRutinas = new EntitySet<UsuarioRutina>(new Action<UsuarioRutina>(this.attach_UsuarioRutinas), new Action<UsuarioRutina>(this.detach_UsuarioRutinas));
-			this._UsuarioRutinas1 = new EntitySet<UsuarioRutina>(new Action<UsuarioRutina>(this.attach_UsuarioRutinas1), new Action<UsuarioRutina>(this.detach_UsuarioRutinas1));
 			this._AdministradorGimnasios = new EntitySet<AdministradorGimnasio>(new Action<AdministradorGimnasio>(this.attach_AdministradorGimnasios), new Action<AdministradorGimnasio>(this.detach_AdministradorGimnasios));
 			this._Asistencias = new EntitySet<Asistencia>(new Action<Asistencia>(this.attach_Asistencias), new Action<Asistencia>(this.detach_Asistencias));
 			this._BitacoraAccionAdministradors = new EntitySet<BitacoraAccionAdministrador>(new Action<BitacoraAccionAdministrador>(this.attach_BitacoraAccionAdministradors), new Action<BitacoraAccionAdministrador>(this.detach_BitacoraAccionAdministradors));
@@ -5352,6 +5069,8 @@ namespace AccesoDatos
 			this._ProgresoRutinas = new EntitySet<ProgresoRutina>(new Action<ProgresoRutina>(this.attach_ProgresoRutinas), new Action<ProgresoRutina>(this.detach_ProgresoRutinas));
 			this._UsuarioLogros = new EntitySet<UsuarioLogro>(new Action<UsuarioLogro>(this.attach_UsuarioLogros), new Action<UsuarioLogro>(this.detach_UsuarioLogros));
 			this._UsuarioMembresias = new EntitySet<UsuarioMembresia>(new Action<UsuarioMembresia>(this.attach_UsuarioMembresias), new Action<UsuarioMembresia>(this.detach_UsuarioMembresias));
+			this._UsuarioRutinas = new EntitySet<UsuarioRutina>(new Action<UsuarioRutina>(this.attach_UsuarioRutinas), new Action<UsuarioRutina>(this.detach_UsuarioRutinas));
+			this._UsuarioRutinas1 = new EntitySet<UsuarioRutina>(new Action<UsuarioRutina>(this.attach_UsuarioRutinas1), new Action<UsuarioRutina>(this.detach_UsuarioRutinas1));
 			this._Gimnasio = default(EntityRef<Gimnasio>);
 			OnCreated();
 		}
@@ -5600,32 +5319,6 @@ namespace AccesoDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_UsuarioRutina", Storage="_UsuarioRutinas", ThisKey="UsuarioID", OtherKey="AsignadoPorUsuarioID")]
-		public EntitySet<UsuarioRutina> UsuarioRutinas
-		{
-			get
-			{
-				return this._UsuarioRutinas;
-			}
-			set
-			{
-				this._UsuarioRutinas.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_UsuarioRutina1", Storage="_UsuarioRutinas1", ThisKey="UsuarioID", OtherKey="UsuarioID")]
-		public EntitySet<UsuarioRutina> UsuarioRutinas1
-		{
-			get
-			{
-				return this._UsuarioRutinas1;
-			}
-			set
-			{
-				this._UsuarioRutinas1.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_AdministradorGimnasio", Storage="_AdministradorGimnasios", ThisKey="UsuarioID", OtherKey="UsuarioID")]
 		public EntitySet<AdministradorGimnasio> AdministradorGimnasios
 		{
@@ -5782,6 +5475,32 @@ namespace AccesoDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_UsuarioRutina", Storage="_UsuarioRutinas", ThisKey="UsuarioID", OtherKey="AsignadoPorUsuarioID")]
+		public EntitySet<UsuarioRutina> UsuarioRutinas
+		{
+			get
+			{
+				return this._UsuarioRutinas;
+			}
+			set
+			{
+				this._UsuarioRutinas.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_UsuarioRutina1", Storage="_UsuarioRutinas1", ThisKey="UsuarioID", OtherKey="UsuarioID")]
+		public EntitySet<UsuarioRutina> UsuarioRutinas1
+		{
+			get
+			{
+				return this._UsuarioRutinas1;
+			}
+			set
+			{
+				this._UsuarioRutinas1.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Gimnasio_Usuario", Storage="_Gimnasio", ThisKey="GimnasioID", OtherKey="GimnasioID", IsForeignKey=true)]
 		public Gimnasio Gimnasio
 		{
@@ -5834,30 +5553,6 @@ namespace AccesoDatos
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_UsuarioRutinas(UsuarioRutina entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario = this;
-		}
-		
-		private void detach_UsuarioRutinas(UsuarioRutina entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario = null;
-		}
-		
-		private void attach_UsuarioRutinas1(UsuarioRutina entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario1 = this;
-		}
-		
-		private void detach_UsuarioRutinas1(UsuarioRutina entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario1 = null;
 		}
 		
 		private void attach_AdministradorGimnasios(AdministradorGimnasio entity)
@@ -6002,6 +5697,30 @@ namespace AccesoDatos
 		{
 			this.SendPropertyChanging();
 			entity.Usuario = null;
+		}
+		
+		private void attach_UsuarioRutinas(UsuarioRutina entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = this;
+		}
+		
+		private void detach_UsuarioRutinas(UsuarioRutina entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = null;
+		}
+		
+		private void attach_UsuarioRutinas1(UsuarioRutina entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario1 = this;
+		}
+		
+		private void detach_UsuarioRutinas1(UsuarioRutina entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario1 = null;
 		}
 	}
 	
@@ -6485,6 +6204,457 @@ namespace AccesoDatos
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UsuarioRutina")]
+	public partial class UsuarioRutina : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UsuarioRutinaID;
+		
+		private int _UsuarioID;
+		
+		private int _RutinaID;
+		
+		private System.Nullable<System.DateTime> _FechaAsignacion;
+		
+		private System.Nullable<int> _AsignadoPorUsuarioID;
+		
+		private EntityRef<Usuario> _Usuario;
+		
+		private EntityRef<Rutina> _Rutina;
+		
+		private EntityRef<Usuario> _Usuario1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUsuarioRutinaIDChanging(int value);
+    partial void OnUsuarioRutinaIDChanged();
+    partial void OnUsuarioIDChanging(int value);
+    partial void OnUsuarioIDChanged();
+    partial void OnRutinaIDChanging(int value);
+    partial void OnRutinaIDChanged();
+    partial void OnFechaAsignacionChanging(System.Nullable<System.DateTime> value);
+    partial void OnFechaAsignacionChanged();
+    partial void OnAsignadoPorUsuarioIDChanging(System.Nullable<int> value);
+    partial void OnAsignadoPorUsuarioIDChanged();
+    #endregion
+		
+		public UsuarioRutina()
+		{
+			this._Usuario = default(EntityRef<Usuario>);
+			this._Rutina = default(EntityRef<Rutina>);
+			this._Usuario1 = default(EntityRef<Usuario>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioRutinaID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int UsuarioRutinaID
+		{
+			get
+			{
+				return this._UsuarioRutinaID;
+			}
+			set
+			{
+				if ((this._UsuarioRutinaID != value))
+				{
+					this.OnUsuarioRutinaIDChanging(value);
+					this.SendPropertyChanging();
+					this._UsuarioRutinaID = value;
+					this.SendPropertyChanged("UsuarioRutinaID");
+					this.OnUsuarioRutinaIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioID", DbType="Int NOT NULL")]
+		public int UsuarioID
+		{
+			get
+			{
+				return this._UsuarioID;
+			}
+			set
+			{
+				if ((this._UsuarioID != value))
+				{
+					if (this._Usuario1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUsuarioIDChanging(value);
+					this.SendPropertyChanging();
+					this._UsuarioID = value;
+					this.SendPropertyChanged("UsuarioID");
+					this.OnUsuarioIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RutinaID", DbType="Int NOT NULL")]
+		public int RutinaID
+		{
+			get
+			{
+				return this._RutinaID;
+			}
+			set
+			{
+				if ((this._RutinaID != value))
+				{
+					if (this._Rutina.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnRutinaIDChanging(value);
+					this.SendPropertyChanging();
+					this._RutinaID = value;
+					this.SendPropertyChanged("RutinaID");
+					this.OnRutinaIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaAsignacion", DbType="Date")]
+		public System.Nullable<System.DateTime> FechaAsignacion
+		{
+			get
+			{
+				return this._FechaAsignacion;
+			}
+			set
+			{
+				if ((this._FechaAsignacion != value))
+				{
+					this.OnFechaAsignacionChanging(value);
+					this.SendPropertyChanging();
+					this._FechaAsignacion = value;
+					this.SendPropertyChanged("FechaAsignacion");
+					this.OnFechaAsignacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AsignadoPorUsuarioID", DbType="Int")]
+		public System.Nullable<int> AsignadoPorUsuarioID
+		{
+			get
+			{
+				return this._AsignadoPorUsuarioID;
+			}
+			set
+			{
+				if ((this._AsignadoPorUsuarioID != value))
+				{
+					if (this._Usuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAsignadoPorUsuarioIDChanging(value);
+					this.SendPropertyChanging();
+					this._AsignadoPorUsuarioID = value;
+					this.SendPropertyChanged("AsignadoPorUsuarioID");
+					this.OnAsignadoPorUsuarioIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_UsuarioRutina", Storage="_Usuario", ThisKey="AsignadoPorUsuarioID", OtherKey="UsuarioID", IsForeignKey=true)]
+		public Usuario Usuario
+		{
+			get
+			{
+				return this._Usuario.Entity;
+			}
+			set
+			{
+				Usuario previousValue = this._Usuario.Entity;
+				if (((previousValue != value) 
+							|| (this._Usuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Usuario.Entity = null;
+						previousValue.UsuarioRutinas.Remove(this);
+					}
+					this._Usuario.Entity = value;
+					if ((value != null))
+					{
+						value.UsuarioRutinas.Add(this);
+						this._AsignadoPorUsuarioID = value.UsuarioID;
+					}
+					else
+					{
+						this._AsignadoPorUsuarioID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Usuario");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rutina_UsuarioRutina", Storage="_Rutina", ThisKey="RutinaID", OtherKey="RutinaID", IsForeignKey=true)]
+		public Rutina Rutina
+		{
+			get
+			{
+				return this._Rutina.Entity;
+			}
+			set
+			{
+				Rutina previousValue = this._Rutina.Entity;
+				if (((previousValue != value) 
+							|| (this._Rutina.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Rutina.Entity = null;
+						previousValue.UsuarioRutinas.Remove(this);
+					}
+					this._Rutina.Entity = value;
+					if ((value != null))
+					{
+						value.UsuarioRutinas.Add(this);
+						this._RutinaID = value.RutinaID;
+					}
+					else
+					{
+						this._RutinaID = default(int);
+					}
+					this.SendPropertyChanged("Rutina");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_UsuarioRutina1", Storage="_Usuario1", ThisKey="UsuarioID", OtherKey="UsuarioID", IsForeignKey=true)]
+		public Usuario Usuario1
+		{
+			get
+			{
+				return this._Usuario1.Entity;
+			}
+			set
+			{
+				Usuario previousValue = this._Usuario1.Entity;
+				if (((previousValue != value) 
+							|| (this._Usuario1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Usuario1.Entity = null;
+						previousValue.UsuarioRutinas1.Remove(this);
+					}
+					this._Usuario1.Entity = value;
+					if ((value != null))
+					{
+						value.UsuarioRutinas1.Add(this);
+						this._UsuarioID = value.UsuarioID;
+					}
+					else
+					{
+						this._UsuarioID = default(int);
+					}
+					this.SendPropertyChanged("Usuario1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	public partial class SP_UpdateUsuarioResult
+	{
+		
+		private int _UsuarioID;
+		
+		private string _Cedula;
+		
+		private string _Nombre;
+		
+		private string _Apellido;
+		
+		private string _Email;
+		
+		private string _Telefono;
+		
+		private string _Rol;
+		
+		private string _Estado;
+		
+		private System.Nullable<System.DateTime> _FechaRegistro;
+		
+		public SP_UpdateUsuarioResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioID", DbType="Int NOT NULL")]
+		public int UsuarioID
+		{
+			get
+			{
+				return this._UsuarioID;
+			}
+			set
+			{
+				if ((this._UsuarioID != value))
+				{
+					this._UsuarioID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cedula", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string Cedula
+		{
+			get
+			{
+				return this._Cedula;
+			}
+			set
+			{
+				if ((this._Cedula != value))
+				{
+					this._Cedula = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Nombre
+		{
+			get
+			{
+				return this._Nombre;
+			}
+			set
+			{
+				if ((this._Nombre != value))
+				{
+					this._Nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Apellido", DbType="NVarChar(100)")]
+		public string Apellido
+		{
+			get
+			{
+				return this._Apellido;
+			}
+			set
+			{
+				if ((this._Apellido != value))
+				{
+					this._Apellido = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telefono", DbType="NVarChar(20)")]
+		public string Telefono
+		{
+			get
+			{
+				return this._Telefono;
+			}
+			set
+			{
+				if ((this._Telefono != value))
+				{
+					this._Telefono = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rol", DbType="NVarChar(20)")]
+		public string Rol
+		{
+			get
+			{
+				return this._Rol;
+			}
+			set
+			{
+				if ((this._Rol != value))
+				{
+					this._Rol = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="NVarChar(20)")]
+		public string Estado
+		{
+			get
+			{
+				return this._Estado;
+			}
+			set
+			{
+				if ((this._Estado != value))
+				{
+					this._Estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaRegistro", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FechaRegistro
+		{
+			get
+			{
+				return this._FechaRegistro;
+			}
+			set
+			{
+				if ((this._FechaRegistro != value))
+				{
+					this._FechaRegistro = value;
+				}
+			}
+		}
+	}
+	
 	public partial class SP_ActualizarEstadoUsuarioResult
 	{
 		
@@ -6756,176 +6926,6 @@ namespace AccesoDatos
 				if ((this._Mensaje != value))
 				{
 					this._Mensaje = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_GenerarReporteAsistenciaResult
-	{
-		
-		private int _ReporteID;
-		
-		private string _NombreGimnasio;
-		
-		private System.Nullable<System.DateTime> _FechaGeneracion;
-		
-		private string _Periodo;
-		
-		private string _RangoFechas;
-		
-		private System.Nullable<int> _TotalAsistencias;
-		
-		private System.Nullable<int> _UsuariosUnicos;
-		
-		private System.Nullable<double> _PromedioAsistenciasDiarias;
-		
-		private System.Nullable<double> _DuracionPromedioMinutos;
-		
-		public SP_GenerarReporteAsistenciaResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReporteID", DbType="Int NOT NULL")]
-		public int ReporteID
-		{
-			get
-			{
-				return this._ReporteID;
-			}
-			set
-			{
-				if ((this._ReporteID != value))
-				{
-					this._ReporteID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NombreGimnasio", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string NombreGimnasio
-		{
-			get
-			{
-				return this._NombreGimnasio;
-			}
-			set
-			{
-				if ((this._NombreGimnasio != value))
-				{
-					this._NombreGimnasio = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaGeneracion", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FechaGeneracion
-		{
-			get
-			{
-				return this._FechaGeneracion;
-			}
-			set
-			{
-				if ((this._FechaGeneracion != value))
-				{
-					this._FechaGeneracion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Periodo", DbType="NVarChar(20)")]
-		public string Periodo
-		{
-			get
-			{
-				return this._Periodo;
-			}
-			set
-			{
-				if ((this._Periodo != value))
-				{
-					this._Periodo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RangoFechas", DbType="NVarChar(23)")]
-		public string RangoFechas
-		{
-			get
-			{
-				return this._RangoFechas;
-			}
-			set
-			{
-				if ((this._RangoFechas != value))
-				{
-					this._RangoFechas = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAsistencias", DbType="Int")]
-		public System.Nullable<int> TotalAsistencias
-		{
-			get
-			{
-				return this._TotalAsistencias;
-			}
-			set
-			{
-				if ((this._TotalAsistencias != value))
-				{
-					this._TotalAsistencias = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuariosUnicos", DbType="Int")]
-		public System.Nullable<int> UsuariosUnicos
-		{
-			get
-			{
-				return this._UsuariosUnicos;
-			}
-			set
-			{
-				if ((this._UsuariosUnicos != value))
-				{
-					this._UsuariosUnicos = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PromedioAsistenciasDiarias", DbType="Float")]
-		public System.Nullable<double> PromedioAsistenciasDiarias
-		{
-			get
-			{
-				return this._PromedioAsistenciasDiarias;
-			}
-			set
-			{
-				if ((this._PromedioAsistenciasDiarias != value))
-				{
-					this._PromedioAsistenciasDiarias = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DuracionPromedioMinutos", DbType="Float")]
-		public System.Nullable<double> DuracionPromedioMinutos
-		{
-			get
-			{
-				return this._DuracionPromedioMinutos;
-			}
-			set
-			{
-				if ((this._DuracionPromedioMinutos != value))
-				{
-					this._DuracionPromedioMinutos = value;
 				}
 			}
 		}
@@ -7351,6 +7351,158 @@ namespace AccesoDatos
 		}
 	}
 	
+	public partial class SP_GetPagosPorUsuarioResult
+	{
+		
+		private int _PagoID;
+		
+		private decimal _Monto;
+		
+		private System.Nullable<System.DateTime> _FechaPago;
+		
+		private string _MetodoPago;
+		
+		private string _ComprobanteRuta;
+		
+		private string _Estado;
+		
+		private string _EstadoDescripcion;
+		
+		private string _MembresiaAsociada;
+		
+		public SP_GetPagosPorUsuarioResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PagoID", DbType="Int NOT NULL")]
+		public int PagoID
+		{
+			get
+			{
+				return this._PagoID;
+			}
+			set
+			{
+				if ((this._PagoID != value))
+				{
+					this._PagoID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Monto", DbType="Decimal(10,2) NOT NULL")]
+		public decimal Monto
+		{
+			get
+			{
+				return this._Monto;
+			}
+			set
+			{
+				if ((this._Monto != value))
+				{
+					this._Monto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaPago", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FechaPago
+		{
+			get
+			{
+				return this._FechaPago;
+			}
+			set
+			{
+				if ((this._FechaPago != value))
+				{
+					this._FechaPago = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MetodoPago", DbType="NVarChar(20)")]
+		public string MetodoPago
+		{
+			get
+			{
+				return this._MetodoPago;
+			}
+			set
+			{
+				if ((this._MetodoPago != value))
+				{
+					this._MetodoPago = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ComprobanteRuta", DbType="NVarChar(200)")]
+		public string ComprobanteRuta
+		{
+			get
+			{
+				return this._ComprobanteRuta;
+			}
+			set
+			{
+				if ((this._ComprobanteRuta != value))
+				{
+					this._ComprobanteRuta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="NVarChar(20)")]
+		public string Estado
+		{
+			get
+			{
+				return this._Estado;
+			}
+			set
+			{
+				if ((this._Estado != value))
+				{
+					this._Estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EstadoDescripcion", DbType="VarChar(25)")]
+		public string EstadoDescripcion
+		{
+			get
+			{
+				return this._EstadoDescripcion;
+			}
+			set
+			{
+				if ((this._EstadoDescripcion != value))
+				{
+					this._EstadoDescripcion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MembresiaAsociada", DbType="NVarChar(68)")]
+		public string MembresiaAsociada
+		{
+			get
+			{
+				return this._MembresiaAsociada;
+			}
+			set
+			{
+				if ((this._MembresiaAsociada != value))
+				{
+					this._MembresiaAsociada = value;
+				}
+			}
+		}
+	}
+	
 	public partial class SP_GetUsuarioPorIDResult
 	{
 		
@@ -7552,158 +7704,6 @@ namespace AccesoDatos
 				if ((this._FechaRegistro != value))
 				{
 					this._FechaRegistro = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_GetPagosPorUsuarioResult
-	{
-		
-		private int _PagoID;
-		
-		private decimal _Monto;
-		
-		private System.Nullable<System.DateTime> _FechaPago;
-		
-		private string _MetodoPago;
-		
-		private string _ComprobanteRuta;
-		
-		private string _Estado;
-		
-		private string _EstadoDescripcion;
-		
-		private string _MembresiaAsociada;
-		
-		public SP_GetPagosPorUsuarioResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PagoID", DbType="Int NOT NULL")]
-		public int PagoID
-		{
-			get
-			{
-				return this._PagoID;
-			}
-			set
-			{
-				if ((this._PagoID != value))
-				{
-					this._PagoID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Monto", DbType="Decimal(10,2) NOT NULL")]
-		public decimal Monto
-		{
-			get
-			{
-				return this._Monto;
-			}
-			set
-			{
-				if ((this._Monto != value))
-				{
-					this._Monto = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaPago", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FechaPago
-		{
-			get
-			{
-				return this._FechaPago;
-			}
-			set
-			{
-				if ((this._FechaPago != value))
-				{
-					this._FechaPago = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MetodoPago", DbType="NVarChar(20)")]
-		public string MetodoPago
-		{
-			get
-			{
-				return this._MetodoPago;
-			}
-			set
-			{
-				if ((this._MetodoPago != value))
-				{
-					this._MetodoPago = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ComprobanteRuta", DbType="NVarChar(200)")]
-		public string ComprobanteRuta
-		{
-			get
-			{
-				return this._ComprobanteRuta;
-			}
-			set
-			{
-				if ((this._ComprobanteRuta != value))
-				{
-					this._ComprobanteRuta = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="NVarChar(20)")]
-		public string Estado
-		{
-			get
-			{
-				return this._Estado;
-			}
-			set
-			{
-				if ((this._Estado != value))
-				{
-					this._Estado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EstadoDescripcion", DbType="VarChar(25)")]
-		public string EstadoDescripcion
-		{
-			get
-			{
-				return this._EstadoDescripcion;
-			}
-			set
-			{
-				if ((this._EstadoDescripcion != value))
-				{
-					this._EstadoDescripcion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MembresiaAsociada", DbType="NVarChar(68)")]
-		public string MembresiaAsociada
-		{
-			get
-			{
-				return this._MembresiaAsociada;
-			}
-			set
-			{
-				if ((this._MembresiaAsociada != value))
-				{
-					this._MembresiaAsociada = value;
 				}
 			}
 		}
@@ -8031,86 +8031,6 @@ namespace AccesoDatos
 		}
 	}
 	
-	public partial class SP_RegistrarAsistenciaResult
-	{
-		
-		private string _Mensaje;
-		
-		private System.Nullable<System.DateTime> _FechaHoraEntrada;
-		
-		private System.Nullable<System.DateTime> _FechaHoraSalida;
-		
-		private System.Nullable<int> _DuracionMinutos;
-		
-		public SP_RegistrarAsistenciaResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mensaje", DbType="VarChar(31) NOT NULL", CanBeNull=false)]
-		public string Mensaje
-		{
-			get
-			{
-				return this._Mensaje;
-			}
-			set
-			{
-				if ((this._Mensaje != value))
-				{
-					this._Mensaje = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaHoraEntrada", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FechaHoraEntrada
-		{
-			get
-			{
-				return this._FechaHoraEntrada;
-			}
-			set
-			{
-				if ((this._FechaHoraEntrada != value))
-				{
-					this._FechaHoraEntrada = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaHoraSalida", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FechaHoraSalida
-		{
-			get
-			{
-				return this._FechaHoraSalida;
-			}
-			set
-			{
-				if ((this._FechaHoraSalida != value))
-				{
-					this._FechaHoraSalida = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DuracionMinutos", DbType="Int")]
-		public System.Nullable<int> DuracionMinutos
-		{
-			get
-			{
-				return this._DuracionMinutos;
-			}
-			set
-			{
-				if ((this._DuracionMinutos != value))
-				{
-					this._DuracionMinutos = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SP_LoginUsuarioResult
 	{
 		
@@ -8276,6 +8196,86 @@ namespace AccesoDatos
 				if ((this._Token != value))
 				{
 					this._Token = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_RegistrarAsistenciaResult
+	{
+		
+		private string _Mensaje;
+		
+		private System.Nullable<System.DateTime> _FechaHoraEntrada;
+		
+		private System.Nullable<System.DateTime> _FechaHoraSalida;
+		
+		private System.Nullable<int> _DuracionMinutos;
+		
+		public SP_RegistrarAsistenciaResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mensaje", DbType="VarChar(31) NOT NULL", CanBeNull=false)]
+		public string Mensaje
+		{
+			get
+			{
+				return this._Mensaje;
+			}
+			set
+			{
+				if ((this._Mensaje != value))
+				{
+					this._Mensaje = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaHoraEntrada", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FechaHoraEntrada
+		{
+			get
+			{
+				return this._FechaHoraEntrada;
+			}
+			set
+			{
+				if ((this._FechaHoraEntrada != value))
+				{
+					this._FechaHoraEntrada = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaHoraSalida", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FechaHoraSalida
+		{
+			get
+			{
+				return this._FechaHoraSalida;
+			}
+			set
+			{
+				if ((this._FechaHoraSalida != value))
+				{
+					this._FechaHoraSalida = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DuracionMinutos", DbType="Int")]
+		public System.Nullable<int> DuracionMinutos
+		{
+			get
+			{
+				return this._DuracionMinutos;
+			}
+			set
+			{
+				if ((this._DuracionMinutos != value))
+				{
+					this._DuracionMinutos = value;
 				}
 			}
 		}
@@ -8611,171 +8611,189 @@ namespace AccesoDatos
 		}
 	}
 	
-	public partial class SP_UpdateUsuarioResult
+	public partial class SP_GenerarReporteAsistenciaResult
 	{
 		
-		private int _UsuarioID;
+		private int _ReporteID;
 		
-		private string _Cedula;
+		private string _NombreGimnasio;
 		
-		private string _Nombre;
+		private System.Nullable<System.DateTime> _FechaGeneracion;
 		
-		private string _Apellido;
+		private string _Periodo;
 		
-		private string _Email;
+		private string _RangoFechas;
 		
-		private string _Telefono;
+		private System.Nullable<int> _TotalAsistencias;
 		
-		private string _Rol;
+		private System.Nullable<int> _UsuariosUnicos;
 		
-		private string _Estado;
+		private System.Nullable<double> _PromedioAsistenciasDiarias;
 		
-		private System.Nullable<System.DateTime> _FechaRegistro;
+		private System.Nullable<double> _DuracionPromedioMinutos;
 		
-		public SP_UpdateUsuarioResult()
+		private string _JsonCompleto;
+		
+		public SP_GenerarReporteAsistenciaResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioID", DbType="Int NOT NULL")]
-		public int UsuarioID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReporteID", DbType="Int NOT NULL")]
+		public int ReporteID
 		{
 			get
 			{
-				return this._UsuarioID;
+				return this._ReporteID;
 			}
 			set
 			{
-				if ((this._UsuarioID != value))
+				if ((this._ReporteID != value))
 				{
-					this._UsuarioID = value;
+					this._ReporteID = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cedula", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
-		public string Cedula
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NombreGimnasio", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string NombreGimnasio
 		{
 			get
 			{
-				return this._Cedula;
+				return this._NombreGimnasio;
 			}
 			set
 			{
-				if ((this._Cedula != value))
+				if ((this._NombreGimnasio != value))
 				{
-					this._Cedula = value;
+					this._NombreGimnasio = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Nombre
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaGeneracion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FechaGeneracion
 		{
 			get
 			{
-				return this._Nombre;
+				return this._FechaGeneracion;
 			}
 			set
 			{
-				if ((this._Nombre != value))
+				if ((this._FechaGeneracion != value))
 				{
-					this._Nombre = value;
+					this._FechaGeneracion = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Apellido", DbType="NVarChar(100)")]
-		public string Apellido
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Periodo", DbType="NVarChar(20)")]
+		public string Periodo
 		{
 			get
 			{
-				return this._Apellido;
+				return this._Periodo;
 			}
 			set
 			{
-				if ((this._Apellido != value))
+				if ((this._Periodo != value))
 				{
-					this._Apellido = value;
+					this._Periodo = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Email
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RangoFechas", DbType="NVarChar(23)")]
+		public string RangoFechas
 		{
 			get
 			{
-				return this._Email;
+				return this._RangoFechas;
 			}
 			set
 			{
-				if ((this._Email != value))
+				if ((this._RangoFechas != value))
 				{
-					this._Email = value;
+					this._RangoFechas = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telefono", DbType="NVarChar(20)")]
-		public string Telefono
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAsistencias", DbType="Int")]
+		public System.Nullable<int> TotalAsistencias
 		{
 			get
 			{
-				return this._Telefono;
+				return this._TotalAsistencias;
 			}
 			set
 			{
-				if ((this._Telefono != value))
+				if ((this._TotalAsistencias != value))
 				{
-					this._Telefono = value;
+					this._TotalAsistencias = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rol", DbType="NVarChar(20)")]
-		public string Rol
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuariosUnicos", DbType="Int")]
+		public System.Nullable<int> UsuariosUnicos
 		{
 			get
 			{
-				return this._Rol;
+				return this._UsuariosUnicos;
 			}
 			set
 			{
-				if ((this._Rol != value))
+				if ((this._UsuariosUnicos != value))
 				{
-					this._Rol = value;
+					this._UsuariosUnicos = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="NVarChar(20)")]
-		public string Estado
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PromedioAsistenciasDiarias", DbType="Float")]
+		public System.Nullable<double> PromedioAsistenciasDiarias
 		{
 			get
 			{
-				return this._Estado;
+				return this._PromedioAsistenciasDiarias;
 			}
 			set
 			{
-				if ((this._Estado != value))
+				if ((this._PromedioAsistenciasDiarias != value))
 				{
-					this._Estado = value;
+					this._PromedioAsistenciasDiarias = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaRegistro", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FechaRegistro
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DuracionPromedioMinutos", DbType="Float")]
+		public System.Nullable<double> DuracionPromedioMinutos
 		{
 			get
 			{
-				return this._FechaRegistro;
+				return this._DuracionPromedioMinutos;
 			}
 			set
 			{
-				if ((this._FechaRegistro != value))
+				if ((this._DuracionPromedioMinutos != value))
 				{
-					this._FechaRegistro = value;
+					this._DuracionPromedioMinutos = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JsonCompleto", DbType="NVarChar(MAX)")]
+		public string JsonCompleto
+		{
+			get
+			{
+				return this._JsonCompleto;
+			}
+			set
+			{
+				if ((this._JsonCompleto != value))
+				{
+					this._JsonCompleto = value;
 				}
 			}
 		}

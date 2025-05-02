@@ -265,33 +265,11 @@ namespace BackEnd.Logica.Modulo_Logica
                                         TotalAsistencias = reader.GetInt32(reader.GetOrdinal("TotalAsistencias")),
                                         UsuariosUnicos = reader.GetInt32(reader.GetOrdinal("UsuariosUnicos")),
                                         PromedioAsistenciasDiarias = reader.GetDouble(reader.GetOrdinal("PromedioAsistenciasDiarias")),
-                                        DuracionPromedioMinutos = reader.GetDouble(reader.GetOrdinal("DuracionPromedioMinutos"))
+                                        DuracionPromedioMinutos = reader.GetDouble(reader.GetOrdinal("DuracionPromedioMinutos")),
+                                        DatosJSON = reader.IsDBNull(reader.GetOrdinal("JsonCompleto")) ?
+                                    null : reader.GetString(reader.GetOrdinal("JsonCompleto"))
                                     };
-                                }
-
-                                // Leer el segundo conjunto de resultados (muestra de los datos JSON)
-                                reader.NextResult();
-                                if (reader.Read())
-                                {
-                                    // Este es solo una muestra truncada del JSON, si quieres el JSON completo
-                                    // deberías recuperarlo de la base de datos con otra consulta
-                                    string datosMuestra = reader.GetString(reader.GetOrdinal("DatosMuestra"));
-
-                                    // Para obtener el JSON completo, harías otra consulta:
-                                    if (res.Reporte != null)
-                                    {
-                                        using (var cmdJson = new SqlCommand(
-                                            "SELECT Datos FROM ReporteAsistencia WHERE ReporteID = @ReporteID",
-                                            connection))
-                                        {
-                                            // Cerrar el primer reader antes de ejecutar otra consulta
-                                            reader.Close();
-
-                                            cmdJson.Parameters.AddWithValue("@ReporteID", res.Reporte.ReporteID);
-                                            res.Reporte.DatosJSON = (string)cmdJson.ExecuteScalar();
-                                        }
-                                    }
-                                }
+                                }                            
                             }
                         }
                     }
