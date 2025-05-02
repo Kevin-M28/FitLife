@@ -8,5 +8,6 @@ namespace BackEnd.Response.Modulo_Usuario
 {
     public class ResCambiarContrasenna : ResBase
     {
+        public string Mensaje { get; set; }
     }
 }

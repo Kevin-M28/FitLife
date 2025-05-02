@@ -66,7 +66,7 @@ namespace Fitlife.Controllers
         [Route("modify_user")]
         public ResActualizarUsuario modificarUsuario(ReqActualizarUsuario req)
         {
-            return new LogicaUsuario().AtualizarUsuario(req);
+            return new LogicaUsuario().ActualizarUsuario(req);
         }
 
     }

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Data.SqlClient;
 using AccesoDatos;
-using BackEnd.Entidades;
 using BackEnd.Enum;
 using BackEnd.Request.Modulo_Usuario;
 using BackEnd.Response.Modulo_Usuario;
+using BackEnd.Entidades;
+using Usuario = BackEnd.Entidades.Usuario;
 
 namespace BackEnd.Logica.Modulo_Usuario
 {
@@ -33,7 +35,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                 }
                 else
                 {
-                    if (string.IsNullOrEmpty(req.usuario.nombre))
+                    if (string.IsNullOrEmpty(req.usuario.Nombre))
                     {
                         res.error.Add(new Error
                         {
@@ -42,7 +44,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                     }
 
-                    if (string.IsNullOrEmpty(req.usuario.apellidos))
+                    if (string.IsNullOrEmpty(req.usuario.Apellido))
                     {
                         res.error.Add(new Error
                         {
@@ -51,7 +53,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                     }
 
-                    if (string.IsNullOrEmpty(req.usuario.cedula.ToString()))
+                    if (string.IsNullOrEmpty(req.usuario.Cedula))
                     {
                         res.error.Add(new Error
                         {
@@ -126,13 +128,14 @@ namespace BackEnd.Logica.Modulo_Usuario
                 {
                     var resultado = linq.SP_RegistrarUsuario(
                         req.usuario.GimnasioID,
-                        req.usuario.cedula.ToString(),
-                        req.usuario.nombre + " " + req.usuario.apellidos,
+                        req.usuario.Cedula,
+                        req.usuario.Nombre,
+                        req.usuario.Apellido,
                         req.usuario.correoElectronico,
                         passHash,
                         req.usuario.telefono,
-                        "usuario",  
-                        "activo",   
+                        "usuario",
+                        "activo",
                         llave
                     ).FirstOrDefault();
 
@@ -183,8 +186,7 @@ namespace BackEnd.Logica.Modulo_Usuario
 
                 using (var db = new FitlifeDataContext())
                 {
-
-                    var llaveUsuario = db.Usuario
+                    var llaveUsuario = db.Usuarios
                         .Where(u => u.Email == req.Email)
                         .Select(u => u.Llave)
                         .FirstOrDefault();
@@ -199,7 +201,6 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                         return res;
                     }
-
 
                     string passwordHasheado = HashearPassword(req.Password, llaveUsuario);
 
@@ -219,9 +220,10 @@ namespace BackEnd.Logica.Modulo_Usuario
                     res.usuario = new BackEnd.Entidades.Usuario
                     {
                         Id = (long)(resultado.UsuarioID ?? 0),
-                        nombre = resultado.Nombre,
+                        Nombre = resultado.Nombre,
+                        Apellido = resultado.Apellido,
                         correoElectronico = resultado.Email,
-                        rol = System.Enum.TryParse(resultado.Rol, out EnumRolUsuario rolParsed) ? rolParsed : EnumRolUsuario.usuario,
+                        rol = resultado.Rol == "admin" ? EnumRolUsuario.admin : EnumRolUsuario.usuario,
                         GimnasioID = resultado.GimnasioID ?? 0,
 
                         membresiaActiva = new BackEnd.Entidades.UsuarioMembresia
@@ -232,7 +234,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                         estado = (resultado.EstaEnMorosidad ?? false) ? EnumEstadoUsuario.suspendido : EnumEstadoUsuario.activo
                     };
 
-
+                    res.Token = resultado.Token;
                     res.resultado = true;
                 }
             }
@@ -309,8 +311,7 @@ namespace BackEnd.Logica.Modulo_Usuario
 
                 using (FitlifeDataContext linq = new FitlifeDataContext())
                 {
-                   
-                    var usuario = linq.Usuario.FirstOrDefault(u => u.UsuarioID == req.UsuarioID);
+                    var usuario = linq.Usuarios.FirstOrDefault(u => u.UsuarioID == req.UsuarioID);
                     if (usuario == null)
                     {
                         res.error.Add(new Error
@@ -323,19 +324,29 @@ namespace BackEnd.Logica.Modulo_Usuario
 
                     string hashActual = HashearPassword(req.passwordActual, usuario.Llave);
 
+                    if (hashActual != usuario.ContrasennaHash)
+                    {
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.credencialesInvalidas,
+                            Message = "La contraseña actual es incorrecta"
+                        });
+                        return res;
+                    }
 
                     string nuevaLlave = Guid.NewGuid().ToString("N");
                     string nuevoHash = HashearPassword(req.nuevaPassword, nuevaLlave);
 
                     var resultado = linq.SP_CambiarPassword(
                         req.UsuarioID,
-                        nuevaLlave, 
-                        nuevoHash    
+                        nuevaLlave,
+                        nuevoHash
                     ).FirstOrDefault();
 
                     if (resultado != null && resultado.Mensaje == "Contraseña actualizada exitosamente")
                     {
                         res.resultado = true;
+                        res.Mensaje = resultado.Mensaje;
                     }
                     else
                     {
@@ -349,7 +360,7 @@ namespace BackEnd.Logica.Modulo_Usuario
             }
             catch (Exception ex)
             {
-                res.resultado=false;
+                res.resultado = false;
                 res.error.Add(new Error
                 {
                     ErrorCode = (int)EnumErrores.excepcionLogica,
@@ -409,6 +420,18 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                         return res;
                     }
+
+                    res.Mensaje = resultado.Mensaje;
+                    res.usuario = new Usuario
+                    {
+                        Id = resultado.UsuarioID,
+                        Nombre = resultado.Nombre,
+                        Apellido = resultado.Apellido,
+                        correoElectronico = resultado.Email,
+                        rol = resultado.Rol == "admin" ? EnumRolUsuario.admin : EnumRolUsuario.usuario,
+                        estado = resultado.Estado == "activo" ? EnumEstadoUsuario.activo :
+                                resultado.Estado == "suspendido" ? EnumEstadoUsuario.suspendido : EnumEstadoUsuario.inactivo
+                    };
                     res.resultado = true;
                 }
             }
@@ -422,6 +445,7 @@ namespace BackEnd.Logica.Modulo_Usuario
             }
             return res;
         }
+
         public ResObtenerUsuario ObtenerUsuarioId(ReqObtenerUsuario req)
         {
             ResObtenerUsuario res = new ResObtenerUsuario();
@@ -467,16 +491,16 @@ namespace BackEnd.Logica.Modulo_Usuario
                     res.usuario = new Entidades.Usuario
                     {
                         Id = usuario.UsuarioID,
-                        cedula = usuario.Cedula,
-                        nombre = usuario.Nombre,
+                        Cedula = usuario.Cedula,
+                        Nombre = usuario.Nombre,
+                        Apellido = usuario.Apellido,
                         correoElectronico = usuario.Email,
                         telefono = usuario.Telefono,
-                        rol = System.Enum.TryParse(usuario.Rol?.ToString(), out EnumRolUsuario rolParsed) ? rolParsed : EnumRolUsuario.usuario,
-                        estado = System.Enum.TryParse(usuario.Estado?.ToString(), out EnumEstadoUsuario estadoParsed) ? estadoParsed : EnumEstadoUsuario.inactivo,
+                        rol = usuario.Rol == "admin" ? EnumRolUsuario.admin : EnumRolUsuario.usuario,
+                        estado = usuario.Estado == "activo" ? EnumEstadoUsuario.activo :
+                                usuario.Estado == "suspendido" ? EnumEstadoUsuario.suspendido : EnumEstadoUsuario.inactivo,
                         GimnasioID = usuario.GimnasioID,
-                        nombreGimnasio = usuario.NombreGimnasio,
-
-                        // No incluimos el resto de los datos que vienen en los otros conjuntos de resultados
+                        nombreGimnasio = usuario.NombreGimnasio
                     };
 
                     res.resultado = true;
@@ -493,7 +517,7 @@ namespace BackEnd.Logica.Modulo_Usuario
             return res;
         }
 
-        public ResActualizarUsuario AtualizarUsuario(ReqActualizarUsuario req)
+        public ResActualizarUsuario ActualizarUsuario(ReqActualizarUsuario req)
         {
             ResActualizarUsuario res = new ResActualizarUsuario();
             res.error = new List<Error>();
@@ -520,7 +544,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                 }
                 using (FitlifeDataContext linq = new FitlifeDataContext())
                 {
-                    var resultado = linq.SP_UpdateUsuario(req.usuarioID, req.nombre, req.email, req.telefono).FirstOrDefault();
+                    var resultado = linq.SP_UpdateUsuario(req.usuarioID, req.nombre, req.apellido, req.email, req.telefono).FirstOrDefault();
                     if (resultado == null || resultado.UsuarioID <= 0)
                     {
                         res.error.Add(new Error
@@ -530,6 +554,19 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                         return res;
                     }
+
+                    res.usuario = new Usuario
+                    {
+                        Id = resultado.UsuarioID,
+                        Cedula = resultado.Cedula,
+                        Nombre = resultado.Nombre,
+                        Apellido = resultado.Apellido,
+                        correoElectronico = resultado.Email,
+                        telefono = resultado.Telefono,
+                        rol = resultado.Rol == "admin" ? EnumRolUsuario.admin : EnumRolUsuario.usuario,
+                        estado = resultado.Estado == "activo" ? EnumEstadoUsuario.activo :
+                                resultado.Estado == "suspendido" ? EnumEstadoUsuario.suspendido : EnumEstadoUsuario.inactivo
+                    };
                     res.resultado = true;
                 }
             }
@@ -543,8 +580,87 @@ namespace BackEnd.Logica.Modulo_Usuario
             }
             return res;
         }
+        /*
+        public ResActualizarEstadoUsuario ActualizarEstadoUsuario(ReqActualizarEstadoUsuario req)
+        {
+            ResActualizarEstadoUsuario res = new ResActualizarEstadoUsuario();
+            res.error = new List<Error>();
+            res.resultado = false;
+            try
+            {
+                if (req == null)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.requestNulo,
+                        Message = "Request nulo"
+                    });
+                    return res;
+                }
+                if (req.usuarioID <= 0)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.idFaltante,
+                        Message = "UsuarioID vacío"
+                    });
+                    return res;
+                }
+                if (string.IsNullOrEmpty(req.nuevoEstado))
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.datosIncompletos,
+                        Message = "Nuevo estado vacío"
+                    });
+                    return res;
+                }
+                if (req.adminID <= 0)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.permisoInsuficiente,
+                        Message = "AdminID inválido"
+                    });
+                    return res;
+                }
 
+                using (FitlifeDataContext linq = new FitlifeDataContext())
+                {
+                    var resultado = linq.SP_ActualizarEstadoUsuario(req.usuarioID, req.nuevoEstado, req.adminID, req.motivo).FirstOrDefault();
+                    if (resultado == null || resultado.UsuarioID <= 0)
+                    {
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.usuarioNoEncontrado,
+                            Message = "Usuario no encontrado"
+                        });
+                        return res;
+                    }
 
+                    res.Mensaje = resultado.Mensaje;
+                    res.usuario = new Usuario
+                    {
+                        Id = resultado.UsuarioID,
+                        Nombre = resultado.Nombre,
+                        Apellido = resultado.Apellido,
+                        correoElectronico = resultado.Email,
+                        estado = resultado.Estado == "activo" ? EnumEstadoUsuario.activo :
+                                resultado.Estado == "suspendido" ? EnumEstadoUsuario.suspendido : EnumEstadoUsuario.inactivo
+                    };
+                    res.resultado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                res.error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionLogica,
+                    Message = ex.Message
+                });
+            }
+            return res;
+        }*/
 
         #region Helpers
         public bool EsCorreoValido(string correo)

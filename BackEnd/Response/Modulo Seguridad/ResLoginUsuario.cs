@@ -10,8 +10,6 @@ namespace BackEnd.Response.Modulo_Usuario
     public class ResLoginUsuario: ResBase
     {
         public Usuario usuario { get; set; }
-        public string AccessToken { get; set; }
-        public string RefreshToken { get; set; }
-        public DateTime ExpirationDate { get; set; }
+        public string Token { get; set; }
     }
 }

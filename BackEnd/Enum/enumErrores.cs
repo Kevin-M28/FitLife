@@ -56,9 +56,15 @@ namespace BackEnd.Enum
         direccionFaltante = 44,
         horarioInvalido = 45,
         duracionInvalida = 46,
-        usuarioNoEncontrado=45,
-        cedulaFaltante= 46,
-        errorDesconocido = 47,
-
+        usuarioNoEncontrado = 47,
+        cedulaFaltante = 48,
+        errorDesconocido = 49,
+        periodoFaltante = 50,
+        periodoInvalido = 51,
+        gimnasioNoEncontrado = 52,
+        reporteNoGenerado = 53,
+        datosFaltantes = 54,
+        fechaFinMenorQueInicio = 55,
+        reporteNoEncontrado = 56
     }
 }

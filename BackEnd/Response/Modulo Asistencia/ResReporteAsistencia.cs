@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using BackEnd.Entidades;
 
-namespace BackEnd.Response.Modulo_Usuario
+namespace BackEnd.Response
 {
-    public class ResActualizarUsuario : ResBase
+    public class ResReporteAsistencia : ResBase
     {
-        public Usuario usuario { get; set; }
+        public ReporteGeneradoAsistencia Reporte { get; set; }
     }
 }
