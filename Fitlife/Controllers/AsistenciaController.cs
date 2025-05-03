@@ -21,6 +21,13 @@ namespace Fitlife.Controllers
         public AsistenciaController() { }
 
         [HttpPost]
+        [Route("registrar")]
+        public ResRegistrarAsistencia RegistrarAsistencia(ReqRegistrarAsistencia req)
+        {
+            return new LogAsistencia().RegistrarAsistencia(req);
+        }
+
+        [HttpPost]
         [Route("historial")]
         public ResObtenerHistorialAsistencia CambiarContrasenna(ReqObtenerHistorialAsistencia req)
         {
@@ -32,6 +39,13 @@ namespace Fitlife.Controllers
         public ResReporteAsistencia ObtenerReporteAsistencia(ReqReporteAsistencia req)
         {
             return new LogAsistencia().GenerarReporteAsistencia(req);
+        }
+
+        [HttpPost]
+        [Route("estadisticas")]
+        public ResEstadisticasAsistencia GetEstadisticasAsistencia(ReqEstadisticasAsistencia req)
+        {
+            return new LogAsistencia().GetEstadisticasAsistencia(req);
         }
     }
 }

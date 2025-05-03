@@ -186,7 +186,7 @@ namespace BackEnd.Logica.Modulo_Usuario
 
                 using (var db = new FitlifeDataContext())
                 {
-                    var llaveUsuario = db.Usuarios
+                    var llaveUsuario = db.Usuario
                         .Where(u => u.Email == req.Email)
                         .Select(u => u.Llave)
                         .FirstOrDefault();
@@ -311,7 +311,7 @@ namespace BackEnd.Logica.Modulo_Usuario
 
                 using (FitlifeDataContext linq = new FitlifeDataContext())
                 {
-                    var usuario = linq.Usuarios.FirstOrDefault(u => u.UsuarioID == req.UsuarioID);
+                    var usuario = linq.Usuario.FirstOrDefault(u => u.UsuarioID == req.UsuarioID);
                     if (usuario == null)
                     {
                         res.error.Add(new Error

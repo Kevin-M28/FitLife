@@ -65,6 +65,10 @@ namespace BackEnd.Enum
         reporteNoGenerado = 53,
         datosFaltantes = 54,
         fechaFinMenorQueInicio = 55,
-        reporteNoEncontrado = 56
+        reporteNoEncontrado = 56,
+        metodoRegistroFaltante=57,
+        gimnasioInvalido = 58,
+        fechasInvalidas = 59,
+        tipoEstadisticaInvalido = 60
     }
 }

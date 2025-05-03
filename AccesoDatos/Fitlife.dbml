@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FitLife" Class="FitlifeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FitLife;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False" SettingsObjectName="AccesoDatos.Properties.Settings" SettingsPropertyName="FitLifeConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.AdministradorGimnasio" Member="AdministradorGimnasios">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MCCARTHYS\SQLEXPRESS;Initial Catalog=FitLife;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="AccesoDatos.Properties.Settings" SettingsPropertyName="FitLifeConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AdministradorGimnasio" Member="AdministradorGimnasio">
     <Type Name="AdministradorGimnasio">
       <Column Name="AdministradorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -10,7 +10,19 @@
       <Association Name="Usuario_AdministradorGimnasio" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Asistencia" Member="Asistencias">
+  <Table Name="dbo.UsuarioRutina" Member="UsuarioRutina">
+    <Type Name="UsuarioRutina">
+      <Column Name="UsuarioRutinaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RutinaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FechaAsignacion" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AsignadoPorUsuarioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Rutina_UsuarioRutina" Member="Rutina" ThisKey="RutinaID" OtherKey="RutinaID" Type="Rutina" IsForeignKey="true" />
+      <Association Name="Usuario_UsuarioRutina" Member="Usuario" ThisKey="AsignadoPorUsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
+      <Association Name="Usuario_UsuarioRutina1" Member="Usuario1" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Asistencia" Member="Asistencia">
     <Type Name="Asistencia">
       <Column Name="AsistenciaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -21,7 +33,7 @@
       <Association Name="Usuario_Asistencia" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.BitacoraAccionAdministrador" Member="BitacoraAccionAdministradors">
+  <Table Name="dbo.BitacoraAccionAdministrador" Member="BitacoraAccionAdministrador">
     <Type Name="BitacoraAccionAdministrador">
       <Column Name="BitacoraID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UsuarioAdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -31,7 +43,7 @@
       <Association Name="Usuario_BitacoraAccionAdministrador" Member="Usuario" ThisKey="UsuarioAdminID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.CalificacionEntrenamiento" Member="CalificacionEntrenamientos">
+  <Table Name="dbo.CalificacionEntrenamiento" Member="CalificacionEntrenamiento">
     <Type Name="CalificacionEntrenamiento">
       <Column Name="CalificacionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -42,26 +54,26 @@
       <Association Name="Usuario_CalificacionEntrenamiento" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.DiaRutina" Member="DiaRutinas">
+  <Table Name="dbo.DiaRutina" Member="DiaRutina">
     <Type Name="DiaRutina">
       <Column Name="DiaRutinaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="RutinaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="NumeroDia" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="NombreDia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="DiaRutina_EjercicioDiaRutina" Member="EjercicioDiaRutinas" ThisKey="DiaRutinaID" OtherKey="DiaRutinaID" Type="EjercicioDiaRutina" />
+      <Association Name="DiaRutina_EjercicioDiaRutina" Member="EjercicioDiaRutina" ThisKey="DiaRutinaID" OtherKey="DiaRutinaID" Type="EjercicioDiaRutina" />
       <Association Name="Rutina_DiaRutina" Member="Rutina" ThisKey="RutinaID" OtherKey="RutinaID" Type="Rutina" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Ejercicio" Member="Ejercicios">
+  <Table Name="dbo.Ejercicio" Member="Ejercicio">
     <Type Name="Ejercicio">
       <Column Name="EjercicioID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="MusculoObjetivo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Ejercicio_EjercicioDiaRutina" Member="EjercicioDiaRutinas" ThisKey="EjercicioID" OtherKey="EjercicioID" Type="EjercicioDiaRutina" />
+      <Association Name="Ejercicio_EjercicioDiaRutina" Member="EjercicioDiaRutina" ThisKey="EjercicioID" OtherKey="EjercicioID" Type="EjercicioDiaRutina" />
     </Type>
   </Table>
-  <Table Name="dbo.EjercicioDiaRutina" Member="EjercicioDiaRutinas">
+  <Table Name="dbo.EjercicioDiaRutina" Member="EjercicioDiaRutina">
     <Type Name="EjercicioDiaRutina">
       <Column Name="EjercicioDiaRutinaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="DiaRutinaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -69,12 +81,12 @@
       <Column Name="Series" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Repeticiones" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DescansoSegundos" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="EjercicioDiaRutina_ProgresoRutina" Member="ProgresoRutinas" ThisKey="EjercicioDiaRutinaID" OtherKey="EjercicioDiaRutinaID" Type="ProgresoRutina" />
+      <Association Name="EjercicioDiaRutina_ProgresoRutina" Member="ProgresoRutina" ThisKey="EjercicioDiaRutinaID" OtherKey="EjercicioDiaRutinaID" Type="ProgresoRutina" />
       <Association Name="DiaRutina_EjercicioDiaRutina" Member="DiaRutina" ThisKey="DiaRutinaID" OtherKey="DiaRutinaID" Type="DiaRutina" IsForeignKey="true" />
       <Association Name="Ejercicio_EjercicioDiaRutina" Member="Ejercicio" ThisKey="EjercicioID" OtherKey="EjercicioID" Type="Ejercicio" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Gimnasio" Member="Gimnasios">
+  <Table Name="dbo.Gimnasio" Member="Gimnasio">
     <Type Name="Gimnasio">
       <Column Name="GimnasioID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
@@ -83,35 +95,35 @@
       <Column Name="HorarioCierre" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
       <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="FechaCreacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="Gimnasio_AdministradorGimnasio" Member="AdministradorGimnasios" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="AdministradorGimnasio" />
-      <Association Name="Gimnasio_NotificacionMasiva" Member="NotificacionMasivas" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="NotificacionMasiva" />
-      <Association Name="Gimnasio_ReporteAsistencia" Member="ReporteAsistencias" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="ReporteAsistencia" />
-      <Association Name="Gimnasio_ReporteFinanciero" Member="ReporteFinancieros" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="ReporteFinanciero" />
-      <Association Name="Gimnasio_Rutina" Member="Rutinas" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="Rutina" />
-      <Association Name="Gimnasio_Usuario" Member="Usuarios" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="Usuario" />
+      <Association Name="Gimnasio_AdministradorGimnasio" Member="AdministradorGimnasio" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="AdministradorGimnasio" />
+      <Association Name="Gimnasio_NotificacionMasiva" Member="NotificacionMasiva" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="NotificacionMasiva" />
+      <Association Name="Gimnasio_ReporteAsistencia" Member="ReporteAsistencia" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="ReporteAsistencia" />
+      <Association Name="Gimnasio_ReporteFinanciero" Member="ReporteFinanciero" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="ReporteFinanciero" />
+      <Association Name="Gimnasio_Rutina" Member="Rutina" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="Rutina" />
+      <Association Name="Gimnasio_Usuario" Member="Usuario" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="Usuario" />
     </Type>
   </Table>
-  <Table Name="dbo.Logro" Member="Logros">
+  <Table Name="dbo.Logro" Member="Logro">
     <Type Name="Logro">
       <Column Name="LogroID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="Descripcion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="Criterio" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="Tipo" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Association Name="Logro_UsuarioLogro" Member="UsuarioLogros" ThisKey="LogroID" OtherKey="LogroID" Type="UsuarioLogro" />
+      <Association Name="Logro_UsuarioLogro" Member="UsuarioLogro" ThisKey="LogroID" OtherKey="LogroID" Type="UsuarioLogro" />
     </Type>
   </Table>
-  <Table Name="dbo.Membresia" Member="Membresias">
+  <Table Name="dbo.Membresia" Member="Membresia">
     <Type Name="Membresia">
       <Column Name="MembresiaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Tipo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
       <Column Name="DuracionDias" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Descripcion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Association Name="Membresia_UsuarioMembresia" Member="UsuarioMembresias" ThisKey="MembresiaID" OtherKey="MembresiaID" Type="UsuarioMembresia" />
+      <Association Name="Membresia_UsuarioMembresia" Member="UsuarioMembresia" ThisKey="MembresiaID" OtherKey="MembresiaID" Type="UsuarioMembresia" />
     </Type>
   </Table>
-  <Table Name="dbo.MetaUsuario" Member="MetaUsuarios">
+  <Table Name="dbo.MetaUsuario" Member="MetaUsuario">
     <Type Name="MetaUsuario">
       <Column Name="MetaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -123,7 +135,7 @@
       <Association Name="Usuario_MetaUsuario" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.MetricaCorporal" Member="MetricaCorporals">
+  <Table Name="dbo.MetricaCorporal" Member="MetricaCorporal">
     <Type Name="MetricaCorporal">
       <Column Name="MetricaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -135,7 +147,7 @@
       <Association Name="Usuario_MetricaCorporal" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Morosidad" Member="Morosidads">
+  <Table Name="dbo.Morosidad" Member="Morosidad">
     <Type Name="Morosidad">
       <Column Name="MorosidadID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -144,7 +156,7 @@
       <Association Name="Usuario_Morosidad" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Notificacion" Member="Notificacions">
+  <Table Name="dbo.Notificacion" Member="Notificacion">
     <Type Name="Notificacion">
       <Column Name="NotificacionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -155,7 +167,7 @@
       <Association Name="Usuario_Notificacion" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.NotificacionMasiva" Member="NotificacionMasivas">
+  <Table Name="dbo.NotificacionMasiva" Member="NotificacionMasiva">
     <Type Name="NotificacionMasiva">
       <Column Name="NotificacionMasivaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="GimnasioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -165,7 +177,7 @@
       <Association Name="Gimnasio_NotificacionMasiva" Member="Gimnasio" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="Gimnasio" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Pago" Member="Pagos">
+  <Table Name="dbo.Pago" Member="Pago">
     <Type Name="Pago">
       <Column Name="PagoID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -177,7 +189,7 @@
       <Association Name="Usuario_Pago" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ProgresoRutina" Member="ProgresoRutinas">
+  <Table Name="dbo.ProgresoRutina" Member="ProgresoRutina">
     <Type Name="ProgresoRutina">
       <Column Name="ProgresoID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -188,7 +200,7 @@
       <Association Name="Usuario_ProgresoRutina" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ReporteAsistencia" Member="ReporteAsistencias">
+  <Table Name="dbo.ReporteAsistencia" Member="ReporteAsistencia">
     <Type Name="ReporteAsistencia">
       <Column Name="ReporteID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="GimnasioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -198,7 +210,7 @@
       <Association Name="Gimnasio_ReporteAsistencia" Member="Gimnasio" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="Gimnasio" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ReporteFinanciero" Member="ReporteFinancieros">
+  <Table Name="dbo.ReporteFinanciero" Member="ReporteFinanciero">
     <Type Name="ReporteFinanciero">
       <Column Name="ReporteID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="GimnasioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -210,18 +222,18 @@
       <Association Name="Gimnasio_ReporteFinanciero" Member="Gimnasio" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="Gimnasio" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Rutina" Member="Rutinas">
+  <Table Name="dbo.Rutina" Member="Rutina">
     <Type Name="Rutina">
       <Column Name="RutinaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="GimnasioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Rutina_DiaRutina" Member="DiaRutinas" ThisKey="RutinaID" OtherKey="RutinaID" Type="DiaRutina" />
-      <Association Name="Rutina_UsuarioRutina" Member="UsuarioRutinas" ThisKey="RutinaID" OtherKey="RutinaID" Type="UsuarioRutina" />
+      <Association Name="Rutina_UsuarioRutina" Member="UsuarioRutina" ThisKey="RutinaID" OtherKey="RutinaID" Type="UsuarioRutina" />
+      <Association Name="Rutina_DiaRutina" Member="DiaRutina" ThisKey="RutinaID" OtherKey="RutinaID" Type="DiaRutina" />
       <Association Name="Gimnasio_Rutina" Member="Gimnasio" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="Gimnasio" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Usuario" Member="Usuarios">
+  <Table Name="dbo.Usuario" Member="Usuario">
     <Type Name="Usuario">
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="GimnasioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -235,24 +247,24 @@
       <Column Name="Rol" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="Usuario_AdministradorGimnasio" Member="AdministradorGimnasios" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="AdministradorGimnasio" />
-      <Association Name="Usuario_Asistencia" Member="Asistencias" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Asistencia" />
-      <Association Name="Usuario_BitacoraAccionAdministrador" Member="BitacoraAccionAdministradors" ThisKey="UsuarioID" OtherKey="UsuarioAdminID" Type="BitacoraAccionAdministrador" />
-      <Association Name="Usuario_CalificacionEntrenamiento" Member="CalificacionEntrenamientos" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="CalificacionEntrenamiento" />
-      <Association Name="Usuario_MetaUsuario" Member="MetaUsuarios" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="MetaUsuario" />
-      <Association Name="Usuario_MetricaCorporal" Member="MetricaCorporals" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="MetricaCorporal" />
-      <Association Name="Usuario_Morosidad" Member="Morosidads" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Morosidad" />
-      <Association Name="Usuario_Notificacion" Member="Notificacions" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Notificacion" />
-      <Association Name="Usuario_Pago" Member="Pagos" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Pago" />
-      <Association Name="Usuario_ProgresoRutina" Member="ProgresoRutinas" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="ProgresoRutina" />
-      <Association Name="Usuario_UsuarioLogro" Member="UsuarioLogros" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="UsuarioLogro" />
-      <Association Name="Usuario_UsuarioMembresia" Member="UsuarioMembresias" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="UsuarioMembresia" />
-      <Association Name="Usuario_UsuarioRutina" Member="UsuarioRutinas" ThisKey="UsuarioID" OtherKey="AsignadoPorUsuarioID" Type="UsuarioRutina" />
-      <Association Name="Usuario_UsuarioRutina1" Member="UsuarioRutinas1" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="UsuarioRutina" />
+      <Association Name="Usuario_AdministradorGimnasio" Member="AdministradorGimnasio" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="AdministradorGimnasio" />
+      <Association Name="Usuario_UsuarioRutina" Member="UsuarioRutina" ThisKey="UsuarioID" OtherKey="AsignadoPorUsuarioID" Type="UsuarioRutina" />
+      <Association Name="Usuario_UsuarioRutina1" Member="UsuarioRutina1" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="UsuarioRutina" />
+      <Association Name="Usuario_Asistencia" Member="Asistencia" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Asistencia" />
+      <Association Name="Usuario_BitacoraAccionAdministrador" Member="BitacoraAccionAdministrador" ThisKey="UsuarioID" OtherKey="UsuarioAdminID" Type="BitacoraAccionAdministrador" />
+      <Association Name="Usuario_CalificacionEntrenamiento" Member="CalificacionEntrenamiento" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="CalificacionEntrenamiento" />
+      <Association Name="Usuario_MetaUsuario" Member="MetaUsuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="MetaUsuario" />
+      <Association Name="Usuario_MetricaCorporal" Member="MetricaCorporal" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="MetricaCorporal" />
+      <Association Name="Usuario_Morosidad" Member="Morosidad" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Morosidad" />
+      <Association Name="Usuario_Notificacion" Member="Notificacion" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Notificacion" />
+      <Association Name="Usuario_Pago" Member="Pago" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Pago" />
+      <Association Name="Usuario_ProgresoRutina" Member="ProgresoRutina" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="ProgresoRutina" />
+      <Association Name="Usuario_UsuarioLogro" Member="UsuarioLogro" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="UsuarioLogro" />
+      <Association Name="Usuario_UsuarioMembresia" Member="UsuarioMembresia" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="UsuarioMembresia" />
       <Association Name="Gimnasio_Usuario" Member="Gimnasio" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="Gimnasio" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.UsuarioLogro" Member="UsuarioLogros">
+  <Table Name="dbo.UsuarioLogro" Member="UsuarioLogro">
     <Type Name="UsuarioLogro">
       <Column Name="UsuarioLogroID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -262,7 +274,7 @@
       <Association Name="Usuario_UsuarioLogro" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.UsuarioMembresia" Member="UsuarioMembresias">
+  <Table Name="dbo.UsuarioMembresia" Member="UsuarioMembresia">
     <Type Name="UsuarioMembresia">
       <Column Name="UsuarioMembresiaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -274,18 +286,20 @@
       <Association Name="Usuario_UsuarioMembresia" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.UsuarioRutina" Member="UsuarioRutinas">
-    <Type Name="UsuarioRutina">
-      <Column Name="UsuarioRutinaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+  <Function Name="dbo.SP_ActualizarEstadoUsuario" Method="SP_ActualizarEstadoUsuario">
+    <Parameter Name="UsuarioID" Parameter="usuarioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NuevoEstado" Parameter="nuevoEstado" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="AdminID" Parameter="adminID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Motivo" Parameter="motivo" Type="System.String" DbType="NVarChar(200)" />
+    <ElementType Name="SP_ActualizarEstadoUsuarioResult">
+      <Column Name="Mensaje" Type="System.String" DbType="NVarChar(107)" CanBeNull="true" />
       <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RutinaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="FechaAsignacion" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="AsignadoPorUsuarioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Usuario_UsuarioRutina" Member="Usuario" ThisKey="AsignadoPorUsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
-      <Association Name="Rutina_UsuarioRutina" Member="Rutina" ThisKey="RutinaID" OtherKey="RutinaID" Type="Rutina" IsForeignKey="true" />
-      <Association Name="Usuario_UsuarioRutina1" Member="Usuario1" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
-    </Type>
-  </Table>
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.SP_UpdateUsuario" Method="SP_UpdateUsuario">
     <Parameter Name="UsuarioID" Parameter="usuarioID" Type="System.Int32" DbType="Int" />
     <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="NVarChar(100)" />
@@ -302,20 +316,6 @@
       <Column Name="Rol" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_ActualizarEstadoUsuario" Method="SP_ActualizarEstadoUsuario">
-    <Parameter Name="UsuarioID" Parameter="usuarioID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="NuevoEstado" Parameter="nuevoEstado" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="AdminID" Parameter="adminID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Motivo" Parameter="motivo" Type="System.String" DbType="NVarChar(200)" />
-    <ElementType Name="SP_ActualizarEstadoUsuarioResult">
-      <Column Name="Mensaje" Type="System.String" DbType="NVarChar(107)" CanBeNull="true" />
-      <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.SP_AsignarRolUsuario" Method="SP_AsignarRolUsuario">
@@ -339,6 +339,24 @@
     <Parameter Name="ContrasennaNueva" Parameter="contrasennaNueva" Type="System.String" DbType="NVarChar(256)" />
     <ElementType Name="SP_CambiarPasswordResult">
       <Column Name="Mensaje" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_GenerarReporteAsistencia" Method="SP_GenerarReporteAsistencia">
+    <Parameter Name="GimnasioID" Parameter="gimnasioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Periodo" Parameter="periodo" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="FechaInicio" Parameter="fechaInicio" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="FechaFin" Parameter="fechaFin" Type="System.DateTime" DbType="Date" />
+    <ElementType Name="SP_GenerarReporteAsistenciaResult">
+      <Column Name="ReporteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreGimnasio" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaGeneracion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Periodo" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="RangoFechas" Type="System.String" DbType="NVarChar(23)" CanBeNull="true" />
+      <Column Name="TotalAsistencias" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UsuariosUnicos" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PromedioAsistenciasDiarias" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DuracionPromedioMinutos" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="JsonCompleto" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.SP_GenerarReporteFinanciero" Method="SP_GenerarReporteFinanciero">
@@ -521,24 +539,6 @@
       <Column Name="FechaPago" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_GenerarReporteAsistencia" Method="SP_GenerarReporteAsistencia">
-    <Parameter Name="GimnasioID" Parameter="gimnasioID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Periodo" Parameter="periodo" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="FechaInicio" Parameter="fechaInicio" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="FechaFin" Parameter="fechaFin" Type="System.DateTime" DbType="Date" />
-    <ElementType Name="SP_GenerarReporteAsistenciaResult">
-      <Column Name="ReporteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NombreGimnasio" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="FechaGeneracion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Periodo" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="RangoFechas" Type="System.String" DbType="NVarChar(23)" CanBeNull="true" />
-      <Column Name="TotalAsistencias" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UsuariosUnicos" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PromedioAsistenciasDiarias" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="DuracionPromedioMinutos" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="JsonCompleto" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Entidades\Asistencia.cs" />
     <Compile Include="Entidades\AsistenciaDetalle.cs" />
     <Compile Include="Entidades\Error.cs" />
+    <Compile Include="Entidades\EstadisticasAsistencia.cs" />
     <Compile Include="Entidades\Gimnasio.cs" />
     <Compile Include="Entidades\Membresia.cs" />
     <Compile Include="Entidades\Pago.cs" />
@@ -69,6 +71,8 @@
     <Compile Include="Logica\Modulo Usuario\LogicaUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\Modulo Asistencia\ReqAsistenciaDetalle.cs" />
+    <Compile Include="Request\Modulo Asistencia\ReqEstadisticasAsistencia.cs" />
+    <Compile Include="Request\Modulo Asistencia\ReqRegistrarAsistencia.cs" />
     <Compile Include="Request\Modulo Asistencia\ReqReporteAsistencia.cs" />
     <Compile Include="Request\Modulo Usuario\ReqActualizarUsuario.cs" />
     <Compile Include="Request\Modulo Seguridad\ReqAgregarUsuario.cs" />
@@ -83,6 +87,8 @@
     <Compile Include="Request\Modulo Seguridad\ReqVerificarUsuario.cs" />
     <Compile Include="Request\ReqBase.cs" />
     <Compile Include="Response\Modulo Asistencia\ResAsistenciaDetalle.cs" />
+    <Compile Include="Response\Modulo Asistencia\ResEstadisticasAsistencia.cs" />
+    <Compile Include="Response\Modulo Asistencia\ResRegistrarAsistencia.cs" />
     <Compile Include="Response\Modulo Usuario\ResActualizarUsuario.cs" />
     <Compile Include="Response\Modulo Usuario\ResAsignarRolUsuario.cs" />
     <Compile Include="Response\Modulo Seguridad\ResCambiarContrasenna.cs" />

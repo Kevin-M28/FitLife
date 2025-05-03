@@ -16,6 +16,145 @@ namespace BackEnd.Logica.Modulo_Logica
 {
     public class LogAsistencia
     {
+        public ResRegistrarAsistencia RegistrarAsistencia(ReqRegistrarAsistencia req)
+        {
+            ResRegistrarAsistencia res = new ResRegistrarAsistencia
+            {
+                error = new List<Error>(),
+                resultado = false,
+                asistencia = new Entidades.Asistencia()
+            };
+
+            try
+            {
+                #region Validaciones
+                if (req == null)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.requestNulo,
+                        Message = "Request nulo"
+                    });
+                    return res;
+                }
+
+                if (req.UsuarioID <= 0 || (req.MetodoRegistro == "manual" && req.AdminID <= 0))
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.usuarioNoEncontrado,
+                        Message = "Usuario o administrador inválido"
+                    });
+                    return res;
+                }
+
+                if (string.IsNullOrEmpty(req.MetodoRegistro) || !new[] { "QR", "NFC", "manual" }.Contains(req.MetodoRegistro))
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.metodoRegistroFaltante,
+                        Message = "Método de registro no válido (debe ser QR, NFC o manual)"
+                    });
+                    return res;
+                }
+                #endregion
+
+                using (FitlifeDataContext db = new FitlifeDataContext())
+                {
+                    // Create the SQL command directly to handle multiple result sets
+                    var command = db.Connection.CreateCommand();
+                    command.CommandText = "SP_RegistrarAsistencia";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameters with proper null handling
+                    command.Parameters.Add(new SqlParameter("@UsuarioID", req.UsuarioID));
+                    command.Parameters.Add(new SqlParameter("@MetodoRegistro", req.MetodoRegistro));
+                    command.Parameters.Add(new SqlParameter("@AdminID", req.MetodoRegistro == "manual" ? (object)req.AdminID : DBNull.Value));
+
+                    // Handle nullable DateTime parameter
+                    var fechaParam = new SqlParameter("@FechaHoraEntrada", SqlDbType.DateTime);
+                    fechaParam.Value = req.FechaHoraEntrada != default(DateTime) ? (object)req.FechaHoraEntrada : DBNull.Value;
+                    command.Parameters.Add(fechaParam);
+
+                    db.Connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // This handles both entry and exit scenarios
+                            res.asistencia.Mensaje = reader["Mensaje"] as string;
+                            res.asistencia.UsuarioID = req.UsuarioID;
+
+                            if (!reader.IsDBNull(reader.GetOrdinal("FechaHoraEntrada")))
+                            {
+                                res.asistencia.FechaHoraEntrada = reader.GetDateTime(reader.GetOrdinal("FechaHoraEntrada"));
+                            }
+
+                            // Check for exit scenario columns
+                            try
+                            {
+                                int salidaOrdinal = reader.GetOrdinal("FechaHoraSalida");
+                                if (!reader.IsDBNull(salidaOrdinal))
+                                {
+                                    res.asistencia.FechaHoraSalida = reader.GetDateTime(salidaOrdinal);
+                                }
+                            }
+                            catch (IndexOutOfRangeException) { /* Column not present */ }
+
+                            try
+                            {
+                                int duracionOrdinal = reader.GetOrdinal("DuracionMinutos");
+                                if (!reader.IsDBNull(duracionOrdinal))
+                                {
+                                    res.asistencia.DuracionMinutos = reader.GetInt32(duracionOrdinal);
+                                }
+                            }
+                            catch (IndexOutOfRangeException) { /* Column not present */ }
+
+                            // Check for entry scenario columns
+                            try
+                            {
+                                int totalAsistOrdinal = reader.GetOrdinal("TotalAsistencias");
+                                if (!reader.IsDBNull(totalAsistOrdinal))
+                                {
+                                    res.asistencia.TotalAsistencias = reader.GetInt32(totalAsistOrdinal);
+                                }
+                            }
+                            catch (IndexOutOfRangeException) { /* Column not present */ }
+
+                            res.asistencia.MetodoRegistro = req.MetodoRegistro;
+                            res.resultado = true;
+                        }
+                        else
+                        {
+                            res.error.Add(new Error
+                            {
+                                ErrorCode = (int)EnumErrores.errorDesconocido,
+                                Message = "No se pudo registrar la asistencia - posiblemente el usuario no tiene membresía activa o tiene pagos pendientes"
+                            });
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                res.error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionBaseDatos,
+                    Message = sqlEx.Message
+                });
+            }
+            catch (Exception ex)
+            {
+                res.error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionLogica,
+                    Message = ex.Message
+                });
+            }
+
+            return res;
+        }
         public ResObtenerHistorialAsistencia ObtenerHistorialAsistencia(ReqObtenerHistorialAsistencia req)
         {
             ResObtenerHistorialAsistencia res = new ResObtenerHistorialAsistencia();
@@ -49,7 +188,7 @@ namespace BackEnd.Logica.Modulo_Logica
                 using (FitlifeDataContext linq = new FitlifeDataContext())
                 {
                     // Verificamos si el usuario existe
-                    if (!linq.Usuarios.Any(u => u.UsuarioID == req.UsuarioID))
+                    if (!linq.Usuario.Any(u => u.UsuarioID == req.UsuarioID))
                     {
                         res.error.Add(new Error
                         {
@@ -220,7 +359,7 @@ namespace BackEnd.Logica.Modulo_Logica
                 using (FitlifeDataContext linq = new FitlifeDataContext())
                 {
                     // Verificamos si el gimnasio existe
-                    if (!linq.Gimnasios.Any(g => g.GimnasioID == req.GimnasioID))
+                    if (!linq.Gimnasio.Any(g => g.GimnasioID == req.GimnasioID))
                     {
                         res.error.Add(new Error
                         {
@@ -269,12 +408,179 @@ namespace BackEnd.Logica.Modulo_Logica
                                         DatosJSON = reader.IsDBNull(reader.GetOrdinal("JsonCompleto")) ?
                                     null : reader.GetString(reader.GetOrdinal("JsonCompleto"))
                                     };
-                                }                            
+                                }
                             }
                         }
                     }
 
                     res.resultado = res.Reporte != null;
+                }
+            }
+            catch (Exception ex)
+            {
+                res.error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionLogica,
+                    Message = ex.Message
+                });
+            }
+
+            return res;
+        }
+
+
+        public ResEstadisticasAsistencia GetEstadisticasAsistencia(ReqEstadisticasAsistencia req)
+        {
+            ResEstadisticasAsistencia res = new ResEstadisticasAsistencia
+            {
+                error = new List<Error>(),
+                resultado = false,
+                Estadisticas = new EstadisticasAsistencia()
+            };
+
+            try
+            {
+                #region Validaciones
+                if (req == null)
+                {
+                    res.error.Add(new Error { ErrorCode = (int)EnumErrores.requestNulo, Message = "Request nulo" });
+                    return res;
+                }
+                if (req.GimnasioID <= 0)
+                {
+                    res.error.Add(new Error { ErrorCode = (int)EnumErrores.gimnasioInvalido, Message = "Gimnasio inválido" });
+                    return res;
+                }
+                #endregion
+
+                using (FitlifeDataContext db = new FitlifeDataContext())
+                {
+                    // Create the SQL command directly
+                    var command = db.Connection.CreateCommand();
+                    command.CommandText = "SP_GetEstadisticasAsistencia";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameters
+                    command.Parameters.Add(new SqlParameter("@GimnasioID", req.GimnasioID));
+                    command.Parameters.Add(new SqlParameter("@FechaInicio", req.FechaInicio ?? (object)DBNull.Value));
+                    command.Parameters.Add(new SqlParameter("@FechaFin", req.FechaFin ?? (object)DBNull.Value));
+                    command.Parameters.Add(new SqlParameter("@TipoEstadistica", req.TipoEstadistica ?? "todo"));
+
+
+                    db.Connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        // Process each result set based on the TipoEstadistica
+                        if (req.TipoEstadistica == "todo" || req.TipoEstadistica == "general")
+                        {
+                            if (reader.Read())
+                            {
+                                res.Estadisticas.Generales = new EstadisticasGenerales
+                                {
+                                    UsuariosUnicos = reader["UsuariosUnicos"] as int? ?? 0,
+                                    TotalAsistencias = reader["TotalAsistencias"] as int? ?? 0,
+                                    DuracionPromedioMinutos = reader["DuracionPromedioMinutos"] as double? ?? 0,
+                                    PromedioAsistenciasDiarias = Convert.ToDouble(reader["PromedioAsistenciasDiarias"] as decimal? ?? 0),
+                                    MaximoAsistenciasPorUsuario = reader["MaximoAsistenciasPorUsuario"] as int? ?? 0
+                                };
+                            }
+                            reader.NextResult();
+                        }
+
+                        if (req.TipoEstadistica == "todo" || req.TipoEstadistica == "frecuencia")
+                        {
+                            res.Estadisticas.UsuariosFrecuentes = new List<UsuarioFrecuente>();
+                            while (reader.Read())
+                            {
+                                res.Estadisticas.UsuariosFrecuentes.Add(new UsuarioFrecuente
+                                {
+                                    UsuarioID = reader["UsuarioID"] as int? ?? 0,
+                                    NombreCompleto = reader["NombreCompleto"] as string ?? string.Empty,
+                                    CantidadAsistencias = reader["CantidadAsistencias"] as int? ?? 0,
+                                    UltimaAsistencia = reader["UltimaAsistencia"] as DateTime? ?? DateTime.MinValue,
+                                    DuracionPromedioMinutos = reader["DuracionPromedioMinutos"] as double? ?? 0
+                                });
+                            }
+                            reader.NextResult();
+                        }
+
+                        if (req.TipoEstadistica == "todo" || req.TipoEstadistica == "pico")
+                        {
+                            // First result set for pico: Asistencias por día
+                            res.Estadisticas.AsistenciasPorDia = new List<AsistenciaPorDia>();
+                            while (reader.Read())
+                            {
+                                res.Estadisticas.AsistenciasPorDia.Add(new AsistenciaPorDia
+                                {
+                                    DiaSemana = reader["DiaSemana"] as int? ?? 0,
+                                    NombreDia = reader["NombreDia"] as string ?? string.Empty,
+                                    CantidadAsistencias = reader["CantidadAsistencias"] as int? ?? 0,
+                                    UsuariosUnicos = reader["UsuariosUnicos"] as int? ?? 0
+                                });
+                            }
+                            reader.NextResult();
+
+                            // Second result set for pico: Asistencias por hora
+                            res.Estadisticas.AsistenciasPorHora = new List<AsistenciaPorHoraE>();
+                            while (reader.Read())
+                            {
+                                res.Estadisticas.AsistenciasPorHora.Add(new AsistenciaPorHoraE
+                                {
+                                    Hora = reader["Hora"] as int? ?? 0,
+                                    FranjaHoraria = reader["FranjaHoraria"] as string ?? string.Empty,
+                                    CantidadAsistencias = reader["CantidadAsistencias"] as int? ?? 0,
+                                    UsuariosUnicos = reader["UsuariosUnicos"] as int? ?? 0
+                                });
+                            }
+                            reader.NextResult();
+
+                            // Third result set for pico: Asistencias por fecha
+                            res.Estadisticas.AsistenciasPorFecha = new List<AsistenciaPorFecha>();
+                            while (reader.Read())
+                            {
+                                res.Estadisticas.AsistenciasPorFecha.Add(new AsistenciaPorFecha
+                                {
+                                    Fecha = reader["Fecha"] as DateTime? ?? DateTime.MinValue,
+                                    CantidadAsistencias = reader["CantidadAsistencias"] as int? ?? 0,
+                                    UsuariosUnicos = reader["UsuariosUnicos"] as int? ?? 0
+                                });
+                            }
+                            reader.NextResult();
+                        }
+
+                        if (req.TipoEstadistica == "todo" || req.TipoEstadistica == "duracion")
+                        {
+                            // First result set for duracion: Asistencias por rango de duración
+                            res.Estadisticas.AsistenciasPorDuracion = new List<AsistenciaPorDuracion>();
+                            while (reader.Read())
+                            {
+                                res.Estadisticas.AsistenciasPorDuracion.Add(new AsistenciaPorDuracion
+                                {
+                                    RangoDuracion = reader["RangoDuracion"] as string ?? string.Empty,
+                                    CantidadAsistencias = reader["CantidadAsistencias"] as int? ?? 0,
+                                    DuracionPromedioMinutos = reader["DuracionPromedioMinutos"] as double? ?? 0
+                                });
+                            }
+                            reader.NextResult();
+
+                            // Second result set for duracion: Usuarios por tiempo total
+                            res.Estadisticas.UsuariosPorTiempo = new List<UsuarioPorTiempo>();
+                            while (reader.Read())
+                            {
+                                res.Estadisticas.UsuariosPorTiempo.Add(new UsuarioPorTiempo
+                                {
+                                    UsuarioID = reader["UsuarioID"] as int? ?? 0,
+                                    NombreCompleto = reader["NombreCompleto"] as string ?? string.Empty,
+                                    CantidadAsistencias = reader["CantidadAsistencias"] as int? ?? 0,
+                                    TiempoTotalMinutos = reader["TiempoTotalMinutos"] as int? ?? 0,
+                                    DuracionPromedioMinutos = reader["DuracionPromedioMinutos"] as double? ?? 0,
+                                    DuracionMaximaMinutos = reader["DuracionMaximaMinutos"] as int? ?? 0
+                                });
+                            }
+                        }
+                    }
+
+                    res.resultado = true;
                 }
             }
             catch (Exception ex)
