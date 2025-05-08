@@ -12,12 +12,13 @@ namespace BackEnd.Entidades
     {
         public int UsuarioMembresiaID { get; set; }
         public int UsuarioID { get; set; }
+        public string NombreCompleto { get; set; }
         public int MembresiaID { get; set; }
         public string TipoMembresia { get; set; }
         public decimal Precio { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaVencimiento { get; set; }
-        public EnumEstadoMembresia Estado { get; set; }
-        public Pago PagoAsociado { get; set; }
+        public int DiasRestantes { get; set; }
+        public string Estado { get; set; }
     }
 }

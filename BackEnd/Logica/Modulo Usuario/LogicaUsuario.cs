@@ -228,7 +228,7 @@ namespace BackEnd.Logica.Modulo_Usuario
 
                         membresiaActiva = new BackEnd.Entidades.UsuarioMembresia
                         {
-                            Estado = (resultado.TieneMembresiaActiva ?? false) ? EnumEstadoMembresia.activa : EnumEstadoMembresia.vencida
+                            Estado = (resultado.TieneMembresiaActiva ?? false) ? EnumEstadoMembresia.activa.ToString() : EnumEstadoMembresia.vencida.ToString()
                         },
 
                         estado = (resultado.EstaEnMorosidad ?? false) ? EnumEstadoUsuario.suspendido : EnumEstadoUsuario.activo

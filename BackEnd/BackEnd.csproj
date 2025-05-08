@@ -59,15 +59,20 @@
     <Compile Include="Entidades\Gimnasio.cs" />
     <Compile Include="Entidades\InfoRutina.cs" />
     <Compile Include="Entidades\Membresia.cs" />
+    <Compile Include="Entidades\MembresiaReporte.cs" />
     <Compile Include="Entidades\MetaUsuario.cs" />
+    <Compile Include="Entidades\MetodoPagoReporte.cs" />
     <Compile Include="Entidades\MetricaCorporal.cs" />
+    <Compile Include="Entidades\Morosidad.cs" />
     <Compile Include="Entidades\Notificacion.cs" />
     <Compile Include="Entidades\NotificacionMasiva.cs" />
     <Compile Include="Entidades\Pago.cs" />
     <Compile Include="Entidades\ProgresoDiaRutina.cs" />
     <Compile Include="Entidades\ProgresoRutina.cs" />
-    <Compile Include="Entidades\ReporteGeneradoAsistencia.cs" />
+    <Compile Include="Entidades\ReporteFinanciero.cs" />
     <Compile Include="Entidades\ResumenMetricas.cs" />
+    <Compile Include="Entidades\ResumenMorosidad.cs" />
+    <Compile Include="Entidades\ResumenPagos.cs" />
     <Compile Include="Entidades\Rutina.cs" />
     <Compile Include="Entidades\Sesion.cs" />
     <Compile Include="Entidades\Usuario.cs" />
@@ -85,6 +90,8 @@
     <Compile Include="Enum\EnumTipoMeta.cs" />
     <Compile Include="Enum\EnumTipoNotificacion.cs" />
     <Compile Include="Logica\Modulo Asistencia\LogAsistencia.cs" />
+    <Compile Include="Logica\Modulo Pago\LogMembresias.cs" />
+    <Compile Include="Logica\Modulo Pago\LogPago.cs" />
     <Compile Include="Logica\Modulo Usuario\HelperMailcs.cs" />
     <Compile Include="Logica\Modulo Usuario\LogicaUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +99,14 @@
     <Compile Include="Request\Modulo Asistencia\ReqEstadisticasAsistencia.cs" />
     <Compile Include="Request\Modulo Asistencia\ReqRegistrarAsistencia.cs" />
     <Compile Include="Request\Modulo Asistencia\ReqReporteAsistencia.cs" />
+    <Compile Include="Request\Modulo Membresia\ReqActualizarMembresia.cs" />
+    <Compile Include="Request\Modulo Membresia\ReqGetMembresiasPorGimnasio.cs" />
+    <Compile Include="Request\Modulo Membresia\ReqGetMembresiasPorUsuario.cs" />
+    <Compile Include="Request\Modulo Membresia\ReqVerificarMorosidad.cs" />
+    <Compile Include="Request\Modulo Pago\ReqGenerarReporteFinanciero.cs" />
+    <Compile Include="Request\Modulo Pago\ReqGetPagosPorUsuario.cs" />
+    <Compile Include="Request\Modulo Pago\ReqInsertPago.cs" />
+    <Compile Include="Request\Modulo Pago\ReqUpdateEstadoPago.cs" />
     <Compile Include="Request\Modulo Usuario\ReqActualizarUsuario.cs" />
     <Compile Include="Request\Modulo Seguridad\ReqAgregarUsuario.cs" />
     <Compile Include="Request\Modulo Usuario\ReqAsignarRolUsuario.cs" />
@@ -107,6 +122,16 @@
     <Compile Include="Response\Modulo Asistencia\ResAsistenciaDetalle.cs" />
     <Compile Include="Response\Modulo Asistencia\ResEstadisticasAsistencia.cs" />
     <Compile Include="Response\Modulo Asistencia\ResRegistrarAsistencia.cs" />
+    <Compile Include="Request\Modulo Membresia\ReqInsertUsuarioMembresia.cs" />
+    <Compile Include="Response\Modulo Membresia\ResActualizarMembresia.cs" />
+    <Compile Include="Response\Modulo Membresia\ResGetMembresiasPorGimnasio.cs" />
+    <Compile Include="Response\Modulo Membresia\ResGetMembresiasPorUsuario.cs" />
+    <Compile Include="Response\Modulo Membresia\ResInsertUsuarioMembresia.cs" />
+    <Compile Include="Response\Modulo Membresia\ResVerificarMorosidad.cs" />
+    <Compile Include="Response\Modulo Pago\ResGenerarReporteFinanciero.cs" />
+    <Compile Include="Response\Modulo Pago\ResGetPagosPorUsuario.cs" />
+    <Compile Include="Response\Modulo Pago\ResInsertPago.cs" />
+    <Compile Include="Response\Modulo Pago\ResUpdateEstadoPago.cs" />
     <Compile Include="Response\Modulo Usuario\ResActualizarUsuario.cs" />
     <Compile Include="Response\Modulo Usuario\ResAsignarRolUsuario.cs" />
     <Compile Include="Response\Modulo Seguridad\ResCambiarContrasenna.cs" />
@@ -127,8 +152,6 @@
       <Name>AccesoDatos</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logica\Modulo Seguridad\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
