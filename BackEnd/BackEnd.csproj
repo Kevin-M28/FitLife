@@ -43,14 +43,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Entidades\ActividadSemanal.cs" />
+    <Compile Include="Entidades\AsignacionRutina.cs" />
     <Compile Include="Entidades\Asistencia.cs" />
     <Compile Include="Entidades\AsistenciaDetalle.cs" />
+    <Compile Include="Entidades\DatoGraficoMetrica.cs" />
+    <Compile Include="Entidades\DiaRutina.cs" />
+    <Compile Include="Entidades\EjercicioRutina.cs" />
     <Compile Include="Entidades\Error.cs" />
     <Compile Include="Entidades\EstadisticasAsistencia.cs" />
+    <Compile Include="Entidades\EstadisticasMetas.cs" />
+    <Compile Include="Entidades\EstadisticasMetricas.cs" />
+    <Compile Include="Entidades\EstadisticasNotificaciones.cs" />
+    <Compile Include="Entidades\EstadoEjercicio.cs" />
     <Compile Include="Entidades\Gimnasio.cs" />
+    <Compile Include="Entidades\InfoRutina.cs" />
     <Compile Include="Entidades\Membresia.cs" />
+    <Compile Include="Entidades\MetaUsuario.cs" />
+    <Compile Include="Entidades\MetricaCorporal.cs" />
+    <Compile Include="Entidades\Notificacion.cs" />
+    <Compile Include="Entidades\NotificacionMasiva.cs" />
     <Compile Include="Entidades\Pago.cs" />
+    <Compile Include="Entidades\ProgresoDiaRutina.cs" />
+    <Compile Include="Entidades\ProgresoRutina.cs" />
     <Compile Include="Entidades\ReporteGeneradoAsistencia.cs" />
+    <Compile Include="Entidades\ResumenMetricas.cs" />
+    <Compile Include="Entidades\Rutina.cs" />
     <Compile Include="Entidades\Sesion.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\UsuarioMembresia.cs" />
