@@ -55,11 +55,11 @@ namespace Fitlife.Controllers
         {
             return new LogicaUsuario().AsignarRolUsuario(req);
         }
-        [HttpGet]
-        [Route("getById")]
+        [HttpPost]
+        [Route("getUser")]
         public ResObtenerUsuario GetUsuarioById(ReqObtenerUsuario req)
         {
-            return new LogicaUsuario().ObtenerUsuarioId(req);
+            return new LogicaUsuario().ObtenerUsuarioPorEmail(req);
         }
 
         [HttpPost]

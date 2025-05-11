@@ -9,7 +9,6 @@ namespace BackEnd.Response.Modulo_Usuario
 {
     public class ResLoginUsuario: ResBase
     {
-        public Usuario usuario { get; set; }
         public string Token { get; set; }
     }
 }

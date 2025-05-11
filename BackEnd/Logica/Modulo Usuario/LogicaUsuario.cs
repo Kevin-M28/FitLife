@@ -11,6 +11,8 @@ using BackEnd.Request.Modulo_Usuario;
 using BackEnd.Response.Modulo_Usuario;
 using BackEnd.Entidades;
 using Usuario = BackEnd.Entidades.Usuario;
+using System.Data;
+using System.Data.Linq;
 
 namespace BackEnd.Logica.Modulo_Usuario
 {
@@ -35,7 +37,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                 }
                 else
                 {
-                    if (string.IsNullOrEmpty(req.usuario.Nombre))
+                    if (string.IsNullOrEmpty(req.Nombre))
                     {
                         res.error.Add(new Error
                         {
@@ -44,7 +46,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                     }
 
-                    if (string.IsNullOrEmpty(req.usuario.Apellido))
+                    if (string.IsNullOrEmpty(req.Apellido))
                     {
                         res.error.Add(new Error
                         {
@@ -53,7 +55,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                     }
 
-                    if (string.IsNullOrEmpty(req.usuario.Cedula))
+                    if (string.IsNullOrEmpty(req.Cedula))
                     {
                         res.error.Add(new Error
                         {
@@ -62,7 +64,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                     }
 
-                    if (string.IsNullOrEmpty(req.usuario.correoElectronico))
+                    if (string.IsNullOrEmpty(req.correoElectronico))
                     {
                         res.error.Add(new Error
                         {
@@ -70,7 +72,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                             Message = "Correo vacío"
                         });
                     }
-                    else if (!EsCorreoValido(req.usuario.correoElectronico))
+                    else if (!EsCorreoValido(req.correoElectronico))
                     {
                         res.error.Add(new Error
                         {
@@ -79,7 +81,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                     }
 
-                    if (string.IsNullOrEmpty(req.usuario.password))
+                    if (string.IsNullOrEmpty(req.password))
                     {
                         res.error.Add(new Error
                         {
@@ -87,7 +89,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                             Message = "Contraseña vacía"
                         });
                     }
-                    else if (!EsPasswordSeguro(req.usuario.password))
+                    else if (!EsPasswordSeguro(req.password))
                     {
                         res.error.Add(new Error
                         {
@@ -96,7 +98,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                     }
 
-                    if (req.usuario.GimnasioID <= 0)
+                    if (req.GimnasioID <= 0)
                     {
                         res.error.Add(new Error
                         {
@@ -105,7 +107,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                         });
                     }
 
-                    if (string.IsNullOrEmpty(req.usuario.telefono))
+                    if (string.IsNullOrEmpty(req.telefono))
                     {
                         res.error.Add(new Error
                         {
@@ -122,18 +124,18 @@ namespace BackEnd.Logica.Modulo_Usuario
                 }
 
                 string llave = Guid.NewGuid().ToString("N");
-                string passHash = HashearPassword(req.usuario.password, llave);
+                string passHash = HashearPassword(req.password, llave);
 
                 using (FitlifeDataContext linq = new FitlifeDataContext())
                 {
                     var resultado = linq.SP_RegistrarUsuario(
-                        req.usuario.GimnasioID,
-                        req.usuario.Cedula,
-                        req.usuario.Nombre,
-                        req.usuario.Apellido,
-                        req.usuario.correoElectronico,
+                        req.GimnasioID,
+                        req.Cedula,
+                        req.Nombre,
+                        req.Apellido,
+                        req.correoElectronico,
                         passHash,
-                        req.usuario.telefono,
+                        req.telefono,
                         "usuario",
                         "activo",
                         llave
@@ -141,7 +143,7 @@ namespace BackEnd.Logica.Modulo_Usuario
 
                     if (resultado != null && resultado.UsuarioID > 0)
                     {
-                        res.UsuarioID = resultado.UsuarioID;
+                        res.Nombre = resultado.Nombre;
                         res.resultado = true;
                     }
                     else
@@ -203,8 +205,9 @@ namespace BackEnd.Logica.Modulo_Usuario
                     }
 
                     string passwordHasheado = HashearPassword(req.Password, llaveUsuario);
+                    int sessionActiva = 1;
 
-                    var resultado = db.SP_LoginUsuario(req.Email, passwordHasheado).FirstOrDefault();
+                    var resultado = db.SP_LoginUsuario(req.Email, passwordHasheado, sessionActiva).FirstOrDefault();
 
                     if (resultado == null)
                     {
@@ -217,22 +220,6 @@ namespace BackEnd.Logica.Modulo_Usuario
                         return res;
                     }
 
-                    res.usuario = new BackEnd.Entidades.Usuario
-                    {
-                        Id = (long)(resultado.UsuarioID ?? 0),
-                        Nombre = resultado.Nombre,
-                        Apellido = resultado.Apellido,
-                        correoElectronico = resultado.Email,
-                        rol = resultado.Rol == "admin" ? EnumRolUsuario.admin : EnumRolUsuario.usuario,
-                        GimnasioID = resultado.GimnasioID ?? 0,
-
-                        membresiaActiva = new BackEnd.Entidades.UsuarioMembresia
-                        {
-                            Estado = (resultado.TieneMembresiaActiva ?? false) ? EnumEstadoMembresia.activa.ToString() : EnumEstadoMembresia.vencida.ToString()
-                        },
-
-                        estado = (resultado.EstaEnMorosidad ?? false) ? EnumEstadoUsuario.suspendido : EnumEstadoUsuario.activo
-                    };
 
                     res.Token = resultado.Token;
                     res.resultado = true;
@@ -446,12 +433,11 @@ namespace BackEnd.Logica.Modulo_Usuario
             return res;
         }
 
-        public ResObtenerUsuario ObtenerUsuarioId(ReqObtenerUsuario req)
+        public ResObtenerUsuario ObtenerUsuarioPorEmail(ReqObtenerUsuario req)
         {
             ResObtenerUsuario res = new ResObtenerUsuario();
-            res.error = new List<Error>();
+            res.error = new List<Error>();  // Cambiar esto a List<Error>
             res.resultado = false;
-
             try
             {
                 if (req == null)
@@ -463,45 +449,201 @@ namespace BackEnd.Logica.Modulo_Usuario
                     });
                     return res;
                 }
-                if (req.usuarioID <= 0)
+
+                if (string.IsNullOrEmpty(req.email))
                 {
                     res.error.Add(new Error
                     {
                         ErrorCode = (int)EnumErrores.idFaltante,
-                        Message = "UsuarioID vacío"
+                        Message = "Email vacío"
                     });
                     return res;
                 }
+
                 using (FitlifeDataContext linq = new FitlifeDataContext())
                 {
-                    // Ejecutamos el SP pero solo usamos el primer resultado (la información básica del usuario)
-                    var usuario = linq.SP_GetUsuarioPorID(req.usuarioID).FirstOrDefault();
-
-                    if (usuario == null)
+                    using (SqlConnection connection = new SqlConnection(linq.Connection.ConnectionString))
                     {
-                        res.error.Add(new Error
+                        connection.Open();
+
+                        using (SqlCommand command = new SqlCommand("SP_GetUsuarioPorEmail", connection))
                         {
-                            ErrorCode = (int)EnumErrores.usuarioNoEncontrado,
-                            Message = "Usuario no encontrado"
-                        });
-                        return res;
-                    }
+                            command.CommandType = CommandType.StoredProcedure;
+                            command.Parameters.AddWithValue("@Email", req.email);
 
-                    // Solo devolvemos la información básica del usuario
-                    res.usuario = new Entidades.Usuario
-                    {
-                        Id = usuario.UsuarioID,
-                        Cedula = usuario.Cedula,
-                        Nombre = usuario.Nombre,
-                        Apellido = usuario.Apellido,
-                        correoElectronico = usuario.Email,
-                        telefono = usuario.Telefono,
-                        rol = usuario.Rol == "admin" ? EnumRolUsuario.admin : EnumRolUsuario.usuario,
-                        estado = usuario.Estado == "activo" ? EnumEstadoUsuario.activo :
-                                usuario.Estado == "suspendido" ? EnumEstadoUsuario.suspendido : EnumEstadoUsuario.inactivo,
-                        GimnasioID = usuario.GimnasioID,
-                        nombreGimnasio = usuario.NombreGimnasio
-                    };
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                // 1. Información básica del usuario
+                                if (reader.Read())
+                                {
+                                    res.usuario = new Entidades.Usuario
+                                    {
+                                       
+                                        Cedula = reader.GetString(reader.GetOrdinal("Cedula")),
+                                        Nombre = reader.GetString(reader.GetOrdinal("Nombre")),
+                                        Apellido = reader.GetString(reader.GetOrdinal("Apellido")),
+                                        correoElectronico = reader.GetString(reader.GetOrdinal("Email")),
+                                        telefono = reader.GetString(reader.GetOrdinal("Telefono")),
+                                        rol = reader.GetString(reader.GetOrdinal("Rol")) == "admin" ?
+                                            EnumRolUsuario.admin : EnumRolUsuario.usuario,
+                                        estado = reader.GetString(reader.GetOrdinal("Estado")) == "activo" ?
+                                            EnumEstadoUsuario.activo :
+                                            reader.GetString(reader.GetOrdinal("Estado")) == "suspendido" ?
+                                            EnumEstadoUsuario.suspendido : EnumEstadoUsuario.inactivo,
+                                        nombreGimnasio = reader.GetString(reader.GetOrdinal("NombreGimnasio")),
+
+                                    };
+                                }
+                                else
+                                {
+                                    res.error.Add(new Error
+                                    {
+                                        ErrorCode = (int)EnumErrores.usuarioNoEncontrado,
+                                        Message = "Usuario no encontrado"
+                                    });
+                                    return res;
+                                }
+
+                                // 2. Membresía activa actual
+                                if (reader.NextResult() && reader.Read())
+                                {
+                                    res.membresia = new Entidades.UsuarioMembresia
+                                    {
+                                        UsuarioMembresiaID = reader.GetInt32(reader.GetOrdinal("UsuarioMembresiaID")),
+                                        TipoMembresia = reader.GetString(reader.GetOrdinal("TipoMembresia")),
+                                        Precio = reader.GetDecimal(reader.GetOrdinal("Precio")),
+                                        FechaInicio = reader.GetDateTime(reader.GetOrdinal("FechaInicio")),
+                                        FechaVencimiento = reader.GetDateTime(reader.GetOrdinal("FechaVencimiento")),
+                                        Estado = reader.GetString(reader.GetOrdinal("EstadoMembresia")),
+                                        DiasRestantes = reader.IsDBNull(reader.GetOrdinal("DiasRestantes")) ?
+                                            0 : reader.GetInt32(reader.GetOrdinal("DiasRestantes"))
+                                    };
+                                }
+
+                                // 3. Última métrica corporal - CORREGIDO para C# 7.3
+                                if (reader.NextResult() && reader.Read())
+                                {
+                                    res.metricaCorporal = new Entidades.MetricaCorporal
+                                    {
+                                        MetricaID = reader.GetInt32(reader.GetOrdinal("MetricaID")),
+                                        Peso = reader.GetDecimal(reader.GetOrdinal("Peso")),
+                                        Altura = reader.GetDecimal(reader.GetOrdinal("Altura")),
+                                        // Usar método helper para nullable decimals
+                                        IMC = DecimalHelper.GetNullableDecimal(reader, "IMC"),
+                                        PorcentajeGrasa = DecimalHelper.GetNullableDecimal(reader, "PorcentajeGrasa"),
+                                        Fecha = reader.GetDateTime(reader.GetOrdinal("Fecha"))
+                                    };
+                                }
+
+                                // 4. Estadísticas de asistencia - CORREGIDO
+                                if (reader.NextResult() && reader.Read())
+                                {
+                                    res.estadisticasAsistencia = new Entidades.EstadisticasAsistenciaU
+                                    {
+                                        TotalAsistencias = reader.GetInt32(reader.GetOrdinal("TotalAsistencias")),
+                                        UltimaAsistencia = reader.IsDBNull(reader.GetOrdinal("UltimaAsistencia")) ?
+                                            (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("UltimaAsistencia")),
+                                        AsistenciasUltimoMes = reader.GetInt32(reader.GetOrdinal("AsistenciasUltimoMes")),
+                                        AsistenciasUltimaSemana = reader.GetInt32(reader.GetOrdinal("AsistenciasUltimaSemana")),
+                                        DuracionPromedioMinutos = DecimalHelper.GetNullableDouble(reader, "DuracionPromedioMinutos"),
+                                        DiaMasFrecuente = reader.IsDBNull(reader.GetOrdinal("DiaMasFrecuente")) ?
+                                            null : reader.GetString(reader.GetOrdinal("DiaMasFrecuente"))
+                                    };
+                                }
+
+                                // 5. Pagos recientes
+                                if (reader.NextResult())
+                                {
+                                    res.pagosRecientes = new List<Entidades.Pago>();
+                                    while (reader.Read())
+                                    {
+                                        res.pagosRecientes.Add(new Entidades.Pago
+                                        {
+                                            PagoID = reader.GetInt32(reader.GetOrdinal("PagoID")),
+                                            Monto = reader.GetDecimal(reader.GetOrdinal("Monto")),
+                                            FechaPago = reader.GetDateTime(reader.GetOrdinal("FechaPago")),
+                                            MetodoPago = reader.GetString(reader.GetOrdinal("MetodoPago")),
+                                            Estado = reader.GetString(reader.GetOrdinal("EstadoPago")),
+                                            EstadoDescripcion = reader.GetString(reader.GetOrdinal("DescripcionEstadoPago"))
+                                        });
+                                    }
+                                }
+
+                                // 6. Notificaciones no leídas
+                                if (reader.NextResult() && reader.Read())
+                                {
+                                    res.resumenNotificaciones = new Entidades.ResumenNotificaciones
+                                    {
+                                        NotificacionesNoLeidas = reader.GetInt32(reader.GetOrdinal("NotificacionesNoLeidas")),
+                                        NotificacionesPago = reader.GetInt32(reader.GetOrdinal("NotificacionesPago")),
+                                        NotificacionesLogro = reader.GetInt32(reader.GetOrdinal("NotificacionesLogro")),
+                                        NotificacionesAnuncio = reader.GetInt32(reader.GetOrdinal("NotificacionesAnuncio"))
+                                    };
+                                }
+
+                                // 7. Estado de morosidad
+                                if (reader.NextResult() && reader.Read())
+                                {
+                                    res.estadoMorosidad = new Entidades.EstadoMorosidad
+                                    {
+                                        EstaEnMorosidad = reader.GetInt32(reader.GetOrdinal("EstaEnMorosidad")),
+                                        DiasRetraso = reader.GetInt32(reader.GetOrdinal("DiasRetraso"))
+                                    };
+                                }
+
+                                // 8. Rutina activa actual
+                                if (reader.NextResult() && reader.Read())
+                                {
+                                    res.rutinaActiva = new Entidades.RutinaActiva
+                                    {
+                                        RutinaID = reader.GetInt32(reader.GetOrdinal("RutinaID")),
+                                        NombreRutina = reader.GetString(reader.GetOrdinal("NombreRutina")),
+                                        DescripcionRutina = reader.GetString(reader.GetOrdinal("DescripcionRutina")),
+                                        FechaAsignacion = reader.GetDateTime(reader.GetOrdinal("FechaAsignacion")),
+                                        DiasDesdeAsignacion = reader.GetInt32(reader.GetOrdinal("DiasDesdeAsignacion")),
+                                        AsignadaPor = reader.IsDBNull(reader.GetOrdinal("AsignadaPor")) ?
+                                            null : reader.GetString(reader.GetOrdinal("AsignadaPor"))
+                                    };
+                                }
+
+                                // 9. Metas activas
+                                if (reader.NextResult())
+                                {
+                                    res.metasActivas = new List<Entidades.MetaUsuario>();
+                                    while (reader.Read())
+                                    {
+                                        res.metasActivas.Add(new Entidades.MetaUsuario
+                                        {
+                                            MetaID = reader.GetInt32(reader.GetOrdinal("MetaID")),
+                                            TipoMeta = reader.GetString(reader.GetOrdinal("TipoMeta")),
+                                            ValorObjetivo = reader.GetDecimal(reader.GetOrdinal("ValorObjetivo")),
+                                            FechaInicio = reader.GetDateTime(reader.GetOrdinal("FechaInicio")),
+                                            FechaObjetivo = reader.GetDateTime(reader.GetOrdinal("FechaObjetivo")),
+                                            DiasRestantes = reader.GetInt32(reader.GetOrdinal("DiasRestantes")),
+                                            Estado = "activa"
+                                        });
+                                    }
+                                }
+
+                                // 10. Logros obtenidos
+                                if (reader.NextResult())
+                                {
+                                    res.logrosObtenidos = new List<Entidades.Logro>();
+                                    while (reader.Read())
+                                    {
+                                        res.logrosObtenidos.Add(new Entidades.Logro
+                                        {
+                                            LogroID = reader.GetInt32(reader.GetOrdinal("LogroID")),
+                                            Nombre = reader.GetString(reader.GetOrdinal("NombreLogro")),
+                                            Descripcion = reader.GetString(reader.GetOrdinal("DescripcionLogro")),
+                                            Tipo = reader.GetString(reader.GetOrdinal("TipoLogro")),
+                                            FechaObtenido = reader.GetDateTime(reader.GetOrdinal("FechaObtenido"))
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    }
 
                     res.resultado = true;
                 }

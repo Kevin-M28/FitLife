@@ -261,6 +261,7 @@
       <Association Name="Usuario_ProgresoRutina" Member="ProgresoRutina" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="ProgresoRutina" />
       <Association Name="Usuario_UsuarioLogro" Member="UsuarioLogro" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="UsuarioLogro" />
       <Association Name="Usuario_UsuarioMembresia" Member="UsuarioMembresia" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="UsuarioMembresia" />
+      <Association Name="Usuario_Sesion" Member="Sesion" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Sesion" />
       <Association Name="Gimnasio_Usuario" Member="Gimnasio" ThisKey="GimnasioID" OtherKey="GimnasioID" Type="Gimnasio" IsForeignKey="true" />
     </Type>
   </Table>
@@ -284,6 +285,18 @@
       <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Association Name="Membresia_UsuarioMembresia" Member="Membresia" ThisKey="MembresiaID" OtherKey="MembresiaID" Type="Membresia" IsForeignKey="true" />
       <Association Name="Usuario_UsuarioMembresia" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sesion" Member="Sesion">
+    <Type Name="Sesion">
+      <Column Name="SesionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Token" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaInicio" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FechaExpiracion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FechaCreacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Usuario_Sesion" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.SP_ActualizarEstadoUsuario" Method="SP_ActualizarEstadoUsuario">
@@ -470,21 +483,6 @@
       <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SP_LoginUsuario" Method="SP_LoginUsuario">
-    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="Contrasenna" Parameter="contrasenna" Type="System.String" DbType="NVarChar(100)" />
-    <ElementType Name="SP_LoginUsuarioResult">
-      <Column Name="UsuarioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Rol" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="GimnasioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TieneMembresiaActiva" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="EstaEnMorosidad" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Token" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.SP_RegistrarAsistencia" Method="SP_RegistrarAsistencia">
     <Parameter Name="UsuarioID" Parameter="usuarioID" Type="System.Int32" DbType="Int" />
     <Parameter Name="MetodoRegistro" Parameter="metodoRegistro" Type="System.String" DbType="NVarChar(10)" />
@@ -539,6 +537,43 @@
       <Column Name="FechaPago" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_LoginUsuario" Method="SP_LoginUsuario">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Contrasenna" Parameter="contrasenna" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="DuracionSesionHoras" Parameter="duracionSesionHoras" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SP_LoginUsuarioResult">
+      <Column Name="SesionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Token" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="UsuarioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Rol" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="GimnasioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TieneMembresiaActiva" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EstaEnMorosidad" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FechaExpiracion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_GetUsuarioPorEmail" Method="SP_GetUsuarioPorEmail">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="SP_GetUsuarioPorEmailResult">
+      <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="GimnasioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreGimnasio" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DireccionGimnasio" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="TelefonoGimnasio" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Rol" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DescripcionEstado" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

@@ -102,6 +102,9 @@ namespace AccesoDatos
     partial void InsertUsuarioMembresia(UsuarioMembresia instance);
     partial void UpdateUsuarioMembresia(UsuarioMembresia instance);
     partial void DeleteUsuarioMembresia(UsuarioMembresia instance);
+    partial void InsertSesion(Sesion instance);
+    partial void UpdateSesion(Sesion instance);
+    partial void DeleteSesion(Sesion instance);
     #endregion
 		
 		public FitlifeDataContext() : 
@@ -326,6 +329,14 @@ namespace AccesoDatos
 			}
 		}
 		
+		public System.Data.Linq.Table<Sesion> Sesion
+		{
+			get
+			{
+				return this.GetTable<Sesion>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_ActualizarEstadoUsuario")]
 		public ISingleResult<SP_ActualizarEstadoUsuarioResult> SP_ActualizarEstadoUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NuevoEstado", DbType="NVarChar(20)")] string nuevoEstado, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdminID", DbType="Int")] System.Nullable<int> adminID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Motivo", DbType="NVarChar(200)")] string motivo)
 		{
@@ -410,13 +421,6 @@ namespace AccesoDatos
 			return ((ISingleResult<SP_InsertUsuarioMembresiaResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_LoginUsuario")]
-		public ISingleResult<SP_LoginUsuarioResult> SP_LoginUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Contrasenna", DbType="NVarChar(100)")] string contrasenna)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, contrasenna);
-			return ((ISingleResult<SP_LoginUsuarioResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_RegistrarAsistencia")]
 		public ISingleResult<SP_RegistrarAsistenciaResult> SP_RegistrarAsistencia([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MetodoRegistro", DbType="NVarChar(10)")] string metodoRegistro, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdminID", DbType="Int")] System.Nullable<int> adminID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaHoraEntrada", DbType="DateTime")] System.Nullable<System.DateTime> fechaHoraEntrada)
 		{
@@ -443,6 +447,20 @@ namespace AccesoDatos
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pagoID, nuevoEstado, adminID, comentario);
 			return ((ISingleResult<SP_UpdateEstadoPagoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_LoginUsuario")]
+		public ISingleResult<SP_LoginUsuarioResult> SP_LoginUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Contrasenna", DbType="NVarChar(100)")] string contrasenna, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DuracionSesionHoras", DbType="Int")] System.Nullable<int> duracionSesionHoras)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, contrasenna, duracionSesionHoras);
+			return ((ISingleResult<SP_LoginUsuarioResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_GetUsuarioPorEmail")]
+		public ISingleResult<SP_GetUsuarioPorEmailResult> SP_GetUsuarioPorEmail([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email);
+			return ((ISingleResult<SP_GetUsuarioPorEmailResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -5304,6 +5322,8 @@ namespace AccesoDatos
 		
 		private EntitySet<UsuarioMembresia> _UsuarioMembresia;
 		
+		private EntitySet<Sesion> _Sesion;
+		
 		private EntityRef<Gimnasio> _Gimnasio;
 		
     #region Definiciones de métodos de extensibilidad
@@ -5352,6 +5372,7 @@ namespace AccesoDatos
 			this._ProgresoRutina = new EntitySet<ProgresoRutina>(new Action<ProgresoRutina>(this.attach_ProgresoRutina), new Action<ProgresoRutina>(this.detach_ProgresoRutina));
 			this._UsuarioLogro = new EntitySet<UsuarioLogro>(new Action<UsuarioLogro>(this.attach_UsuarioLogro), new Action<UsuarioLogro>(this.detach_UsuarioLogro));
 			this._UsuarioMembresia = new EntitySet<UsuarioMembresia>(new Action<UsuarioMembresia>(this.attach_UsuarioMembresia), new Action<UsuarioMembresia>(this.detach_UsuarioMembresia));
+			this._Sesion = new EntitySet<Sesion>(new Action<Sesion>(this.attach_Sesion), new Action<Sesion>(this.detach_Sesion));
 			this._Gimnasio = default(EntityRef<Gimnasio>);
 			OnCreated();
 		}
@@ -5782,6 +5803,19 @@ namespace AccesoDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Sesion", Storage="_Sesion", ThisKey="UsuarioID", OtherKey="UsuarioID")]
+		public EntitySet<Sesion> Sesion
+		{
+			get
+			{
+				return this._Sesion;
+			}
+			set
+			{
+				this._Sesion.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Gimnasio_Usuario", Storage="_Gimnasio", ThisKey="GimnasioID", OtherKey="GimnasioID", IsForeignKey=true)]
 		public Gimnasio Gimnasio
 		{
@@ -5999,6 +6033,18 @@ namespace AccesoDatos
 		}
 		
 		private void detach_UsuarioMembresia(UsuarioMembresia entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = null;
+		}
+		
+		private void attach_Sesion(Sesion entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = this;
+		}
+		
+		private void detach_Sesion(Sesion entity)
 		{
 			this.SendPropertyChanging();
 			entity.Usuario = null;
@@ -6453,6 +6499,253 @@ namespace AccesoDatos
 					if ((value != null))
 					{
 						value.UsuarioMembresia.Add(this);
+						this._UsuarioID = value.UsuarioID;
+					}
+					else
+					{
+						this._UsuarioID = default(int);
+					}
+					this.SendPropertyChanged("Usuario");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Sesion")]
+	public partial class Sesion : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _SesionID;
+		
+		private int _UsuarioID;
+		
+		private string _Token;
+		
+		private System.DateTime _FechaInicio;
+		
+		private System.DateTime _FechaExpiracion;
+		
+		private string _Estado;
+		
+		private System.Nullable<System.DateTime> _FechaCreacion;
+		
+		private EntityRef<Usuario> _Usuario;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSesionIDChanging(int value);
+    partial void OnSesionIDChanged();
+    partial void OnUsuarioIDChanging(int value);
+    partial void OnUsuarioIDChanged();
+    partial void OnTokenChanging(string value);
+    partial void OnTokenChanged();
+    partial void OnFechaInicioChanging(System.DateTime value);
+    partial void OnFechaInicioChanged();
+    partial void OnFechaExpiracionChanging(System.DateTime value);
+    partial void OnFechaExpiracionChanged();
+    partial void OnEstadoChanging(string value);
+    partial void OnEstadoChanged();
+    partial void OnFechaCreacionChanging(System.Nullable<System.DateTime> value);
+    partial void OnFechaCreacionChanged();
+    #endregion
+		
+		public Sesion()
+		{
+			this._Usuario = default(EntityRef<Usuario>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SesionID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int SesionID
+		{
+			get
+			{
+				return this._SesionID;
+			}
+			set
+			{
+				if ((this._SesionID != value))
+				{
+					this.OnSesionIDChanging(value);
+					this.SendPropertyChanging();
+					this._SesionID = value;
+					this.SendPropertyChanged("SesionID");
+					this.OnSesionIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioID", DbType="Int NOT NULL")]
+		public int UsuarioID
+		{
+			get
+			{
+				return this._UsuarioID;
+			}
+			set
+			{
+				if ((this._UsuarioID != value))
+				{
+					if (this._Usuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUsuarioIDChanging(value);
+					this.SendPropertyChanging();
+					this._UsuarioID = value;
+					this.SendPropertyChanged("UsuarioID");
+					this.OnUsuarioIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Token", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
+		public string Token
+		{
+			get
+			{
+				return this._Token;
+			}
+			set
+			{
+				if ((this._Token != value))
+				{
+					this.OnTokenChanging(value);
+					this.SendPropertyChanging();
+					this._Token = value;
+					this.SendPropertyChanged("Token");
+					this.OnTokenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaInicio", DbType="DateTime NOT NULL")]
+		public System.DateTime FechaInicio
+		{
+			get
+			{
+				return this._FechaInicio;
+			}
+			set
+			{
+				if ((this._FechaInicio != value))
+				{
+					this.OnFechaInicioChanging(value);
+					this.SendPropertyChanging();
+					this._FechaInicio = value;
+					this.SendPropertyChanged("FechaInicio");
+					this.OnFechaInicioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaExpiracion", DbType="DateTime NOT NULL")]
+		public System.DateTime FechaExpiracion
+		{
+			get
+			{
+				return this._FechaExpiracion;
+			}
+			set
+			{
+				if ((this._FechaExpiracion != value))
+				{
+					this.OnFechaExpiracionChanging(value);
+					this.SendPropertyChanging();
+					this._FechaExpiracion = value;
+					this.SendPropertyChanged("FechaExpiracion");
+					this.OnFechaExpiracionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="NVarChar(20)")]
+		public string Estado
+		{
+			get
+			{
+				return this._Estado;
+			}
+			set
+			{
+				if ((this._Estado != value))
+				{
+					this.OnEstadoChanging(value);
+					this.SendPropertyChanging();
+					this._Estado = value;
+					this.SendPropertyChanged("Estado");
+					this.OnEstadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaCreacion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FechaCreacion
+		{
+			get
+			{
+				return this._FechaCreacion;
+			}
+			set
+			{
+				if ((this._FechaCreacion != value))
+				{
+					this.OnFechaCreacionChanging(value);
+					this.SendPropertyChanging();
+					this._FechaCreacion = value;
+					this.SendPropertyChanged("FechaCreacion");
+					this.OnFechaCreacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Sesion", Storage="_Usuario", ThisKey="UsuarioID", OtherKey="UsuarioID", IsForeignKey=true)]
+		public Usuario Usuario
+		{
+			get
+			{
+				return this._Usuario.Entity;
+			}
+			set
+			{
+				Usuario previousValue = this._Usuario.Entity;
+				if (((previousValue != value) 
+							|| (this._Usuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Usuario.Entity = null;
+						previousValue.Sesion.Remove(this);
+					}
+					this._Usuario.Entity = value;
+					if ((value != null))
+					{
+						value.Sesion.Add(this);
 						this._UsuarioID = value.UsuarioID;
 					}
 					else
@@ -8219,176 +8512,6 @@ namespace AccesoDatos
 		}
 	}
 	
-	public partial class SP_LoginUsuarioResult
-	{
-		
-		private System.Nullable<int> _UsuarioID;
-		
-		private string _Nombre;
-		
-		private string _Apellido;
-		
-		private string _Email;
-		
-		private string _Rol;
-		
-		private System.Nullable<int> _GimnasioID;
-		
-		private System.Nullable<bool> _TieneMembresiaActiva;
-		
-		private System.Nullable<bool> _EstaEnMorosidad;
-		
-		private string _Token;
-		
-		public SP_LoginUsuarioResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioID", DbType="Int")]
-		public System.Nullable<int> UsuarioID
-		{
-			get
-			{
-				return this._UsuarioID;
-			}
-			set
-			{
-				if ((this._UsuarioID != value))
-				{
-					this._UsuarioID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="NVarChar(100)")]
-		public string Nombre
-		{
-			get
-			{
-				return this._Nombre;
-			}
-			set
-			{
-				if ((this._Nombre != value))
-				{
-					this._Nombre = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Apellido", DbType="NVarChar(100)")]
-		public string Apellido
-		{
-			get
-			{
-				return this._Apellido;
-			}
-			set
-			{
-				if ((this._Apellido != value))
-				{
-					this._Apellido = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this._Email = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rol", DbType="NVarChar(20)")]
-		public string Rol
-		{
-			get
-			{
-				return this._Rol;
-			}
-			set
-			{
-				if ((this._Rol != value))
-				{
-					this._Rol = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GimnasioID", DbType="Int")]
-		public System.Nullable<int> GimnasioID
-		{
-			get
-			{
-				return this._GimnasioID;
-			}
-			set
-			{
-				if ((this._GimnasioID != value))
-				{
-					this._GimnasioID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TieneMembresiaActiva", DbType="Bit")]
-		public System.Nullable<bool> TieneMembresiaActiva
-		{
-			get
-			{
-				return this._TieneMembresiaActiva;
-			}
-			set
-			{
-				if ((this._TieneMembresiaActiva != value))
-				{
-					this._TieneMembresiaActiva = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EstaEnMorosidad", DbType="Bit")]
-		public System.Nullable<bool> EstaEnMorosidad
-		{
-			get
-			{
-				return this._EstaEnMorosidad;
-			}
-			set
-			{
-				if ((this._EstaEnMorosidad != value))
-				{
-					this._EstaEnMorosidad = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Token", DbType="NVarChar(500)")]
-		public string Token
-		{
-			get
-			{
-				return this._Token;
-			}
-			set
-			{
-				if ((this._Token != value))
-				{
-					this._Token = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SP_RegistrarAsistenciaResult
 	{
 		
@@ -8794,6 +8917,472 @@ namespace AccesoDatos
 				if ((this._Estado != value))
 				{
 					this._Estado = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_LoginUsuarioResult
+	{
+		
+		private System.Nullable<int> _SesionID;
+		
+		private string _Token;
+		
+		private System.Nullable<int> _UsuarioID;
+		
+		private string _Nombre;
+		
+		private string _Apellido;
+		
+		private string _Email;
+		
+		private string _Rol;
+		
+		private System.Nullable<int> _GimnasioID;
+		
+		private System.Nullable<bool> _TieneMembresiaActiva;
+		
+		private System.Nullable<bool> _EstaEnMorosidad;
+		
+		private System.Nullable<System.DateTime> _FechaExpiracion;
+		
+		public SP_LoginUsuarioResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SesionID", DbType="Int")]
+		public System.Nullable<int> SesionID
+		{
+			get
+			{
+				return this._SesionID;
+			}
+			set
+			{
+				if ((this._SesionID != value))
+				{
+					this._SesionID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Token", DbType="NVarChar(500)")]
+		public string Token
+		{
+			get
+			{
+				return this._Token;
+			}
+			set
+			{
+				if ((this._Token != value))
+				{
+					this._Token = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioID", DbType="Int")]
+		public System.Nullable<int> UsuarioID
+		{
+			get
+			{
+				return this._UsuarioID;
+			}
+			set
+			{
+				if ((this._UsuarioID != value))
+				{
+					this._UsuarioID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="NVarChar(100)")]
+		public string Nombre
+		{
+			get
+			{
+				return this._Nombre;
+			}
+			set
+			{
+				if ((this._Nombre != value))
+				{
+					this._Nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Apellido", DbType="NVarChar(100)")]
+		public string Apellido
+		{
+			get
+			{
+				return this._Apellido;
+			}
+			set
+			{
+				if ((this._Apellido != value))
+				{
+					this._Apellido = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rol", DbType="NVarChar(20)")]
+		public string Rol
+		{
+			get
+			{
+				return this._Rol;
+			}
+			set
+			{
+				if ((this._Rol != value))
+				{
+					this._Rol = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GimnasioID", DbType="Int")]
+		public System.Nullable<int> GimnasioID
+		{
+			get
+			{
+				return this._GimnasioID;
+			}
+			set
+			{
+				if ((this._GimnasioID != value))
+				{
+					this._GimnasioID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TieneMembresiaActiva", DbType="Bit")]
+		public System.Nullable<bool> TieneMembresiaActiva
+		{
+			get
+			{
+				return this._TieneMembresiaActiva;
+			}
+			set
+			{
+				if ((this._TieneMembresiaActiva != value))
+				{
+					this._TieneMembresiaActiva = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EstaEnMorosidad", DbType="Bit")]
+		public System.Nullable<bool> EstaEnMorosidad
+		{
+			get
+			{
+				return this._EstaEnMorosidad;
+			}
+			set
+			{
+				if ((this._EstaEnMorosidad != value))
+				{
+					this._EstaEnMorosidad = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaExpiracion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FechaExpiracion
+		{
+			get
+			{
+				return this._FechaExpiracion;
+			}
+			set
+			{
+				if ((this._FechaExpiracion != value))
+				{
+					this._FechaExpiracion = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_GetUsuarioPorEmailResult
+	{
+		
+		private int _UsuarioID;
+		
+		private string _Cedula;
+		
+		private int _GimnasioID;
+		
+		private string _NombreGimnasio;
+		
+		private string _DireccionGimnasio;
+		
+		private string _TelefonoGimnasio;
+		
+		private string _Nombre;
+		
+		private string _Apellido;
+		
+		private string _Email;
+		
+		private string _Telefono;
+		
+		private string _Rol;
+		
+		private string _Estado;
+		
+		private System.Nullable<System.DateTime> _FechaRegistro;
+		
+		private string _DescripcionEstado;
+		
+		public SP_GetUsuarioPorEmailResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioID", DbType="Int NOT NULL")]
+		public int UsuarioID
+		{
+			get
+			{
+				return this._UsuarioID;
+			}
+			set
+			{
+				if ((this._UsuarioID != value))
+				{
+					this._UsuarioID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cedula", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string Cedula
+		{
+			get
+			{
+				return this._Cedula;
+			}
+			set
+			{
+				if ((this._Cedula != value))
+				{
+					this._Cedula = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GimnasioID", DbType="Int NOT NULL")]
+		public int GimnasioID
+		{
+			get
+			{
+				return this._GimnasioID;
+			}
+			set
+			{
+				if ((this._GimnasioID != value))
+				{
+					this._GimnasioID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NombreGimnasio", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string NombreGimnasio
+		{
+			get
+			{
+				return this._NombreGimnasio;
+			}
+			set
+			{
+				if ((this._NombreGimnasio != value))
+				{
+					this._NombreGimnasio = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DireccionGimnasio", DbType="NVarChar(200)")]
+		public string DireccionGimnasio
+		{
+			get
+			{
+				return this._DireccionGimnasio;
+			}
+			set
+			{
+				if ((this._DireccionGimnasio != value))
+				{
+					this._DireccionGimnasio = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TelefonoGimnasio", DbType="NVarChar(20)")]
+		public string TelefonoGimnasio
+		{
+			get
+			{
+				return this._TelefonoGimnasio;
+			}
+			set
+			{
+				if ((this._TelefonoGimnasio != value))
+				{
+					this._TelefonoGimnasio = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Nombre
+		{
+			get
+			{
+				return this._Nombre;
+			}
+			set
+			{
+				if ((this._Nombre != value))
+				{
+					this._Nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Apellido", DbType="NVarChar(100)")]
+		public string Apellido
+		{
+			get
+			{
+				return this._Apellido;
+			}
+			set
+			{
+				if ((this._Apellido != value))
+				{
+					this._Apellido = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telefono", DbType="NVarChar(20)")]
+		public string Telefono
+		{
+			get
+			{
+				return this._Telefono;
+			}
+			set
+			{
+				if ((this._Telefono != value))
+				{
+					this._Telefono = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rol", DbType="NVarChar(20)")]
+		public string Rol
+		{
+			get
+			{
+				return this._Rol;
+			}
+			set
+			{
+				if ((this._Rol != value))
+				{
+					this._Rol = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="NVarChar(20)")]
+		public string Estado
+		{
+			get
+			{
+				return this._Estado;
+			}
+			set
+			{
+				if ((this._Estado != value))
+				{
+					this._Estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaRegistro", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FechaRegistro
+		{
+			get
+			{
+				return this._FechaRegistro;
+			}
+			set
+			{
+				if ((this._FechaRegistro != value))
+				{
+					this._FechaRegistro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DescripcionEstado", DbType="VarChar(32)")]
+		public string DescripcionEstado
+		{
+			get
+			{
+				return this._DescripcionEstado;
+			}
+			set
+			{
+				if ((this._DescripcionEstado != value))
+				{
+					this._DescripcionEstado = value;
 				}
 			}
 		}

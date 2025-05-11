@@ -3,10 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\YORKA\\source\\repos\\FitLife\\Fitlife\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\yorka\\source\\repos\\fitlife\\backend\\logica\\modulo usuario\\logicausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\yorka\\source\\repos\\fitlife\\backend\\entidades\\usuariomembresia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\yorka\\source\\repos\\fitlife\\backend\\request\\modulo usuario\\reqobtenerusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -16,7 +13,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 15,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Bookmark",
@@ -71,33 +68,16 @@
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UsuarioMembresia.cs",
-              "DocumentMoniker": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Entidades\\UsuarioMembresia.cs",
-              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\UsuarioMembresia.cs",
-              "ToolTip": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Entidades\\UsuarioMembresia.cs",
-              "RelativeToolTip": "..\\BackEnd\\Entidades\\UsuarioMembresia.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAwwBgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T21:17:23.631Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LogicaUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Logica\\Modulo Usuario\\LogicaUsuario.cs",
-              "RelativeDocumentMoniker": "..\\BackEnd\\Logica\\Modulo Usuario\\LogicaUsuario.cs",
-              "ToolTip": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Logica\\Modulo Usuario\\LogicaUsuario.cs",
-              "RelativeToolTip": "..\\BackEnd\\Logica\\Modulo Usuario\\LogicaUsuario.cs",
-              "ViewState": "AgIAANUAAAAAAAAAAADwv+0AAAApAAAAAAAAAA==",
+              "Title": "ReqObtenerUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Request\\Modulo Usuario\\ReqObtenerUsuario.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Request\\Modulo Usuario\\ReqObtenerUsuario.cs",
+              "ToolTip": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Request\\Modulo Usuario\\ReqObtenerUsuario.cs",
+              "RelativeToolTip": "..\\BackEnd\\Request\\Modulo Usuario\\ReqObtenerUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T21:13:36.736Z",
+              "WhenOpened": "2025-05-11T03:07:41.115Z",
               "EditorCaption": ""
             }
           ]

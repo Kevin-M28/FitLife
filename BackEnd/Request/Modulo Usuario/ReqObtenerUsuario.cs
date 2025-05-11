@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BackEnd.Entidades;
 
 namespace BackEnd.Request.Modulo_Usuario
 {
-    public class ReqObtenerUsuario: ReqBase
+    public class ReqObtenerUsuario
     {
-        public int usuarioID { get; set; }
+        public string  email { get; set; }
     }
 }

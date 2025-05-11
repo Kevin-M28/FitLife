@@ -8,6 +8,6 @@ namespace BackEnd.Response.Modulo_Usuario
 {
     public class ResAgregarUsuario : ResBase
     {
-        public long UsuarioID { get; set; }
+        public string Nombre{ get; set; }
     }
 }
