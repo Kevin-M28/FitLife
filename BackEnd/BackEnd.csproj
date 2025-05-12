@@ -96,6 +96,7 @@
     <Compile Include="Enum\EnumTipoLogro.cs" />
     <Compile Include="Enum\EnumTipoMeta.cs" />
     <Compile Include="Enum\EnumTipoNotificacion.cs" />
+    <Compile Include="HelperToken.cs" />
     <Compile Include="Logica\Modulo Asistencia\LogAsistencia.cs" />
     <Compile Include="Logica\Modulo Pago\LogMembresias.cs" />
     <Compile Include="Logica\Modulo Pago\LogPago.cs" />

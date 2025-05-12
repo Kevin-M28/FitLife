@@ -61,6 +61,7 @@ namespace BackEnd.Logica.Modulo_Logica
 
                 using (FitlifeDataContext db = new FitlifeDataContext())
                 {
+
                     // Create the SQL command directly to handle multiple result sets
                     var command = db.Connection.CreateCommand();
                     command.CommandText = "SP_RegistrarAsistencia";
@@ -188,7 +189,7 @@ namespace BackEnd.Logica.Modulo_Logica
                 using (FitlifeDataContext linq = new FitlifeDataContext())
                 {
                     // Verificamos si el usuario existe
-                    if (!linq.Usuario.Any(u => u.UsuarioID == req.UsuarioID))
+                    if (!linq.Usuarios.Any(u => u.UsuarioID == req.UsuarioID))
                     {
                         res.error.Add(new Error
                         {
@@ -359,7 +360,7 @@ namespace BackEnd.Logica.Modulo_Logica
                 using (FitlifeDataContext linq = new FitlifeDataContext())
                 {
                     // Verificamos si el gimnasio existe
-                    if (!linq.Gimnasio.Any(g => g.GimnasioID == req.GimnasioID))
+                    if (!linq.Gimnasios.Any(g => g.GimnasioID == req.GimnasioID))
                     {
                         res.error.Add(new Error
                         {

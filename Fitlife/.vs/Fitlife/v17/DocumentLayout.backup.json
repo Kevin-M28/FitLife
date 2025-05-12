@@ -1,27 +1,45 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\YORKA\\source\\repos\\FitLife\\Fitlife\\",
+  "WorkspaceRootPath": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\Fitlife\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\yorka\\source\\repos\\fitlife\\backend\\request\\modulo seguridad\\reqloginusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\fitlife\\backend\\helpertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\yorka\\source\\repos\\fitlife\\backend\\request\\modulo seguridad\\reqagregarusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\fitlife\\backend\\entidades\\sesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\yorka\\source\\repos\\fitlife\\backend\\request\\reqbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KevinM\\AppData\\Local\\Temp\\mky1ysst..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\yorka\\source\\repos\\fitlife\\backend\\response\\resbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\fitlife\\backend\\logica\\modulo usuario\\logicausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\yorka\\source\\repos\\fitlife\\backend\\response\\modulo seguridad\\resloginusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\fitlife\\backend\\request\\modulo usuario\\reqobtenerusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\yorka\\source\\repos\\fitlife\\backend\\entidades\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\fitlife\\backend\\logica\\modulo asistencia\\logasistencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\yorka\\source\\repos\\fitlife\\backend\\logica\\modulo usuario\\logicausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\fitlife\\backend\\request\\reqbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\fitlife\\backend\\request\\modulo usuario\\reqactualizarusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\fitlife\\backend\\enum\\enumerrores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF14E787-356B-4E6B-8946-04AEB56D5171}|..\\BackEnd\\BackEnd.csproj|c:\\users\\kevinm\\documents\\moviles\\fitlife\\backend\\response\\modulo seguridad\\resagregarusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA62751B-80F2-4316-BCC4-C2921696A65C}|..\\AccesoDatos\\AccesoDatos.csproj|c:\\users\\kevinm\\documents\\moviles\\fitlife\\accesodatos\\fitlife.dbml||{B465B5AD-8799-4507-B90A-EE29ACF36AF9}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KevinM\\AppData\\Local\\Temp\\mky1ysst..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KevinM\\AppData\\Local\\Temp\\mky1ysst..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,150 +49,144 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 9,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ReqLoginUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Request\\Modulo Seguridad\\ReqLoginUsuario.cs",
-              "RelativeDocumentMoniker": "..\\BackEnd\\Request\\Modulo Seguridad\\ReqLoginUsuario.cs",
-              "ToolTip": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Request\\Modulo Seguridad\\ReqLoginUsuario.cs",
-              "RelativeToolTip": "..\\BackEnd\\Request\\Modulo Seguridad\\ReqLoginUsuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T03:05:49.83Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ReqAgregarUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Request\\Modulo Seguridad\\ReqAgregarUsuario.cs",
-              "RelativeDocumentMoniker": "..\\BackEnd\\Request\\Modulo Seguridad\\ReqAgregarUsuario.cs",
-              "ToolTip": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Request\\Modulo Seguridad\\ReqAgregarUsuario.cs",
-              "RelativeToolTip": "..\\BackEnd\\Request\\Modulo Seguridad\\ReqAgregarUsuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T03:05:41.984Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ReqBase.cs",
-              "DocumentMoniker": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Request\\ReqBase.cs",
-              "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqBase.cs",
-              "ToolTip": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Request\\ReqBase.cs",
-              "RelativeToolTip": "..\\BackEnd\\Request\\ReqBase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T03:04:41.06Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ResBase.cs",
-              "DocumentMoniker": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Response\\ResBase.cs",
-              "RelativeDocumentMoniker": "..\\BackEnd\\Response\\ResBase.cs",
-              "ToolTip": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Response\\ResBase.cs",
-              "RelativeToolTip": "..\\BackEnd\\Response\\ResBase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T03:04:37.912Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ResLoginUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Response\\Modulo Seguridad\\ResLoginUsuario.cs",
-              "RelativeDocumentMoniker": "..\\BackEnd\\Response\\Modulo Seguridad\\ResLoginUsuario.cs",
-              "ToolTip": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Response\\Modulo Seguridad\\ResLoginUsuario.cs",
-              "RelativeToolTip": "..\\BackEnd\\Response\\Modulo Seguridad\\ResLoginUsuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T03:03:50.114Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Entidades\\Usuario.cs",
-              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Usuario.cs",
-              "ToolTip": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Entidades\\Usuario.cs",
-              "RelativeToolTip": "..\\BackEnd\\Entidades\\Usuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T02:53:25.205Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:137:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:138:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:136:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:134:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "LogicaUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Logica\\Modulo Usuario\\LogicaUsuario.cs",
-              "RelativeDocumentMoniker": "..\\BackEnd\\Logica\\Modulo Usuario\\LogicaUsuario.cs",
-              "ToolTip": "C:\\Users\\YORKA\\source\\repos\\FitLife\\BackEnd\\Logica\\Modulo Usuario\\LogicaUsuario.cs",
-              "RelativeToolTip": "..\\BackEnd\\Logica\\Modulo Usuario\\LogicaUsuario.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAtwK0AAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T02:47:37.769Z",
+              "DocumentIndex": 2,
+              "Title": "SQLQuery1.sql ",
+              "DocumentMoniker": "C:\\Users\\KevinM\\AppData\\Local\\Temp\\mky1ysst..sql",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\mky1ysst..sql",
+              "ToolTip": "SQLQuery1.sql *",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-05-12T01:09:59.265Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ReqActualizarUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Request\\Modulo Usuario\\ReqActualizarUsuario.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Request\\Modulo Usuario\\ReqActualizarUsuario.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Request\\Modulo Usuario\\ReqActualizarUsuario.cs",
+              "RelativeToolTip": "..\\BackEnd\\Request\\Modulo Usuario\\ReqActualizarUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T00:57:11.964Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReqObtenerUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Request\\Modulo Usuario\\ReqObtenerUsuario.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Request\\Modulo Usuario\\ReqObtenerUsuario.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Request\\Modulo Usuario\\ReqObtenerUsuario.cs",
+              "RelativeToolTip": "..\\BackEnd\\Request\\Modulo Usuario\\ReqObtenerUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T00:57:09.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ReqBase.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Request\\ReqBase.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Request\\ReqBase.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Request\\ReqBase.cs",
+              "RelativeToolTip": "..\\BackEnd\\Request\\ReqBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T00:57:02.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LogAsistencia.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Logica\\Modulo Asistencia\\LogAsistencia.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Logica\\Modulo Asistencia\\LogAsistencia.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Logica\\Modulo Asistencia\\LogAsistencia.cs",
+              "RelativeToolTip": "..\\BackEnd\\Logica\\Modulo Asistencia\\LogAsistencia.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAwwA8CAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T00:48:43.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LogicaUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Logica\\Modulo Usuario\\LogicaUsuario.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Logica\\Modulo Usuario\\LogicaUsuario.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Logica\\Modulo Usuario\\LogicaUsuario.cs",
+              "RelativeToolTip": "..\\BackEnd\\Logica\\Modulo Usuario\\LogicaUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T00:36:08.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Sesion.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Entidades\\Sesion.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Entidades\\Sesion.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Entidades\\Sesion.cs*",
+              "RelativeToolTip": "..\\BackEnd\\Entidades\\Sesion.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T00:41:29.578Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EnumErrores.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Enum\\enumErrores.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Enum\\enumErrores.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Enum\\enumErrores.cs",
+              "RelativeToolTip": "..\\BackEnd\\Enum\\enumErrores.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwEkAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T00:48:01.277Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HelperToken.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\HelperToken.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\HelperToken.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\HelperToken.cs*",
+              "RelativeToolTip": "..\\BackEnd\\HelperToken.cs*",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwEYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T00:40:54.297Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ResAgregarUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Response\\Modulo Seguridad\\ResAgregarUsuario.cs",
+              "RelativeDocumentMoniker": "..\\BackEnd\\Response\\Modulo Seguridad\\ResAgregarUsuario.cs",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\BackEnd\\Response\\Modulo Seguridad\\ResAgregarUsuario.cs",
+              "RelativeToolTip": "..\\BackEnd\\Response\\Modulo Seguridad\\ResAgregarUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T00:40:03.902Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Fitlife.dbml",
+              "DocumentMoniker": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\AccesoDatos\\Fitlife.dbml",
+              "RelativeDocumentMoniker": "..\\AccesoDatos\\Fitlife.dbml",
+              "ToolTip": "C:\\Users\\KevinM\\Documents\\Moviles\\FitLife\\AccesoDatos\\Fitlife.dbml",
+              "RelativeToolTip": "..\\AccesoDatos\\Fitlife.dbml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001722|",
+              "WhenOpened": "2025-04-23T22:45:39.499Z"
             }
           ]
         }

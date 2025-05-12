@@ -18,6 +18,7 @@ namespace BackEnd.Logica.Modulo_Usuario
 {
     public class LogicaUsuario
     {
+        // Registration doesn't require session validation
         public ResAgregarUsuario Registrar(ReqAgregarUsuario req)
         {
             ResAgregarUsuario res = new ResAgregarUsuario();
@@ -168,6 +169,7 @@ namespace BackEnd.Logica.Modulo_Usuario
             return res;
         }
 
+        // Login doesn't require session validation
         public ResLoginUsuario LoginUsuario(ReqLoginUsuario req)
         {
             var res = new ResLoginUsuario();
@@ -188,7 +190,7 @@ namespace BackEnd.Logica.Modulo_Usuario
 
                 using (var db = new FitlifeDataContext())
                 {
-                    var llaveUsuario = db.Usuario
+                    var llaveUsuario = db.Usuarios
                         .Where(u => u.Email == req.Email)
                         .Select(u => u.Llave)
                         .FirstOrDefault();
@@ -238,11 +240,21 @@ namespace BackEnd.Logica.Modulo_Usuario
             return res;
         }
 
+        // CambiarContrasenna requires session validation
         public ResCambiarContrasenna CambiarContrasenna(ReqCambiarContrasenna req)
         {
             ResCambiarContrasenna res = new ResCambiarContrasenna();
             res.error = new List<Error>();
             res.resultado = false;
+
+            // Validate session token
+            List<Error> erroresSesion = new List<Error>();
+            var sesion = SessionValidator.ValidarSesion(req.Token, out erroresSesion);
+            if (sesion == null)
+            {
+                res.error.AddRange(erroresSesion);
+                return res;
+            }
 
             try
             {
@@ -264,6 +276,17 @@ namespace BackEnd.Logica.Modulo_Usuario
                         ErrorCode = (int)EnumErrores.idFaltante,
                         Message = "Usuario no válido"
                     });
+                }
+
+                // Check if the user ID matches the session user ID
+                if (req.UsuarioID != sesion.Id_User)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.permisoInsuficiente,
+                        Message = "No tiene permisos para cambiar la contraseña de otro usuario"
+                    });
+                    return res;
                 }
 
                 if (string.IsNullOrWhiteSpace(req.passwordActual))
@@ -298,7 +321,7 @@ namespace BackEnd.Logica.Modulo_Usuario
 
                 using (FitlifeDataContext linq = new FitlifeDataContext())
                 {
-                    var usuario = linq.Usuario.FirstOrDefault(u => u.UsuarioID == req.UsuarioID);
+                    var usuario = linq.Usuarios.FirstOrDefault(u => u.UsuarioID == req.UsuarioID);
                     if (usuario == null)
                     {
                         res.error.Add(new Error
@@ -360,11 +383,22 @@ namespace BackEnd.Logica.Modulo_Usuario
             return res;
         }
 
+        // AsignarRolUsuario requires session validation and admin privileges
         public ResAsignarRolUsuario AsignarRolUsuario(ReqAsignarRolUsuario req)
         {
             ResAsignarRolUsuario res = new ResAsignarRolUsuario();
             res.error = new List<Error>();
             res.resultado = false;
+
+            // Validate session token
+            List<Error> erroresSesion = new List<Error>();
+            var sesion = SessionValidator.ValidarSesion(req.Token, out erroresSesion);
+            if (sesion == null)
+            {
+                res.error.AddRange(erroresSesion);
+                return res;
+            }
+
             try
             {
                 if (req == null)
@@ -393,6 +427,35 @@ namespace BackEnd.Logica.Modulo_Usuario
                         Message = "Rol vacío"
                     });
                     return res;
+                }
+
+                // Ensure the admin ID matches the session user ID
+                if (req.usuarioAdmin != sesion.Id_User)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.permisoInsuficiente,
+                        Message = "No tiene permisos para realizar esta acción"
+                    });
+                    return res;
+                }
+
+                // Verify admin role
+                using (FitlifeDataContext checkDb = new FitlifeDataContext())
+                {
+                    var isAdmin = checkDb.Usuarios
+                        .Where(u => u.UsuarioID == sesion.Id_User && u.Rol == "admin")
+                        .Any();
+
+                    if (!isAdmin)
+                    {
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.permisoInsuficiente,
+                            Message = "Se requieren privilegios de administrador para esta operación"
+                        });
+                        return res;
+                    }
                 }
 
                 using (FitlifeDataContext linq = new FitlifeDataContext())
@@ -433,11 +496,22 @@ namespace BackEnd.Logica.Modulo_Usuario
             return res;
         }
 
+        // ObtenerUsuarioPorEmail requires session validation
         public ResObtenerUsuario ObtenerUsuarioPorEmail(ReqObtenerUsuario req)
         {
             ResObtenerUsuario res = new ResObtenerUsuario();
             res.error = new List<Error>();  // Cambiar esto a List<Error>
             res.resultado = false;
+
+            // Validate session token
+            List<Error> erroresSesion = new List<Error>();
+            var sesion = SessionValidator.ValidarSesion(req.Token, out erroresSesion);
+            if (sesion == null)
+            {
+                res.error.AddRange(erroresSesion);
+                return res;
+            }
+
             try
             {
                 if (req == null)
@@ -478,7 +552,7 @@ namespace BackEnd.Logica.Modulo_Usuario
                                 {
                                     res.usuario = new Entidades.Usuario
                                     {
-                                       
+
                                         Cedula = reader.GetString(reader.GetOrdinal("Cedula")),
                                         Nombre = reader.GetString(reader.GetOrdinal("Nombre")),
                                         Apellido = reader.GetString(reader.GetOrdinal("Apellido")),
@@ -659,11 +733,22 @@ namespace BackEnd.Logica.Modulo_Usuario
             return res;
         }
 
+        // ActualizarUsuario requires session validation
         public ResActualizarUsuario ActualizarUsuario(ReqActualizarUsuario req)
         {
             ResActualizarUsuario res = new ResActualizarUsuario();
             res.error = new List<Error>();
             res.resultado = false;
+
+            // Validate session token
+            List<Error> erroresSesion = new List<Error>();
+            var sesion = SessionValidator.ValidarSesion(req.Token, out erroresSesion);
+            if (sesion == null)
+            {
+                res.error.AddRange(erroresSesion);
+                return res;
+            }
+
             try
             {
                 if (req == null)
@@ -684,6 +769,29 @@ namespace BackEnd.Logica.Modulo_Usuario
                     });
                     return res;
                 }
+
+                // Ensure the user is updating their own profile or is an admin
+                if (req.usuarioID != sesion.Id_User)
+                {
+                    // Check if the session user is an admin
+                    using (FitlifeDataContext checkDb = new FitlifeDataContext())
+                    {
+                        var isAdmin = checkDb.Usuarios
+                            .Where(u => u.UsuarioID == sesion.Id_User && u.Rol == "admin")
+                            .Any();
+
+                        if (!isAdmin)
+                        {
+                            res.error.Add(new Error
+                            {
+                                ErrorCode = (int)EnumErrores.permisoInsuficiente,
+                                Message = "No tiene permisos para actualizar otro usuario"
+                            });
+                            return res;
+                        }
+                    }
+                }
+
                 using (FitlifeDataContext linq = new FitlifeDataContext())
                 {
                     var resultado = linq.SP_UpdateUsuario(req.usuarioID, req.nombre, req.apellido, req.email, req.telefono).FirstOrDefault();
@@ -722,12 +830,23 @@ namespace BackEnd.Logica.Modulo_Usuario
             }
             return res;
         }
-        /*
-        public ResActualizarEstadoUsuario ActualizarEstadoUsuario(ReqActualizarEstadoUsuario req)
+
+        // EliminarUsuario requires session validation and admin privileges
+        public ResEliminarUsuario EliminarUsuario(ReqEliminarUsuario req)
         {
-            ResActualizarEstadoUsuario res = new ResActualizarEstadoUsuario();
+            ResEliminarUsuario res = new ResEliminarUsuario();
             res.error = new List<Error>();
             res.resultado = false;
+
+            // Validate session token
+            List<Error> erroresSesion = new List<Error>();
+            var sesion = SessionValidator.ValidarSesion(req.Token, out erroresSesion);
+            if (sesion == null)
+            {
+                res.error.AddRange(erroresSesion);
+                return res;
+            }
+
             try
             {
                 if (req == null)
@@ -748,49 +867,62 @@ namespace BackEnd.Logica.Modulo_Usuario
                     });
                     return res;
                 }
-                if (string.IsNullOrEmpty(req.nuevoEstado))
+
+                // Verify admin privileges
+                using (FitlifeDataContext checkDb = new FitlifeDataContext())
                 {
-                    res.error.Add(new Error
+                    var isAdmin = checkDb.Usuarios
+                        .Where(u => u.UsuarioID == sesion.Id_User && u.Rol == "admin")
+                        .Any();
+
+                    if (!isAdmin)
                     {
-                        ErrorCode = (int)EnumErrores.datosIncompletos,
-                        Message = "Nuevo estado vacío"
-                    });
-                    return res;
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.permisoInsuficiente,
+                            Message = "Se requieren privilegios de administrador para eliminar usuarios"
+                        });
+                        return res;
+                    }
                 }
-                if (req.adminID <= 0)
+
+                // Prevent self-deletion
+                if (req.usuarioID == sesion.Id_User)
                 {
                     res.error.Add(new Error
                     {
-                        ErrorCode = (int)EnumErrores.permisoInsuficiente,
-                        Message = "AdminID inválido"
+                        ErrorCode = (int)EnumErrores.operacionNoPermitida,
+                        Message = "No puede eliminar su propia cuenta"
                     });
                     return res;
                 }
 
                 using (FitlifeDataContext linq = new FitlifeDataContext())
                 {
-                    var resultado = linq.SP_ActualizarEstadoUsuario(req.usuarioID, req.nuevoEstado, req.adminID, req.motivo).FirstOrDefault();
-                    if (resultado == null || resultado.UsuarioID <= 0)
+                    // Example stored procedure call for user deletion
+                    // Adjust according to your actual stored procedure
+                    var command = linq.Connection.CreateCommand();
+                    command.CommandText = "SP_EliminarUsuario";
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@UsuarioID", req.usuarioID));
+                    command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@AdminID", sesion.Id_User));
+
+                    linq.Connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    linq.Connection.Close();
+
+                    if (rowsAffected > 0)
+                    {
+                        res.resultado = true;
+                    }
+                    else
                     {
                         res.error.Add(new Error
                         {
                             ErrorCode = (int)EnumErrores.usuarioNoEncontrado,
-                            Message = "Usuario no encontrado"
+                            Message = "No se pudo eliminar el usuario. Verifique que exista."
                         });
-                        return res;
                     }
-
-                    res.Mensaje = resultado.Mensaje;
-                    res.usuario = new Usuario
-                    {
-                        Id = resultado.UsuarioID,
-                        Nombre = resultado.Nombre,
-                        Apellido = resultado.Apellido,
-                        correoElectronico = resultado.Email,
-                        estado = resultado.Estado == "activo" ? EnumEstadoUsuario.activo :
-                                resultado.Estado == "suspendido" ? EnumEstadoUsuario.suspendido : EnumEstadoUsuario.inactivo
-                    };
-                    res.resultado = true;
                 }
             }
             catch (Exception ex)
@@ -802,7 +934,400 @@ namespace BackEnd.Logica.Modulo_Usuario
                 });
             }
             return res;
-        }*/
+        }
+
+        // SuspenderUsuario requires session validation and admin privileges
+        public ResSuspenderUsuario SuspenderUsuario(ReqSuspenderUsuario req)
+        {
+            ResSuspenderUsuario res = new ResSuspenderUsuario();
+            res.error = new List<Error>();
+            res.resultado = false;
+
+            // Validate session token
+            List<Error> erroresSesion = new List<Error>();
+            var sesion = SessionValidator.ValidarSesion(req.Token, out erroresSesion);
+            if (sesion == null)
+            {
+                res.error.AddRange(erroresSesion);
+                return res;
+            }
+
+            try
+            {
+                if (req == null)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.requestNulo,
+                        Message = "Request nulo"
+                    });
+                    return res;
+                }
+                if (req.usuarioID <= 0)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.idFaltante,
+                        Message = "UsuarioID vacío"
+                    });
+                    return res;
+                }
+
+                // Verify admin privileges
+                using (FitlifeDataContext checkDb = new FitlifeDataContext())
+                {
+                    var isAdmin = checkDb.Usuarios
+                        .Where(u => u.UsuarioID == sesion.Id_User && u.Rol == "admin")
+                        .Any();
+
+                    if (!isAdmin)
+                    {
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.permisoInsuficiente,
+                            Message = "Se requieren privilegios de administrador para suspender usuarios"
+                        });
+                        return res;
+                    }
+                }
+
+                // Prevent self-suspension
+                if (req.usuarioID == sesion.Id_User)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.operacionNoPermitida,
+                        Message = "No puede suspender su propia cuenta"
+                    });
+                    return res;
+                }
+
+                using (FitlifeDataContext linq = new FitlifeDataContext())
+                {
+                    // Example stored procedure call for user suspension
+                    // Adjust according to your actual stored procedure
+                    var command = linq.Connection.CreateCommand();
+                    command.CommandText = "SP_ActualizarEstadoUsuario";
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@UsuarioID", req.usuarioID));
+                    command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NuevoEstado", "suspendido"));
+                    command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@AdminID", sesion.Id_User));
+                    command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Motivo", req.motivo ?? "No especificado"));
+
+                    linq.Connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    linq.Connection.Close();
+
+                    if (rowsAffected > 0)
+                    {
+                        res.resultado = true;
+                    }
+                    else
+                    {
+                        res.error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.usuarioNoEncontrado,
+                            Message = "No se pudo suspender el usuario. Verifique que exista."
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                res.error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionLogica,
+                    Message = ex.Message
+                });
+            }
+            return res;
+        }
+
+        // Method to verify a user after registration (no session required)
+        public ResVerificarUsuario VerificarUsuario(ReqVerificarUsuario req)
+        {
+            ResVerificarUsuario res = new ResVerificarUsuario();
+            res.error = new List<Error>();
+            res.resultado = false;
+
+            try
+            {
+                if (req == null)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.requestNulo,
+                        Message = "Request nulo"
+                    });
+                    return res;
+                }
+
+                if (string.IsNullOrEmpty(req.correo))
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.correoFaltante,
+                        Message = "Correo vacío"
+                    });
+                    return res;
+                }
+
+                if (string.IsNullOrEmpty(req.codigo))
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.verificacionFallida,
+                        Message = "Código de verificación vacío"
+                    });
+                    return res;
+                }
+
+                using (FitlifeDataContext linq = new FitlifeDataContext())
+                {
+                    // Example stored procedure call for user verification
+                    // Adjust according to your actual stored procedure
+                    var command = linq.Connection.CreateCommand();
+                    command.CommandText = "SP_VerificarUsuario";
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Email", req.correo));
+                    command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Codigo", req.codigo));
+
+                    linq.Connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            bool resultado = reader.GetBoolean(reader.GetOrdinal("Resultado"));
+                            if (resultado)
+                            {
+                                res.resultado = true;
+                            }
+                            else
+                            {
+                                string mensaje = reader.GetString(reader.GetOrdinal("Mensaje"));
+                                res.error.Add(new Error
+                                {
+                                    ErrorCode = (int)EnumErrores.verificacionFallida,
+                                    Message = mensaje
+                                });
+                            }
+                        }
+                        else
+                        {
+                            res.error.Add(new Error
+                            {
+                                ErrorCode = (int)EnumErrores.verificacionFallida,
+                                Message = "Error al verificar el usuario"
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                res.error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionLogica,
+                    Message = ex.Message
+                });
+            }
+
+            return res;
+        }
+
+        // Method to request password reset (no session required)
+        public ResResetContrasennaSolicitar SolicitarCambioContrasenna(ReqSolicitarCambioContrasenna req)
+        {
+            ResResetContrasennaSolicitar res = new ResResetContrasennaSolicitar();
+            res.error = new List<Error>();
+            res.resultado = false;
+
+            try
+            {
+                if (req == null)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.requestNulo,
+                        Message = "Request nulo"
+                    });
+                    return res;
+                }
+
+                if (string.IsNullOrEmpty(req.Email))
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.correoFaltante,
+                        Message = "Correo vacío"
+                    });
+                    return res;
+                }
+
+                using (FitlifeDataContext linq = new FitlifeDataContext())
+                {
+                    // Example stored procedure call for password reset request
+                    // Adjust according to your actual stored procedure
+                    var command = linq.Connection.CreateCommand();
+                    command.CommandText = "SP_ResetPassword_Solicitar";
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Email", req.Email));
+
+                    linq.Connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string mensaje = reader.GetString(reader.GetOrdinal("Mensaje"));
+
+                            // Note: Even if the email doesn't exist, we return success for security reasons
+                            // but don't actually send a reset token
+                            res.resultado = true;
+
+                            // Only if the email exists, we'll have these fields
+                            if (!reader.IsDBNull(reader.GetOrdinal("TokenRecuperacion")))
+                            {
+                                res.ResetToken = reader.GetString(reader.GetOrdinal("TokenRecuperacion"));
+                                res.ExpirationDate = reader.GetDateTime(reader.GetOrdinal("FechaExpiracion"));
+                                res.UsuarioID = reader.GetInt32(reader.GetOrdinal("UsuarioID"));
+                                /*
+                                // Here you would send an email with the reset token
+                                bool emailSent = HelperMailcs.EnviarCorreoResetPassword(req.Email, res.ResetToken);
+                                if (!emailSent)
+                                {
+                                    // Log this error but still return success to user
+                                    Console.WriteLine("Failed to send password reset email to: " + req.Email);
+                                }*/
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                res.error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionLogica,
+                    Message = ex.Message
+                });
+            }
+
+            return res;
+        }
+
+        // Method to confirm password reset with token (no session required)
+        public ResResetContrasennaConfirmar ResetContrasennaConfirmar(ReqResetContrasennaConfirmar req)
+        {
+            ResResetContrasennaConfirmar res = new ResResetContrasennaConfirmar();
+            res.error = new List<Error>();
+            res.resultado = false;
+
+            try
+            {
+                if (req == null)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.requestNulo,
+                        Message = "Request nulo"
+                    });
+                    return res;
+                }
+
+                if (req.UsuarioID <= 0)
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.idFaltante,
+                        Message = "ID de usuario inválido"
+                    });
+                    return res;
+                }
+
+                if (string.IsNullOrEmpty(req.ResetToken))
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.datosIncompletos,
+                        Message = "Token de restablecimiento vacío"
+                    });
+                    return res;
+                }
+
+                if (string.IsNullOrEmpty(req.NuevaPassword))
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.passwordFaltante,
+                        Message = "Nueva contraseña vacía"
+                    });
+                    return res;
+                }
+
+                if (!EsPasswordSeguro(req.NuevaPassword))
+                {
+                    res.error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.passwordMuyDebil,
+                        Message = "La nueva contraseña no cumple con los requisitos de seguridad"
+                    });
+                    return res;
+                }
+
+                using (FitlifeDataContext linq = new FitlifeDataContext())
+                {
+                    // Example stored procedure call for password reset confirmation
+                    // Adjust according to your actual stored procedure
+                    var command = linq.Connection.CreateCommand();
+                    command.CommandText = "SP_ResetPassword_Confirmar";
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@UsuarioID", req.UsuarioID));
+                    command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@ResetToken", req.ResetToken));
+                    command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NuevaPassword", req.NuevaPassword));
+
+                    linq.Connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            bool resultado = reader.GetBoolean(reader.GetOrdinal("Resultado"));
+                            string mensaje = reader.GetString(reader.GetOrdinal("Mensaje"));
+
+                            if (resultado)
+                            {
+                                res.resultado = true;
+                            }
+                            else
+                            {
+                                res.error.Add(new Error
+                                {
+                                    ErrorCode = (int)EnumErrores.verificacionFallida,
+                                    Message = mensaje
+                                });
+                            }
+                        }
+                        else
+                        {
+                            res.error.Add(new Error
+                            {
+                                ErrorCode = (int)EnumErrores.verificacionFallida,
+                                Message = "Error al restablecer la contraseña"
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                res.error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionLogica,
+                    Message = ex.Message
+                });
+            }
+
+            return res;
+        }
 
         #region Helpers
         public bool EsCorreoValido(string correo)

@@ -10,12 +10,9 @@ namespace BackEnd.Entidades
 {
     public class Sesion
     {
-        public int Id { get; set; }
-        public DateTime inicio { get; set; }
-        public Usuario usuario { get; set; }
-        public string origen { get; set; }
-        public EnumRolUsuario rol { get; set; }
-        public EnumEstadoSesion estado { get; set; }
-        public DateTime ultimaActividad { get; set; }
+       public int Id_User { get; set; }
+        public string Estado { get; set; }
+        public DateTime FechaExpira { get; set; }
+        public string Tipo { get; set; }
     }
 }

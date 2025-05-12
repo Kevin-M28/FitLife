@@ -9,6 +9,6 @@ namespace BackEnd.Request
 {
     public class ReqBase
     {
-        public Sesion sesion { get; set; }
+        public string Token { get; set; }
     }
 }

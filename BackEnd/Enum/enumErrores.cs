@@ -69,6 +69,8 @@ namespace BackEnd.Enum
         metodoRegistroFaltante=57,
         gimnasioInvalido = 58,
         fechasInvalidas = 59,
-        tipoEstadisticaInvalido = 60
+        tipoEstadisticaInvalido = 60,
+        sesionNula = 101,
+        sesionNoEncontrada = 102
     }
 }

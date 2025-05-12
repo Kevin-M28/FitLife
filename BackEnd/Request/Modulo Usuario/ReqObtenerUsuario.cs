@@ -7,8 +7,9 @@ using BackEnd.Entidades;
 
 namespace BackEnd.Request.Modulo_Usuario
 {
-    public class ReqObtenerUsuario
+    public class ReqObtenerUsuario : ReqBase
     {
         public string  email { get; set; }
+
     }
 }
