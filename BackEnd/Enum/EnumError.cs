@@ -72,6 +72,15 @@ namespace BackEnd.Enum
         tipoEstadisticaInvalido = 60,
         sesionNula = 101,
         sesionNoEncontrada = 102,
-        passwordIncorrecto = 103
+        passwordIncorrecto = 103,
+        pagasinMembresias = 104,
+        tipoMembresiaInvalido = 105,
+        montoIncompatible = 106,
+        metodoPagoNoDisponible = 107,
+        pagoYaProcesado = 108,
+        membresiaYaActiva = 109,
+        sinMembresiaActiva = 110,
+        administradorRequerido = 111,
+        tokenAdminRequerido = 112
     }
 }
