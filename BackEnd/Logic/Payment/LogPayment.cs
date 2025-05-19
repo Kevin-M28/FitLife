@@ -9,7 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackEnd.Logic
+namespace BackEnd.Logic.Payment
+
 {
     public class LogPayment
     {
@@ -257,8 +258,8 @@ namespace BackEnd.Logic
                         {
                             res.Payments.Add(new Entities.Payment
                             {
-                                res.Payments.Amount = pago.Amount ?? 0,
-                                res.Payments.PaymentMethodName = pago.PaymentMethod,
+                                Amount = pago.Amount ?? 0,
+                                PaymentMethodName = pago.PaymentMethod,
                                 PaymentDate = pago.PaymentDate ?? DateTime.MinValue,
                                 ReceiptFilePath = pago.ReceiptFilePath,
                                 Status = pago.Status,
