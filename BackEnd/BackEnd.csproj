@@ -69,11 +69,14 @@
     <Compile Include="Entities\Payment.cs" />
     <Compile Include="Entities\PaymentMethod.cs" />
     <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\Routine.cs" />
     <Compile Include="Entities\Session.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Enum\EnumError.cs" />
+    <Compile Include="Helpers\DbReaderExtensions.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Logic\Attendance\LogAttendance.cs" />
+    <Compile Include="Logic\Routine\LogRoutine.cs" />
     <Compile Include="Logic\User\LogUser.cs" />
     <Compile Include="Logic\Membership\LogMembership.cs" />
     <Compile Include="Logic\Payment\LogPayment.cs" />
@@ -85,8 +88,19 @@
     <Compile Include="ResAndReq\Req\Attendance\ReqCheckIn.cs" />
     <Compile Include="ResAndReq\Req\Attendance\ReqCheckOut.cs" />
     <Compile Include="ResAndReq\Req\ReqBase.cs" />
+<<<<<<< HEAD
     <Compile Include="ResAndReq\Req\User\ReqGetUserCedula.cs" />
     <Compile Include="ResAndReq\Req\User\ReqChangePassword.cs" />
+=======
+    <Compile Include="ResAndReq\Req\Routine\ReqAddExerciseToRoutine.cs" />
+    <Compile Include="ResAndReq\Req\Routine\ReqAssignRoutine.cs" />
+    <Compile Include="ResAndReq\Req\Routine\ReqCreateRoutine.cs" />
+    <Compile Include="ResAndReq\Req\Routine\ReqGetActiveRoutines.cs" />
+    <Compile Include="ResAndReq\Req\Routine\ReqGetRoutineExercises.cs" />
+    <Compile Include="ResAndReq\Req\Routine\ReqGetRoutineReport.cs" />
+    <Compile Include="ResAndReq\Req\Routine\ReqRateRoutine.cs" />
+    <Compile Include="ResAndReq\Req\Routine\ReqRegisterExerciseProgress.cs" />
+>>>>>>> ec56aa3e1d6ac2ce9dc5b8f334944eaa5d96c881
     <Compile Include="ResAndReq\Req\User\ReqAddUser.cs" />
     <Compile Include="ResAndReq\Req\User\ReqUpdateUser.cs" />
     <Compile Include="ResAndReq\Req\User\ReqUserLogin.cs" />
@@ -100,6 +114,14 @@
     <Compile Include="ResAndReq\Res\Payment\ResGetPaymentHistory.cs" />
     <Compile Include="ResAndReq\Res\Payment\ResRegisterPayment.cs" />
     <Compile Include="ResAndReq\Res\ResBase.cs" />
+    <Compile Include="ResAndReq\Res\Routine\ResAddExerciseToRoutine.cs" />
+    <Compile Include="ResAndReq\Res\Routine\ResAssignRoutine.cs" />
+    <Compile Include="ResAndReq\Res\Routine\ResCreateRoutine.cs" />
+    <Compile Include="ResAndReq\Res\Routine\ResGetActiveRoutines.cs" />
+    <Compile Include="ResAndReq\Res\Routine\ResGetRoutineExercises.cs" />
+    <Compile Include="ResAndReq\Res\Routine\ResGetRoutineReport.cs" />
+    <Compile Include="ResAndReq\Res\Routine\ResRateRoutine.cs" />
+    <Compile Include="ResAndReq\Res\Routine\ResRegisterExerciseProgress.cs" />
     <Compile Include="ResAndReq\Res\User\ResAddUser.cs" />
     <Compile Include="ResAndReq\Res\User\ResUserLogin.cs" />
     <Compile Include="ResAndReq\Res\User\ResUserProfile.cs" />
