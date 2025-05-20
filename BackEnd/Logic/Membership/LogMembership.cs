@@ -91,7 +91,7 @@ namespace BackEnd.Logic.Membership
             return res;
         }
 
-        /*
+        
 
         /// <summary>
         /// Checks membership status including expiration warnings
@@ -157,7 +157,7 @@ namespace BackEnd.Logic.Membership
 
             return res;
         }
-        */
+        
         /// <summary>
         /// Gets all available membership types
         /// </summary>

@@ -11,22 +11,54 @@ namespace BackEnd.Helpers
     {
         public static string TryGetString(this DbDataReader reader, string column)
         {
-            return !reader.IsDBNull(reader.GetOrdinal(column)) ? reader.GetString(reader.GetOrdinal(column)) : null;
+            try
+            {
+                int index = reader.GetOrdinal(column);
+                return !reader.IsDBNull(index) ? reader.GetString(index) : null;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public static int TryGetInt(this DbDataReader reader, string column)
         {
-            return !reader.IsDBNull(reader.GetOrdinal(column)) ? reader.GetInt32(reader.GetOrdinal(column)) : 0;
+            try
+            {
+                int index = reader.GetOrdinal(column);
+                return !reader.IsDBNull(index) ? Convert.ToInt32(reader.GetValue(index)) : 0;
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
         public static decimal TryGetDecimal(this DbDataReader reader, string column)
         {
-            return !reader.IsDBNull(reader.GetOrdinal(column)) ? reader.GetDecimal(reader.GetOrdinal(column)) : 0;
+            try
+            {
+                int index = reader.GetOrdinal(column);
+                return !reader.IsDBNull(index) ? Convert.ToDecimal(reader.GetValue(index)) : 0;
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
         public static DateTime? TryGetDate(this DbDataReader reader, string column)
         {
-            return !reader.IsDBNull(reader.GetOrdinal(column)) ? reader.GetDateTime(reader.GetOrdinal(column)) : (DateTime?)null;
+            try
+            {
+                int index = reader.GetOrdinal(column);
+                return !reader.IsDBNull(index) ? Convert.ToDateTime(reader.GetValue(index)) : (DateTime?)null;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 

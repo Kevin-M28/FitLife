@@ -13,7 +13,7 @@ namespace Fitlife.Controllers
 {
     [RoutePrefix("api/membership")]
     public class MembershipController : ApiController
-    {/*
+    {
         public MembershipController() { }
 
         /// <summary>
@@ -28,6 +28,7 @@ namespace Fitlife.Controllers
             string token = Request.Headers.GetValues("Authorization")?.FirstOrDefault()?.Replace("Bearer ", "");
             return new LogMembership().ObtenerMembresiaActiva(token);
         }
+     
 
         /// <summary>
         /// Check membership status including expiration warnings
@@ -41,6 +42,7 @@ namespace Fitlife.Controllers
             string token = Request.Headers.GetValues("Authorization")?.FirstOrDefault()?.Replace("Bearer ", "");
             return new LogMembership().VerificarEstadoMembresia(token);
         }
+        
 
         /// <summary>
         /// Get all available membership types
@@ -51,6 +53,6 @@ namespace Fitlife.Controllers
         public ResGetMembershipTypes GetMembershipTypes()
         {
             return new LogMembership().ObtenerTiposMembresia();
-        }*/
+        }
     }
 }

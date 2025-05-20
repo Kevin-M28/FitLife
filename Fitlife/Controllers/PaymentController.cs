@@ -42,7 +42,7 @@ namespace Fitlife.Controllers
             string token = Request.Headers.GetValues("Authorization")?.FirstOrDefault()?.Replace("Bearer ", "");
             return new LogPayment().AprobarPago(req, token);
         }
-        /*
+       
         /// <summary>
         /// Get payment history for the authenticated user
         /// </summary>
@@ -54,6 +54,6 @@ namespace Fitlife.Controllers
         {
             string token = Request.Headers.GetValues("Authorization")?.FirstOrDefault()?.Replace("Bearer ", "");
             return new LogPayment().ObtenerHistorialPagos(token);
-        }*/
+        }
     }
 }

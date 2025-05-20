@@ -796,7 +796,7 @@ namespace BackEnd.Logic.Routine
             return res;
         }
 
-        public ResGetRoutineReport GetRoutineReport(ReqGetRoutineReport req)
+        public ResGetRoutineReport GetRoutinesReport(ReqGetRoutineReport req)
         {
             var res = new ResGetRoutineReport
             {
@@ -811,7 +811,7 @@ namespace BackEnd.Logic.Routine
                     res.Error.Add(new Error
                     {
                         ErrorCode = (int)EnumErrores.datosFaltantes,
-                        Message = "Token y fechas requeridas"
+                        Message = "Faltan datos obligatorios"
                     });
                     return res;
                 }
@@ -840,6 +840,7 @@ namespace BackEnd.Logic.Routine
                         Add("@EndDate", req.EndDate);
                         Add("@Status", req.Status);
                         Add("@RoutineName", req.RoutineName);
+                        Add("@UserCedula", req.UserCedula);
 
                         using (var reader = cmd.ExecuteReader())
                         {
@@ -863,16 +864,28 @@ namespace BackEnd.Logic.Routine
                                     RoutineDescription = reader.TryGetString("RoutineDescription"),
                                     DifficultyLevel = reader.TryGetString("DifficultyLevel"),
                                     DurationInDays = reader.TryGetInt("DurationInDays"),
-                                    StartDate = reader.GetDateTime(reader.GetOrdinal("StartDate")),
+                                    StartDate = reader.TryGetDate("StartDate"),
                                     EndDate = reader.TryGetDate("EndDate"),
                                     Status = reader.TryGetString("Status"),
                                     ProgressPercentage = reader.TryGetDecimal("ProgressPercentage"),
                                     DaysRemaining = reader.TryGetInt("DaysRemaining"),
+
+                                    TimesAssigned = reader.TryGetInt("TimesAssigned"),
+                                    DifficultyRating = reader.TryGetDecimal("DifficultyRating"),
+                                    EffectivenessRating = reader.TryGetDecimal("EffectivenessRating"),
+                                    EnjoymentRating = reader.TryGetDecimal("EnjoymentRating"),
+                                    OverallRating = reader.TryGetDecimal("OverallRating"),
+
+                                    AvgDifficultyRating = reader.TryGetDecimal("AvgDifficultyRating"),
+                                    AvgEffectivenessRating = reader.TryGetDecimal("AvgEffectivenessRating"),
+                                    AvgEnjoymentRating = reader.TryGetDecimal("AvgEnjoymentRating"),
+                                    AvgOverallRating = reader.TryGetDecimal("AvgOverallRating"),
+
                                     ExercisesCompleted = reader.TryGetInt("ExercisesCompleted"),
                                     TotalExercises = reader.TryGetInt("TotalExercises")
                                 };
 
-                                res.ReportEntries.Add(entry);
+                                res.ReportRoutine.Add(entry);
                             }
 
                             res.Result = true;

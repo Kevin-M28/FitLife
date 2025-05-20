@@ -91,11 +91,23 @@ namespace BackEnd.Entities
         public string RoutineDescription { get; set; }
         public string DifficultyLevel { get; set; }
         public int DurationInDays { get; set; }
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public string Status { get; set; }
         public decimal ProgressPercentage { get; set; }
         public int? DaysRemaining { get; set; }
+
+        public int TimesAssigned { get; set; }
+        public decimal? DifficultyRating { get; set; }
+        public decimal? EffectivenessRating { get; set; }
+        public decimal? EnjoymentRating { get; set; }
+        public decimal? OverallRating { get; set; }
+
+        public decimal? AvgDifficultyRating { get; set; }
+        public decimal? AvgEffectivenessRating { get; set; }
+        public decimal? AvgEnjoymentRating { get; set; }
+        public decimal? AvgOverallRating { get; set; }
+
         public int ExercisesCompleted { get; set; }
         public int TotalExercises { get; set; }
     }

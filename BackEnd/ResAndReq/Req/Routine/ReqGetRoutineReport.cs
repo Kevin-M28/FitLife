@@ -13,5 +13,6 @@ namespace BackEnd.ResAndReq.Req.Routine
         public DateTime EndDate { get; set; }
         public string Status { get; set; }
         public string RoutineName { get; set; }
+        public string UserCedula { get; set; }
     }
 }

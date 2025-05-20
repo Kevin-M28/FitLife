@@ -222,7 +222,6 @@ namespace BackEnd.Logic.Payment
 
 
 
-        /*
 
         /// <summary>
         /// Gets payment history for a user
@@ -288,6 +287,6 @@ namespace BackEnd.Logic.Payment
 
             return res;
         }
-        */
+       
     }
 }

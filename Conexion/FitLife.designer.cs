@@ -448,13 +448,6 @@ namespace Conexion
 			return ((ISingleResult<sp_GetRoutineExercisesResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetRoutinesReport")]
-		public ISingleResult<sp_GetRoutinesReportResult> sp_GetRoutinesReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartDate", DbType="Date")] System.Nullable<System.DateTime> startDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndDate", DbType="Date")] System.Nullable<System.DateTime> endDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="NVarChar(20)")] string status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoutineName", DbType="NVarChar(100)")] string routineName)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, startDate, endDate, status, routineName);
-			return ((ISingleResult<sp_GetRoutinesReportResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetUnreadNotifications")]
 		public ISingleResult<sp_GetUnreadNotificationsResult> sp_GetUnreadNotifications([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token)
 		{
@@ -586,6 +579,13 @@ namespace Conexion
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, passwordHash);
 			return ((ISingleResult<sp_UserLoginResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetRoutinesReport")]
+		public ISingleResult<sp_GetRoutinesReportResult> sp_GetRoutinesReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartDate", DbType="Date")] System.Nullable<System.DateTime> startDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndDate", DbType="Date")] System.Nullable<System.DateTime> endDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="NVarChar(20)")] string status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoutineName", DbType="NVarChar(100)")] string routineName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserCedula", DbType="NVarChar(20)")] string userCedula)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, startDate, endDate, status, routineName, userCedula);
+			return ((ISingleResult<sp_GetRoutinesReportResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -8114,6 +8114,12 @@ namespace Conexion
 	public partial class sp_ApprovePaymentResult
 	{
 		
+		private string _UserCedula;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private string _NewStatus;
+		
 		private string _Result;
 		
 		private string _Message;
@@ -8122,7 +8128,55 @@ namespace Conexion
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserCedula", DbType="NVarChar(20)")]
+		public string UserCedula
+		{
+			get
+			{
+				return this._UserCedula;
+			}
+			set
+			{
+				if ((this._UserCedula != value))
+				{
+					this._UserCedula = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this._Amount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NewStatus", DbType="VarChar(8)")]
+		public string NewStatus
+		{
+			get
+			{
+				return this._NewStatus;
+			}
+			set
+			{
+				if ((this._NewStatus != value))
+				{
+					this._NewStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
 		public string Result
 		{
 			get
@@ -8138,7 +8192,7 @@ namespace Conexion
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
 		public string Message
 		{
 			get
@@ -8398,6 +8452,14 @@ namespace Conexion
 	public partial class sp_CheckMembershipStatusResult
 	{
 		
+		private string _MembershipStatus;
+		
+		private string _MembershipName;
+		
+		private System.Nullable<System.DateTime> _EndDate;
+		
+		private System.Nullable<int> _DaysRemaining;
+		
 		private string _Result;
 		
 		private string _Message;
@@ -8406,7 +8468,71 @@ namespace Conexion
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MembershipStatus", DbType="NVarChar(20)")]
+		public string MembershipStatus
+		{
+			get
+			{
+				return this._MembershipStatus;
+			}
+			set
+			{
+				if ((this._MembershipStatus != value))
+				{
+					this._MembershipStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MembershipName", DbType="NVarChar(100)")]
+		public string MembershipName
+		{
+			get
+			{
+				return this._MembershipName;
+			}
+			set
+			{
+				if ((this._MembershipName != value))
+				{
+					this._MembershipName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="Date")]
+		public System.Nullable<System.DateTime> EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this._EndDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DaysRemaining", DbType="Int")]
+		public System.Nullable<int> DaysRemaining
+		{
+			get
+			{
+				return this._DaysRemaining;
+			}
+			set
+			{
+				if ((this._DaysRemaining != value))
+				{
+					this._DaysRemaining = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
 		public string Result
 		{
 			get
@@ -8422,7 +8548,7 @@ namespace Conexion
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
 		public string Message
 		{
 			get
@@ -8960,6 +9086,14 @@ namespace Conexion
 	public partial class sp_GetAttendanceHistoryResult
 	{
 		
+		private System.Nullable<System.DateTime> _CheckInDateTime;
+		
+		private System.Nullable<System.DateTime> _CheckOutDateTime;
+		
+		private System.Nullable<int> _DurationMinutes;
+		
+		private string _DayOfWeek;
+		
 		private string _Result;
 		
 		private string _Message;
@@ -8968,7 +9102,71 @@ namespace Conexion
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckInDateTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CheckInDateTime
+		{
+			get
+			{
+				return this._CheckInDateTime;
+			}
+			set
+			{
+				if ((this._CheckInDateTime != value))
+				{
+					this._CheckInDateTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckOutDateTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CheckOutDateTime
+		{
+			get
+			{
+				return this._CheckOutDateTime;
+			}
+			set
+			{
+				if ((this._CheckOutDateTime != value))
+				{
+					this._CheckOutDateTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DurationMinutes", DbType="Int")]
+		public System.Nullable<int> DurationMinutes
+		{
+			get
+			{
+				return this._DurationMinutes;
+			}
+			set
+			{
+				if ((this._DurationMinutes != value))
+				{
+					this._DurationMinutes = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DayOfWeek", DbType="NVarChar(30)")]
+		public string DayOfWeek
+		{
+			get
+			{
+				return this._DayOfWeek;
+			}
+			set
+			{
+				if ((this._DayOfWeek != value))
+				{
+					this._DayOfWeek = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
 		public string Result
 		{
 			get
@@ -8984,7 +9182,7 @@ namespace Conexion
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
 		public string Message
 		{
 			get
@@ -9182,6 +9380,26 @@ namespace Conexion
 	public partial class sp_GetBodyMetricsHistoryResult
 	{
 		
+		private System.Nullable<System.DateTime> _MeasurementDate;
+		
+		private System.Nullable<decimal> _Weight;
+		
+		private System.Nullable<decimal> _Height;
+		
+		private System.Nullable<decimal> _BodyFatPercentage;
+		
+		private System.Nullable<decimal> _BMI;
+		
+		private System.Nullable<decimal> _WaistCircumference;
+		
+		private System.Nullable<decimal> _ChestCircumference;
+		
+		private System.Nullable<decimal> _ArmCircumference;
+		
+		private System.Nullable<decimal> _LegCircumference;
+		
+		private string _Notes;
+		
 		private string _Result;
 		
 		private string _Message;
@@ -9190,7 +9408,167 @@ namespace Conexion
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MeasurementDate", DbType="Date")]
+		public System.Nullable<System.DateTime> MeasurementDate
+		{
+			get
+			{
+				return this._MeasurementDate;
+			}
+			set
+			{
+				if ((this._MeasurementDate != value))
+				{
+					this._MeasurementDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Decimal(5,2)")]
+		public System.Nullable<decimal> Weight
+		{
+			get
+			{
+				return this._Weight;
+			}
+			set
+			{
+				if ((this._Weight != value))
+				{
+					this._Weight = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Height", DbType="Decimal(5,2)")]
+		public System.Nullable<decimal> Height
+		{
+			get
+			{
+				return this._Height;
+			}
+			set
+			{
+				if ((this._Height != value))
+				{
+					this._Height = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BodyFatPercentage", DbType="Decimal(5,2)")]
+		public System.Nullable<decimal> BodyFatPercentage
+		{
+			get
+			{
+				return this._BodyFatPercentage;
+			}
+			set
+			{
+				if ((this._BodyFatPercentage != value))
+				{
+					this._BodyFatPercentage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BMI", DbType="Decimal(5,2)")]
+		public System.Nullable<decimal> BMI
+		{
+			get
+			{
+				return this._BMI;
+			}
+			set
+			{
+				if ((this._BMI != value))
+				{
+					this._BMI = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WaistCircumference", DbType="Decimal(5,2)")]
+		public System.Nullable<decimal> WaistCircumference
+		{
+			get
+			{
+				return this._WaistCircumference;
+			}
+			set
+			{
+				if ((this._WaistCircumference != value))
+				{
+					this._WaistCircumference = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChestCircumference", DbType="Decimal(5,2)")]
+		public System.Nullable<decimal> ChestCircumference
+		{
+			get
+			{
+				return this._ChestCircumference;
+			}
+			set
+			{
+				if ((this._ChestCircumference != value))
+				{
+					this._ChestCircumference = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArmCircumference", DbType="Decimal(5,2)")]
+		public System.Nullable<decimal> ArmCircumference
+		{
+			get
+			{
+				return this._ArmCircumference;
+			}
+			set
+			{
+				if ((this._ArmCircumference != value))
+				{
+					this._ArmCircumference = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LegCircumference", DbType="Decimal(5,2)")]
+		public System.Nullable<decimal> LegCircumference
+		{
+			get
+			{
+				return this._LegCircumference;
+			}
+			set
+			{
+				if ((this._LegCircumference != value))
+				{
+					this._LegCircumference = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="NVarChar(255)")]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this._Notes = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
 		public string Result
 		{
 			get
@@ -9206,7 +9584,7 @@ namespace Conexion
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
 		public string Message
 		{
 			get
@@ -9226,6 +9604,22 @@ namespace Conexion
 	public partial class sp_GetPaymentHistoryResult
 	{
 		
+		private System.Nullable<decimal> _Amount;
+		
+		private string _PaymentMethod;
+		
+		private System.Nullable<System.DateTime> _PaymentDate;
+		
+		private string _ReceiptFilePath;
+		
+		private string _PaymentStatus;
+		
+		private string _MembershipName;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _EndDate;
+		
 		private string _Result;
 		
 		private string _Message;
@@ -9234,7 +9628,135 @@ namespace Conexion
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this._Amount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentMethod", DbType="NVarChar(50)")]
+		public string PaymentMethod
+		{
+			get
+			{
+				return this._PaymentMethod;
+			}
+			set
+			{
+				if ((this._PaymentMethod != value))
+				{
+					this._PaymentMethod = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PaymentDate
+		{
+			get
+			{
+				return this._PaymentDate;
+			}
+			set
+			{
+				if ((this._PaymentDate != value))
+				{
+					this._PaymentDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReceiptFilePath", DbType="NVarChar(255)")]
+		public string ReceiptFilePath
+		{
+			get
+			{
+				return this._ReceiptFilePath;
+			}
+			set
+			{
+				if ((this._ReceiptFilePath != value))
+				{
+					this._ReceiptFilePath = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentStatus", DbType="NVarChar(20)")]
+		public string PaymentStatus
+		{
+			get
+			{
+				return this._PaymentStatus;
+			}
+			set
+			{
+				if ((this._PaymentStatus != value))
+				{
+					this._PaymentStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MembershipName", DbType="NVarChar(100)")]
+		public string MembershipName
+		{
+			get
+			{
+				return this._MembershipName;
+			}
+			set
+			{
+				if ((this._MembershipName != value))
+				{
+					this._MembershipName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this._StartDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="Date")]
+		public System.Nullable<System.DateTime> EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this._EndDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
 		public string Result
 		{
 			get
@@ -9250,7 +9772,7 @@ namespace Conexion
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
 		public string Message
 		{
 			get
@@ -9314,6 +9836,32 @@ namespace Conexion
 	public partial class sp_GetRoutineExercisesResult
 	{
 		
+		private System.Nullable<int> _DayNumber;
+		
+		private string _DayName;
+		
+		private string _ExerciseName;
+		
+		private string _ExerciseDescription;
+		
+		private string _Category;
+		
+		private string _TargetMuscleGroup;
+		
+		private System.Nullable<int> _Sets;
+		
+		private System.Nullable<int> _Repetitions;
+		
+		private System.Nullable<int> _RestTimeSeconds;
+		
+		private string _Instructions;
+		
+		private string _VideoURL;
+		
+		private string _ImageURL;
+		
+		private System.Nullable<decimal> _TodayProgress;
+		
 		private string _Result;
 		
 		private string _Message;
@@ -9322,7 +9870,215 @@ namespace Conexion
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DayNumber", DbType="Int")]
+		public System.Nullable<int> DayNumber
+		{
+			get
+			{
+				return this._DayNumber;
+			}
+			set
+			{
+				if ((this._DayNumber != value))
+				{
+					this._DayNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DayName", DbType="NVarChar(100)")]
+		public string DayName
+		{
+			get
+			{
+				return this._DayName;
+			}
+			set
+			{
+				if ((this._DayName != value))
+				{
+					this._DayName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExerciseName", DbType="NVarChar(100)")]
+		public string ExerciseName
+		{
+			get
+			{
+				return this._ExerciseName;
+			}
+			set
+			{
+				if ((this._ExerciseName != value))
+				{
+					this._ExerciseName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExerciseDescription", DbType="NVarChar(255)")]
+		public string ExerciseDescription
+		{
+			get
+			{
+				return this._ExerciseDescription;
+			}
+			set
+			{
+				if ((this._ExerciseDescription != value))
+				{
+					this._ExerciseDescription = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="NVarChar(100)")]
+		public string Category
+		{
+			get
+			{
+				return this._Category;
+			}
+			set
+			{
+				if ((this._Category != value))
+				{
+					this._Category = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetMuscleGroup", DbType="NVarChar(100)")]
+		public string TargetMuscleGroup
+		{
+			get
+			{
+				return this._TargetMuscleGroup;
+			}
+			set
+			{
+				if ((this._TargetMuscleGroup != value))
+				{
+					this._TargetMuscleGroup = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sets", DbType="Int")]
+		public System.Nullable<int> Sets
+		{
+			get
+			{
+				return this._Sets;
+			}
+			set
+			{
+				if ((this._Sets != value))
+				{
+					this._Sets = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Repetitions", DbType="Int")]
+		public System.Nullable<int> Repetitions
+		{
+			get
+			{
+				return this._Repetitions;
+			}
+			set
+			{
+				if ((this._Repetitions != value))
+				{
+					this._Repetitions = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RestTimeSeconds", DbType="Int")]
+		public System.Nullable<int> RestTimeSeconds
+		{
+			get
+			{
+				return this._RestTimeSeconds;
+			}
+			set
+			{
+				if ((this._RestTimeSeconds != value))
+				{
+					this._RestTimeSeconds = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Instructions", DbType="NVarChar(MAX)")]
+		public string Instructions
+		{
+			get
+			{
+				return this._Instructions;
+			}
+			set
+			{
+				if ((this._Instructions != value))
+				{
+					this._Instructions = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VideoURL", DbType="NVarChar(255)")]
+		public string VideoURL
+		{
+			get
+			{
+				return this._VideoURL;
+			}
+			set
+			{
+				if ((this._VideoURL != value))
+				{
+					this._VideoURL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageURL", DbType="NVarChar(255)")]
+		public string ImageURL
+		{
+			get
+			{
+				return this._ImageURL;
+			}
+			set
+			{
+				if ((this._ImageURL != value))
+				{
+					this._ImageURL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TodayProgress", DbType="Decimal(33,11)")]
+		public System.Nullable<decimal> TodayProgress
+		{
+			get
+			{
+				return this._TodayProgress;
+			}
+			set
+			{
+				if ((this._TodayProgress != value))
+				{
+					this._TodayProgress = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
 		public string Result
 		{
 			get
@@ -9338,51 +10094,7 @@ namespace Conexion
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string Message
-		{
-			get
-			{
-				return this._Message;
-			}
-			set
-			{
-				if ((this._Message != value))
-				{
-					this._Message = value;
-				}
-			}
-		}
-	}
-	
-	public partial class sp_GetRoutinesReportResult
-	{
-		
-		private string _Result;
-		
-		private string _Message;
-		
-		public sp_GetRoutinesReportResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
-		public string Result
-		{
-			get
-			{
-				return this._Result;
-			}
-			set
-			{
-				if ((this._Result != value))
-				{
-					this._Result = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
 		public string Message
 		{
 			get
@@ -9402,31 +10114,57 @@ namespace Conexion
 	public partial class sp_GetUnreadNotificationsResult
 	{
 		
-		private string _Result;
+		private string _Type;
+		
+		private string _Title;
 		
 		private string _Message;
+		
+		private System.Nullable<System.DateTime> _SentAt;
+		
+		private System.Nullable<bool> _IsRead;
+		
+		private string _Result;
+		
+		private string _Message1;
 		
 		public sp_GetUnreadNotificationsResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
-		public string Result
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NVarChar(100)")]
+		public string Type
 		{
 			get
 			{
-				return this._Result;
+				return this._Type;
 			}
 			set
 			{
-				if ((this._Result != value))
+				if ((this._Type != value))
 				{
-					this._Result = value;
+					this._Type = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(100)")]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this._Title = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(MAX)")]
 		public string Message
 		{
 			get
@@ -9441,20 +10179,40 @@ namespace Conexion
 				}
 			}
 		}
-	}
-	
-	public partial class sp_GetUserGoalsResult
-	{
 		
-		private string _Result;
-		
-		private string _Message;
-		
-		public sp_GetUserGoalsResult()
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SentAt", DbType="DateTime")]
+		public System.Nullable<System.DateTime> SentAt
 		{
+			get
+			{
+				return this._SentAt;
+			}
+			set
+			{
+				if ((this._SentAt != value))
+				{
+					this._SentAt = value;
+				}
+			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsRead", DbType="Bit")]
+		public System.Nullable<bool> IsRead
+		{
+			get
+			{
+				return this._IsRead;
+			}
+			set
+			{
+				if ((this._IsRead != value))
+				{
+					this._IsRead = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
 		public string Result
 		{
 			get
@@ -9470,7 +10228,177 @@ namespace Conexion
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message1", DbType="NVarChar(100)")]
+		public string Message1
+		{
+			get
+			{
+				return this._Message1;
+			}
+			set
+			{
+				if ((this._Message1 != value))
+				{
+					this._Message1 = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_GetUserGoalsResult
+	{
+		
+		private string _GoalType;
+		
+		private System.Nullable<decimal> _TargetValue;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _TargetDate;
+		
+		private string _Status;
+		
+		private System.Nullable<decimal> _ProgressPercentage;
+		
+		private System.Nullable<int> _DaysRemaining;
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		public sp_GetUserGoalsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalType", DbType="NVarChar(100)")]
+		public string GoalType
+		{
+			get
+			{
+				return this._GoalType;
+			}
+			set
+			{
+				if ((this._GoalType != value))
+				{
+					this._GoalType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetValue", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> TargetValue
+		{
+			get
+			{
+				return this._TargetValue;
+			}
+			set
+			{
+				if ((this._TargetValue != value))
+				{
+					this._TargetValue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this._StartDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetDate", DbType="Date")]
+		public System.Nullable<System.DateTime> TargetDate
+		{
+			get
+			{
+				return this._TargetDate;
+			}
+			set
+			{
+				if ((this._TargetDate != value))
+				{
+					this._TargetDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(20)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgressPercentage", DbType="Decimal(5,2)")]
+		public System.Nullable<decimal> ProgressPercentage
+		{
+			get
+			{
+				return this._ProgressPercentage;
+			}
+			set
+			{
+				if ((this._ProgressPercentage != value))
+				{
+					this._ProgressPercentage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DaysRemaining", DbType="Int")]
+		public System.Nullable<int> DaysRemaining
+		{
+			get
+			{
+				return this._DaysRemaining;
+			}
+			set
+			{
+				if ((this._DaysRemaining != value))
+				{
+					this._DaysRemaining = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
 		public string Message
 		{
 			get
@@ -10264,6 +11192,16 @@ namespace Conexion
 	public partial class sp_RegisterPaymentResult
 	{
 		
+		private string _MembershipTypeName;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private string _PaymentMethod;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _EndDate;
+		
 		private string _Result;
 		
 		private string _Message;
@@ -10272,7 +11210,87 @@ namespace Conexion
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MembershipTypeName", DbType="NVarChar(100)")]
+		public string MembershipTypeName
+		{
+			get
+			{
+				return this._MembershipTypeName;
+			}
+			set
+			{
+				if ((this._MembershipTypeName != value))
+				{
+					this._MembershipTypeName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this._Amount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentMethod", DbType="NVarChar(50)")]
+		public string PaymentMethod
+		{
+			get
+			{
+				return this._PaymentMethod;
+			}
+			set
+			{
+				if ((this._PaymentMethod != value))
+				{
+					this._PaymentMethod = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this._StartDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="Date")]
+		public System.Nullable<System.DateTime> EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this._EndDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
 		public string Result
 		{
 			get
@@ -10288,7 +11306,7 @@ namespace Conexion
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
 		public string Message
 		{
 			get
@@ -10751,6 +11769,50 @@ namespace Conexion
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_GetRoutinesReportResult
+	{
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		public sp_GetRoutinesReportResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
 		public string Message
 		{
 			get

@@ -9,11 +9,11 @@ namespace BackEnd.ResAndReq.Res.Routine
 {
     public class ResGetRoutineReport : ResBase
     {
-        public List<RoutineReportEntry> ReportEntries { get; set; }
+        public List<RoutineReportEntry> ReportRoutine { get; set; }
 
         public ResGetRoutineReport()
         {
-            ReportEntries = new List<RoutineReportEntry>();
+            ReportRoutine = new List<RoutineReportEntry>();
         }
     }
 

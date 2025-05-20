@@ -69,10 +69,9 @@ namespace Fitlife.Controllers
         [Route("report")]
         public ResGetRoutineReport GetRoutineReport(ReqGetRoutineReport req)
         {
-
-            return new LogRoutine().GetRoutineReport(req);
-
+            return new LogRoutine().GetRoutinesReport(req);
         }
+
     }
 
 }
