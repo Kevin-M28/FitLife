@@ -81,6 +81,10 @@ namespace BackEnd.Enum
         membresiaYaActiva = 109,
         sinMembresiaActiva = 110,
         administradorRequerido = 111,
-        tokenAdminRequerido = 112
+        tokenAdminRequerido = 112,
+        tokenFaltante=113,
+        nivelDificultadFaltante=114,
+
+
     }
 }
