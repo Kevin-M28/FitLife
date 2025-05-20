@@ -85,6 +85,8 @@
     <Compile Include="ResAndReq\Req\Attendance\ReqCheckIn.cs" />
     <Compile Include="ResAndReq\Req\Attendance\ReqCheckOut.cs" />
     <Compile Include="ResAndReq\Req\ReqBase.cs" />
+    <Compile Include="ResAndReq\Req\User\ReqGetUserCedula.cs" />
+    <Compile Include="ResAndReq\Req\User\ReqChangePassword.cs" />
     <Compile Include="ResAndReq\Req\User\ReqAddUser.cs" />
     <Compile Include="ResAndReq\Req\User\ReqUpdateUser.cs" />
     <Compile Include="ResAndReq\Req\User\ReqUserLogin.cs" />

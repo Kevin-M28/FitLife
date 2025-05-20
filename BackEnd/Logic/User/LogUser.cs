@@ -323,7 +323,7 @@ namespace BackEnd.Logic
         /// <summary>
         /// Valida si una sesión es válida
         /// </summary>
-        public ResBase ValidateSession(string token)
+        public ResBase ValidateSession(ReqBase req)
         {
             ResBase res = new ResBase()
             {
@@ -333,7 +333,7 @@ namespace BackEnd.Logic
 
             try
             {
-                if (string.IsNullOrEmpty(token))
+                if (string.IsNullOrEmpty(req.Token))
                 {
                     res.Error.Add(new Error
                     {
@@ -345,7 +345,7 @@ namespace BackEnd.Logic
 
                 using (FitLifeDataContext linq = new FitLifeDataContext())
                 {
-                    var resultado = linq.sp_ValidateSession(token).FirstOrDefault();
+                    var resultado = linq.sp_ValidateSession(req.Token).FirstOrDefault();
 
                     if (resultado == null || resultado.Result == "FAILED")
                     {
@@ -376,8 +376,7 @@ namespace BackEnd.Logic
         /// <summary>
         /// Cambia la contraseña del usuario
         /// </summary>
-        public ResBase ChangePassword(string token, string oldPassword, string newPassword)
-        {
+        public ResBase ChangePassword(ReqChangePassword req) {
             ResBase res = new ResBase()
             {
                 Error = new List<Entities.Error>(),
@@ -386,7 +385,7 @@ namespace BackEnd.Logic
 
             try
             {
-                if (string.IsNullOrEmpty(token))
+                if (string.IsNullOrEmpty(req.Token))
                 {
                     res.Error.Add(new Error
                     {
@@ -396,7 +395,7 @@ namespace BackEnd.Logic
                     return res;
                 }
 
-                if (string.IsNullOrEmpty(oldPassword))
+                if (string.IsNullOrEmpty(req.OldPassword))
                 {
                     res.Error.Add(new Error
                     {
@@ -407,7 +406,7 @@ namespace BackEnd.Logic
                 }
 
 
-                if (string.IsNullOrEmpty(newPassword))
+                if (string.IsNullOrEmpty(req.NewPassword))
                 {
                     res.Error.Add(new Error
                     {
@@ -417,7 +416,7 @@ namespace BackEnd.Logic
                     return res;
                 }
 
-                if (!EsPasswordSeguro(newPassword))
+                if (!EsPasswordSeguro(req.NewPassword))
                 {
                     res.Error.Add(new Error
                     {
@@ -428,13 +427,13 @@ namespace BackEnd.Logic
                 }
 
                 // Hashear la nueva contraseña
-                string passwordHash = Helper.HashearPassword(newPassword);
+                string passwordHash = Helper.HashearPassword(req.NewPassword);
 
                 using (FitLifeDataContext linq = new FitLifeDataContext())
                 {
                     //me traigo el id del usuario que tiene la sesion activa
                     var userId = linq.Sessions
-                        .Where(s => s.Token == token)
+                        .Where(s => s.Token == req.Token)
                         .Select(s => s.UserID)
                         .FirstOrDefault();
 
@@ -442,7 +441,7 @@ namespace BackEnd.Logic
 
                     // Verificar la contraseña antigua utilizando BCrypt
                     if (passwordHashDB != null) {
-                        if (!Helper.VerificarPassword(oldPassword, passwordHashDB))
+                        if (!Helper.VerificarPassword(req.OldPassword, passwordHashDB))
                         {
                             res.Error.Add(new Error
                             {
@@ -452,7 +451,7 @@ namespace BackEnd.Logic
                             return res;
                         }
                     }     
-                    var resultado = linq.sp_ChangePassword(token, passwordHash).FirstOrDefault();
+                    var resultado = linq.sp_ChangePassword(req.Token, passwordHash).FirstOrDefault();
 
                     if (resultado == null || resultado.Result == "FAILED")
                     {
@@ -484,7 +483,7 @@ namespace BackEnd.Logic
 
         #region User Profile Management
 
-        public ResUserProfile GetUserProfile(string token)
+        public ResUserProfile GetUserProfile(ReqBase req)
         {
             ResUserProfile res = new ResUserProfile()
             {
@@ -495,7 +494,7 @@ namespace BackEnd.Logic
 
             try
             {
-                if (string.IsNullOrEmpty(token))
+                if (string.IsNullOrEmpty(req.Token))
                 {
                     res.Error.Add(new Error
                     {
@@ -507,7 +506,7 @@ namespace BackEnd.Logic
 
                 using (FitLifeDataContext linq = new FitLifeDataContext())
                 {
-                    var resultado = linq.sp_GetUserProfile(token).FirstOrDefault();
+                    var resultado = linq.sp_GetUserProfile(req.Token).FirstOrDefault();
 
                     if (resultado == null || resultado.Result == "FAILED")
                     {
@@ -552,7 +551,7 @@ namespace BackEnd.Logic
         /// <summary>
         /// Obtiene el perfil de un usuario por su cédula
         /// </summary>
-        public ResUserProfile GetUserProfileByCedula(string token, string cedula)
+        public ResUserProfile GetUserProfileByCedula(ReqGetUserCedula req)
         {
             ResUserProfile res = new ResUserProfile()
             {
@@ -563,7 +562,7 @@ namespace BackEnd.Logic
 
             try
             {
-                if (string.IsNullOrEmpty(token))
+                if (string.IsNullOrEmpty(req.Token))
                 {
                     res.Error.Add(new Error
                     {
@@ -573,7 +572,7 @@ namespace BackEnd.Logic
                     return res;
                 }
 
-                if (string.IsNullOrEmpty(cedula))
+                if (string.IsNullOrEmpty(req.Cedula))
                 {
                     res.Error.Add(new Error
                     {
@@ -585,7 +584,7 @@ namespace BackEnd.Logic
 
                 using (FitLifeDataContext linq = new FitLifeDataContext())
                 {
-                    var resultado = linq.sp_GetUserProfileByCedula(token, cedula).FirstOrDefault();
+                    var resultado = linq.sp_GetUserProfileByCedula(req.Token, req.Cedula).FirstOrDefault();
 
                     if (resultado == null || resultado.Result == "FAILED")
                     {

@@ -41,34 +41,34 @@ namespace Fitlife.Controllers
 
         [HttpPost]
         [Route("validate_session")]
-        public ResBase ValidateSession( string token)
+        public ResBase ValidateSession(ReqBase req)
         {
-            return new LogUser().ValidateSession(token);
+            return new LogUser().ValidateSession(req);
         }
 
-        [HttpPost]
+        [HttpPatch]
         [Route("change_password")]
-        public ResBase ChangePassword(string token,string oldPassword , string newPassword)
+        public ResBase ChangePassword(ReqChangePassword req)
         {
-            return new LogUser().ChangePassword(token, oldPassword, newPassword);
+            return new LogUser().ChangePassword(req);
         }
 
         [HttpPost]
         [Route("profile")]
-        public ResBase GetUserProfile([FromUri] string token)
+        public ResUserProfile GetUserProfile(ReqBase req)
         {
-            return new LogUser().GetUserProfile(token); 
+            return new LogUser().GetUserProfile(req); 
         }
         [HttpPost]
-        [Route("profile_Cedula")]
-        public ResBase GetUserProfileByCedula(string token, string cedula)
+        [Route("profile_cedula")]
+        public ResUserProfile GetUserProfileByCedula(ReqGetUserCedula req)
         {
 
-            return new LogUser().GetUserProfileByCedula(token, cedula);
+            return new LogUser().GetUserProfileByCedula(req);
         }
 
 
-        [HttpPut]
+        [HttpPatch]
         [Route("update_profile")]
         public ResBase UpdateUserProfile(ReqUpdateUser req)
         {
