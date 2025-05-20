@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FitLife" Class="FitLifeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-5K2SBFSQ;Initial Catalog=FitLife;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="Conexion.Properties.Settings" SettingsPropertyName="FitLifeConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FitLife2" Class="FitLifeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FitLife2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False" SettingsObjectName="Conexion.Properties.Settings" SettingsPropertyName="FitLife2ConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Attendance" Member="Attendances">
     <Type Name="Attendance">
       <Column Name="AttendanceID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -310,7 +310,6 @@
       <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="BirthDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="Address" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Llave" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Status" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
@@ -329,21 +328,6 @@
       <Association Name="Role_User" Member="Role" ThisKey="RoleID" OtherKey="RoleID" Type="Role" IsForeignKey="true" />
     </Type>
   </Table>
-  <Function Name="dbo.sp_RegisterBodyMetrics" Method="sp_RegisterBodyMetrics">
-    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="Weight" Parameter="weight" Type="System.Decimal" DbType="Decimal(5,2)" />
-    <Parameter Name="Height" Parameter="height" Type="System.Decimal" DbType="Decimal(5,2)" />
-    <Parameter Name="BodyFatPercentage" Parameter="bodyFatPercentage" Type="System.Decimal" DbType="Decimal(5,2)" />
-    <Parameter Name="WaistCircumference" Parameter="waistCircumference" Type="System.Decimal" DbType="Decimal(5,2)" />
-    <Parameter Name="ChestCircumference" Parameter="chestCircumference" Type="System.Decimal" DbType="Decimal(5,2)" />
-    <Parameter Name="ArmCircumference" Parameter="armCircumference" Type="System.Decimal" DbType="Decimal(5,2)" />
-    <Parameter Name="LegCircumference" Parameter="legCircumference" Type="System.Decimal" DbType="Decimal(5,2)" />
-    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="NVarChar(255)" />
-    <ElementType Name="sp_RegisterBodyMetricsResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.sp_AbandonGoal" Method="sp_AbandonGoal">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="GoalTypeName" Parameter="goalTypeName" Type="System.String" DbType="NVarChar(100)" />
@@ -352,19 +336,63 @@
       <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.sp_AddExerciseToRoutine" Method="sp_AddExerciseToRoutine">
+    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="RoutineName" Parameter="routineName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="DayNumber" Parameter="dayNumber" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DayName" Parameter="dayName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="ExerciseName" Parameter="exerciseName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Sets" Parameter="sets" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Repetitions" Parameter="repetitions" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RestTimeSeconds" Parameter="restTimeSeconds" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="NVarChar(255)" />
+    <ElementType Name="sp_AddExerciseToRoutineResult">
+      <Column Name="RoutineExerciseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoutineName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DayNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DayName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ExerciseName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Sets" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Repetitions" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RestTimeSeconds" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.sp_ApprovePayment" Method="sp_ApprovePayment">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="PaymentDate" Parameter="paymentDate" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="PaymentAmount" Parameter="paymentAmount" Type="System.Decimal" DbType="Decimal(10,2)" />
     <Parameter Name="UserCedula" Parameter="userCedula" Type="System.String" DbType="NVarChar(20)" />
     <ElementType Name="sp_ApprovePaymentResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="UserCedula" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="NewStatus" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_AssignRoutineToUser" Method="sp_AssignRoutineToUser">
+    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="RoutineName" Parameter="routineName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="TargetUserCedula" Parameter="targetUserCedula" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="Date" />
+    <ElementType Name="sp_AssignRoutineToUserResult">
+      <Column Name="UserAssignedRoutineID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoutineName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(201)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_ChangePassword" Method="sp_ChangePassword">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="CurrentPasswordHash" Parameter="currentPasswordHash" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="NewPasswordHash" Parameter="newPasswordHash" Type="System.String" DbType="NVarChar(255)" />
     <ElementType Name="sp_ChangePasswordResult">
       <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
@@ -383,8 +411,30 @@
   <Function Name="dbo.sp_CheckMembershipStatus" Method="sp_CheckMembershipStatus">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <ElementType Name="sp_CheckMembershipStatusResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="MembershipStatus" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="MembershipName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DaysRemaining" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_CreateRoutine" Method="sp_CreateRoutine">
+    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="DifficultyLevelName" Parameter="difficultyLevelName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="DurationInDays" Parameter="durationInDays" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_CreateRoutineResult">
+      <Column Name="RoutineID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DifficultyLevelName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DurationInDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedByUser" Type="System.String" DbType="NVarChar(201)" CanBeNull="true" />
+      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_CreateUserGoal" Method="sp_CreateUserGoal">
@@ -400,15 +450,27 @@
   <Function Name="dbo.sp_GetActiveMembership" Method="sp_GetActiveMembership">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <ElementType Name="sp_GetActiveMembershipResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="MembershipTypeName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="DaysRemaining" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_GetActiveRoutines" Method="sp_GetActiveRoutines">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <ElementType Name="sp_GetActiveRoutinesResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="RoutineName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DifficultyLevelName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ProgressPercentage" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_GetAttendanceHistory" Method="sp_GetAttendanceHistory">
@@ -416,8 +478,12 @@
     <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="Date" />
     <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="Date" />
     <ElementType Name="sp_GetAttendanceHistoryResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="CheckInDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CheckOutDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DurationMinutes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DayOfWeek" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_GetAttendanceReport" Method="sp_GetAttendanceReport">
@@ -430,20 +496,50 @@
       <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.sp_GetAttendanceStatus" Method="sp_GetAttendanceStatus">
+    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
+    <ElementType Name="sp_GetAttendanceStatusResult">
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AttendanceStatus" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="HasActiveCheckin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CheckInTime" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MinutesElapsed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ActionAvailable" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.sp_GetBodyMetricsHistory" Method="sp_GetBodyMetricsHistory">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="Date" />
     <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="Date" />
     <ElementType Name="sp_GetBodyMetricsHistoryResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="MeasurementDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="Height" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="BodyFatPercentage" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="BMI" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="WaistCircumference" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="ChestCircumference" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="ArmCircumference" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="LegCircumference" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_GetPaymentHistory" Method="sp_GetPaymentHistory">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <ElementType Name="sp_GetPaymentHistoryResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="PaymentMethod" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PaymentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReceiptFilePath" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PaymentStatus" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="MembershipName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_GetPeakHours" Method="sp_GetPeakHours">
@@ -460,8 +556,21 @@
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="RoutineName" Parameter="routineName" Type="System.String" DbType="NVarChar(100)" />
     <ElementType Name="sp_GetRoutineExercisesResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="DayNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DayName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ExerciseName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ExerciseDescription" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Category" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TargetMuscleGroup" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Sets" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Repetitions" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RestTimeSeconds" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Instructions" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="VideoURL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ImageURL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TodayProgress" Type="System.Decimal" DbType="Decimal(33,11)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_GetRoutinesReport" Method="sp_GetRoutinesReport">
@@ -478,38 +587,68 @@
   <Function Name="dbo.sp_GetUnreadNotifications" Method="sp_GetUnreadNotifications">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <ElementType Name="sp_GetUnreadNotificationsResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SentAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsRead" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message1" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_GetUserGoals" Method="sp_GetUserGoals">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="Status" Parameter="status" Type="System.String" DbType="NVarChar(20)" />
     <ElementType Name="sp_GetUserGoalsResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="GoalType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TargetValue" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TargetDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ProgressPercentage" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="DaysRemaining" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_GetUserProfile" Method="sp_GetUserProfile">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <ElementType Name="sp_GetUserProfileResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BirthDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_GetUserProfileByCedula" Method="sp_GetUserProfileByCedula">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="TargetCedula" Parameter="targetCedula" Type="System.String" DbType="NVarChar(20)" />
     <ElementType Name="sp_GetUserProfileByCedulaResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BirthDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_Logout" Method="sp_Logout">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <ElementType Name="sp_LogoutResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(34) NOT NULL" CanBeNull="false" />
+      <Column Name="Result" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="VarChar(28) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_MarkNotificationAsRead" Method="sp_MarkNotificationAsRead">
@@ -540,7 +679,7 @@
       <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.sp_RegisterBodyMetrics" Method="sp_RegisterBodyMetrics1">
+  <Function Name="dbo.sp_RegisterBodyMetrics" Method="sp_RegisterBodyMetrics">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="Weight" Parameter="weight" Type="System.Decimal" DbType="Decimal(5,2)" />
     <Parameter Name="Height" Parameter="height" Type="System.Decimal" DbType="Decimal(5,2)" />
@@ -550,9 +689,19 @@
     <Parameter Name="ArmCircumference" Parameter="armCircumference" Type="System.Decimal" DbType="Decimal(5,2)" />
     <Parameter Name="LegCircumference" Parameter="legCircumference" Type="System.Decimal" DbType="Decimal(5,2)" />
     <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="NVarChar(255)" />
-    <ElementType Name="sp_RegisterBodyMetricsResult1">
+    <ElementType Name="sp_RegisterBodyMetricsResult">
       <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
       <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_RegisterCheckOut" Method="sp_RegisterCheckOut">
+    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
+    <ElementType Name="sp_RegisterCheckOutResult">
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CheckInTime" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CheckOutTime" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="DurationMinutes" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_RegisterExerciseProgress" Method="sp_RegisterExerciseProgress">
@@ -575,8 +724,28 @@
     <Parameter Name="PaymentMethodName" Parameter="paymentMethodName" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="ReceiptFilePath" Parameter="receiptFilePath" Type="System.String" DbType="NVarChar(255)" />
     <ElementType Name="sp_RegisterPaymentResult">
+      <Column Name="MembershipTypeName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="PaymentMethod" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_RegisterUser" Method="sp_RegisterUser">
+    <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="PasswordHash" Parameter="passwordHash" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="PhoneNumber" Parameter="phoneNumber" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="BirthDate" Parameter="birthDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="RoleName" Parameter="roleName" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="sp_RegisterUserResult">
       <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="VarChar(44) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_ScheduleMetricMeasurement" Method="sp_ScheduleMetricMeasurement">
@@ -620,28 +789,6 @@
       <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.sp_ValidateSession" Method="sp_ValidateSession">
-    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <ElementType Name="sp_ValidateSessionResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(14) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_RegisterUser" Method="sp_RegisterUser">
-    <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="PasswordHash" Parameter="passwordHash" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="PhoneNumber" Parameter="phoneNumber" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="BirthDate" Parameter="birthDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="RoleName" Parameter="roleName" Type="System.String" DbType="NVarChar(50)" />
-    <ElementType Name="sp_RegisterUserResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(44) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.sp_UserLogin" Method="sp_UserLogin">
     <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
     <Parameter Name="PasswordHash" Parameter="passwordHash" Type="System.String" DbType="NVarChar(255)" />
@@ -661,26 +808,18 @@
       <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.sp_RegisterCheckOut" Method="sp_RegisterCheckOut">
+  <Function Name="dbo.sp_ValidateSession" Method="sp_ValidateSession">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <ElementType Name="sp_RegisterCheckOutResult">
+    <ElementType Name="sp_ValidateSessionResult">
+      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ExpiresAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="CheckInTime" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="CheckOutTime" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="DurationMinutes" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_GetAttendanceStatus" Method="sp_GetAttendanceStatus">
-    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <ElementType Name="sp_GetAttendanceStatusResult">
-      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="AttendanceStatus" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="HasActiveCheckin" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CheckInTime" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="MinutesElapsed" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ActionAvailable" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

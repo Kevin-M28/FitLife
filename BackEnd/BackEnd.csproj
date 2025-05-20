@@ -74,7 +74,7 @@
     <Compile Include="Enum\EnumError.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Logic\Attendance\LogAttendance.cs" />
-    <Compile Include="Logic\LogUser.cs" />
+    <Compile Include="Logic\User\LogUser.cs" />
     <Compile Include="Logic\Membership\LogMembership.cs" />
     <Compile Include="Logic\Payment\LogPayment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,7 +84,9 @@
     <Compile Include="ResAndReq\Req\Attendance\ReqAttendanceStatus.cs" />
     <Compile Include="ResAndReq\Req\Attendance\ReqCheckIn.cs" />
     <Compile Include="ResAndReq\Req\Attendance\ReqCheckOut.cs" />
+    <Compile Include="ResAndReq\Req\ReqBase.cs" />
     <Compile Include="ResAndReq\Req\User\ReqAddUser.cs" />
+    <Compile Include="ResAndReq\Req\User\ReqUpdateUser.cs" />
     <Compile Include="ResAndReq\Req\User\ReqUserLogin.cs" />
     <Compile Include="ResAndReq\Res\Attendance\ResAttendanceStatus.cs" />
     <Compile Include="ResAndReq\Res\Attendance\ResCheckIn.cs" />
@@ -98,6 +100,7 @@
     <Compile Include="ResAndReq\Res\ResBase.cs" />
     <Compile Include="ResAndReq\Res\User\ResAddUser.cs" />
     <Compile Include="ResAndReq\Res\User\ResUserLogin.cs" />
+    <Compile Include="ResAndReq\Res\User\ResUserProfile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

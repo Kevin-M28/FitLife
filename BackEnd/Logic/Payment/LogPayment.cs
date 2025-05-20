@@ -251,7 +251,7 @@ namespace BackEnd.Logic.Payment
                 using (FitLifeDataContext linq = new FitLifeDataContext())
                 {
                     var resultados = linq.sp_GetPaymentHistory(token);
-
+                    
                     foreach (var pago in resultados)
                     {
                         if (pago.Result == "SUCCESS")
@@ -262,7 +262,7 @@ namespace BackEnd.Logic.Payment
                                 PaymentMethodName = pago.PaymentMethod,
                                 PaymentDate = pago.PaymentDate ?? DateTime.MinValue,
                                 ReceiptFilePath = pago.ReceiptFilePath,
-                                Status = pago.Status,
+                                Status = pago.PaymentStatus,
                                 MembershipName = pago.MembershipName,
                                 StartDate = pago.StartDate ?? DateTime.MinValue,
                                 EndDate = pago.EndDate ?? DateTime.MinValue

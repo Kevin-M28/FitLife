@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace BackEnd.Logic.Membership
 {
     public class LogMembership
@@ -61,7 +60,7 @@ namespace BackEnd.Logic.Membership
                         // Check if MembershipName exists, if not, try Name
                         try
                         {
-                            res.Membership.MembershipName = resultado.MembershipName;
+                            res.Membership.MembershipName = resultado.MembershipTypeName;
                         }
                         catch
                         {
@@ -167,7 +166,7 @@ namespace BackEnd.Logic.Membership
             {
                 Error = new List<Error>(),
                 Result = false,
-                MembershipTypes = new List<MembershipType>()
+                MembershipTypes = new List<Entities.MembershipType>()
             };
 
             try
@@ -178,7 +177,7 @@ namespace BackEnd.Logic.Membership
 
                     foreach (var mt in membershipTypes)
                     {
-                        res.MembershipTypes.Add(new MembershipType
+                        res.MembershipTypes.Add(new Entities.MembershipType
                         {
                             MembershipTypeID = mt.MembershipTypeID,
                             Name = mt.Name,

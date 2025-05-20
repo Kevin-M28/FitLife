@@ -13,7 +13,7 @@ namespace Fitlife.Controllers
 {
     [RoutePrefix("api/membership")]
     public class MembershipController : ApiController
-    {
+    {/*
         public MembershipController() { }
 
         /// <summary>
@@ -51,6 +51,6 @@ namespace Fitlife.Controllers
         public ResGetMembershipTypes GetMembershipTypes()
         {
             return new LogMembership().ObtenerTiposMembresia();
-        }
+        }*/
     }
 }
