@@ -65,6 +65,7 @@
     <Compile Include="Entities\Error.cs" />
     <Compile Include="Entities\Membership.cs" />
     <Compile Include="Entities\MembershipType.cs" />
+    <Compile Include="Entities\Notification.cs" />
     <Compile Include="Entities\Payment.cs" />
     <Compile Include="Entities\PaymentMethod.cs" />
     <Compile Include="Entities\Role.cs" />
@@ -75,12 +76,16 @@
     <Compile Include="Helpers\DbReaderExtensions.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Logic\Attendance\LogAttendance.cs" />
+    <Compile Include="Logic\Notification\LogNotification.cs" />
     <Compile Include="Logic\Routine\LogRoutine.cs" />
     <Compile Include="Logic\User\LogUser.cs" />
     <Compile Include="Logic\Membership\LogMembership.cs" />
     <Compile Include="Logic\Payment\LogPayment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResAndReq\Req\Membership\ReqGetMembership.cs" />
+    <Compile Include="ResAndReq\Req\Notification\ReqGetUnreadNotifications.cs" />
+    <Compile Include="ResAndReq\Req\Notification\ReqMarkNotificationAsRead.cs" />
+    <Compile Include="ResAndReq\Req\Notification\ReqSendNotification.cs" />
     <Compile Include="ResAndReq\Req\Payment\ReqApprovePayment.cs" />
     <Compile Include="ResAndReq\Req\Payment\ReqRegisterPayment.cs" />
     <Compile Include="ResAndReq\Req\Attendance\ReqAttendanceStatus.cs" />
@@ -106,6 +111,9 @@
     <Compile Include="ResAndReq\Res\Membership\ResCheckMembershipStatus.cs" />
     <Compile Include="ResAndReq\Res\Membership\ResGetActiveMembership.cs" />
     <Compile Include="ResAndReq\Res\Membership\ResGetMembershipTypes.cs" />
+    <Compile Include="ResAndReq\Res\Notification\ResGetUnreadNotifications .cs" />
+    <Compile Include="ResAndReq\Res\Notification\ResMarkNotificationAsRead .cs" />
+    <Compile Include="ResAndReq\Res\Notification\ResSendNotification .cs" />
     <Compile Include="ResAndReq\Res\Payment\ResApprovePayment.cs" />
     <Compile Include="ResAndReq\Res\Payment\ResGetPaymentHistory.cs" />
     <Compile Include="ResAndReq\Res\Payment\ResRegisterPayment.cs" />

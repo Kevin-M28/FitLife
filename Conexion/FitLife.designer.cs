@@ -448,6 +448,13 @@ namespace Conexion
 			return ((ISingleResult<sp_GetRoutineExercisesResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetRoutinesReport")]
+		public ISingleResult<sp_GetRoutinesReportResult> sp_GetRoutinesReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartDate", DbType="Date")] System.Nullable<System.DateTime> startDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndDate", DbType="Date")] System.Nullable<System.DateTime> endDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="NVarChar(20)")] string status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoutineName", DbType="NVarChar(100)")] string routineName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserCedula", DbType="NVarChar(20)")] string userCedula)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, startDate, endDate, status, routineName, userCedula);
+			return ((ISingleResult<sp_GetRoutinesReportResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetUnreadNotifications")]
 		public ISingleResult<sp_GetUnreadNotificationsResult> sp_GetUnreadNotifications([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token)
 		{
@@ -579,13 +586,6 @@ namespace Conexion
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, passwordHash);
 			return ((ISingleResult<sp_UserLoginResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetRoutinesReport")]
-		public ISingleResult<sp_GetRoutinesReportResult> sp_GetRoutinesReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartDate", DbType="Date")] System.Nullable<System.DateTime> startDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndDate", DbType="Date")] System.Nullable<System.DateTime> endDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="NVarChar(20)")] string status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoutineName", DbType="NVarChar(100)")] string routineName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserCedula", DbType="NVarChar(20)")] string userCedula)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, startDate, endDate, status, routineName, userCedula);
-			return ((ISingleResult<sp_GetRoutinesReportResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -10111,6 +10111,50 @@ namespace Conexion
 		}
 	}
 	
+	public partial class sp_GetRoutinesReportResult
+	{
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		public sp_GetRoutinesReportResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+	}
+	
 	public partial class sp_GetUnreadNotificationsResult
 	{
 		
@@ -11769,50 +11813,6 @@ namespace Conexion
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
-		public string Message
-		{
-			get
-			{
-				return this._Message;
-			}
-			set
-			{
-				if ((this._Message != value))
-				{
-					this._Message = value;
-				}
-			}
-		}
-	}
-	
-	public partial class sp_GetRoutinesReportResult
-	{
-		
-		private string _Result;
-		
-		private string _Message;
-		
-		public sp_GetRoutinesReportResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
-		public string Result
-		{
-			get
-			{
-				return this._Result;
-			}
-			set
-			{
-				if ((this._Result != value))
-				{
-					this._Result = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
 		public string Message
 		{
 			get
