@@ -43,7 +43,6 @@
     <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\Fitlife\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
       <Private>True</Private>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\Fitlife\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
@@ -88,10 +87,8 @@
     <Compile Include="ResAndReq\Req\Attendance\ReqCheckIn.cs" />
     <Compile Include="ResAndReq\Req\Attendance\ReqCheckOut.cs" />
     <Compile Include="ResAndReq\Req\ReqBase.cs" />
-<<<<<<< HEAD
     <Compile Include="ResAndReq\Req\User\ReqGetUserCedula.cs" />
     <Compile Include="ResAndReq\Req\User\ReqChangePassword.cs" />
-=======
     <Compile Include="ResAndReq\Req\Routine\ReqAddExerciseToRoutine.cs" />
     <Compile Include="ResAndReq\Req\Routine\ReqAssignRoutine.cs" />
     <Compile Include="ResAndReq\Req\Routine\ReqCreateRoutine.cs" />
@@ -100,7 +97,6 @@
     <Compile Include="ResAndReq\Req\Routine\ReqGetRoutineReport.cs" />
     <Compile Include="ResAndReq\Req\Routine\ReqRateRoutine.cs" />
     <Compile Include="ResAndReq\Req\Routine\ReqRegisterExerciseProgress.cs" />
->>>>>>> ec56aa3e1d6ac2ce9dc5b8f334944eaa5d96c881
     <Compile Include="ResAndReq\Req\User\ReqAddUser.cs" />
     <Compile Include="ResAndReq\Req\User\ReqUpdateUser.cs" />
     <Compile Include="ResAndReq\Req\User\ReqUserLogin.cs" />
@@ -135,6 +131,5 @@
       <Name>Conexion</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
