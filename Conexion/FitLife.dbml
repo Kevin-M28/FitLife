@@ -1,353 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FitLife2" Class="FitLifeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=MCCARTHYS\SQLEXPRESS;Initial Catalog=FitLife2;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="Conexion.Properties.Settings" SettingsPropertyName="FitLife2ConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Attendance" Member="Attendance">
-    <Type Name="Attendance">
-      <Column Name="AttendanceID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CheckInDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="CheckOutDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Users_Attendance" Member="Users" ThisKey="UserID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Users" Member="Users">
-    <Type Name="Users">
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="LastName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="PasswordHash" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="BirthDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Users_Attendance" Member="Attendance" ThisKey="UserID" OtherKey="UserID" Type="Attendance" />
-      <Association Name="Users_BodyMetrics" Member="BodyMetrics" ThisKey="UserID" OtherKey="UserID" Type="BodyMetrics" />
-      <Association Name="Users_Notifications" Member="Notifications" ThisKey="UserID" OtherKey="UserID" Type="Notifications" />
-      <Association Name="Users_Payments" Member="Payments" ThisKey="UserID" OtherKey="UserID" Type="Payments" />
-      <Association Name="Users_RoutineRatings" Member="RoutineRatings" ThisKey="UserID" OtherKey="UserID" Type="RoutineRatings" />
-      <Association Name="Users_Routines" Member="Routines" ThisKey="UserID" OtherKey="CreatedByUserID" Type="Routines" />
-      <Association Name="Users_ScheduledMetricMeasurements" Member="ScheduledMetricMeasurements" ThisKey="UserID" OtherKey="UserID" Type="ScheduledMetricMeasurements" />
-      <Association Name="Users_Sessions" Member="Sessions" ThisKey="UserID" OtherKey="UserID" Type="Sessions" />
-      <Association Name="Users_UserAssignedRoutines" Member="UserAssignedRoutines" ThisKey="UserID" OtherKey="UserID" Type="UserAssignedRoutines" />
-      <Association Name="Users_UserGoals" Member="UserGoals" ThisKey="UserID" OtherKey="UserID" Type="UserGoals" />
-      <Association Name="Users_UserMemberships" Member="UserMemberships" ThisKey="UserID" OtherKey="UserID" Type="UserMemberships" />
-      <Association Name="Roles_Users" Member="Roles" ThisKey="RoleID" OtherKey="RoleID" Type="Roles" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.BodyMetrics" Member="BodyMetrics">
-    <Type Name="BodyMetrics">
-      <Column Name="BodyMetricID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="MeasurementDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Weight" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="Height" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="BodyFatPercentage" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="BMI" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="WaistCircumference" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="ChestCircumference" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="ArmCircumference" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="LegCircumference" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="Notes" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Users_BodyMetrics" Member="Users" ThisKey="UserID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.DifficultyLevels" Member="DifficultyLevels">
-    <Type Name="DifficultyLevels">
-      <Column Name="DifficultyLevelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="DifficultyLevels_Routines" Member="Routines" ThisKey="DifficultyLevelID" OtherKey="DifficultyLevelID" Type="Routines" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ExerciseCategories" Member="ExerciseCategories">
-    <Type Name="ExerciseCategories">
-      <Column Name="ExerciseCategoryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="TargetMuscleGroup" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="ExerciseCategories_Exercises" Member="Exercises" ThisKey="ExerciseCategoryID" OtherKey="ExerciseCategoryID" Type="Exercises" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Exercises" Member="Exercises">
-    <Type Name="Exercises">
-      <Column Name="ExerciseID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="ExerciseCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Instructions" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="VideoURL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="ImageURL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Exercises_RoutineExercises" Member="RoutineExercises" ThisKey="ExerciseID" OtherKey="ExerciseID" Type="RoutineExercises" />
-      <Association Name="ExerciseCategories_Exercises" Member="ExerciseCategories" ThisKey="ExerciseCategoryID" OtherKey="ExerciseCategoryID" Type="ExerciseCategories" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.GoalTypes" Member="GoalTypes">
-    <Type Name="GoalTypes">
-      <Column Name="GoalTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="GoalTypes_UserGoals" Member="UserGoals" ThisKey="GoalTypeID" OtherKey="GoalTypeID" Type="UserGoals" />
-    </Type>
-  </Table>
-  <Table Name="dbo.MembershipTypes" Member="MembershipTypes">
-    <Type Name="MembershipTypes">
-      <Column Name="MembershipTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="DurationDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="MembershipTypes_UserMemberships" Member="UserMemberships" ThisKey="MembershipTypeID" OtherKey="MembershipTypeID" Type="UserMemberships" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Notifications" Member="Notifications">
-    <Type Name="Notifications">
-      <Column Name="NotificationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NotificationTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="IsRead" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="SentAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Users_Notifications" Member="Users" ThisKey="UserID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
-      <Association Name="NotificationTypes_Notifications" Member="NotificationTypes" ThisKey="NotificationTypeID" OtherKey="NotificationTypeID" Type="NotificationTypes" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.NotificationTypes" Member="NotificationTypes">
-    <Type Name="NotificationTypes">
-      <Column Name="NotificationTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="NotificationTypes_Notifications" Member="Notifications" ThisKey="NotificationTypeID" OtherKey="NotificationTypeID" Type="Notifications" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PaymentMethods" Member="PaymentMethods">
-    <Type Name="PaymentMethods">
-      <Column Name="PaymentMethodID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="PaymentMethods_Payments" Member="Payments" ThisKey="PaymentMethodID" OtherKey="PaymentMethodID" Type="Payments" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Payments" Member="Payments">
-    <Type Name="Payments">
-      <Column Name="PaymentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UserMembershipID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
-      <Column Name="PaymentMethodID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PaymentDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ReceiptFilePath" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Notes" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="PaymentMethods_Payments" Member="PaymentMethods" ThisKey="PaymentMethodID" OtherKey="PaymentMethodID" Type="PaymentMethods" IsForeignKey="true" />
-      <Association Name="Users_Payments" Member="Users" ThisKey="UserID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
-      <Association Name="UserMemberships_Payments" Member="UserMemberships" ThisKey="UserMembershipID" OtherKey="UserMembershipID" Type="UserMemberships" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Roles" Member="Roles">
-    <Type Name="Roles">
-      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Roles_Users" Member="Users" ThisKey="RoleID" OtherKey="RoleID" Type="Users" />
-    </Type>
-  </Table>
-  <Table Name="dbo.RoutineDays" Member="RoutineDays">
-    <Type Name="RoutineDays">
-      <Column Name="RoutineDayID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="RoutineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DayNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="RoutineDays_RoutineExercises" Member="RoutineExercises" ThisKey="RoutineDayID" OtherKey="RoutineDayID" Type="RoutineExercises" />
-      <Association Name="Routines_RoutineDays" Member="Routines" ThisKey="RoutineID" OtherKey="RoutineID" Type="Routines" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.RoutineExercises" Member="RoutineExercises">
-    <Type Name="RoutineExercises">
-      <Column Name="RoutineExerciseID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="RoutineDayID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ExerciseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Sets" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Repetitions" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RestTimeSeconds" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Notes" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="RoutineExercises_UserExerciseProgress" Member="UserExerciseProgress" ThisKey="RoutineExerciseID" OtherKey="RoutineExerciseID" Type="UserExerciseProgress" />
-      <Association Name="Exercises_RoutineExercises" Member="Exercises" ThisKey="ExerciseID" OtherKey="ExerciseID" Type="Exercises" IsForeignKey="true" />
-      <Association Name="RoutineDays_RoutineExercises" Member="RoutineDays" ThisKey="RoutineDayID" OtherKey="RoutineDayID" Type="RoutineDays" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.RoutineRatings" Member="RoutineRatings">
-    <Type Name="RoutineRatings">
-      <Column Name="RoutineRatingID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RoutineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DifficultyRating" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EffectivenessRating" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EnjoymentRating" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Comments" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="RatingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Users_RoutineRatings" Member="Users" ThisKey="UserID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
-      <Association Name="Routines_RoutineRatings" Member="Routines" ThisKey="RoutineID" OtherKey="RoutineID" Type="Routines" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Routines" Member="Routines">
-    <Type Name="Routines">
-      <Column Name="RoutineID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="DifficultyLevelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedByUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DurationInDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Routines_RoutineDays" Member="RoutineDays" ThisKey="RoutineID" OtherKey="RoutineID" Type="RoutineDays" />
-      <Association Name="Routines_RoutineRatings" Member="RoutineRatings" ThisKey="RoutineID" OtherKey="RoutineID" Type="RoutineRatings" />
-      <Association Name="Routines_UserAssignedRoutines" Member="UserAssignedRoutines" ThisKey="RoutineID" OtherKey="RoutineID" Type="UserAssignedRoutines" />
-      <Association Name="DifficultyLevels_Routines" Member="DifficultyLevels" ThisKey="DifficultyLevelID" OtherKey="DifficultyLevelID" Type="DifficultyLevels" IsForeignKey="true" />
-      <Association Name="Users_Routines" Member="Users" ThisKey="CreatedByUserID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ScheduledMetricMeasurements" Member="ScheduledMetricMeasurements">
-    <Type Name="ScheduledMetricMeasurements">
-      <Column Name="ScheduleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ScheduledDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Users_ScheduledMetricMeasurements" Member="Users" ThisKey="UserID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Sessions" Member="Sessions">
-    <Type Name="Sessions">
-      <Column Name="SessionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Token" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ExpiresAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="LastActivity" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Users_Sessions" Member="Users" ThisKey="UserID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.UserAssignedRoutines" Member="UserAssignedRoutines">
-    <Type Name="UserAssignedRoutines">
-      <Column Name="UserAssignedRoutineID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RoutineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="ProgressPercentage" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="UserAssignedRoutines_UserExerciseProgress" Member="UserExerciseProgress" ThisKey="UserAssignedRoutineID" OtherKey="UserAssignedRoutineID" Type="UserExerciseProgress" />
-      <Association Name="Routines_UserAssignedRoutines" Member="Routines" ThisKey="RoutineID" OtherKey="RoutineID" Type="Routines" IsForeignKey="true" />
-      <Association Name="Users_UserAssignedRoutines" Member="Users" ThisKey="UserID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.UserExerciseProgress" Member="UserExerciseProgress">
-    <Type Name="UserExerciseProgress">
-      <Column Name="UserExerciseProgressID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserAssignedRoutineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RoutineExerciseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CompletionDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="CompletedSets" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CompletedRepetitions" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Weight" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="Notes" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="RoutineExercises_UserExerciseProgress" Member="RoutineExercises" ThisKey="RoutineExerciseID" OtherKey="RoutineExerciseID" Type="RoutineExercises" IsForeignKey="true" />
-      <Association Name="UserAssignedRoutines_UserExerciseProgress" Member="UserAssignedRoutines" ThisKey="UserAssignedRoutineID" OtherKey="UserAssignedRoutineID" Type="UserAssignedRoutines" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.UserGoals" Member="UserGoals">
-    <Type Name="UserGoals">
-      <Column Name="UserGoalID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="GoalTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TargetValue" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="TargetDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="ProgressPercentage" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="GoalTypes_UserGoals" Member="GoalTypes" ThisKey="GoalTypeID" OtherKey="GoalTypeID" Type="GoalTypes" IsForeignKey="true" />
-      <Association Name="Users_UserGoals" Member="Users" ThisKey="UserID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.UserMemberships" Member="UserMemberships">
-    <Type Name="UserMemberships">
-      <Column Name="UserMembershipID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="MembershipTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="EndDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="UserMemberships_Payments" Member="Payments" ThisKey="UserMembershipID" OtherKey="UserMembershipID" Type="Payments" />
-      <Association Name="MembershipTypes_UserMemberships" Member="MembershipTypes" ThisKey="MembershipTypeID" OtherKey="MembershipTypeID" Type="MembershipTypes" IsForeignKey="true" />
-      <Association Name="Users_UserMemberships" Member="Users" ThisKey="UserID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
-    </Type>
-  </Table>
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FitLife2" Class="FitLife2DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-7UPKFS7\SQLEXPRESS;Initial Catalog=FitLife2;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="Conexion.Properties.Settings" SettingsPropertyName="FitLife2ConnectionString2" Provider="System.Data.SqlClient" />
   <Function Name="dbo.sp_AbandonGoal" Method="sp_AbandonGoal">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="GoalTypeName" Parameter="goalTypeName" Type="System.String" DbType="NVarChar(100)" />
     <ElementType Name="sp_AbandonGoalResult">
       <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
       <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_ValidateSession" Method="sp_ValidateSession">
-    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <ElementType Name="sp_ValidateSessionResult">
-      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="ExpiresAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_AddExerciseToRoutine" Method="sp_AddExerciseToRoutine">
@@ -500,16 +158,6 @@
       <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.sp_GetAttendanceReport" Method="sp_GetAttendanceReport">
-    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="UserCedula" Parameter="userCedula" Type="System.String" DbType="NVarChar(20)" />
-    <ElementType Name="sp_GetAttendanceReportResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.sp_GetAttendanceStatus" Method="sp_GetAttendanceStatus">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <ElementType Name="sp_GetAttendanceStatusResult">
@@ -556,16 +204,6 @@
       <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.sp_GetPeakHours" Method="sp_GetPeakHours">
-    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="TopN" Parameter="topN" Type="System.Int32" DbType="Int" />
-    <ElementType Name="sp_GetPeakHoursResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.sp_GetRoutineExercises" Method="sp_GetRoutineExercises">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="RoutineName" Parameter="routineName" Type="System.String" DbType="NVarChar(100)" />
@@ -585,18 +223,6 @@
       <Column Name="TodayProgress" Type="System.Decimal" DbType="Decimal(33,11)" CanBeNull="true" />
       <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_GetRoutinesReport" Method="sp_GetRoutinesReport">
-    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="Status" Parameter="status" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="RoutineName" Parameter="routineName" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="UserCedula" Parameter="userCedula" Type="System.String" DbType="NVarChar(20)" />
-    <ElementType Name="sp_GetRoutinesReportResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_GetUnreadNotifications" Method="sp_GetUnreadNotifications">
@@ -657,13 +283,6 @@
       <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_Logout" Method="sp_Logout">
-    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <ElementType Name="sp_LogoutResult">
-      <Column Name="Result" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(28) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_MarkNotificationAsRead" Method="sp_MarkNotificationAsRead">
@@ -819,6 +438,45 @@
       <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="Token" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="ExpiresAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_UserPass" Method="sp_UserPass">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="sp_UserPassResult">
+      <Column Name="PasswordHash" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_ValidateSession" Method="sp_ValidateSession">
+    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
+    <ElementType Name="sp_ValidateSessionResult">
+      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ExpiresAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_Logout" Method="sp_Logout">
+    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
+    <ElementType Name="sp_LogoutResult">
+      <Column Name="Result" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="VarChar(28) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetMembershipTypes" Method="sp_GetMembershipTypes">
+    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
+    <ElementType Name="sp_GetMembershipTypesResult">
+      <Column Name="MembershipTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DurationDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
       <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>

@@ -34,7 +34,7 @@ namespace BackEnd.Logic.Notification
                     return res;
                 }
 
-                using (var db = new FitLifeDataContext())
+                using (var db = new FitLife2DataContext())
                 {
                     var conn = db.Connection;
                     if (conn.State != System.Data.ConnectionState.Open)
@@ -113,7 +113,7 @@ namespace BackEnd.Logic.Notification
 
             try
             {
-                using (var db = new FitLifeDataContext())
+                using (var db = new FitLife2DataContext())
                 {
                     var conn = db.Connection;
                     if (conn.State != System.Data.ConnectionState.Open)
@@ -182,7 +182,7 @@ namespace BackEnd.Logic.Notification
 
             try
             {
-                using (var db = new FitLifeDataContext())
+                using (var db = new FitLife2DataContext())
                 {
                     var conn = db.Connection;
                     if (conn.State != System.Data.ConnectionState.Open)

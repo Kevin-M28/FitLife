@@ -43,7 +43,7 @@ namespace BackEnd.Logic.BodyMetrics
                 }
                 #endregion
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_RegisterBodyMetrics(
                         req.Token,
@@ -122,7 +122,7 @@ namespace BackEnd.Logic.BodyMetrics
                 }
                 #endregion
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_ScheduleMetricMeasurement(
                         req.Token,
@@ -183,7 +183,7 @@ namespace BackEnd.Logic.BodyMetrics
                 }
                 #endregion
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var conn = linq.Connection;
                     if (conn.State != System.Data.ConnectionState.Open)

@@ -82,7 +82,7 @@ namespace BackEnd.Logic.Routine
 
                 Entities.Routine routineEntity = req.ToEntity();
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_CreateRoutine(
                         req.Token,
@@ -139,7 +139,7 @@ namespace BackEnd.Logic.Routine
                     return res;
                 }
 
-                using (var db = new FitLifeDataContext())
+                using (var db = new FitLife2DataContext())
                 {
                     var result = db.sp_GetActiveRoutines(req.Token).ToList();
 
@@ -201,7 +201,7 @@ namespace BackEnd.Logic.Routine
                     return res;
                 }
 
-                using (var db = new FitLifeDataContext())
+                using (var db = new FitLife2DataContext())
                 {
                     // Obtener la conexión del contexto LINQ
                     System.Data.Common.DbConnection connection = db.Connection;
@@ -435,7 +435,7 @@ namespace BackEnd.Logic.Routine
                 }
                 #endregion
 
-                using (var db = new FitLifeDataContext())
+                using (var db = new FitLife2DataContext())
                 {
                     DbConnection connection = db.Connection;
 
@@ -541,7 +541,7 @@ namespace BackEnd.Logic.Routine
                 }
                 #endregion
 
-                using (var db = new FitLifeDataContext())
+                using (var db = new FitLife2DataContext())
                 {
                     DbConnection connection = db.Connection;
 
@@ -625,7 +625,7 @@ namespace BackEnd.Logic.Routine
                     return res;
                 }
 
-                using (var db = new FitLifeDataContext())
+                using (var db = new FitLife2DataContext())
                 {
                     var conn = db.Connection;
                     if (conn.State != System.Data.ConnectionState.Open)
@@ -717,7 +717,7 @@ namespace BackEnd.Logic.Routine
                     return res;
                 }
 
-                using (var db = new FitLifeDataContext())
+                using (var db = new FitLife2DataContext())
                 {
                     var conn = db.Connection;
                     if (conn.State != System.Data.ConnectionState.Open)
@@ -816,7 +816,7 @@ namespace BackEnd.Logic.Routine
                     return res;
                 }
 
-                using (var db = new FitLifeDataContext())
+                using (var db = new FitLife2DataContext())
                 {
                     var conn = db.Connection;
                     if (conn.State != System.Data.ConnectionState.Open)

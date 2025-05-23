@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace BackEnd.ResAndReq.Req.Membership
 {
     public class ReqGetMembership
-    {
-        // Empty class as we only need token validation
-        // Token will be passed through headers or as parameter
+    {   
+        public string Membershiptypes { get; set; } = string.Empty;
     }
 }

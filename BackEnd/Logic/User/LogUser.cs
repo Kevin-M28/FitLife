@@ -108,7 +108,7 @@ namespace BackEnd.Logic
                 string password = Helper.GenerarPassword(8);
                 string passHash = Helper.HashearPassword(password);
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_RegisterUser(
                         req.Cedula,
@@ -199,10 +199,10 @@ namespace BackEnd.Logic
                     return res;
                 }
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     // Obtener el hash de la contraseña almacenada
-                    var passwordHash = linq.Users.Where(u => u.Email == req.Email).Select(u => u.PasswordHash).FirstOrDefault();
+                    var passwordHash = linq.sp_UserPass(req.Email).ToString();
 
                     if (passwordHash == null)
                     {
@@ -290,9 +290,9 @@ namespace BackEnd.Logic
                     return res;
                 }
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
-                    var resultado = linq.sp_Logout(req.Token).FirstOrDefault();
+/*                    var resultado = linq.sp_Logout(req.Token);
 
                     if (resultado == null || resultado.Result == "FAILED")
                     {
@@ -300,12 +300,12 @@ namespace BackEnd.Logic
                         {
                             ErrorCode = (int)EnumErrores.sesionNoEncontrada,
                             Message = resultado?.Message ?? "Error al cerrar sesión"
-                        });
+                        }); 
                     }
                     else
                     {
                         res.Result = true;
-                    }
+                    } */
                 }
             }
             catch (Exception ex)
@@ -343,7 +343,7 @@ namespace BackEnd.Logic
                     return res;
                 }
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_ValidateSession(req.Token).FirstOrDefault();
 
@@ -429,15 +429,11 @@ namespace BackEnd.Logic
                 // Hashear la nueva contraseña
                 string passwordHash = Helper.HashearPassword(req.NewPassword);
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
-                    //me traigo el id del usuario que tiene la sesion activa
-                    var userId = linq.Sessions
-                        .Where(s => s.Token == req.Token)
-                        .Select(s => s.UserID)
-                        .FirstOrDefault();
 
-                    var passwordHashDB = linq.Users.Where(u => u.UserID == userId).Select(u => u.PasswordHash).FirstOrDefault();
+
+                    var passwordHashDB = linq.sp_UserPass(req.Email).ToString();
 
                     // Verificar la contraseña antigua utilizando BCrypt
                     if (passwordHashDB != null) {
@@ -504,7 +500,7 @@ namespace BackEnd.Logic
                     return res;
                 }
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_GetUserProfile(req.Token).FirstOrDefault();
 
@@ -582,7 +578,7 @@ namespace BackEnd.Logic
                     return res;
                 }
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_GetUserProfileByCedula(req.Token, req.Cedula).FirstOrDefault();
 
@@ -675,7 +671,7 @@ namespace BackEnd.Logic
                     return res;
                 }
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_UpdateUserProfile(
                         req.Token,
@@ -752,7 +748,7 @@ namespace BackEnd.Logic
                     return res;
                 }
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_ChangeUserStatus(token, targetCedula, newStatus).FirstOrDefault();
 

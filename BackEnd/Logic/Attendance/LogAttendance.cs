@@ -6,6 +6,7 @@ using Conexion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,7 +42,7 @@ namespace BackEnd.Logic
                 }
                 #endregion
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_RegisterAttendance(token).FirstOrDefault();
 
@@ -102,7 +103,7 @@ namespace BackEnd.Logic
                 }
                 #endregion
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_RegisterCheckOut(token).FirstOrDefault();
 
@@ -172,7 +173,7 @@ namespace BackEnd.Logic
                 }
                 #endregion
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_GetAttendanceStatus(token).FirstOrDefault();
 

@@ -50,9 +50,9 @@ namespace Fitlife.Controllers
         /// <returns>List of available membership types</returns>
         [HttpGet]
         [Route("types")]
-        public ResGetMembershipTypes GetMembershipTypes()
+        public ResGetMembershipTypes GetMembershipTypes(string token)
         {
-            return new LogMembership().ObtenerTiposMembresia();
+            return new LogMembership().ObtenerTiposMembresia(token);
         }
     }
 }

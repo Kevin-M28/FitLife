@@ -85,7 +85,7 @@ namespace BackEnd.Logic.Payment
                 }
                 #endregion
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_RegisterPayment(
                         token,
@@ -184,7 +184,7 @@ namespace BackEnd.Logic.Payment
                 }
                 #endregion
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_ApprovePayment(
                         token,
@@ -251,7 +251,7 @@ namespace BackEnd.Logic.Payment
                 }
                 #endregion
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultados = linq.sp_GetPaymentHistory(token);
                     

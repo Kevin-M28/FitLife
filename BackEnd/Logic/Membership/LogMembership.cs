@@ -40,7 +40,7 @@ namespace BackEnd.Logic.Membership
                 }
                 #endregion
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_GetActiveMembership(token).FirstOrDefault();
 
@@ -124,7 +124,7 @@ namespace BackEnd.Logic.Membership
                 }
                 #endregion
 
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     var resultado = linq.sp_CheckMembershipStatus(token).FirstOrDefault();
 
@@ -162,7 +162,7 @@ namespace BackEnd.Logic.Membership
         /// Gets all available membership types
         /// </summary>
         /// <returns>List of available membership types</returns>
-        public ResGetMembershipTypes ObtenerTiposMembresia()
+        public ResGetMembershipTypes ObtenerTiposMembresia(string token)
         {
             ResGetMembershipTypes res = new ResGetMembershipTypes()
             {
@@ -173,21 +173,20 @@ namespace BackEnd.Logic.Membership
 
             try
             {
-                using (FitLifeDataContext linq = new FitLifeDataContext())
+                using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
-                    var membershipTypes = linq.MembershipTypes.ToList();
+                    var membershipTypes = linq.sp_GetMembershipTypes(token);
 
                     foreach (var mt in membershipTypes)
                     {
                         res.MembershipTypes.Add(new Entities.MembershipType
                         {
-                            MembershipTypeID = mt.MembershipTypeID,
+                            //MembershipTypeID = mt.MembershipTypeID,
                             Name = mt.Name,
                             Description = mt.Description,
-                            DurationDays = mt.DurationDays,
-                            Price = mt.Price,
-                            CreatedAt = mt.CreatedAt,
-                            UpdatedAt = mt.UpdatedAt
+                            DurationDays = (int)mt.DurationDays,
+                            Price = (decimal)mt.Price,
+                           
                         });
                     }
 
