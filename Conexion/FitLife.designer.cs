@@ -33,7 +33,7 @@ namespace Conexion
     #endregion
 		
 		public FitLife2DataContext() : 
-				base(global::Conexion.Properties.Settings.Default.FitLife2ConnectionString2, mappingSource)
+				base(global::Conexion.Properties.Settings.Default.FitLife2ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -146,6 +146,13 @@ namespace Conexion
 			return ((ISingleResult<sp_GetAttendanceHistoryResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetAttendanceReport")]
+		public ISingleResult<sp_GetAttendanceReportResult> sp_GetAttendanceReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartDate", DbType="Date")] System.Nullable<System.DateTime> startDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndDate", DbType="Date")] System.Nullable<System.DateTime> endDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserCedula", DbType="NVarChar(20)")] string userCedula)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, startDate, endDate, userCedula);
+			return ((ISingleResult<sp_GetAttendanceReportResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetAttendanceStatus")]
 		public ISingleResult<sp_GetAttendanceStatusResult> sp_GetAttendanceStatus([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token)
 		{
@@ -167,11 +174,25 @@ namespace Conexion
 			return ((ISingleResult<sp_GetPaymentHistoryResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetPeakHours")]
+		public ISingleResult<sp_GetPeakHoursResult> sp_GetPeakHours([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartDate", DbType="Date")] System.Nullable<System.DateTime> startDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndDate", DbType="Date")] System.Nullable<System.DateTime> endDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TopN", DbType="Int")] System.Nullable<int> topN)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, startDate, endDate, topN);
+			return ((ISingleResult<sp_GetPeakHoursResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetRoutineExercises")]
 		public ISingleResult<sp_GetRoutineExercisesResult> sp_GetRoutineExercises([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoutineName", DbType="NVarChar(100)")] string routineName)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, routineName);
 			return ((ISingleResult<sp_GetRoutineExercisesResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetRoutinesReport")]
+		public ISingleResult<sp_GetRoutinesReportResult> sp_GetRoutinesReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartDate", DbType="Date")] System.Nullable<System.DateTime> startDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndDate", DbType="Date")] System.Nullable<System.DateTime> endDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="NVarChar(20)")] string status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoutineName", DbType="NVarChar(100)")] string routineName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, startDate, endDate, status, routineName);
+			return ((ISingleResult<sp_GetRoutinesReportResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetUnreadNotifications")]
@@ -200,6 +221,13 @@ namespace Conexion
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, targetCedula);
 			return ((ISingleResult<sp_GetUserProfileByCedulaResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_Logout")]
+		public ISingleResult<sp_LogoutResult> sp_Logout([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token);
+			return ((ISingleResult<sp_LogoutResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_MarkNotificationAsRead")]
@@ -300,13 +328,6 @@ namespace Conexion
 			return ((ISingleResult<sp_UserLoginResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_UserPass")]
-		public ISingleResult<sp_UserPassResult> sp_UserPass([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email);
-			return ((ISingleResult<sp_UserPassResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ValidateSession")]
 		public ISingleResult<sp_ValidateSessionResult> sp_ValidateSession([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token)
 		{
@@ -314,11 +335,11 @@ namespace Conexion
 			return ((ISingleResult<sp_ValidateSessionResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_Logout")]
-		public ISingleResult<sp_LogoutResult> sp_Logout([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_UserPass")]
+		public ISingleResult<sp_UserPassResult> sp_UserPass([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token);
-			return ((ISingleResult<sp_LogoutResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email);
+			return ((ISingleResult<sp_UserPassResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetMembershipTypes")]
@@ -1685,6 +1706,50 @@ namespace Conexion
 		}
 	}
 	
+	public partial class sp_GetAttendanceReportResult
+	{
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		public sp_GetAttendanceReportResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+	}
+	
 	public partial class sp_GetAttendanceStatusResult
 	{
 		
@@ -2231,6 +2296,50 @@ namespace Conexion
 		}
 	}
 	
+	public partial class sp_GetPeakHoursResult
+	{
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		public sp_GetPeakHoursResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+	}
+	
 	public partial class sp_GetRoutineExercisesResult
 	{
 		
@@ -2493,6 +2602,50 @@ namespace Conexion
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_GetRoutinesReportResult
+	{
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		public sp_GetRoutinesReportResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
 		public string Message
 		{
 			get
@@ -3209,6 +3362,50 @@ namespace Conexion
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_LogoutResult
+	{
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		public sp_LogoutResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(7) NOT NULL", CanBeNull=false)]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(28) NOT NULL", CanBeNull=false)]
 		public string Message
 		{
 			get
@@ -4139,32 +4336,6 @@ namespace Conexion
 		}
 	}
 	
-	public partial class sp_UserPassResult
-	{
-		
-		private string _PasswordHash;
-		
-		public sp_UserPassResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PasswordHash", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string PasswordHash
-		{
-			get
-			{
-				return this._PasswordHash;
-			}
-			set
-			{
-				if ((this._PasswordHash != value))
-				{
-					this._PasswordHash = value;
-				}
-			}
-		}
-	}
-	
 	public partial class sp_ValidateSessionResult
 	{
 		
@@ -4335,45 +4506,27 @@ namespace Conexion
 		}
 	}
 	
-	public partial class sp_LogoutResult
+	public partial class sp_UserPassResult
 	{
 		
-		private string _Result;
+		private string _PasswordHash;
 		
-		private string _Message;
-		
-		public sp_LogoutResult()
+		public sp_UserPassResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="VarChar(7) NOT NULL", CanBeNull=false)]
-		public string Result
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PasswordHash", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string PasswordHash
 		{
 			get
 			{
-				return this._Result;
+				return this._PasswordHash;
 			}
 			set
 			{
-				if ((this._Result != value))
+				if ((this._PasswordHash != value))
 				{
-					this._Result = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(28) NOT NULL", CanBeNull=false)]
-		public string Message
-		{
-			get
-			{
-				return this._Message;
-			}
-			set
-			{
-				if ((this._Message != value))
-				{
-					this._Message = value;
+					this._PasswordHash = value;
 				}
 			}
 		}

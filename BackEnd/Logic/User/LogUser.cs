@@ -292,20 +292,19 @@ namespace BackEnd.Logic
 
                 using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
-/*                    var resultado = linq.sp_Logout(req.Token);
-
+                    var resultado = linq.sp_Logout(req.Token).FirstOrDefault();
                     if (resultado == null || resultado.Result == "FAILED")
                     {
                         res.Error.Add(new Error
                         {
                             ErrorCode = (int)EnumErrores.sesionNoEncontrada,
                             Message = resultado?.Message ?? "Error al cerrar sesión"
-                        }); 
+                        });
                     }
                     else
                     {
                         res.Result = true;
-                    } */
+                    }
                 }
             }
             catch (Exception ex)
