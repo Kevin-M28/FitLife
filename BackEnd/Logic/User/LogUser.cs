@@ -202,7 +202,7 @@ namespace BackEnd.Logic
                 using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     // Obtener el hash de la contraseña almacenada
-                    var passwordHash = linq.sp_UserPass(req.Email).ToString();
+                    var passwordHash = linq.sp_UserPass(req.Email).FirstOrDefault().PasswordHash;
 
                     if (passwordHash == null)
                     {
@@ -432,7 +432,7 @@ namespace BackEnd.Logic
                 {
 
 
-                    var passwordHashDB = linq.sp_UserPass(req.Email).ToString();
+                    var passwordHashDB = linq.sp_UserPass(req.Email).FirstOrDefault().PasswordHash;
 
                     // Verificar la contraseña antigua utilizando BCrypt
                     if (passwordHashDB != null) {
