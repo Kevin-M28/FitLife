@@ -29,14 +29,23 @@ namespace BackEnd.Helpers
         {
             try
             {
+                System.Diagnostics.Debug.WriteLine($"=== INICIO SendWelcomeEmail ===");
+                System.Diagnostics.Debug.WriteLine($"Email destino: {email}");
+                System.Diagnostics.Debug.WriteLine($"Nombre: {firstName}");
+
                 string subject = "¡Bienvenido a FitLife!";
                 string body = CreateWelcomeEmailTemplate(firstName, password);
 
-                return SendEmail(email, subject, body);
+                bool result = SendEmail(email, subject, body);
+                System.Diagnostics.Debug.WriteLine($"Resultado SendWelcomeEmail: {result}");
+                System.Diagnostics.Debug.WriteLine($"=== FIN SendWelcomeEmail ===");
+
+                return result;
             }
             catch (Exception ex)
             {
-                // Log del error (puedes implementar logging aquí)
+                System.Diagnostics.Debug.WriteLine($"EXCEPCIÓN en SendWelcomeEmail: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"StackTrace: {ex.StackTrace}");
                 return false;
             }
         }
@@ -48,14 +57,23 @@ namespace BackEnd.Helpers
         {
             try
             {
+                System.Diagnostics.Debug.WriteLine($"=== INICIO SendPasswordChangeEmail ===");
+                System.Diagnostics.Debug.WriteLine($"Email destino: {email}");
+                System.Diagnostics.Debug.WriteLine($"Nombre: {firstName}");
+
                 string subject = "Contraseña actualizada - FitLife";
                 string body = CreatePasswordChangeEmailTemplate(firstName, newPassword);
 
-                return SendEmail(email, subject, body);
+                bool result = SendEmail(email, subject, body);
+                System.Diagnostics.Debug.WriteLine($"Resultado SendPasswordChangeEmail: {result}");
+                System.Diagnostics.Debug.WriteLine($"=== FIN SendPasswordChangeEmail ===");
+
+                return result;
             }
             catch (Exception ex)
             {
-                // Log del error (puedes implementar logging aquí)
+                System.Diagnostics.Debug.WriteLine($"EXCEPCIÓN en SendPasswordChangeEmail: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"StackTrace: {ex.StackTrace}");
                 return false;
             }
         }
@@ -169,12 +187,51 @@ namespace BackEnd.Helpers
         #region Método Base de Envío
 
         /// <summary>
-        /// Método base para enviar emails
+        /// Método base para enviar emails con logging detallado
         /// </summary>
         private static bool SendEmail(string toEmail, string subject, string body)
         {
             try
             {
+                System.Diagnostics.Debug.WriteLine($"--- INICIO SendEmail ---");
+
+                // Validar configuración antes de proceder
+                if (string.IsNullOrEmpty(SmtpServer))
+                {
+                    System.Diagnostics.Debug.WriteLine("ERROR: SmtpServer no configurado en Web.config");
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(SmtpUsername))
+                {
+                    System.Diagnostics.Debug.WriteLine("ERROR: SmtpUsername no configurado en Web.config");
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(SmtpPassword))
+                {
+                    System.Diagnostics.Debug.WriteLine("ERROR: SmtpPassword no configurado en Web.config");
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(FromEmail))
+                {
+                    System.Diagnostics.Debug.WriteLine("ERROR: FromEmail no configurado en Web.config");
+                    return false;
+                }
+
+                // Log de configuración (sin mostrar contraseña completa)
+                System.Diagnostics.Debug.WriteLine($"Configuración SMTP:");
+                System.Diagnostics.Debug.WriteLine($"  Servidor: {SmtpServer}");
+                System.Diagnostics.Debug.WriteLine($"  Puerto: {SmtpPort}");
+                System.Diagnostics.Debug.WriteLine($"  SSL: {EnableSsl}");
+                System.Diagnostics.Debug.WriteLine($"  Usuario: {SmtpUsername}");
+                System.Diagnostics.Debug.WriteLine($"  Password configurado: {!string.IsNullOrEmpty(SmtpPassword)}");
+                System.Diagnostics.Debug.WriteLine($"  Email origen: {FromEmail}");
+                System.Diagnostics.Debug.WriteLine($"  Nombre origen: {FromName}");
+                System.Diagnostics.Debug.WriteLine($"  Email destino: {toEmail}");
+                System.Diagnostics.Debug.WriteLine($"  Asunto: {subject}");
+
                 using (var message = new MailMessage())
                 {
                     message.From = new MailAddress(FromEmail, FromName);
@@ -183,19 +240,106 @@ namespace BackEnd.Helpers
                     message.Body = body;
                     message.IsBodyHtml = true;
 
+                    System.Diagnostics.Debug.WriteLine("Mensaje creado correctamente");
+
                     using (var client = new SmtpClient(SmtpServer, SmtpPort))
                     {
                         client.EnableSsl = EnableSsl;
                         client.UseDefaultCredentials = false;
                         client.Credentials = new NetworkCredential(SmtpUsername, SmtpPassword);
+                        client.Timeout = 30000; // 30 segundos timeout
+
+                        System.Diagnostics.Debug.WriteLine("Cliente SMTP configurado, intentando enviar...");
 
                         client.Send(message);
+
+                        System.Diagnostics.Debug.WriteLine("✅ EMAIL ENVIADO EXITOSAMENTE");
                     }
                 }
+
+                System.Diagnostics.Debug.WriteLine($"--- FIN SendEmail (Éxito) ---");
                 return true;
+            }
+            catch (SmtpFailedRecipientsException smtpRecipEx)
+            {
+                System.Diagnostics.Debug.WriteLine($"❌ ERROR SMTP - Destinatarios fallidos:");
+                System.Diagnostics.Debug.WriteLine($"   Mensaje: {smtpRecipEx.Message}");
+                foreach (SmtpFailedRecipientException failedRecipient in smtpRecipEx.InnerExceptions)
+                {
+                    System.Diagnostics.Debug.WriteLine($"   Destinatario fallido: {failedRecipient.FailedRecipient}");
+                    System.Diagnostics.Debug.WriteLine($"   StatusCode: {failedRecipient.StatusCode}");
+                }
+                return false;
+            }
+            catch (SmtpException smtpEx)
+            {
+                System.Diagnostics.Debug.WriteLine($"❌ ERROR SMTP:");
+                System.Diagnostics.Debug.WriteLine($"   Mensaje: {smtpEx.Message}");
+                System.Diagnostics.Debug.WriteLine($"   StatusCode: {smtpEx.StatusCode}");
+
+                // Mensajes específicos según el código de error
+                switch (smtpEx.StatusCode)
+                {
+                    case SmtpStatusCode.MailboxBusy:
+                        System.Diagnostics.Debug.WriteLine("   -> El buzón está ocupado");
+                        break;
+                    case SmtpStatusCode.MailboxUnavailable:
+                        System.Diagnostics.Debug.WriteLine("   -> El buzón no está disponible");
+                        break;
+                    case SmtpStatusCode.TransactionFailed:
+                        System.Diagnostics.Debug.WriteLine("   -> Transacción falló (posible problema de autenticación)");
+                        break;
+                    case SmtpStatusCode.GeneralFailure:
+                        System.Diagnostics.Debug.WriteLine("   -> Fallo general del servidor SMTP");
+                        break;
+                }
+                return false;
+            }
+            catch (InvalidOperationException invOpEx)
+            {
+                System.Diagnostics.Debug.WriteLine($"❌ ERROR de Operación Inválida:");
+                System.Diagnostics.Debug.WriteLine($"   Mensaje: {invOpEx.Message}");
+                System.Diagnostics.Debug.WriteLine("   -> Posible problema en la configuración del cliente SMTP");
+                return false;
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"❌ ERROR GENERAL:");
+                System.Diagnostics.Debug.WriteLine($"   Tipo: {ex.GetType().Name}");
+                System.Diagnostics.Debug.WriteLine($"   Mensaje: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"   StackTrace: {ex.StackTrace}");
+
+                if (ex.InnerException != null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"   Inner Exception: {ex.InnerException.Message}");
+                }
+
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region Método de Prueba (Opcional)
+
+        /// <summary>
+        /// Método para probar la configuración SMTP (usar solo para debugging)
+        /// </summary>
+        public static bool TestSmtpConfiguration(string testEmail = null)
+        {
+            try
+            {
+                string emailDestino = testEmail ?? SmtpUsername; // Enviar a sí mismo si no se especifica
+
+                System.Diagnostics.Debug.WriteLine($"=== PRUEBA DE CONFIGURACIÓN SMTP ===");
+                System.Diagnostics.Debug.WriteLine($"Enviando email de prueba a: {emailDestino}");
+
+                return SendEmail(emailDestino, "Prueba de Configuración SMTP - FitLife",
+                    "<h1>Configuración SMTP Funcionando</h1><p>Este es un email de prueba para verificar que la configuración SMTP está funcionando correctamente.</p>");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"ERROR en TestSmtpConfiguration: {ex.Message}");
                 return false;
             }
         }
