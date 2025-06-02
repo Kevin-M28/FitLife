@@ -33,7 +33,7 @@ namespace Conexion
     #endregion
 		
 		public FitLife2DataContext() : 
-				base(global::Conexion.Properties.Settings.Default.FitLife2ConnectionString, mappingSource)
+				base(global::Conexion.Properties.Settings.Default.FitLife2ConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}
@@ -347,6 +347,27 @@ namespace Conexion
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token);
 			return ((ISingleResult<sp_GetMembershipTypesResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetPredefinedGoals")]
+		public ISingleResult<sp_GetPredefinedGoalsResult> sp_GetPredefinedGoals([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Category", DbType="NVarChar(50)")] string category, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DifficultyLevel", DbType="NVarChar(20)")] string difficultyLevel)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, category, difficultyLevel);
+			return ((ISingleResult<sp_GetPredefinedGoalsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetPreMadeGoals")]
+		public ISingleResult<sp_GetPreMadeGoalsResult> sp_GetPreMadeGoals([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Difficulty", DbType="NVarChar(20)")] string difficulty)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, difficulty);
+			return ((ISingleResult<sp_GetPreMadeGoalsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_AssignPreMadeGoalToUser")]
+		public ISingleResult<sp_AssignPreMadeGoalToUserResult> sp_AssignPreMadeGoalToUser([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PreMadeGoalID", DbType="Int")] System.Nullable<int> preMadeGoalID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomTargetValue", DbType="Decimal(10,2)")] System.Nullable<decimal> customTargetValue, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomTargetDate", DbType="Date")] System.Nullable<System.DateTime> customTargetDate)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, preMadeGoalID, customTargetValue, customTargetDate);
+			return ((ISingleResult<sp_AssignPreMadeGoalToUserResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -4661,6 +4682,354 @@ namespace Conexion
 				if ((this._Message != value))
 				{
 					this._Message = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_GetPredefinedGoalsResult
+	{
+		
+		private System.Nullable<int> _PredefinedGoalID;
+		
+		private string _Title;
+		
+		private string _Description;
+		
+		private string _GoalType;
+		
+		private System.Nullable<decimal> _TargetValue;
+		
+		private System.Nullable<int> _DurationDays;
+		
+		private string _DifficultyLevel;
+		
+		private string _Category;
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		public sp_GetPredefinedGoalsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PredefinedGoalID", DbType="Int")]
+		public System.Nullable<int> PredefinedGoalID
+		{
+			get
+			{
+				return this._PredefinedGoalID;
+			}
+			set
+			{
+				if ((this._PredefinedGoalID != value))
+				{
+					this._PredefinedGoalID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(200)")]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this._Title = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(500)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalType", DbType="NVarChar(100)")]
+		public string GoalType
+		{
+			get
+			{
+				return this._GoalType;
+			}
+			set
+			{
+				if ((this._GoalType != value))
+				{
+					this._GoalType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetValue", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> TargetValue
+		{
+			get
+			{
+				return this._TargetValue;
+			}
+			set
+			{
+				if ((this._TargetValue != value))
+				{
+					this._TargetValue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DurationDays", DbType="Int")]
+		public System.Nullable<int> DurationDays
+		{
+			get
+			{
+				return this._DurationDays;
+			}
+			set
+			{
+				if ((this._DurationDays != value))
+				{
+					this._DurationDays = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DifficultyLevel", DbType="NVarChar(20)")]
+		public string DifficultyLevel
+		{
+			get
+			{
+				return this._DifficultyLevel;
+			}
+			set
+			{
+				if ((this._DifficultyLevel != value))
+				{
+					this._DifficultyLevel = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="NVarChar(50)")]
+		public string Category
+		{
+			get
+			{
+				return this._Category;
+			}
+			set
+			{
+				if ((this._Category != value))
+				{
+					this._Category = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_GetPreMadeGoalsResult
+	{
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		public sp_GetPreMadeGoalsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_AssignPreMadeGoalToUserResult
+	{
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		private System.Nullable<int> _GoalTypeID;
+		
+		private System.Nullable<decimal> _TargetValue;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _TargetDate;
+		
+		public sp_AssignPreMadeGoalToUserResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalTypeID", DbType="Int")]
+		public System.Nullable<int> GoalTypeID
+		{
+			get
+			{
+				return this._GoalTypeID;
+			}
+			set
+			{
+				if ((this._GoalTypeID != value))
+				{
+					this._GoalTypeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetValue", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> TargetValue
+		{
+			get
+			{
+				return this._TargetValue;
+			}
+			set
+			{
+				if ((this._TargetValue != value))
+				{
+					this._TargetValue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this._StartDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetDate", DbType="Date")]
+		public System.Nullable<System.DateTime> TargetDate
+		{
+			get
+			{
+				return this._TargetDate;
+			}
+			set
+			{
+				if ((this._TargetDate != value))
+				{
+					this._TargetDate = value;
 				}
 			}
 		}
