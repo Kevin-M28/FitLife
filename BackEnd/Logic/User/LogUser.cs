@@ -14,6 +14,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+
 namespace BackEnd.Logic
 {
     public class LogUser
@@ -133,8 +134,14 @@ namespace BackEnd.Logic
                     else
                     {
                         res.Result = true;
-                        // Aquí se podría agregar lógica para enviar la contraseña generada por email
-                        // TODO: Enviar email con contraseña inicial
+                        try
+                        {
+                            MailHelper.SendWelcomeEmail(req.Email, req.FirstName, password);
+                        }
+                        catch (Exception mailEx)
+                        {
+
+                        }
                     }
                 }
             }
@@ -202,7 +209,7 @@ namespace BackEnd.Logic
                 using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
                     // Obtener el hash de la contraseña almacenada
-                    var passwordHash = linq.sp_UserPass(req.Email).ToString();
+                    var passwordHash = linq.sp_UserPass(req.Email).FirstOrDefault().PasswordHash;
 
                     if (passwordHash == null)
                     {
@@ -432,7 +439,7 @@ namespace BackEnd.Logic
                 {
 
 
-                    var passwordHashDB = linq.sp_UserPass(req.Email).ToString();
+                    var passwordHashDB = linq.sp_UserPass(req.Email).FirstOrDefault().PasswordHash;
 
                     // Verificar la contraseña antigua utilizando BCrypt
                     if (passwordHashDB != null) {
@@ -459,6 +466,17 @@ namespace BackEnd.Logic
                     else
                     {
                         res.Result = true;
+                        try
+                        {
+                            var userProfile = linq.sp_GetUserProfile(req.Token).FirstOrDefault();
+                            if (userProfile != null)
+                            {
+                                MailHelper.SendPasswordChangeEmail(req.Email, userProfile.FirstName, req.NewPassword);
+                            }
+                        }
+                        catch (Exception mailEx)
+                        {
+                        }
                     }
                 }
             }
