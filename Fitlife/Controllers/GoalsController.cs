@@ -142,5 +142,119 @@ namespace Fitlife.Controllers
                 };
             }
         }
+
+        [HttpPost]
+        [Route("user-goals")]
+        public ResGetUserGoals GetUserGoals(ReqGetUserGoals req)
+        {
+            try
+            {
+                if (req == null)
+                {
+                    req = new ReqGetUserGoals();
+                }
+
+                if (string.IsNullOrEmpty(req.Token))
+                {
+                    // Try to get token from authorization header
+                    string token = null;
+                    if (Request.Headers.Authorization != null && Request.Headers.Authorization.Scheme == "Bearer")
+                    {
+                        token = Request.Headers.Authorization.Parameter;
+                        req.Token = token;
+                    }
+
+                    if (string.IsNullOrEmpty(req.Token))
+                    {
+                        return new ResGetUserGoals
+                        {
+                            Result = false,
+                            Error = new List<Error>
+                            {
+                                new Error
+                                {
+                                    ErrorCode = (int)EnumErrores.sesionNula,
+                                    Message = "Token de sesión requerido"
+                                }
+                            }
+                        };
+                    }
+                }
+
+                return new LogGoal().GetUserGoals(req);
+            }
+            catch (Exception ex)
+            {
+                return new ResGetUserGoals
+                {
+                    Result = false,
+                    Error = new List<Error>
+                    {
+                        new Error
+                        {
+                            ErrorCode = (int)EnumErrores.excepcionLogica,
+                            Message = ex.Message
+                        }
+                    }
+                };
+            }
+        }
+
+        [HttpPost]
+        [Route("user-goal-stats")]
+        public ResGetUserGoalStats GetUserGoalStats(ReqGetUserGoalStats req)
+        {
+            try
+            {
+                if (req == null)
+                {
+                    req = new ReqGetUserGoalStats();
+                }
+
+                if (string.IsNullOrEmpty(req.Token))
+                {
+                    // Try to get token from authorization header
+                    string token = null;
+                    if (Request.Headers.Authorization != null && Request.Headers.Authorization.Scheme == "Bearer")
+                    {
+                        token = Request.Headers.Authorization.Parameter;
+                        req.Token = token;
+                    }
+
+                    if (string.IsNullOrEmpty(req.Token))
+                    {
+                        return new ResGetUserGoalStats
+                        {
+                            Result = false,
+                            Error = new List<Error>
+                            {
+                                new Error
+                                {
+                                    ErrorCode = (int)EnumErrores.sesionNula,
+                                    Message = "Token de sesión requerido"
+                                }
+                            }
+                        };
+                    }
+                }
+
+                return new LogGoal().GetUserGoalStats(req);
+            }
+            catch (Exception ex)
+            {
+                return new ResGetUserGoalStats
+                {
+                    Result = false,
+                    Error = new List<Error>
+                    {
+                        new Error
+                        {
+                            ErrorCode = (int)EnumErrores.excepcionLogica,
+                            Message = ex.Message
+                        }
+                    }
+                };
+            }
+        }
     }
 }

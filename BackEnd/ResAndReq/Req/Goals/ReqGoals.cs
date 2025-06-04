@@ -15,5 +15,15 @@ namespace BackEnd.ResAndReq.Req.Goals
         public decimal? CustomTargetValue { get; set; }
         public DateTime? CustomTargetDate { get; set; }
     }
+    public class ReqGetUserGoals : ReqBase
+    {
+        public string Status { get; set; } // Active, Achieved, Abandoned
+        public string GoalType { get; set; } // Specific goal type name filter
+    }
+
+    public class ReqGetUserGoalStats : ReqBase
+    {
+        // No additional properties needed beyond Token from ReqBase
+    }
 }
 

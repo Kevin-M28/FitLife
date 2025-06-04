@@ -25,4 +25,18 @@ namespace BackEnd.ResAndReq.Res.Goals
         public DateTime? StartDate { get; set; }
         public DateTime? TargetDate { get; set; }
     }
+    public class ResGetUserGoals : ResBase
+    {
+        public List<UserGoal> UserGoals { get; set; }
+
+        public ResGetUserGoals()
+        {
+            UserGoals = new List<UserGoal>();
+        }
+    }
+
+    public class ResGetUserGoalStats : ResBase
+    {
+        public UserGoalStats Stats { get; set; }
+    }
 }

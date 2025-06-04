@@ -1,11 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FitLife2" Class="FitLife2DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-7UPKFS7\SQLEXPRESS;Initial Catalog=FitLife2;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="Conexion.Properties.Settings" SettingsPropertyName="FitLife2ConnectionString2" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MCCARTHYS\SQLEXPRESS;Initial Catalog=FitLife2;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="Conexion.Properties.Settings" SettingsPropertyName="FitLife2ConnectionString1" Provider="System.Data.SqlClient" />
   <Function Name="dbo.sp_AbandonGoal" Method="sp_AbandonGoal">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="GoalTypeName" Parameter="goalTypeName" Type="System.String" DbType="NVarChar(100)" />
     <ElementType Name="sp_AbandonGoalResult">
       <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
       <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_ValidateSession" Method="sp_ValidateSession">
+    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
+    <ElementType Name="sp_ValidateSessionResult">
+      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ExpiresAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_AddExerciseToRoutine" Method="sp_AddExerciseToRoutine">
@@ -44,6 +58,20 @@
       <Column Name="NewStatus" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
       <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_AssignPreMadeGoalToUser" Method="sp_AssignPreMadeGoalToUser">
+    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="PreMadeGoalID" Parameter="preMadeGoalID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CustomTargetValue" Parameter="customTargetValue" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="CustomTargetDate" Parameter="customTargetDate" Type="System.DateTime" DbType="Date" />
+    <ElementType Name="sp_AssignPreMadeGoalToUserResult">
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GoalTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TargetValue" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TargetDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_AssignRoutineToUser" Method="sp_AssignRoutineToUser">
@@ -186,15 +214,27 @@
     <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="Date" />
     <ElementType Name="sp_GetBodyMetricsHistoryResult">
       <Column Name="MeasurementDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Weight" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="Height" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="BodyFatPercentage" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="BMI" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="WaistCircumference" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="ChestCircumference" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="ArmCircumference" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="LegCircumference" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+      <Column Name="Height" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+      <Column Name="BodyFatPercentage" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+      <Column Name="BMI" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+      <Column Name="WaistCircumference" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+      <Column Name="ChestCircumference" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+      <Column Name="ArmCircumference" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+      <Column Name="LegCircumference" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
       <Column Name="Notes" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetMembershipTypes" Method="sp_GetMembershipTypes">
+    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
+    <ElementType Name="sp_GetMembershipTypesResult">
+      <Column Name="MembershipTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DurationDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
       <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
@@ -222,6 +262,14 @@
     <ElementType Name="sp_GetPeakHoursResult">
       <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
       <Column Name="Message" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetPreMadeGoals" Method="sp_GetPreMadeGoals">
+    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="Difficulty" Parameter="difficulty" Type="System.String" DbType="NVarChar(20)" />
+    <ElementType Name="sp_GetPreMadeGoalsResult">
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_GetRoutineExercises" Method="sp_GetRoutineExercises">
@@ -266,21 +314,6 @@
       <Column Name="IsRead" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="Message1" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_GetUserGoals" Method="sp_GetUserGoals">
-    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="Status" Parameter="status" Type="System.String" DbType="NVarChar(20)" />
-    <ElementType Name="sp_GetUserGoalsResult">
-      <Column Name="GoalType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="TargetValue" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="TargetDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="ProgressPercentage" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="DaysRemaining" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_GetUserProfile" Method="sp_GetUserProfile">
@@ -353,13 +386,13 @@
   </Function>
   <Function Name="dbo.sp_RegisterBodyMetrics" Method="sp_RegisterBodyMetrics">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="Weight" Parameter="weight" Type="System.Decimal" DbType="Decimal(5,2)" />
-    <Parameter Name="Height" Parameter="height" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Parameter Name="Weight" Parameter="weight" Type="System.Decimal" DbType="Decimal(6,2)" />
+    <Parameter Name="Height" Parameter="height" Type="System.Decimal" DbType="Decimal(6,2)" />
     <Parameter Name="BodyFatPercentage" Parameter="bodyFatPercentage" Type="System.Decimal" DbType="Decimal(5,2)" />
-    <Parameter Name="WaistCircumference" Parameter="waistCircumference" Type="System.Decimal" DbType="Decimal(5,2)" />
-    <Parameter Name="ChestCircumference" Parameter="chestCircumference" Type="System.Decimal" DbType="Decimal(5,2)" />
-    <Parameter Name="ArmCircumference" Parameter="armCircumference" Type="System.Decimal" DbType="Decimal(5,2)" />
-    <Parameter Name="LegCircumference" Parameter="legCircumference" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Parameter Name="WaistCircumference" Parameter="waistCircumference" Type="System.Decimal" DbType="Decimal(6,2)" />
+    <Parameter Name="ChestCircumference" Parameter="chestCircumference" Type="System.Decimal" DbType="Decimal(6,2)" />
+    <Parameter Name="ArmCircumference" Parameter="armCircumference" Type="System.Decimal" DbType="Decimal(6,2)" />
+    <Parameter Name="LegCircumference" Parameter="legCircumference" Type="System.Decimal" DbType="Decimal(6,2)" />
     <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="NVarChar(255)" />
     <ElementType Name="sp_RegisterBodyMetricsResult">
       <Column Name="Result" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
@@ -480,75 +513,46 @@
       <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.sp_ValidateSession" Method="sp_ValidateSession">
-    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <ElementType Name="sp_ValidateSessionResult">
-      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="ExpiresAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.sp_UserPass" Method="sp_UserPass">
     <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
     <ElementType Name="sp_UserPassResult">
       <Column Name="PasswordHash" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.sp_GetMembershipTypes" Method="sp_GetMembershipTypes">
+  <Function Name="dbo.sp_GetUserGoals" Method="sp_GetUserGoals">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <ElementType Name="sp_GetMembershipTypesResult">
-      <Column Name="MembershipTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="DurationDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_GetPredefinedGoals" Method="sp_GetPredefinedGoals">
-    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="Category" Parameter="category" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="DifficultyLevel" Parameter="difficultyLevel" Type="System.String" DbType="NVarChar(20)" />
-    <ElementType Name="sp_GetPredefinedGoalsResult">
-      <Column Name="PredefinedGoalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="GoalType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="TargetValue" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="DurationDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DifficultyLevel" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Category" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_GetPreMadeGoals" Method="sp_GetPreMadeGoals">
-    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="Difficulty" Parameter="difficulty" Type="System.String" DbType="NVarChar(20)" />
-    <ElementType Name="sp_GetPreMadeGoalsResult">
-      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_AssignPreMadeGoalToUser" Method="sp_AssignPreMadeGoalToUser">
-    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="PreMadeGoalID" Parameter="preMadeGoalID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="CustomTargetValue" Parameter="customTargetValue" Type="System.Decimal" DbType="Decimal(10,2)" />
-    <Parameter Name="CustomTargetDate" Parameter="customTargetDate" Type="System.DateTime" DbType="Date" />
-    <ElementType Name="sp_AssignPreMadeGoalToUserResult">
-      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="GoalTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    <Parameter Name="Status" Parameter="status" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="GoalType" Parameter="goalType" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="sp_GetUserGoalsResult">
+      <Column Name="UserGoalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GoalTypeName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GoalTypeDescription" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="TargetValue" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
       <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="TargetDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ProgressPercentage" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="DaysRemaining" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsOverdue" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetUserGoalStats" Method="sp_GetUserGoalStats">
+    <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
+    <ElementType Name="sp_GetUserGoalStatsResult">
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TotalGoals" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ActiveGoals" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AchievedGoals" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AbandonedGoals" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OverdueGoals" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AvgProgressPercentage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MostRecentGoalType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NextDeadline" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
