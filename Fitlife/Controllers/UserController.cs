@@ -74,6 +74,13 @@ namespace Fitlife.Controllers
         {
             return new LogUser().UpdateUserProfile(req);
         }
+
+        [HttpPost]
+        [Route("reset_password")]
+        public ResBase ResetPassword(ReqForgotPassword req)
+        {
+            return new LogUser().ResetPassword(req);
+        }
     }
 
 }

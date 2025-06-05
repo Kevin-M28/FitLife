@@ -536,8 +536,10 @@ namespace BackEnd.Logic
 
                 using (FitLife2DataContext linq = new FitLife2DataContext())
                 {
+                    string password = Helper.GenerarPassword(8);
+                    string passwordHash = Helper.HashearPassword(password);
                     // Ejecutar SP para generar contraseña temporal
-                    var resultado = linq.sp_ResetPassword(req.Email).FirstOrDefault();
+                    var resultado = linq.sp_ResetPassword(req.Email,passwordHash).FirstOrDefault();
 
                     if (resultado == null || resultado.Result == "FAILED")
                     {
@@ -549,30 +551,13 @@ namespace BackEnd.Logic
                     }
                     else
                     {
-                        // Hashear la contraseña temporal y actualizarla
-                        string passwordHash = Helper.HashearPassword(resultado.TempPassword);
-
-                        var updateResult = linq.sp_ChangePassword(
-                            null, // No hay token en reset
-                            passwordHash
-                        ).FirstOrDefault();
-
-                        // Actualizar directamente en la base de datos
-                        var user = linq.Users.FirstOrDefault(u => u.Email == req.Email);
-                        if (user != null)
-                        {
-                            user.PasswordHash = passwordHash;
-                            user.UpdatedAt = DateTime.Now;
-                            linq.SubmitChanges();
-                        }
-
                         try
                         {
                             // Enviar email con la nueva contraseña
-                            MailHelper.SendPasswordResetEmail(
+                            MailHelper.SendPasswordChangeEmail(
                                 resultado.Email,
                                 resultado.FirstName,
-                                resultado.TempPassword
+                                password
                             );
 
                             res.Result = true;
@@ -583,7 +568,7 @@ namespace BackEnd.Logic
                             res.Result = true;
                             res.Error.Add(new Error
                             {
-                                ErrorCode = (int)EnumErrores.errorEnvioCorreo,
+                                ErrorCode = (int)EnumErrores.errorDesconocido,
                                 Message = "Contraseña cambiada pero error enviando email: " + mailEx.Message
                             });
                         }
