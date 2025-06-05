@@ -33,7 +33,7 @@ namespace Conexion
     #endregion
 		
 		public FitLife2DataContext() : 
-				base(global::Conexion.Properties.Settings.Default.FitLife2ConnectionString, mappingSource)
+				base(global::Conexion.Properties.Settings.Default.FitLife2ConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}
@@ -375,6 +375,13 @@ namespace Conexion
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, newPassword);
 			return ((ISingleResult<sp_ResetPasswordResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ResetPassword")]
+		public ISingleResult<sp_ResetPasswordResult1> sp_ResetPassword1([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewPassword", DbType="NVarChar(255)")] string newPassword)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, newPassword);
+			return ((ISingleResult<sp_ResetPasswordResult1>)(result.ReturnValue));
 		}
 	}
 	
@@ -5144,6 +5151,86 @@ namespace Conexion
 		private string _FirstName;
 		
 		public sp_ResetPasswordResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(100)")]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this._FirstName = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_ResetPasswordResult1
+	{
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		private string _Email;
+		
+		private string _FirstName;
+		
+		public sp_ResetPasswordResult1()
 		{
 		}
 		

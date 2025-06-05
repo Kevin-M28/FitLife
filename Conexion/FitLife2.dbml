@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FitLife2" Class="FitLife2DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FitLife2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False" SettingsObjectName="Conexion.Properties.Settings" SettingsPropertyName="FitLife2ConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-7UPKFS7\SQLEXPRESS;Initial Catalog=FitLife2;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="Conexion.Properties.Settings" SettingsPropertyName="FitLife2ConnectionString2" Provider="System.Data.SqlClient" />
   <Function Name="dbo.sp_AbandonGoal" Method="sp_AbandonGoal">
     <Parameter Name="Token" Parameter="token" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="GoalTypeName" Parameter="goalTypeName" Type="System.String" DbType="NVarChar(100)" />
@@ -559,6 +559,16 @@
     <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
     <Parameter Name="NewPassword" Parameter="newPassword" Type="System.String" DbType="NVarChar(255)" />
     <ElementType Name="sp_ResetPasswordResult">
+      <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_ResetPassword" Method="sp_ResetPassword1">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="NewPassword" Parameter="newPassword" Type="System.String" DbType="NVarChar(255)" />
+    <ElementType Name="sp_ResetPasswordResult1">
       <Column Name="Result" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="Message" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
