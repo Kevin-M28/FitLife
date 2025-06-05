@@ -492,6 +492,116 @@ namespace BackEnd.Logic
             return res;
         }
 
+        public ResBase ResetPassword(ReqForgotPassword req)
+        {
+            ResBase res = new ResBase()
+            {
+                Error = new List<Entities.Error>(),
+                Result = false
+            };
+
+            try
+            {
+                #region Validaciones
+                if (req == null)
+                {
+                    res.Error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.requestNulo,
+                        Message = "Request nulo"
+                    });
+                    return res;
+                }
+
+                if (string.IsNullOrEmpty(req.Email))
+                {
+                    res.Error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.correoFaltante,
+                        Message = "Correo vacío"
+                    });
+                    return res;
+                }
+
+                if (!EsCorreoValido(req.Email))
+                {
+                    res.Error.Add(new Error
+                    {
+                        ErrorCode = (int)EnumErrores.correoIncorrecto,
+                        Message = "Correo no válido"
+                    });
+                    return res;
+                }
+                #endregion
+
+                using (FitLife2DataContext linq = new FitLife2DataContext())
+                {
+                    // Ejecutar SP para generar contraseña temporal
+                    var resultado = linq.sp_ResetPassword(req.Email).FirstOrDefault();
+
+                    if (resultado == null || resultado.Result == "FAILED")
+                    {
+                        res.Error.Add(new Error
+                        {
+                            ErrorCode = (int)EnumErrores.usuarioNoEncontrado,
+                            Message = resultado?.Message ?? "Error al resetear contraseña"
+                        });
+                    }
+                    else
+                    {
+                        // Hashear la contraseña temporal y actualizarla
+                        string passwordHash = Helper.HashearPassword(resultado.TempPassword);
+
+                        var updateResult = linq.sp_ChangePassword(
+                            null, // No hay token en reset
+                            passwordHash
+                        ).FirstOrDefault();
+
+                        // Actualizar directamente en la base de datos
+                        var user = linq.Users.FirstOrDefault(u => u.Email == req.Email);
+                        if (user != null)
+                        {
+                            user.PasswordHash = passwordHash;
+                            user.UpdatedAt = DateTime.Now;
+                            linq.SubmitChanges();
+                        }
+
+                        try
+                        {
+                            // Enviar email con la nueva contraseña
+                            MailHelper.SendPasswordResetEmail(
+                                resultado.Email,
+                                resultado.FirstName,
+                                resultado.TempPassword
+                            );
+
+                            res.Result = true;
+                        }
+                        catch (Exception mailEx)
+                        {
+                            // Si falla el email, pero la contraseña se cambió correctamente
+                            res.Result = true;
+                            res.Error.Add(new Error
+                            {
+                                ErrorCode = (int)EnumErrores.errorEnvioCorreo,
+                                Message = "Contraseña cambiada pero error enviando email: " + mailEx.Message
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                res.Error.Add(new Error
+                {
+                    ErrorCode = (int)EnumErrores.excepcionLogica,
+                    Message = ex.Message
+                });
+            }
+
+            return res;
+        }
+
         #endregion
 
         #region User Profile Management
