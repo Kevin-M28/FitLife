@@ -73,6 +73,7 @@
     <Compile Include="Entities\Notification.cs" />
     <Compile Include="Entities\Payment.cs" />
     <Compile Include="Entities\PaymentMethod.cs" />
+    <Compile Include="Entities\PreMadeGoal.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Routine.cs" />
     <Compile Include="Entities\ScheduledMeasurement.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Logic\Attendance\LogAttendance.cs" />
     <Compile Include="Logic\BodyMetrics\LogBodyMetrics.cs" />
+    <Compile Include="Logic\Goals\LogGoals.cs" />
     <Compile Include="Logic\Notification\LogNotification.cs" />
     <Compile Include="Logic\Routine\LogRoutine.cs" />
     <Compile Include="Logic\User\LogUser.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="ResAndReq\Req\BodyMetrics\ReqGetBodyMetricsHistory.cs" />
     <Compile Include="ResAndReq\Req\BodyMetrics\ReqRegisterBodyMetrics.cs" />
     <Compile Include="ResAndReq\Req\BodyMetrics\ReqScheduleMeasurement.cs" />
+    <Compile Include="ResAndReq\Req\Goals\ReqGoals.cs" />
     <Compile Include="ResAndReq\Req\Membership\ReqGetMembership.cs" />
     <Compile Include="ResAndReq\Req\Notification\ReqGetUnreadNotifications.cs" />
     <Compile Include="ResAndReq\Req\Notification\ReqMarkNotificationAsRead.cs" />
@@ -123,6 +126,7 @@
     <Compile Include="ResAndReq\Res\BodyMetrics\ResGetBodyMetricsHistory.cs" />
     <Compile Include="ResAndReq\Res\BodyMetrics\ResRegisterBodyMetrics.cs" />
     <Compile Include="ResAndReq\Res\BodyMetrics\ResScheduleMeasurement.cs" />
+    <Compile Include="ResAndReq\Res\Goals\ResGoals.cs" />
     <Compile Include="ResAndReq\Res\Membership\ResCheckMembershipStatus.cs" />
     <Compile Include="ResAndReq\Res\Membership\ResGetActiveMembership.cs" />
     <Compile Include="ResAndReq\Res\Membership\ResGetMembershipTypes.cs" />
