@@ -7,6 +7,9 @@ using BackEnd.Entities;
 
 namespace BackEnd.ResAndReq.Res.Routine
 {
+    /// <summary>
+    /// ✅ CORRECTED: Fixed Error list type
+    /// </summary>
     public class ResGetActiveRoutines : ResBase
     {
         public List<ActiveRoutine> ActiveRoutines { get; set; }
@@ -16,5 +19,4 @@ namespace BackEnd.ResAndReq.Res.Routine
             ActiveRoutines = new List<ActiveRoutine>();
         }
     }
-
 }

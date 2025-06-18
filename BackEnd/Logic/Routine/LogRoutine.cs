@@ -79,7 +79,6 @@ namespace BackEnd.Logic.Routine
                     return res;
                 }
 
-
                 Entities.Routine routineEntity = req.ToEntity();
 
                 using (FitLife2DataContext linq = new FitLife2DataContext())
@@ -102,7 +101,6 @@ namespace BackEnd.Logic.Routine
                     }
                     else
                     {
-
                         res.FromSPResult(resultado);
                     }
                 }
@@ -409,6 +407,9 @@ namespace BackEnd.Logic.Routine
             return res;
         }
 
+        /// <summary>
+        /// ✅ UPDATED: Enhanced RegisterExerciseProgress with correct field mapping
+        /// </summary>
         public ResRegisterExerciseProgress RegisterExerciseProgress(ReqRegisterExerciseProgress req)
         {
             var res = new ResRegisterExerciseProgress
@@ -467,8 +468,8 @@ namespace BackEnd.Logic.Routine
                         {
                             if (reader.Read())
                             {
-                                string result = reader["Result"].ToString();
-                                string message = reader["Message"].ToString();
+                                string result = SafeGetString(reader, "Result");
+                                string message = SafeGetString(reader, "Message");
 
                                 if (result == "FAILED")
                                 {
@@ -482,6 +483,49 @@ namespace BackEnd.Logic.Routine
 
                                 res.Message = message;
                                 res.Result = true;
+
+                                // ✅ UPDATED: Map enhanced response data with correct field names
+                                try
+                                {
+                                    // Basic exercise information
+                                    res.ExerciseName = SafeGetString(reader, "ExerciseName");
+                                    res.RoutineName = SafeGetString(reader, "RoutineName");
+                                    res.DayNumber = SafeGetInt(reader, "DayNumber");
+                                    res.DayName = SafeGetString(reader, "DayName");
+                                    res.CompletedSets = SafeGetInt(reader, "CompletedSets");
+                                    res.CompletedRepetitions = SafeGetInt(reader, "CompletedRepetitions");
+                                    res.Weight = SafeGetDecimal(reader, "Weight");
+
+                                    // Progress indicators
+                                    res.ExerciseProgressPercentage = SafeGetDecimal(reader, "ExerciseProgressPercentage");
+                                    res.IsExerciseCompleted = SafeGetBool(reader, "IsExerciseCompleted");
+                                    res.IsDayCompleted = SafeGetBool(reader, "IsDayCompleted");
+                                    res.IsRoutineCompleted = SafeGetBool(reader, "IsRoutineCompleted");
+
+                                    // Today's workout statistics
+                                    res.TodayTotalSets = SafeGetInt(reader, "TodayTotalSets");
+                                    res.TodayTotalReps = SafeGetInt(reader, "TodayTotalReps");
+                                    res.TodayTotalWeight = SafeGetDecimal(reader, "TodayTotalWeight");
+
+                                    // Optional gamification fields (for future use)
+                                    res.ExperiencePoints = SafeGetInt(reader, "ExperiencePoints");
+                                    res.StreakDays = SafeGetInt(reader, "StreakDays");
+
+                                    // ✅ Enhanced logging for debugging
+                                    System.Diagnostics.Debug.WriteLine($"✅ Progreso registrado exitosamente:");
+                                    System.Diagnostics.Debug.WriteLine($"   Ejercicio: {res.ExerciseName}");
+                                    System.Diagnostics.Debug.WriteLine($"   Sets completados: {res.CompletedSets}/{req.CompletedSets}");
+                                    System.Diagnostics.Debug.WriteLine($"   Progreso del ejercicio: {res.ExerciseProgressPercentage:F1}%");
+                                    System.Diagnostics.Debug.WriteLine($"   Ejercicio completado: {res.IsExerciseCompleted}");
+                                    System.Diagnostics.Debug.WriteLine($"   Día completado: {res.IsDayCompleted}");
+                                    System.Diagnostics.Debug.WriteLine($"   Rutina completada: {res.IsRoutineCompleted}");
+                                    System.Diagnostics.Debug.WriteLine($"   Total del día - Sets: {res.TodayTotalSets}, Reps: {res.TodayTotalReps}, Peso: {res.TodayTotalWeight}kg");
+                                }
+                                catch (Exception ex)
+                                {
+                                    // Log but don't fail the main operation
+                                    System.Diagnostics.Debug.WriteLine($"⚠️ Warning reading enhanced progress data: {ex.Message}");
+                                }
                             }
                             else
                             {
@@ -502,9 +546,68 @@ namespace BackEnd.Logic.Routine
                     ErrorCode = (int)EnumErrores.excepcionLogica,
                     Message = ex.Message
                 });
+
+                // ✅ Enhanced error logging
+                System.Diagnostics.Debug.WriteLine($"❌ Error registrando progreso: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"   Stack trace: {ex.StackTrace}");
             }
 
             return res;
+        }
+
+        /// <summary>
+        /// ✅ UPDATED: Enhanced helper methods for safe data reading
+        /// </summary>
+        private string SafeGetString(DbDataReader reader, string columnName)
+        {
+            try
+            {
+                int ordinal = reader.GetOrdinal(columnName);
+                return reader.IsDBNull(ordinal) ? null : reader.GetString(ordinal);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private int? SafeGetInt(DbDataReader reader, string columnName)
+        {
+            try
+            {
+                int ordinal = reader.GetOrdinal(columnName);
+                return reader.IsDBNull(ordinal) ? (int?)null : reader.GetInt32(ordinal);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private decimal? SafeGetDecimal(DbDataReader reader, string columnName)
+        {
+            try
+            {
+                int ordinal = reader.GetOrdinal(columnName);
+                return reader.IsDBNull(ordinal) ? (decimal?)null : reader.GetDecimal(ordinal);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private bool? SafeGetBool(DbDataReader reader, string columnName)
+        {
+            try
+            {
+                int ordinal = reader.GetOrdinal(columnName);
+                return reader.IsDBNull(ordinal) ? (bool?)null : reader.GetBoolean(ordinal);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public ResRateRoutine RateRoutine(ReqRateRoutine req)
@@ -904,8 +1007,5 @@ namespace BackEnd.Logic.Routine
 
             return res;
         }
-
-
     }
-
 }

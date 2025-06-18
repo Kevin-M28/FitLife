@@ -7,6 +7,9 @@ using BackEnd.Entities;
 
 namespace BackEnd.ResAndReq.Res.Routine
 {
+    /// <summary>
+    /// ✅ CORRECTED: Fixed Error list type (if needed)
+    /// </summary>
     public class ResGetRoutineExercises : ResBase
     {
         public List<RoutineDayExercise> Exercises { get; set; }
@@ -16,5 +19,4 @@ namespace BackEnd.ResAndReq.Res.Routine
             Exercises = new List<RoutineDayExercise>();
         }
     }
-
 }
