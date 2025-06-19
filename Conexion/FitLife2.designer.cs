@@ -33,7 +33,7 @@ namespace Conexion
     #endregion
 		
 		public FitLife2DataContext() : 
-				base(global::Conexion.Properties.Settings.Default.FitLife2ConnectionString2, mappingSource)
+				base(global::Conexion.Properties.Settings.Default.FitLife2ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -67,13 +67,6 @@ namespace Conexion
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, goalTypeName);
 			return ((ISingleResult<sp_AbandonGoalResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ValidateSession")]
-		public ISingleResult<sp_ValidateSessionResult> sp_ValidateSession([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token);
-			return ((ISingleResult<sp_ValidateSessionResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_AddExerciseToRoutine")]
@@ -230,6 +223,20 @@ namespace Conexion
 			return ((ISingleResult<sp_GetUnreadNotificationsResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetUserGoals")]
+		public ISingleResult<sp_GetUserGoalsResult> sp_GetUserGoals([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="NVarChar(20)")] string status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="GoalType", DbType="NVarChar(100)")] string goalType)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, status, goalType);
+			return ((ISingleResult<sp_GetUserGoalsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetUserGoalStats")]
+		public ISingleResult<sp_GetUserGoalStatsResult> sp_GetUserGoalStats([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token);
+			return ((ISingleResult<sp_GetUserGoalStatsResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetUserProfile")]
 		public ISingleResult<sp_GetUserProfileResult> sp_GetUserProfile([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token)
 		{
@@ -307,6 +314,13 @@ namespace Conexion
 			return ((ISingleResult<sp_RegisterUserResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ResetPassword")]
+		public ISingleResult<sp_ResetPasswordResult> sp_ResetPassword([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewPassword", DbType="NVarChar(255)")] string newPassword)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, newPassword);
+			return ((ISingleResult<sp_ResetPasswordResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ScheduleMetricMeasurement")]
 		public ISingleResult<sp_ScheduleMetricMeasurementResult> sp_ScheduleMetricMeasurement([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ScheduledDate", DbType="Date")] System.Nullable<System.DateTime> scheduledDate)
 		{
@@ -356,32 +370,11 @@ namespace Conexion
 			return ((ISingleResult<sp_UserPassResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetUserGoals")]
-		public ISingleResult<sp_GetUserGoalsResult> sp_GetUserGoals([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="NVarChar(20)")] string status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="GoalType", DbType="NVarChar(100)")] string goalType)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token, status, goalType);
-			return ((ISingleResult<sp_GetUserGoalsResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetUserGoalStats")]
-		public ISingleResult<sp_GetUserGoalStatsResult> sp_GetUserGoalStats([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ValidateSession")]
+		public ISingleResult<sp_ValidateSessionResult> sp_ValidateSession([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Token", DbType="NVarChar(255)")] string token)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token);
-			return ((ISingleResult<sp_GetUserGoalStatsResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ResetPassword")]
-		public ISingleResult<sp_ResetPasswordResult> sp_ResetPassword([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewPassword", DbType="NVarChar(255)")] string newPassword)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, newPassword);
-			return ((ISingleResult<sp_ResetPasswordResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ResetPassword")]
-		public ISingleResult<sp_ResetPasswordResult1> sp_ResetPassword1([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewPassword", DbType="NVarChar(255)")] string newPassword)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, newPassword);
-			return ((ISingleResult<sp_ResetPasswordResult1>)(result.ReturnValue));
+			return ((ISingleResult<sp_ValidateSessionResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -413,176 +406,6 @@ namespace Conexion
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string Message
-		{
-			get
-			{
-				return this._Message;
-			}
-			set
-			{
-				if ((this._Message != value))
-				{
-					this._Message = value;
-				}
-			}
-		}
-	}
-	
-	public partial class sp_ValidateSessionResult
-	{
-		
-		private string _Cedula;
-		
-		private string _FirstName;
-		
-		private string _LastName;
-		
-		private string _Email;
-		
-		private string _RoleName;
-		
-		private string _Status;
-		
-		private System.Nullable<System.DateTime> _ExpiresAt;
-		
-		private string _Result;
-		
-		private string _Message;
-		
-		public sp_ValidateSessionResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cedula", DbType="NVarChar(20)")]
-		public string Cedula
-		{
-			get
-			{
-				return this._Cedula;
-			}
-			set
-			{
-				if ((this._Cedula != value))
-				{
-					this._Cedula = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(100)")]
-		public string FirstName
-		{
-			get
-			{
-				return this._FirstName;
-			}
-			set
-			{
-				if ((this._FirstName != value))
-				{
-					this._FirstName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(100)")]
-		public string LastName
-		{
-			get
-			{
-				return this._LastName;
-			}
-			set
-			{
-				if ((this._LastName != value))
-				{
-					this._LastName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this._Email = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleName", DbType="NVarChar(50)")]
-		public string RoleName
-		{
-			get
-			{
-				return this._RoleName;
-			}
-			set
-			{
-				if ((this._RoleName != value))
-				{
-					this._RoleName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(20)")]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpiresAt", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ExpiresAt
-		{
-			get
-			{
-				return this._ExpiresAt;
-			}
-			set
-			{
-				if ((this._ExpiresAt != value))
-				{
-					this._ExpiresAt = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
-		public string Result
-		{
-			get
-			{
-				return this._Result;
-			}
-			set
-			{
-				if ((this._Result != value))
-				{
-					this._Result = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
 		public string Message
 		{
 			get
@@ -2236,7 +2059,7 @@ namespace Conexion
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MeasurementDate", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MeasurementDate", DbType="DateTime")]
 		public System.Nullable<System.DateTime> MeasurementDate
 		{
 			get
@@ -2284,7 +2107,7 @@ namespace Conexion
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BodyFatPercentage", DbType="Decimal(6,2)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BodyFatPercentage", DbType="Decimal(5,2)")]
 		public System.Nullable<decimal> BodyFatPercentage
 		{
 			get
@@ -3295,6 +3118,454 @@ namespace Conexion
 		}
 	}
 	
+	public partial class sp_GetUserGoalsResult
+	{
+		
+		private System.Nullable<int> _UserGoalID;
+		
+		private string _GoalTypeName;
+		
+		private string _GoalTypeDescription;
+		
+		private System.Nullable<decimal> _TargetValue;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _TargetDate;
+		
+		private string _Status;
+		
+		private System.Nullable<decimal> _ProgressPercentage;
+		
+		private System.Nullable<int> _DaysRemaining;
+		
+		private System.Nullable<bool> _IsOverdue;
+		
+		private System.Nullable<System.DateTime> _CreatedAt;
+		
+		private System.Nullable<System.DateTime> _UpdatedAt;
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		public sp_GetUserGoalsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserGoalID", DbType="Int")]
+		public System.Nullable<int> UserGoalID
+		{
+			get
+			{
+				return this._UserGoalID;
+			}
+			set
+			{
+				if ((this._UserGoalID != value))
+				{
+					this._UserGoalID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalTypeName", DbType="NVarChar(100)")]
+		public string GoalTypeName
+		{
+			get
+			{
+				return this._GoalTypeName;
+			}
+			set
+			{
+				if ((this._GoalTypeName != value))
+				{
+					this._GoalTypeName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalTypeDescription", DbType="NVarChar(255)")]
+		public string GoalTypeDescription
+		{
+			get
+			{
+				return this._GoalTypeDescription;
+			}
+			set
+			{
+				if ((this._GoalTypeDescription != value))
+				{
+					this._GoalTypeDescription = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetValue", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> TargetValue
+		{
+			get
+			{
+				return this._TargetValue;
+			}
+			set
+			{
+				if ((this._TargetValue != value))
+				{
+					this._TargetValue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this._StartDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetDate", DbType="Date")]
+		public System.Nullable<System.DateTime> TargetDate
+		{
+			get
+			{
+				return this._TargetDate;
+			}
+			set
+			{
+				if ((this._TargetDate != value))
+				{
+					this._TargetDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(20)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgressPercentage", DbType="Decimal(5,2)")]
+		public System.Nullable<decimal> ProgressPercentage
+		{
+			get
+			{
+				return this._ProgressPercentage;
+			}
+			set
+			{
+				if ((this._ProgressPercentage != value))
+				{
+					this._ProgressPercentage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DaysRemaining", DbType="Int")]
+		public System.Nullable<int> DaysRemaining
+		{
+			get
+			{
+				return this._DaysRemaining;
+			}
+			set
+			{
+				if ((this._DaysRemaining != value))
+				{
+					this._DaysRemaining = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsOverdue", DbType="Bit")]
+		public System.Nullable<bool> IsOverdue
+		{
+			get
+			{
+				return this._IsOverdue;
+			}
+			set
+			{
+				if ((this._IsOverdue != value))
+				{
+					this._IsOverdue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedAt", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedAt
+		{
+			get
+			{
+				return this._CreatedAt;
+			}
+			set
+			{
+				if ((this._CreatedAt != value))
+				{
+					this._CreatedAt = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdatedAt", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UpdatedAt
+		{
+			get
+			{
+				return this._UpdatedAt;
+			}
+			set
+			{
+				if ((this._UpdatedAt != value))
+				{
+					this._UpdatedAt = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_GetUserGoalStatsResult
+	{
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		private System.Nullable<int> _TotalGoals;
+		
+		private System.Nullable<int> _ActiveGoals;
+		
+		private System.Nullable<int> _AchievedGoals;
+		
+		private System.Nullable<int> _AbandonedGoals;
+		
+		private System.Nullable<int> _OverdueGoals;
+		
+		private System.Nullable<int> _AvgProgressPercentage;
+		
+		private System.Nullable<int> _MostRecentGoalType;
+		
+		private System.Nullable<int> _NextDeadline;
+		
+		public sp_GetUserGoalStatsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalGoals", DbType="Int")]
+		public System.Nullable<int> TotalGoals
+		{
+			get
+			{
+				return this._TotalGoals;
+			}
+			set
+			{
+				if ((this._TotalGoals != value))
+				{
+					this._TotalGoals = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActiveGoals", DbType="Int")]
+		public System.Nullable<int> ActiveGoals
+		{
+			get
+			{
+				return this._ActiveGoals;
+			}
+			set
+			{
+				if ((this._ActiveGoals != value))
+				{
+					this._ActiveGoals = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AchievedGoals", DbType="Int")]
+		public System.Nullable<int> AchievedGoals
+		{
+			get
+			{
+				return this._AchievedGoals;
+			}
+			set
+			{
+				if ((this._AchievedGoals != value))
+				{
+					this._AchievedGoals = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AbandonedGoals", DbType="Int")]
+		public System.Nullable<int> AbandonedGoals
+		{
+			get
+			{
+				return this._AbandonedGoals;
+			}
+			set
+			{
+				if ((this._AbandonedGoals != value))
+				{
+					this._AbandonedGoals = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OverdueGoals", DbType="Int")]
+		public System.Nullable<int> OverdueGoals
+		{
+			get
+			{
+				return this._OverdueGoals;
+			}
+			set
+			{
+				if ((this._OverdueGoals != value))
+				{
+					this._OverdueGoals = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AvgProgressPercentage", DbType="Int")]
+		public System.Nullable<int> AvgProgressPercentage
+		{
+			get
+			{
+				return this._AvgProgressPercentage;
+			}
+			set
+			{
+				if ((this._AvgProgressPercentage != value))
+				{
+					this._AvgProgressPercentage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MostRecentGoalType", DbType="Int")]
+		public System.Nullable<int> MostRecentGoalType
+		{
+			get
+			{
+				return this._MostRecentGoalType;
+			}
+			set
+			{
+				if ((this._MostRecentGoalType != value))
+				{
+					this._MostRecentGoalType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NextDeadline", DbType="Int")]
+		public System.Nullable<int> NextDeadline
+		{
+			get
+			{
+				return this._NextDeadline;
+			}
+			set
+			{
+				if ((this._NextDeadline != value))
+				{
+					this._NextDeadline = value;
+				}
+			}
+		}
+	}
+	
 	public partial class sp_GetUserProfileResult
 	{
 		
@@ -4247,6 +4518,86 @@ namespace Conexion
 		}
 	}
 	
+	public partial class sp_ResetPasswordResult
+	{
+		
+		private string _Result;
+		
+		private string _Message;
+		
+		private string _Email;
+		
+		private string _FirstName;
+		
+		public sp_ResetPasswordResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
+		public string Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(100)")]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this._FirstName = value;
+				}
+			}
+		}
+	}
+	
 	public partial class sp_ScheduleMetricMeasurementResult
 	{
 		
@@ -4691,133 +5042,107 @@ namespace Conexion
 		}
 	}
 	
-	public partial class sp_GetUserGoalsResult
+	public partial class sp_ValidateSessionResult
 	{
 		
-		private System.Nullable<int> _UserGoalID;
+		private string _Cedula;
 		
-		private string _GoalTypeName;
+		private string _FirstName;
 		
-		private string _GoalTypeDescription;
+		private string _LastName;
 		
-		private System.Nullable<decimal> _TargetValue;
+		private string _Email;
 		
-		private System.Nullable<System.DateTime> _StartDate;
-		
-		private System.Nullable<System.DateTime> _TargetDate;
+		private string _RoleName;
 		
 		private string _Status;
 		
-		private System.Nullable<decimal> _ProgressPercentage;
-		
-		private System.Nullable<int> _DaysRemaining;
-		
-		private System.Nullable<bool> _IsOverdue;
-		
-		private System.Nullable<System.DateTime> _CreatedAt;
-		
-		private System.Nullable<System.DateTime> _UpdatedAt;
+		private System.Nullable<System.DateTime> _ExpiresAt;
 		
 		private string _Result;
 		
 		private string _Message;
 		
-		public sp_GetUserGoalsResult()
+		public sp_ValidateSessionResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserGoalID", DbType="Int")]
-		public System.Nullable<int> UserGoalID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cedula", DbType="NVarChar(20)")]
+		public string Cedula
 		{
 			get
 			{
-				return this._UserGoalID;
+				return this._Cedula;
 			}
 			set
 			{
-				if ((this._UserGoalID != value))
+				if ((this._Cedula != value))
 				{
-					this._UserGoalID = value;
+					this._Cedula = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalTypeName", DbType="NVarChar(100)")]
-		public string GoalTypeName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(100)")]
+		public string FirstName
 		{
 			get
 			{
-				return this._GoalTypeName;
+				return this._FirstName;
 			}
 			set
 			{
-				if ((this._GoalTypeName != value))
+				if ((this._FirstName != value))
 				{
-					this._GoalTypeName = value;
+					this._FirstName = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalTypeDescription", DbType="NVarChar(255)")]
-		public string GoalTypeDescription
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(100)")]
+		public string LastName
 		{
 			get
 			{
-				return this._GoalTypeDescription;
+				return this._LastName;
 			}
 			set
 			{
-				if ((this._GoalTypeDescription != value))
+				if ((this._LastName != value))
 				{
-					this._GoalTypeDescription = value;
+					this._LastName = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetValue", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> TargetValue
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
+		public string Email
 		{
 			get
 			{
-				return this._TargetValue;
+				return this._Email;
 			}
 			set
 			{
-				if ((this._TargetValue != value))
+				if ((this._Email != value))
 				{
-					this._TargetValue = value;
+					this._Email = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date")]
-		public System.Nullable<System.DateTime> StartDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleName", DbType="NVarChar(50)")]
+		public string RoleName
 		{
 			get
 			{
-				return this._StartDate;
+				return this._RoleName;
 			}
 			set
 			{
-				if ((this._StartDate != value))
+				if ((this._RoleName != value))
 				{
-					this._StartDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetDate", DbType="Date")]
-		public System.Nullable<System.DateTime> TargetDate
-		{
-			get
-			{
-				return this._TargetDate;
-			}
-			set
-			{
-				if ((this._TargetDate != value))
-				{
-					this._TargetDate = value;
+					this._RoleName = value;
 				}
 			}
 		}
@@ -4838,82 +5163,18 @@ namespace Conexion
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgressPercentage", DbType="Decimal(5,2)")]
-		public System.Nullable<decimal> ProgressPercentage
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpiresAt", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ExpiresAt
 		{
 			get
 			{
-				return this._ProgressPercentage;
+				return this._ExpiresAt;
 			}
 			set
 			{
-				if ((this._ProgressPercentage != value))
+				if ((this._ExpiresAt != value))
 				{
-					this._ProgressPercentage = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DaysRemaining", DbType="Int")]
-		public System.Nullable<int> DaysRemaining
-		{
-			get
-			{
-				return this._DaysRemaining;
-			}
-			set
-			{
-				if ((this._DaysRemaining != value))
-				{
-					this._DaysRemaining = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsOverdue", DbType="Bit")]
-		public System.Nullable<bool> IsOverdue
-		{
-			get
-			{
-				return this._IsOverdue;
-			}
-			set
-			{
-				if ((this._IsOverdue != value))
-				{
-					this._IsOverdue = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedAt", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreatedAt
-		{
-			get
-			{
-				return this._CreatedAt;
-			}
-			set
-			{
-				if ((this._CreatedAt != value))
-				{
-					this._CreatedAt = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdatedAt", DbType="DateTime")]
-		public System.Nullable<System.DateTime> UpdatedAt
-		{
-			get
-			{
-				return this._UpdatedAt;
-			}
-			set
-			{
-				if ((this._UpdatedAt != value))
-				{
-					this._UpdatedAt = value;
+					this._ExpiresAt = value;
 				}
 			}
 		}
@@ -4946,354 +5207,6 @@ namespace Conexion
 				if ((this._Message != value))
 				{
 					this._Message = value;
-				}
-			}
-		}
-	}
-	
-	public partial class sp_GetUserGoalStatsResult
-	{
-		
-		private string _Result;
-		
-		private string _Message;
-		
-		private System.Nullable<int> _TotalGoals;
-		
-		private System.Nullable<int> _ActiveGoals;
-		
-		private System.Nullable<int> _AchievedGoals;
-		
-		private System.Nullable<int> _AbandonedGoals;
-		
-		private System.Nullable<int> _OverdueGoals;
-		
-		private System.Nullable<int> _AvgProgressPercentage;
-		
-		private System.Nullable<int> _MostRecentGoalType;
-		
-		private System.Nullable<int> _NextDeadline;
-		
-		public sp_GetUserGoalStatsResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
-		public string Result
-		{
-			get
-			{
-				return this._Result;
-			}
-			set
-			{
-				if ((this._Result != value))
-				{
-					this._Result = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
-		public string Message
-		{
-			get
-			{
-				return this._Message;
-			}
-			set
-			{
-				if ((this._Message != value))
-				{
-					this._Message = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalGoals", DbType="Int")]
-		public System.Nullable<int> TotalGoals
-		{
-			get
-			{
-				return this._TotalGoals;
-			}
-			set
-			{
-				if ((this._TotalGoals != value))
-				{
-					this._TotalGoals = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActiveGoals", DbType="Int")]
-		public System.Nullable<int> ActiveGoals
-		{
-			get
-			{
-				return this._ActiveGoals;
-			}
-			set
-			{
-				if ((this._ActiveGoals != value))
-				{
-					this._ActiveGoals = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AchievedGoals", DbType="Int")]
-		public System.Nullable<int> AchievedGoals
-		{
-			get
-			{
-				return this._AchievedGoals;
-			}
-			set
-			{
-				if ((this._AchievedGoals != value))
-				{
-					this._AchievedGoals = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AbandonedGoals", DbType="Int")]
-		public System.Nullable<int> AbandonedGoals
-		{
-			get
-			{
-				return this._AbandonedGoals;
-			}
-			set
-			{
-				if ((this._AbandonedGoals != value))
-				{
-					this._AbandonedGoals = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OverdueGoals", DbType="Int")]
-		public System.Nullable<int> OverdueGoals
-		{
-			get
-			{
-				return this._OverdueGoals;
-			}
-			set
-			{
-				if ((this._OverdueGoals != value))
-				{
-					this._OverdueGoals = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AvgProgressPercentage", DbType="Int")]
-		public System.Nullable<int> AvgProgressPercentage
-		{
-			get
-			{
-				return this._AvgProgressPercentage;
-			}
-			set
-			{
-				if ((this._AvgProgressPercentage != value))
-				{
-					this._AvgProgressPercentage = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MostRecentGoalType", DbType="Int")]
-		public System.Nullable<int> MostRecentGoalType
-		{
-			get
-			{
-				return this._MostRecentGoalType;
-			}
-			set
-			{
-				if ((this._MostRecentGoalType != value))
-				{
-					this._MostRecentGoalType = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NextDeadline", DbType="Int")]
-		public System.Nullable<int> NextDeadline
-		{
-			get
-			{
-				return this._NextDeadline;
-			}
-			set
-			{
-				if ((this._NextDeadline != value))
-				{
-					this._NextDeadline = value;
-				}
-			}
-		}
-	}
-	
-	public partial class sp_ResetPasswordResult
-	{
-		
-		private string _Result;
-		
-		private string _Message;
-		
-		private string _Email;
-		
-		private string _FirstName;
-		
-		public sp_ResetPasswordResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
-		public string Result
-		{
-			get
-			{
-				return this._Result;
-			}
-			set
-			{
-				if ((this._Result != value))
-				{
-					this._Result = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
-		public string Message
-		{
-			get
-			{
-				return this._Message;
-			}
-			set
-			{
-				if ((this._Message != value))
-				{
-					this._Message = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this._Email = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(100)")]
-		public string FirstName
-		{
-			get
-			{
-				return this._FirstName;
-			}
-			set
-			{
-				if ((this._FirstName != value))
-				{
-					this._FirstName = value;
-				}
-			}
-		}
-	}
-	
-	public partial class sp_ResetPasswordResult1
-	{
-		
-		private string _Result;
-		
-		private string _Message;
-		
-		private string _Email;
-		
-		private string _FirstName;
-		
-		public sp_ResetPasswordResult1()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(10)")]
-		public string Result
-		{
-			get
-			{
-				return this._Result;
-			}
-			set
-			{
-				if ((this._Result != value))
-				{
-					this._Result = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
-		public string Message
-		{
-			get
-			{
-				return this._Message;
-			}
-			set
-			{
-				if ((this._Message != value))
-				{
-					this._Message = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this._Email = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(100)")]
-		public string FirstName
-		{
-			get
-			{
-				return this._FirstName;
-			}
-			set
-			{
-				if ((this._FirstName != value))
-				{
-					this._FirstName = value;
 				}
 			}
 		}
